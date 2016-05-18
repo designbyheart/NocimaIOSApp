@@ -1,0 +1,522 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		076638831CED0F0E001A8AE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076638821CED0F0E001A8AE1 /* AppDelegate.swift */; };
+		076638851CED0F0E001A8AE1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076638841CED0F0E001A8AE1 /* ViewController.swift */; };
+		076638881CED0F0E001A8AE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 076638861CED0F0E001A8AE1 /* Main.storyboard */; };
+		0766388B1CED0F0E001A8AE1 /* NocimaApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 076638891CED0F0E001A8AE1 /* NocimaApp.xcdatamodeld */; };
+		0766388D1CED0F0E001A8AE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0766388C1CED0F0E001A8AE1 /* Assets.xcassets */; };
+		076638901CED0F0E001A8AE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0766388E1CED0F0E001A8AE1 /* LaunchScreen.storyboard */; };
+		0766389B1CED0F0E001A8AE1 /* NocimaAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0766389A1CED0F0E001A8AE1 /* NocimaAppTests.swift */; };
+		076638A61CED0F0E001A8AE1 /* NocimaAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076638A51CED0F0E001A8AE1 /* NocimaAppUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		076638971CED0F0E001A8AE1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 076638771CED0F0E001A8AE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0766387E1CED0F0E001A8AE1;
+			remoteInfo = NocimaApp;
+		};
+		076638A21CED0F0E001A8AE1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 076638771CED0F0E001A8AE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0766387E1CED0F0E001A8AE1;
+			remoteInfo = NocimaApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0766387F1CED0F0E001A8AE1 /* NocimaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NocimaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		076638821CED0F0E001A8AE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		076638841CED0F0E001A8AE1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		076638871CED0F0E001A8AE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0766388A1CED0F0E001A8AE1 /* NocimaApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NocimaApp.xcdatamodel; sourceTree = "<group>"; };
+		0766388C1CED0F0E001A8AE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0766388F1CED0F0E001A8AE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		076638911CED0F0E001A8AE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		076638961CED0F0E001A8AE1 /* NocimaAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NocimaAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0766389A1CED0F0E001A8AE1 /* NocimaAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NocimaAppTests.swift; sourceTree = "<group>"; };
+		0766389C1CED0F0E001A8AE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		076638A11CED0F0E001A8AE1 /* NocimaAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NocimaAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		076638A51CED0F0E001A8AE1 /* NocimaAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NocimaAppUITests.swift; sourceTree = "<group>"; };
+		076638A71CED0F0E001A8AE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0766387C1CED0F0E001A8AE1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		076638931CED0F0E001A8AE1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0766389E1CED0F0E001A8AE1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		076638761CED0F0E001A8AE1 = {
+			isa = PBXGroup;
+			children = (
+				076638811CED0F0E001A8AE1 /* NocimaApp */,
+				076638991CED0F0E001A8AE1 /* NocimaAppTests */,
+				076638A41CED0F0E001A8AE1 /* NocimaAppUITests */,
+				076638801CED0F0E001A8AE1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		076638801CED0F0E001A8AE1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0766387F1CED0F0E001A8AE1 /* NocimaApp.app */,
+				076638961CED0F0E001A8AE1 /* NocimaAppTests.xctest */,
+				076638A11CED0F0E001A8AE1 /* NocimaAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		076638811CED0F0E001A8AE1 /* NocimaApp */ = {
+			isa = PBXGroup;
+			children = (
+				076638821CED0F0E001A8AE1 /* AppDelegate.swift */,
+				076638841CED0F0E001A8AE1 /* ViewController.swift */,
+				076638861CED0F0E001A8AE1 /* Main.storyboard */,
+				0766388C1CED0F0E001A8AE1 /* Assets.xcassets */,
+				0766388E1CED0F0E001A8AE1 /* LaunchScreen.storyboard */,
+				076638911CED0F0E001A8AE1 /* Info.plist */,
+				076638891CED0F0E001A8AE1 /* NocimaApp.xcdatamodeld */,
+			);
+			path = NocimaApp;
+			sourceTree = "<group>";
+		};
+		076638991CED0F0E001A8AE1 /* NocimaAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				0766389A1CED0F0E001A8AE1 /* NocimaAppTests.swift */,
+				0766389C1CED0F0E001A8AE1 /* Info.plist */,
+			);
+			path = NocimaAppTests;
+			sourceTree = "<group>";
+		};
+		076638A41CED0F0E001A8AE1 /* NocimaAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				076638A51CED0F0E001A8AE1 /* NocimaAppUITests.swift */,
+				076638A71CED0F0E001A8AE1 /* Info.plist */,
+			);
+			path = NocimaAppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0766387E1CED0F0E001A8AE1 /* NocimaApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 076638AA1CED0F0E001A8AE1 /* Build configuration list for PBXNativeTarget "NocimaApp" */;
+			buildPhases = (
+				0766387B1CED0F0E001A8AE1 /* Sources */,
+				0766387C1CED0F0E001A8AE1 /* Frameworks */,
+				0766387D1CED0F0E001A8AE1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NocimaApp;
+			productName = NocimaApp;
+			productReference = 0766387F1CED0F0E001A8AE1 /* NocimaApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		076638951CED0F0E001A8AE1 /* NocimaAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 076638AD1CED0F0E001A8AE1 /* Build configuration list for PBXNativeTarget "NocimaAppTests" */;
+			buildPhases = (
+				076638921CED0F0E001A8AE1 /* Sources */,
+				076638931CED0F0E001A8AE1 /* Frameworks */,
+				076638941CED0F0E001A8AE1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				076638981CED0F0E001A8AE1 /* PBXTargetDependency */,
+			);
+			name = NocimaAppTests;
+			productName = NocimaAppTests;
+			productReference = 076638961CED0F0E001A8AE1 /* NocimaAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		076638A01CED0F0E001A8AE1 /* NocimaAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 076638B01CED0F0E001A8AE1 /* Build configuration list for PBXNativeTarget "NocimaAppUITests" */;
+			buildPhases = (
+				0766389D1CED0F0E001A8AE1 /* Sources */,
+				0766389E1CED0F0E001A8AE1 /* Frameworks */,
+				0766389F1CED0F0E001A8AE1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				076638A31CED0F0E001A8AE1 /* PBXTargetDependency */,
+			);
+			name = NocimaAppUITests;
+			productName = NocimaAppUITests;
+			productReference = 076638A11CED0F0E001A8AE1 /* NocimaAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		076638771CED0F0E001A8AE1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Pedja Jevtic";
+				TargetAttributes = {
+					0766387E1CED0F0E001A8AE1 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					076638951CED0F0E001A8AE1 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 0766387E1CED0F0E001A8AE1;
+					};
+					076638A01CED0F0E001A8AE1 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 0766387E1CED0F0E001A8AE1;
+					};
+				};
+			};
+			buildConfigurationList = 0766387A1CED0F0E001A8AE1 /* Build configuration list for PBXProject "NocimaApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 076638761CED0F0E001A8AE1;
+			productRefGroup = 076638801CED0F0E001A8AE1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0766387E1CED0F0E001A8AE1 /* NocimaApp */,
+				076638951CED0F0E001A8AE1 /* NocimaAppTests */,
+				076638A01CED0F0E001A8AE1 /* NocimaAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0766387D1CED0F0E001A8AE1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				076638901CED0F0E001A8AE1 /* LaunchScreen.storyboard in Resources */,
+				0766388D1CED0F0E001A8AE1 /* Assets.xcassets in Resources */,
+				076638881CED0F0E001A8AE1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		076638941CED0F0E001A8AE1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0766389F1CED0F0E001A8AE1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0766387B1CED0F0E001A8AE1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				076638851CED0F0E001A8AE1 /* ViewController.swift in Sources */,
+				076638831CED0F0E001A8AE1 /* AppDelegate.swift in Sources */,
+				0766388B1CED0F0E001A8AE1 /* NocimaApp.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		076638921CED0F0E001A8AE1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0766389B1CED0F0E001A8AE1 /* NocimaAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0766389D1CED0F0E001A8AE1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				076638A61CED0F0E001A8AE1 /* NocimaAppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		076638981CED0F0E001A8AE1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0766387E1CED0F0E001A8AE1 /* NocimaApp */;
+			targetProxy = 076638971CED0F0E001A8AE1 /* PBXContainerItemProxy */;
+		};
+		076638A31CED0F0E001A8AE1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0766387E1CED0F0E001A8AE1 /* NocimaApp */;
+			targetProxy = 076638A21CED0F0E001A8AE1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		076638861CED0F0E001A8AE1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				076638871CED0F0E001A8AE1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0766388E1CED0F0E001A8AE1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0766388F1CED0F0E001A8AE1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		076638A81CED0F0E001A8AE1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		076638A91CED0F0E001A8AE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		076638AB1CED0F0E001A8AE1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = NocimaApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.designbyheart.NocimaApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		076638AC1CED0F0E001A8AE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = NocimaApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.designbyheart.NocimaApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		076638AE1CED0F0E001A8AE1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = NocimaAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.designbyheart.NocimaAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NocimaApp.app/NocimaApp";
+			};
+			name = Debug;
+		};
+		076638AF1CED0F0E001A8AE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = NocimaAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.designbyheart.NocimaAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NocimaApp.app/NocimaApp";
+			};
+			name = Release;
+		};
+		076638B11CED0F0E001A8AE1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = NocimaAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.designbyheart.NocimaAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = NocimaApp;
+			};
+			name = Debug;
+		};
+		076638B21CED0F0E001A8AE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = NocimaAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.designbyheart.NocimaAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = NocimaApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0766387A1CED0F0E001A8AE1 /* Build configuration list for PBXProject "NocimaApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				076638A81CED0F0E001A8AE1 /* Debug */,
+				076638A91CED0F0E001A8AE1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		076638AA1CED0F0E001A8AE1 /* Build configuration list for PBXNativeTarget "NocimaApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				076638AB1CED0F0E001A8AE1 /* Debug */,
+				076638AC1CED0F0E001A8AE1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		076638AD1CED0F0E001A8AE1 /* Build configuration list for PBXNativeTarget "NocimaAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				076638AE1CED0F0E001A8AE1 /* Debug */,
+				076638AF1CED0F0E001A8AE1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		076638B01CED0F0E001A8AE1 /* Build configuration list for PBXNativeTarget "NocimaAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				076638B11CED0F0E001A8AE1 /* Debug */,
+				076638B21CED0F0E001A8AE1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		076638891CED0F0E001A8AE1 /* NocimaApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0766388A1CED0F0E001A8AE1 /* NocimaApp.xcdatamodel */,
+			);
+			currentVersion = 0766388A1CED0F0E001A8AE1 /* NocimaApp.xcdatamodel */;
+			path = NocimaApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 076638771CED0F0E001A8AE1 /* Project object */;
+}
