@@ -15,6 +15,25 @@
 		076638901CED0F0E001A8AE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0766388E1CED0F0E001A8AE1 /* LaunchScreen.storyboard */; };
 		0766389B1CED0F0E001A8AE1 /* NocimaAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0766389A1CED0F0E001A8AE1 /* NocimaAppTests.swift */; };
 		076638A61CED0F0E001A8AE1 /* NocimaAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076638A51CED0F0E001A8AE1 /* NocimaAppUITests.swift */; };
+		076D400A1CEE626000F63275 /* SourceSansPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 076D40061CEE626000F63275 /* SourceSansPro-Bold.ttf */; };
+		076D400B1CEE626000F63275 /* SourceSansPro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 076D40071CEE626000F63275 /* SourceSansPro-Light.ttf */; };
+		076D400C1CEE626000F63275 /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 076D40081CEE626000F63275 /* SourceSansPro-Regular.ttf */; };
+		076D400D1CEE626000F63275 /* SourceSansPro-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 076D40091CEE626000F63275 /* SourceSansPro-Semibold.ttf */; };
+		076D400F1CEE62BB00F63275 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076D400E1CEE62BB00F63275 /* LoginController.swift */; };
+		076D40111CEE62FF00F63275 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076D40101CEE62FF00F63275 /* UIKit.framework */; };
+		079FECC01CF766BC00293141 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079FECBF1CF766BC00293141 /* LocationViewController.swift */; };
+		079FECC21CF768A400293141 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079FECC11CF768A400293141 /* MapKit.framework */; };
+		07B8BEF81CFA55D300BF2E58 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B8BEF71CFA55D300BF2E58 /* NavigationView.swift */; };
+		07B8BEFA1CFA780600BF2E58 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B8BEF91CFA780600BF2E58 /* MainViewController.swift */; };
+		07B8BEFC1CFA85F100BF2E58 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B8BEFB1CFA85F100BF2E58 /* MenuCell.swift */; };
+		07B8BEFF1CFAF48300BF2E58 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B8BEFE1CFAF48300BF2E58 /* SettingsViewController.swift */; };
+		07B8BF011CFAF4BE00BF2E58 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B8BF001CFAF4BE00BF2E58 /* MyProfileViewController.swift */; };
+		07E05CA01CF27AA900B4AF28 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E05C9D1CF27AA900B4AF28 /* FBSDKCoreKit.framework */; };
+		07E05CA11CF27AA900B4AF28 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E05C9E1CF27AA900B4AF28 /* FBSDKLoginKit.framework */; };
+		07E05CA21CF27AA900B4AF28 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E05C9F1CF27AA900B4AF28 /* FBSDKShareKit.framework */; };
+		07E05CA41CF296A900B4AF28 /* LikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E05CA31CF296A900B4AF28 /* LikeViewController.swift */; };
+		07FE8F171CF9CDD70029DE52 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FE8F161CF9CDD70029DE52 /* MenuViewController.swift */; };
+		83ECCAB7B4CEFF2162DA2B11 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B10CFA5B79F97D75C3C393FA /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +68,27 @@
 		076638A11CED0F0E001A8AE1 /* NocimaAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NocimaAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		076638A51CED0F0E001A8AE1 /* NocimaAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NocimaAppUITests.swift; sourceTree = "<group>"; };
 		076638A71CED0F0E001A8AE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		076D40061CEE626000F63275 /* SourceSansPro-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceSansPro-Bold.ttf"; path = "Resources/Fonts/SourceSansPro-Bold.ttf"; sourceTree = "<group>"; };
+		076D40071CEE626000F63275 /* SourceSansPro-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceSansPro-Light.ttf"; path = "Resources/Fonts/SourceSansPro-Light.ttf"; sourceTree = "<group>"; };
+		076D40081CEE626000F63275 /* SourceSansPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceSansPro-Regular.ttf"; path = "Resources/Fonts/SourceSansPro-Regular.ttf"; sourceTree = "<group>"; };
+		076D40091CEE626000F63275 /* SourceSansPro-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceSansPro-Semibold.ttf"; path = "Resources/Fonts/SourceSansPro-Semibold.ttf"; sourceTree = "<group>"; };
+		076D400E1CEE62BB00F63275 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginController.swift; path = Controller/LoginController.swift; sourceTree = "<group>"; };
+		076D40101CEE62FF00F63275 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		079FECBF1CF766BC00293141 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationViewController.swift; path = Controller/LocationViewController.swift; sourceTree = "<group>"; };
+		079FECC11CF768A400293141 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		07B8BEF71CFA55D300BF2E58 /* NavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationView.swift; path = Components/NavigationView.swift; sourceTree = "<group>"; };
+		07B8BEF91CFA780600BF2E58 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = Controller/MainViewController.swift; sourceTree = "<group>"; };
+		07B8BEFB1CFA85F100BF2E58 /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuCell.swift; path = Components/cells/MenuCell.swift; sourceTree = "<group>"; };
+		07B8BEFE1CFAF48300BF2E58 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Controller/SettingsViewController.swift; sourceTree = "<group>"; };
+		07B8BF001CFAF4BE00BF2E58 /* MyProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyProfileViewController.swift; path = Controller/MyProfileViewController.swift; sourceTree = "<group>"; };
+		07E05C9D1CF27AA900B4AF28 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = Frameworks/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		07E05C9E1CF27AA900B4AF28 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = Frameworks/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		07E05C9F1CF27AA900B4AF28 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = Frameworks/FBSDKShareKit.framework; sourceTree = "<group>"; };
+		07E05CA31CF296A900B4AF28 /* LikeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LikeViewController.swift; path = Controller/LikeViewController.swift; sourceTree = "<group>"; };
+		07FE8F161CF9CDD70029DE52 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = Controller/MenuViewController.swift; sourceTree = "<group>"; };
+		29EA541C5004153039804E78 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		48E06CAE602F91F05EE50CEC /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		B10CFA5B79F97D75C3C393FA /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +96,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				079FECC21CF768A400293141 /* MapKit.framework in Frameworks */,
+				076D40111CEE62FF00F63275 /* UIKit.framework in Frameworks */,
+				07E05CA01CF27AA900B4AF28 /* FBSDKCoreKit.framework in Frameworks */,
+				07E05CA21CF27AA900B4AF28 /* FBSDKShareKit.framework in Frameworks */,
+				07E05CA11CF27AA900B4AF28 /* FBSDKLoginKit.framework in Frameworks */,
+				83ECCAB7B4CEFF2162DA2B11 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +129,8 @@
 				076638991CED0F0E001A8AE1 /* NocimaAppTests */,
 				076638A41CED0F0E001A8AE1 /* NocimaAppUITests */,
 				076638801CED0F0E001A8AE1 /* Products */,
+				E084CCA085C8D0734714C798 /* Pods */,
+				4DA1DA2C7ACE07FEB3EE6E42 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +147,9 @@
 		076638811CED0F0E001A8AE1 /* NocimaApp */ = {
 			isa = PBXGroup;
 			children = (
+				07B8BEF61CFA55B000BF2E58 /* Components */,
+				076D40041CEE622100F63275 /* Resources */,
+				076638B31CED1021001A8AE1 /* Controllers */,
 				076638821CED0F0E001A8AE1 /* AppDelegate.swift */,
 				076638841CED0F0E001A8AE1 /* ViewController.swift */,
 				076638861CED0F0E001A8AE1 /* Main.storyboard */,
@@ -128,6 +179,78 @@
 			path = NocimaAppUITests;
 			sourceTree = "<group>";
 		};
+		076638B31CED1021001A8AE1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				076D400E1CEE62BB00F63275 /* LoginController.swift */,
+				07E05CA31CF296A900B4AF28 /* LikeViewController.swift */,
+				079FECBF1CF766BC00293141 /* LocationViewController.swift */,
+				07FE8F161CF9CDD70029DE52 /* MenuViewController.swift */,
+				07B8BEF91CFA780600BF2E58 /* MainViewController.swift */,
+				07B8BEFE1CFAF48300BF2E58 /* SettingsViewController.swift */,
+				07B8BF001CFAF4BE00BF2E58 /* MyProfileViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		076D40041CEE622100F63275 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				076D40051CEE624C00F63275 /* Fonts */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		076D40051CEE624C00F63275 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				076D40061CEE626000F63275 /* SourceSansPro-Bold.ttf */,
+				076D40071CEE626000F63275 /* SourceSansPro-Light.ttf */,
+				076D40081CEE626000F63275 /* SourceSansPro-Regular.ttf */,
+				076D40091CEE626000F63275 /* SourceSansPro-Semibold.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		07B8BEF61CFA55B000BF2E58 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				07B8BEF71CFA55D300BF2E58 /* NavigationView.swift */,
+				07B8BEFD1CFA85F600BF2E58 /* cells */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		07B8BEFD1CFA85F600BF2E58 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				07B8BEFB1CFA85F100BF2E58 /* MenuCell.swift */,
+			);
+			name = cells;
+			sourceTree = "<group>";
+		};
+		4DA1DA2C7ACE07FEB3EE6E42 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				079FECC11CF768A400293141 /* MapKit.framework */,
+				07E05C9D1CF27AA900B4AF28 /* FBSDKCoreKit.framework */,
+				07E05C9E1CF27AA900B4AF28 /* FBSDKLoginKit.framework */,
+				07E05C9F1CF27AA900B4AF28 /* FBSDKShareKit.framework */,
+				076D40101CEE62FF00F63275 /* UIKit.framework */,
+				B10CFA5B79F97D75C3C393FA /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E084CCA085C8D0734714C798 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				48E06CAE602F91F05EE50CEC /* Pods.debug.xcconfig */,
+				29EA541C5004153039804E78 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +258,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 076638AA1CED0F0E001A8AE1 /* Build configuration list for PBXNativeTarget "NocimaApp" */;
 			buildPhases = (
+				B3BD475DE59B6AAB590A6314 /* Check Pods Manifest.lock */,
 				0766387B1CED0F0E001A8AE1 /* Sources */,
 				0766387C1CED0F0E001A8AE1 /* Frameworks */,
 				0766387D1CED0F0E001A8AE1 /* Resources */,
+				FEC2AF560304B9BE12BA5AA6 /* Embed Pods Frameworks */,
+				30C0D419A7077A338E423616 /* Copy Pods Resources */,
+				07E05CA51CF33B0800B4AF28 /* Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -196,6 +323,7 @@
 				TargetAttributes = {
 					0766387E1CED0F0E001A8AE1 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 43E5B5CSA6;
 					};
 					076638951CED0F0E001A8AE1 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -234,7 +362,11 @@
 			files = (
 				076638901CED0F0E001A8AE1 /* LaunchScreen.storyboard in Resources */,
 				0766388D1CED0F0E001A8AE1 /* Assets.xcassets in Resources */,
+				076D400D1CEE626000F63275 /* SourceSansPro-Semibold.ttf in Resources */,
 				076638881CED0F0E001A8AE1 /* Main.storyboard in Resources */,
+				076D400B1CEE626000F63275 /* SourceSansPro-Light.ttf in Resources */,
+				076D400A1CEE626000F63275 /* SourceSansPro-Bold.ttf in Resources */,
+				076D400C1CEE626000F63275 /* SourceSansPro-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,14 +386,85 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		07E05CA51CF33B0800B4AF28 /* Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Crashlytics;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 92593381ff86078cfcda30d607ae90847a3f1725 368374a0110f81a93ffa0911ca623bb8bef15edca3d31d0ba188b5908f12684d";
+		};
+		30C0D419A7077A338E423616 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B3BD475DE59B6AAB590A6314 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FEC2AF560304B9BE12BA5AA6 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0766387B1CED0F0E001A8AE1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				076638851CED0F0E001A8AE1 /* ViewController.swift in Sources */,
+				076D400F1CEE62BB00F63275 /* LoginController.swift in Sources */,
+				07B8BEFF1CFAF48300BF2E58 /* SettingsViewController.swift in Sources */,
+				07B8BEF81CFA55D300BF2E58 /* NavigationView.swift in Sources */,
 				076638831CED0F0E001A8AE1 /* AppDelegate.swift in Sources */,
+				07FE8F171CF9CDD70029DE52 /* MenuViewController.swift in Sources */,
+				07B8BF011CFAF4BE00BF2E58 /* MyProfileViewController.swift in Sources */,
 				0766388B1CED0F0E001A8AE1 /* NocimaApp.xcdatamodeld in Sources */,
+				07B8BEFC1CFA85F100BF2E58 /* MenuCell.swift in Sources */,
+				07B8BEFA1CFA780600BF2E58 /* MainViewController.swift in Sources */,
+				079FECC01CF766BC00293141 /* LocationViewController.swift in Sources */,
+				07E05CA41CF296A900B4AF28 /* LikeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,23 +604,39 @@
 		};
 		076638AB1CED0F0E001A8AE1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48E06CAE602F91F05EE50CEC /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = NocimaApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.designbyheart.NocimaApp;
+				PRODUCT_BUNDLE_IDENTIFIER = net.designbyheart.Nocima;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
 		076638AC1CED0F0E001A8AE1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29EA541C5004153039804E78 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Predrag Jevtic (43E5B5CSA6)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = NocimaApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.designbyheart.NocimaApp;
+				PRODUCT_BUNDLE_IDENTIFIER = net.designbyheart.Nocima;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "7b399e30-9ebc-4c62-a978-f464addeffe8";
 			};
 			name = Release;
 		};
@@ -486,6 +705,7 @@
 				076638AC1CED0F0E001A8AE1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		076638AD1CED0F0E001A8AE1 /* Build configuration list for PBXNativeTarget "NocimaAppTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +714,7 @@
 				076638AF1CED0F0E001A8AE1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		076638B01CED0F0E001A8AE1 /* Build configuration list for PBXNativeTarget "NocimaAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +723,7 @@
 				076638B21CED0F0E001A8AE1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
