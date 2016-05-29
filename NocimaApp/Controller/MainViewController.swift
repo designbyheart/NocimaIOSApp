@@ -60,7 +60,7 @@ class MainViewController: UIViewController {
     func openLocationView(n:AnyObject) {
         if let viewControllers = self.navigationController?.viewControllers{
             if let activeController = viewControllers.last {
-                if !activeController.isKindOfClass(LocationController){
+                if !activeController.isKindOfClass(LocationViewController){
                     self.performSegueWithIdentifier("openLocationView", sender: self)
                 }
             }

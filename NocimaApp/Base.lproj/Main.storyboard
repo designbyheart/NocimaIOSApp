@@ -177,10 +177,10 @@ your perfect match!</string>
             </objects>
             <point key="canvasLocation" x="246" y="1"/>
         </scene>
-        <!--Location Controller-->
+        <!--Location View Controller-->
         <scene sceneID="W42-cX-mam">
             <objects>
-                <viewController id="UZz-BF-qua" customClass="LocationController" customModule="NocimaApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="UZz-BF-qua" customClass="LocationViewController" customModule="NocimaApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZDn-cW-vQ5"/>
                         <viewControllerLayoutGuide type="bottom" id="R0O-ji-eD2"/>
@@ -266,9 +266,9 @@ your perfect match!</string>
         <image name="infoIcon" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OsO-rF-pVP"/>
-        <segue reference="S6H-yd-Wsm"/>
-        <segue reference="2lJ-3Q-ByR"/>
-        <segue reference="UEU-ZX-sbh"/>
+        <segue reference="auB-Vh-wr2"/>
+        <segue reference="bT1-2H-b64"/>
+        <segue reference="PCl-yO-kbC"/>
+        <segue reference="bIU-dy-tkD"/>
     </inferredMetricsTieBreakers>
 </document>

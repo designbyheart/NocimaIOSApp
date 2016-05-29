@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NocimaApp/Controller/MainViewController.swift"
-            timestampString = "486215861.611582"
+            timestampString = "486216219.46894"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "openLikeView(_:)"
             landmarkType = "5">
          </BreakpointContent>
