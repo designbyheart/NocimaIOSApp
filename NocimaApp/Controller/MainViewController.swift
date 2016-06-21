@@ -24,6 +24,7 @@ class MainViewController: UIViewController {
         super.viewWillAppear(animated)
         self.menu.view.center = CGPointMake(self.view.center.x * -1, self.view.center.y)
         self.view .addSubview(menu.view)
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.openLocationView(_:)), name: "OpenLocationView", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.openMyProfileView(_:)), name: "OpenMyProfileView", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.openSettingsView(_:)), name: "OpenSettingsView", object: nil)
@@ -32,6 +33,8 @@ class MainViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         if let menuB:UIButton = self.navigationMenu.menuBttn{
             menuB .addTarget(self, action: #selector(MainViewController.openMenu(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+            
+//            messsageB.addTarget(self, action: #selector(MainViewController.openMessages), forControlEvents: UIControlEvents.TouchUpOutside)
         }
     }
     
@@ -45,6 +48,9 @@ class MainViewController: UIViewController {
                 }
         })
         
+    }
+    func openMessages(){
+        self.performSegueWithIdentifier("openMessages", sender: self)
     }
     func closeMenu(){
         UIView.animateWithDuration(0.3, delay: 0, options: .CurveEaseOut, animations: {
@@ -68,22 +74,35 @@ class MainViewController: UIViewController {
         closeMenu()
     }
     func openLikeView(n:AnyObject) {
-//        if let activeView = NSUserDefaults.standardUserDefaults().objectForKey("ActiveView"){
-//            if(!activeView .isEqualToString("LikeView")){
-//                self.performSegueWithIdentifier("openLikeView", sender: self)
-//            }
-//        }
+        if let viewControllers = self.navigationController?.viewControllers{
+            if let activeController = viewControllers.last {
+                if !activeController.isKindOfClass(LikeViewController){
+                    self.performSegueWithIdentifier("openLikeView", sender: self)
+                }
+            }
+        }
         closeMenu()
     }
     func openSettingsView(n:AnyObject) {
-//        if let activeView = NSUserDefaults.standardUserDefaults().objectForKey("ActiveView"){
-//            if(!activeView .isEqualToString("SettingsView")){
-//                self.performSegueWithIdentifier("openSettingsView", sender: self)
-//            }
-//        }
+        if let viewControllers = self.navigationController?.viewControllers{
+            if let activeController = viewControllers.last {
+                if !activeController.isKindOfClass(SettingsViewController){
+                    self.performSegueWithIdentifier("openSettingsView", sender: self)
+                }
+            }
+        }
+
         closeMenu()
     }
     func openMyProfileView(n:AnyObject) {
+        if let viewControllers = self.navigationController?.viewControllers{
+            if let activeController = viewControllers.last {
+                if !activeController.isKindOfClass(MyProfileViewController){
+                    self.performSegueWithIdentifier("openMyProfileView", sender: self)
+                }
+            }
+        }
+
         closeMenu()
     }
 }

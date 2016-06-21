@@ -6,8 +6,9 @@
 //  Copyright © 2016 Pedja Jevtic. All rights reserved.
 //
 
-import Cocoa
+import UIKit
+import JSQMessagesViewController
 
-class ChatViewController: UIViewController {
+class ChatViewController: JSQMessagesViewController {
 
 }

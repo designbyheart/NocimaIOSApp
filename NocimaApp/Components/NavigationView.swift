@@ -13,6 +13,7 @@ class NavigationView: UIView {
     //    let titleView:UILabel
     @IBOutlet var titleView:UILabel!
     @IBOutlet var menuBttn: UIButton!
+    @IBOutlet var chatBttn:UIButton!
     
     override init (frame : CGRect) {
         super.init(frame : frame)
@@ -43,5 +44,13 @@ class NavigationView: UIView {
         self.menuBttn.setImage(UIImage(named: "menuIcon"), forState: UIControlState.Normal)
         self.menuBttn.imageEdgeInsets = UIEdgeInsetsMake(13, 20, 12, 20)
         self .addSubview(menuBttn)
+    }
+    
+    func initChatBttn(){
+        
+        self.chatBttn = UIButton(frame: CGRectMake(self.frame.size.width - 70, 20, 60, 40))
+        self.chatBttn.setImage(UIImage(named: "chatIcon"), forState: UIControlState.Normal)
+        self.addSubview(chatBttn)
+
     }
 }

@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import NocimaApp
+//@testable import NocimaApp
 
 class NocimaAppTests: XCTestCase {
     
@@ -28,7 +28,7 @@ class NocimaAppTests: XCTestCase {
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }

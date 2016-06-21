@@ -7,9 +7,12 @@
 //
 
 import UIKit
-import MapKit
+import Mapbox
 
-class LocationViewController: MainViewController {
+class LocationViewController: MainViewController,MGLMapViewDelegate, CLLocationManagerDelegate {
+    
+    @IBOutlet var mapView:MGLMapView!
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +24,38 @@ class LocationViewController: MainViewController {
         //This is the important bit, it tells your map to replace ALL the content, not just overlay the tiles.
         //        overlay.canReplaceMapContent = YES;
         //        [self.mapView addOverlay:overlay level:MKOverlayLevelAboveLabels];
+        
+        let styleURL = NSURL(string: "mapbox://styles/dbyh/cip0hdumy0003dlnq2eqkvo9i")
+        mapView = MGLMapView(frame: view.bounds,
+                             styleURL: styleURL)
+        mapView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        
+        // set the map's center coordinate
+        self.view.addSubview(mapView)
+        
+        mapView.delegate = self
+        
+        mapView.showsUserLocation = true
+        
+        self.locationManager.requestAlwaysAuthorization()
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+        
     }
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        if let loc = manager. location {
+//            let locValue:CLLocationCoordinate2D = loc.coordinate
+//            mapView.setCenterCoordinate(CLLocationCoordinate2D(latitude: locValue.latitude,
+//                longitude:locValue.longitude),zoomLevel: 14, animated: false)
+//        }
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -31,20 +65,5 @@ class LocationViewController: MainViewController {
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        NSUserDefaults.standardUserDefaults().setObject("LocationView", forKey: "ActiveView")
-        
-    }
-    
-    override func openLikeView(n:AnyObject) {
-        super.openLikeView(n)
-        self.performSegueWithIdentifier("openLikeView", sender: self)
-    }
-    override func openSettingsView(n:AnyObject) {
-        super.openSettingsView(n)
-        self.performSegueWithIdentifier("openSettingsView", sender: self)
-    }
-    override func openMyProfileView(n:AnyObject) {
-        super.openMyProfileView(n)
-        self.performSegueWithIdentifier("openMyProfileView", sender: self)
     }
 }

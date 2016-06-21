@@ -28,7 +28,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>253</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -52,6 +52,17 @@
 		<string>fbauth2</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>MGLMapboxAccessToken</key>
+	<string>pk.eyJ1IjoiZGJ5aCIsImEiOiJjaXAwaGJyaWIwMGZ1dmJrajd0bmQyZWFhIn0.ccHjHoCNmBxGU31eANHdgA</string>
+	<key>MapboxStyle</key>
+	<string>mapbox://styles/dbyh/cip0hdumy0003dlnq2eqkvo9i</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSLocationAlwaysUsageDescription</key>
 	<true/>
 	<key>UIAppFonts</key>
 	<array>

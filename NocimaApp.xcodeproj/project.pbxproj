@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07003AF91D02B99A0083AC5F /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07003AF81D02B99A0083AC5F /* MessagesViewController.swift */; };
+		070511201D192F2C0051E684 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0705111F1D192F2C0051E684 /* CoreLocation.framework */; };
 		076638831CED0F0E001A8AE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076638821CED0F0E001A8AE1 /* AppDelegate.swift */; };
 		076638851CED0F0E001A8AE1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076638841CED0F0E001A8AE1 /* ViewController.swift */; };
 		076638881CED0F0E001A8AE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 076638861CED0F0E001A8AE1 /* Main.storyboard */; };
@@ -19,19 +21,26 @@
 		076D400B1CEE626000F63275 /* SourceSansPro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 076D40071CEE626000F63275 /* SourceSansPro-Light.ttf */; };
 		076D400C1CEE626000F63275 /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 076D40081CEE626000F63275 /* SourceSansPro-Regular.ttf */; };
 		076D400D1CEE626000F63275 /* SourceSansPro-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 076D40091CEE626000F63275 /* SourceSansPro-Semibold.ttf */; };
-		076D400F1CEE62BB00F63275 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076D400E1CEE62BB00F63275 /* LoginController.swift */; };
+		076D400F1CEE62BB00F63275 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076D400E1CEE62BB00F63275 /* LoginViewController.swift */; };
 		076D40111CEE62FF00F63275 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076D40101CEE62FF00F63275 /* UIKit.framework */; };
 		079FECC01CF766BC00293141 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079FECBF1CF766BC00293141 /* LocationViewController.swift */; };
 		079FECC21CF768A400293141 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079FECC11CF768A400293141 /* MapKit.framework */; };
+		07B4E8B21D11BC13007A5981 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B4E8B11D11BC13007A5981 /* ChatViewController.swift */; };
 		07B8BEF81CFA55D300BF2E58 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B8BEF71CFA55D300BF2E58 /* NavigationView.swift */; };
 		07B8BEFA1CFA780600BF2E58 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B8BEF91CFA780600BF2E58 /* MainViewController.swift */; };
 		07B8BEFC1CFA85F100BF2E58 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B8BEFB1CFA85F100BF2E58 /* MenuCell.swift */; };
 		07B8BEFF1CFAF48300BF2E58 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B8BEFE1CFAF48300BF2E58 /* SettingsViewController.swift */; };
 		07B8BF011CFAF4BE00BF2E58 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B8BF001CFAF4BE00BF2E58 /* MyProfileViewController.swift */; };
+		07BBCCB41D09AB6700E1D7B4 /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BBCCB31D09AB6700E1D7B4 /* NotificationHelper.swift */; };
 		07E05CA01CF27AA900B4AF28 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E05C9D1CF27AA900B4AF28 /* FBSDKCoreKit.framework */; };
 		07E05CA11CF27AA900B4AF28 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E05C9E1CF27AA900B4AF28 /* FBSDKLoginKit.framework */; };
 		07E05CA21CF27AA900B4AF28 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E05C9F1CF27AA900B4AF28 /* FBSDKShareKit.framework */; };
 		07E05CA41CF296A900B4AF28 /* LikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E05CA31CF296A900B4AF28 /* LikeViewController.swift */; };
+		07F3F20E1D06B958005F1BDE /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F3F20D1D06B958005F1BDE /* APIClient.swift */; };
+		07F7115A1D04D03E0099D342 /* TisprCardStackViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F711591D04D03E0099D342 /* TisprCardStackViewLayout.swift */; };
+		07F7115D1D04D0500099D342 /* TisprCardStackViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F7115B1D04D0500099D342 /* TisprCardStackViewCell.swift */; };
+		07F7115E1D04D0500099D342 /* TisprCardStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F7115C1D04D0500099D342 /* TisprCardStackViewController.swift */; };
+		07F711601D04D0FB0099D342 /* LikeDislikeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F7115F1D04D0FB0099D342 /* LikeDislikeCollectionViewCell.swift */; };
 		07FE8F171CF9CDD70029DE52 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FE8F161CF9CDD70029DE52 /* MenuViewController.swift */; };
 		83ECCAB7B4CEFF2162DA2B11 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B10CFA5B79F97D75C3C393FA /* Pods.framework */; };
 /* End PBXBuildFile section */
@@ -54,6 +63,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		07003AF81D02B99A0083AC5F /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagesViewController.swift; path = Controller/MessagesViewController.swift; sourceTree = "<group>"; };
+		0705111F1D192F2C0051E684 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		0766387F1CED0F0E001A8AE1 /* NocimaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NocimaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		076638821CED0F0E001A8AE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		076638841CED0F0E001A8AE1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -72,19 +83,26 @@
 		076D40071CEE626000F63275 /* SourceSansPro-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceSansPro-Light.ttf"; path = "Resources/Fonts/SourceSansPro-Light.ttf"; sourceTree = "<group>"; };
 		076D40081CEE626000F63275 /* SourceSansPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceSansPro-Regular.ttf"; path = "Resources/Fonts/SourceSansPro-Regular.ttf"; sourceTree = "<group>"; };
 		076D40091CEE626000F63275 /* SourceSansPro-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceSansPro-Semibold.ttf"; path = "Resources/Fonts/SourceSansPro-Semibold.ttf"; sourceTree = "<group>"; };
-		076D400E1CEE62BB00F63275 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginController.swift; path = Controller/LoginController.swift; sourceTree = "<group>"; };
+		076D400E1CEE62BB00F63275 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controller/LoginViewController.swift; sourceTree = "<group>"; };
 		076D40101CEE62FF00F63275 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		079FECBF1CF766BC00293141 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationViewController.swift; path = Controller/LocationViewController.swift; sourceTree = "<group>"; };
 		079FECC11CF768A400293141 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		07B4E8B11D11BC13007A5981 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = Controller/ChatViewController.swift; sourceTree = "<group>"; };
 		07B8BEF71CFA55D300BF2E58 /* NavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationView.swift; path = Components/NavigationView.swift; sourceTree = "<group>"; };
 		07B8BEF91CFA780600BF2E58 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = Controller/MainViewController.swift; sourceTree = "<group>"; };
 		07B8BEFB1CFA85F100BF2E58 /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuCell.swift; path = Components/cells/MenuCell.swift; sourceTree = "<group>"; };
 		07B8BEFE1CFAF48300BF2E58 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Controller/SettingsViewController.swift; sourceTree = "<group>"; };
 		07B8BF001CFAF4BE00BF2E58 /* MyProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyProfileViewController.swift; path = Controller/MyProfileViewController.swift; sourceTree = "<group>"; };
+		07BBCCB31D09AB6700E1D7B4 /* NotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationHelper.swift; path = Helpers/NotificationHelper.swift; sourceTree = "<group>"; };
 		07E05C9D1CF27AA900B4AF28 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = Frameworks/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		07E05C9E1CF27AA900B4AF28 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = Frameworks/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		07E05C9F1CF27AA900B4AF28 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = Frameworks/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		07E05CA31CF296A900B4AF28 /* LikeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LikeViewController.swift; path = Controller/LikeViewController.swift; sourceTree = "<group>"; };
+		07F3F20D1D06B958005F1BDE /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIClient.swift; path = API/APIClient.swift; sourceTree = "<group>"; };
+		07F711591D04D03E0099D342 /* TisprCardStackViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TisprCardStackViewLayout.swift; path = Resources/CardController/TisprCardStackViewLayout.swift; sourceTree = "<group>"; };
+		07F7115B1D04D0500099D342 /* TisprCardStackViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TisprCardStackViewCell.swift; path = Resources/CardController/TisprCardStackViewCell.swift; sourceTree = "<group>"; };
+		07F7115C1D04D0500099D342 /* TisprCardStackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TisprCardStackViewController.swift; path = Resources/CardController/TisprCardStackViewController.swift; sourceTree = "<group>"; };
+		07F7115F1D04D0FB0099D342 /* LikeDislikeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LikeDislikeCollectionViewCell.swift; path = Components/cells/LikeDislikeCollectionViewCell.swift; sourceTree = "<group>"; };
 		07FE8F161CF9CDD70029DE52 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = Controller/MenuViewController.swift; sourceTree = "<group>"; };
 		29EA541C5004153039804E78 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		48E06CAE602F91F05EE50CEC /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -96,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				070511201D192F2C0051E684 /* CoreLocation.framework in Frameworks */,
 				079FECC21CF768A400293141 /* MapKit.framework in Frameworks */,
 				076D40111CEE62FF00F63275 /* UIKit.framework in Frameworks */,
 				07E05CA01CF27AA900B4AF28 /* FBSDKCoreKit.framework in Frameworks */,
@@ -147,6 +166,8 @@
 		076638811CED0F0E001A8AE1 /* NocimaApp */ = {
 			isa = PBXGroup;
 			children = (
+				07BBCCB21D09AB4500E1D7B4 /* Helpers */,
+				07F3F20C1D06B940005F1BDE /* API */,
 				07B8BEF61CFA55B000BF2E58 /* Components */,
 				076D40041CEE622100F63275 /* Resources */,
 				076638B31CED1021001A8AE1 /* Controllers */,
@@ -182,13 +203,15 @@
 		076638B31CED1021001A8AE1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				076D400E1CEE62BB00F63275 /* LoginController.swift */,
+				076D400E1CEE62BB00F63275 /* LoginViewController.swift */,
 				07E05CA31CF296A900B4AF28 /* LikeViewController.swift */,
 				079FECBF1CF766BC00293141 /* LocationViewController.swift */,
 				07FE8F161CF9CDD70029DE52 /* MenuViewController.swift */,
 				07B8BEF91CFA780600BF2E58 /* MainViewController.swift */,
 				07B8BEFE1CFAF48300BF2E58 /* SettingsViewController.swift */,
 				07B8BF001CFAF4BE00BF2E58 /* MyProfileViewController.swift */,
+				07003AF81D02B99A0083AC5F /* MessagesViewController.swift */,
+				07B4E8B11D11BC13007A5981 /* ChatViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -196,6 +219,7 @@
 		076D40041CEE622100F63275 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				07F711581D04D01E0099D342 /* CardController */,
 				076D40051CEE624C00F63275 /* Fonts */,
 			);
 			name = Resources;
@@ -224,14 +248,42 @@
 		07B8BEFD1CFA85F600BF2E58 /* cells */ = {
 			isa = PBXGroup;
 			children = (
+				07F7115F1D04D0FB0099D342 /* LikeDislikeCollectionViewCell.swift */,
 				07B8BEFB1CFA85F100BF2E58 /* MenuCell.swift */,
 			);
 			name = cells;
 			sourceTree = "<group>";
 		};
+		07BBCCB21D09AB4500E1D7B4 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				07BBCCB31D09AB6700E1D7B4 /* NotificationHelper.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		07F3F20C1D06B940005F1BDE /* API */ = {
+			isa = PBXGroup;
+			children = (
+				07F3F20D1D06B958005F1BDE /* APIClient.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		07F711581D04D01E0099D342 /* CardController */ = {
+			isa = PBXGroup;
+			children = (
+				07F7115B1D04D0500099D342 /* TisprCardStackViewCell.swift */,
+				07F7115C1D04D0500099D342 /* TisprCardStackViewController.swift */,
+				07F711591D04D03E0099D342 /* TisprCardStackViewLayout.swift */,
+			);
+			name = CardController;
+			sourceTree = "<group>";
+		};
 		4DA1DA2C7ACE07FEB3EE6E42 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0705111F1D192F2C0051E684 /* CoreLocation.framework */,
 				079FECC11CF768A400293141 /* MapKit.framework */,
 				07E05C9D1CF27AA900B4AF28 /* FBSDKCoreKit.framework */,
 				07E05C9E1CF27AA900B4AF28 /* FBSDKLoginKit.framework */,
@@ -265,6 +317,7 @@
 				FEC2AF560304B9BE12BA5AA6 /* Embed Pods Frameworks */,
 				30C0D419A7077A338E423616 /* Copy Pods Resources */,
 				07E05CA51CF33B0800B4AF28 /* Crashlytics */,
+				07F711611D05D7EE0099D342 /* Auto Build Version */,
 			);
 			buildRules = (
 			);
@@ -318,19 +371,23 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Pedja Jevtic";
 				TargetAttributes = {
 					0766387E1CED0F0E001A8AE1 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 43E5B5CSA6;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 					};
 					076638951CED0F0E001A8AE1 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 0766387E1CED0F0E001A8AE1;
 					};
 					076638A01CED0F0E001A8AE1 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 0766387E1CED0F0E001A8AE1;
 					};
 				};
@@ -401,6 +458,20 @@
 			shellPath = /bin/sh;
 			shellScript = "./Fabric.framework/run 92593381ff86078cfcda30d607ae90847a3f1725 368374a0110f81a93ffa0911ca623bb8bef15edca3d31d0ba188b5908f12684d";
 		};
+		07F711611D05D7EE0099D342 /* Auto Build Version */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Auto Build Version";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# xcode-build-bump.sh\n# @desc Auto-increment the build number every time the project is run.\n# @usage\n# 1. Select: your Target in Xcode\n# 2. Select: Build Phases Tab\n# 3. Select: Add Build Phase -> Add Run Script\n# 4. Paste code below in to new \"Run Script\" section\n# 5. Drag the \"Run Script\" below \"Link Binaries With Libraries\"\n# 6. Insure that your starting build number is set to a whole integer and not a float (e.g. 1, not 1.0)\n\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
 		30C0D419A7077A338E423616 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -454,17 +525,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				076638851CED0F0E001A8AE1 /* ViewController.swift in Sources */,
-				076D400F1CEE62BB00F63275 /* LoginController.swift in Sources */,
+				076D400F1CEE62BB00F63275 /* LoginViewController.swift in Sources */,
+				07003AF91D02B99A0083AC5F /* MessagesViewController.swift in Sources */,
 				07B8BEFF1CFAF48300BF2E58 /* SettingsViewController.swift in Sources */,
 				07B8BEF81CFA55D300BF2E58 /* NavigationView.swift in Sources */,
 				076638831CED0F0E001A8AE1 /* AppDelegate.swift in Sources */,
+				07F7115E1D04D0500099D342 /* TisprCardStackViewController.swift in Sources */,
 				07FE8F171CF9CDD70029DE52 /* MenuViewController.swift in Sources */,
 				07B8BF011CFAF4BE00BF2E58 /* MyProfileViewController.swift in Sources */,
 				0766388B1CED0F0E001A8AE1 /* NocimaApp.xcdatamodeld in Sources */,
 				07B8BEFC1CFA85F100BF2E58 /* MenuCell.swift in Sources */,
+				07F7115A1D04D03E0099D342 /* TisprCardStackViewLayout.swift in Sources */,
 				07B8BEFA1CFA780600BF2E58 /* MainViewController.swift in Sources */,
 				079FECC01CF766BC00293141 /* LocationViewController.swift in Sources */,
 				07E05CA41CF296A900B4AF28 /* LikeViewController.swift in Sources */,
+				07F7115D1D04D0500099D342 /* TisprCardStackViewCell.swift in Sources */,
+				07BBCCB41D09AB6700E1D7B4 /* NotificationHelper.swift in Sources */,
+				07F711601D04D0FB0099D342 /* LikeDislikeCollectionViewCell.swift in Sources */,
+				07B4E8B21D11BC13007A5981 /* ChatViewController.swift in Sources */,
+				07F3F20E1D06B958005F1BDE /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,7 +635,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -582,7 +661,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Predrag Jevtic (T2SVJB826P)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -595,7 +674,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -606,6 +685,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 48E06CAE602F91F05EE50CEC /* Pods.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -614,10 +694,13 @@
 					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = NocimaApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
 				PRODUCT_BUNDLE_IDENTIFIER = net.designbyheart.Nocima;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -625,18 +708,23 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 29EA541C5004153039804E78 /* Pods.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Predrag Jevtic (43E5B5CSA6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = NocimaApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.designbyheart.Nocima;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7b399e30-9ebc-4c62-a978-f464addeffe8";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -648,6 +736,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.designbyheart.NocimaAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NocimaApp.app/NocimaApp";
 			};
 			name = Debug;
@@ -660,6 +749,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.designbyheart.NocimaAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NocimaApp.app/NocimaApp";
 			};
 			name = Release;
@@ -671,6 +762,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.designbyheart.NocimaAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = NocimaApp;
 			};
 			name = Debug;
@@ -682,6 +774,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.designbyheart.NocimaAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = NocimaApp;
 			};
 			name = Release;
