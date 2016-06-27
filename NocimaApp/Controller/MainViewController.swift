@@ -28,6 +28,7 @@ class MainViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.openLocationView(_:)), name: "OpenLocationView", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.openMyProfileView(_:)), name: "OpenMyProfileView", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.openSettingsView(_:)), name: "OpenSettingsView", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.openLoginView(_:)), name: "OpenLoginView", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.openLikeView(_:)), name: "OpenLikeView", object: nil)
     }
     override func viewDidAppear(animated: Bool) {
@@ -104,5 +105,17 @@ class MainViewController: UIViewController {
         }
 
         closeMenu()
+    }
+    func openLoginView(n:AnyObject){
+        if let viewControllers = self.navigationController?.viewControllers{
+            if let activeController = viewControllers.last {
+                if !activeController.isKindOfClass(LoginViewController){
+                    self.performSegueWithIdentifier("openLoginView", sender: self)
+                }
+            }
+        }
+        
+        closeMenu()
+        
     }
 }

@@ -22,7 +22,9 @@ enum APIPath:String {
     case MessageList                = "messages"
     case NewMessage                 = "messages/new"
     case UpdateImages               = "updateUserImages"
-    
+    case MatchUser                  = "matchUser"
+    case ClubsList                  = "clubs/list"
+    case CheckUserStatus            = "user/status"
 }
 
 
@@ -37,11 +39,9 @@ public class APIClient {
         #endif
         
         let server = IS_DEBUG_MODE ? "datingapp.io/api" : "nocima.rs/api"
-        
         return "http://\(server)/\(path)"
     }
     static func path(path:APIPath)->String{
-        //print(self.apiRoot(path.rawValue))
         return self.apiRoot(path.rawValue)
     }
     static func defaultHeader(isAuthenticated:Bool,method:APIPath, params:Dictionary<String, AnyObject> = ["":""])->Dictionary<String, String>{
@@ -248,5 +248,10 @@ public class APIClient {
         
     }
     
+    static func getDataFromUrl(url:NSURL, completion: ((data: NSData?, response: NSURLResponse?, error: NSError? ) -> Void)) {
+        NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) in
+            completion(data: data, response: response, error: error)
+            }.resume()
+    }
     
 }

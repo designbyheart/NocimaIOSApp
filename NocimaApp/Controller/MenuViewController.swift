@@ -9,16 +9,16 @@
 import UIKit
 import FBSDKLoginKit
 
-class MenuViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
+class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var subview: UIView!
     @IBOutlet var tableView: UITableView!
     
     let menuData = [
-        ["img":"doYouLikeIcon", "title":"Do you like?"],
-        ["img":"heatmapIcon", "title":"HeatMap"],
-        ["img":"myProfileIcon", "title":"My Profile"],
-        ["img":"settingsIcon", "title":"Settings"],
+        ["img":"doYouLikeIcon", "title":"Da li mi se sviđa?"],
+        ["img":"heatmapIcon", "title":"Gde izaći?"],
+        ["img":"myProfileIcon", "title":"Moj profil"],
+        ["img":"settingsIcon", "title":"Podešavanja"],
         ];
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
@@ -90,7 +90,6 @@ class MenuViewController: UIViewController,UITableViewDelegate, UITableViewDataS
             break
         case 2:
             NSNotificationCenter.defaultCenter().postNotificationName("OpenMyProfileView", object: nil)
-            
             break
             
         case 3:
@@ -110,12 +109,12 @@ class MenuViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     func prepareLogoutBttn(){
         
         let logoutBttn = UIButton.init(frame: CGRectMake(57, self.view.frame.size.height - 130, 200, 50))
-        logoutBttn .setTitle("Log Out", forState: UIControlState.Normal)
+        logoutBttn .setTitle("Izloguj me", forState: UIControlState.Normal)
         logoutBttn.titleLabel?.font = UIFont.init(name: "SourceSansPro-Light", size: 24)
         logoutBttn.addTarget(self, action:#selector(MenuViewController.logout(_:)) , forControlEvents: UIControlEvents.TouchUpInside)
         self.view .addSubview(logoutBttn)
         
-        let logoutImg = UIImageView.init(frame: CGRectMake(57, logoutBttn.frame.origin.y, 16, 16))
+        let logoutImg = UIImageView.init(frame: CGRectMake(logoutBttn.frame.origin.x + 8, (logoutBttn.frame.origin.y + 17), 20, 20))
         logoutImg.image = UIImage.init(named: "logoutIcon")
         logoutImg.contentMode = UIViewContentMode.ScaleAspectFit
         self.view.addSubview(logoutImg)
@@ -132,14 +131,6 @@ class MenuViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         let loginManager = FBSDKLoginManager()
         loginManager.logOut()
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("LoginController") as! LoginViewController
-        
-        self.navigationController?.pushViewController(vc, animated: true)
-//        
-//        if let vc = LoginViewController(nib)
-//        let vc = LoginViewController(nibName: "LoginController", bundle: nil)
-//        navigationController!.pushViewController(vc, animated: true )
-//            self.navigationController?.performSegueWithIdentifier("openLogin", sender: self)
+        NSNotificationCenter.defaultCenter().postNotificationName("OpenLoginView", object: nil)
     }
 }

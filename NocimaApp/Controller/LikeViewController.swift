@@ -46,8 +46,8 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
         self.heatMapBttn.layer.cornerRadius = self.heatMapBttn.frame.size.width / 2
         collectionView.delegate = self
         collectionView.dataSource = self
-        self.commandView.hidden = true
-        noUsersLbl.text = "There is no active users\n at the moment"
+        //        self.commandView.hidden = true
+        noUsersLbl.text = "Trenutno nema aktivnih korisnika."
         
         setAnimationSpeed(animationSpeedDefault)
         layout.gesturesEnabled = true
@@ -59,11 +59,14 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
         super.viewWillAppear(animated)
         
         self.navigationMenu = NavigationView(controller: self)
-        self.navigationMenu.titleView.text = "Do you like?"
+        self.navigationMenu.titleView.text = "Da li mi se sviđa?"
         self.navigationMenu.initMenuBttn()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LikeViewController.usersMatchListFail(_:)), name: APINotification.Fail.rawValue, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LikeViewController.usersMatchListSuccess(_:)), name: APINotification.Success.rawValue, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LikeViewController.userMatchFail(_:)), name: APINotification.Fail.rawValue, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LikeViewController.userMatchSuccess(_:)), name: APINotification.Success.rawValue, object: nil)
         
         APIClient.sendPOST(APIPath.UsersForMatch, params:["latitude":44.795417, "longitude":20.438267])
     }
@@ -76,7 +79,7 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
     
     //MARK: - Heat map action
     @IBAction func openHeatMap(sender: AnyObject) {
-        self.performSegueWithIdentifier("openLocationView", sender: self)
+        NSNotificationCenter.defaultCenter().postNotificationName("OpenLocationView", object: nil)
     }
     //MARK: - CollectionView Delegates
     
@@ -110,7 +113,6 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
         }
         return cell
     }
-    
     //method to change animation speed
     func setAnimationSpeed(speed: Float) {
         self.collectionView!.layer.speed = speed
@@ -150,12 +152,12 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
         print("like me \(layout.index)")
     }
     @IBAction func dislikeUser(sender: AnyObject) {
-                print("dislike me \(layout.index)")
+        print("dislike me \(layout.index)")
     }
     
     //MARK: - API Delegates
     func usersMatchListFail(n:NSNotification){
-        let alert = UIAlertView.init(title: "Failed", message: nil, delegate: self, cancelButtonTitle: "OK")
+        let alert = UIAlertView.init(title: "Users match list failed", message: nil, delegate: self, cancelButtonTitle: "OK")
         alert.show()
     }
     func usersMatchListSuccess(n:NSNotification){
@@ -166,10 +168,17 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
                 self.likeBttn.hidden = self.usersList.count > 0 ? false : true
                 self.dislikeBttn.hidden = self.usersList.count > 0 ? false : true
                 
-                let alert = UIAlertView.init(title: "Total", message: "\(self.usersList.count) users", delegate: self, cancelButtonTitle: "OK")
-                alert.show()
+//                let alert = UIAlertView.init(title: "Total", message: "\(self.usersList.count) users", delegate: self, cancelButtonTitle: "OK")
+//                alert.show()
             }
         }
+        
         self.collectionView.reloadData()
+    }
+    func userMatchFail(n:NSNotification){
+        
+    }
+    func userMatchSuccess(n:NSNotification){
+        
     }
 }

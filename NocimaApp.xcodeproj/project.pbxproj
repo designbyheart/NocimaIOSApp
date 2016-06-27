@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		07003AF91D02B99A0083AC5F /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07003AF81D02B99A0083AC5F /* MessagesViewController.swift */; };
+		070300BD1D1C6CDA000B2B57 /* PendingActivationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070300BC1D1C6CDA000B2B57 /* PendingActivationViewController.swift */; };
 		070511201D192F2C0051E684 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0705111F1D192F2C0051E684 /* CoreLocation.framework */; };
+		075EE16E1D1F39CC006E853F /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075EE16D1D1F39CC006E853F /* MatchViewController.swift */; };
 		076638831CED0F0E001A8AE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076638821CED0F0E001A8AE1 /* AppDelegate.swift */; };
 		076638851CED0F0E001A8AE1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076638841CED0F0E001A8AE1 /* ViewController.swift */; };
 		076638881CED0F0E001A8AE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 076638861CED0F0E001A8AE1 /* Main.storyboard */; };
@@ -64,7 +66,9 @@
 
 /* Begin PBXFileReference section */
 		07003AF81D02B99A0083AC5F /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagesViewController.swift; path = Controller/MessagesViewController.swift; sourceTree = "<group>"; };
+		070300BC1D1C6CDA000B2B57 /* PendingActivationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PendingActivationViewController.swift; path = Controller/PendingActivationViewController.swift; sourceTree = "<group>"; };
 		0705111F1D192F2C0051E684 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		075EE16D1D1F39CC006E853F /* MatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatchViewController.swift; path = Controller/MatchViewController.swift; sourceTree = "<group>"; };
 		0766387F1CED0F0E001A8AE1 /* NocimaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NocimaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		076638821CED0F0E001A8AE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		076638841CED0F0E001A8AE1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +216,8 @@
 				07B8BF001CFAF4BE00BF2E58 /* MyProfileViewController.swift */,
 				07003AF81D02B99A0083AC5F /* MessagesViewController.swift */,
 				07B4E8B11D11BC13007A5981 /* ChatViewController.swift */,
+				070300BC1D1C6CDA000B2B57 /* PendingActivationViewController.swift */,
+				075EE16D1D1F39CC006E853F /* MatchViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -388,6 +394,7 @@
 					076638A01CED0F0E001A8AE1 = {
 						CreatedOnToolsVersion = 7.3.1;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 						TestTargetID = 0766387E1CED0F0E001A8AE1;
 					};
 				};
@@ -542,7 +549,9 @@
 				07F7115D1D04D0500099D342 /* TisprCardStackViewCell.swift in Sources */,
 				07BBCCB41D09AB6700E1D7B4 /* NotificationHelper.swift in Sources */,
 				07F711601D04D0FB0099D342 /* LikeDislikeCollectionViewCell.swift in Sources */,
+				075EE16E1D1F39CC006E853F /* MatchViewController.swift in Sources */,
 				07B4E8B21D11BC13007A5981 /* ChatViewController.swift in Sources */,
+				070300BD1D1C6CDA000B2B57 /* PendingActivationViewController.swift in Sources */,
 				07F3F20E1D06B958005F1BDE /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -710,8 +719,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Predrag Jevtic (43E5B5CSA6)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -721,7 +730,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.designbyheart.Nocima;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "7b399e30-9ebc-4c62-a978-f464addeffe8";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 2.3;
@@ -736,6 +745,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.designbyheart.NocimaAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = 43E5B5CSA6/;
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NocimaApp.app/NocimaApp";
 			};
@@ -758,8 +768,10 @@
 		076638B11CED0F0E001A8AE1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = NocimaAppUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = net.designbyheart.NocimaAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -770,8 +782,10 @@
 		076638B21CED0F0E001A8AE1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				INFOPLIST_FILE = NocimaAppUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = net.designbyheart.NocimaAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

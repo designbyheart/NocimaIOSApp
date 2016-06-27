@@ -28,7 +28,7 @@ class SettingsViewController: MainViewController {
         super.viewWillAppear(animated)
         
         self.navigationMenu = NavigationView(controller: self)
-        self.navigationMenu.titleView.text = "Settings"
+        self.navigationMenu.titleView.text = "Podešavanja"
         self.navigationMenu.initMenuBttn()
         
         if let rad = NSUserDefaults.standardUserDefaults().objectForKey("radius"){

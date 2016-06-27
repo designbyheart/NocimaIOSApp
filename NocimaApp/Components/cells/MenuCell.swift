@@ -21,6 +21,14 @@ class MenuCell: UITableViewCell {
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
+        self.backgroundColor = UIColor.clearColor()
+        self.selectionStyle = UITableViewCellSelectionStyle.None
+        
+        if selected {
+            self.titleLbl.textColor = UIColor.init(red: 46, green: 146, blue: 251, alpha: 1)
+        }else{
+            self.titleLbl .textColor = UIColor.whiteColor()
+        }
     
     }
     required init(coder aDecoder: NSCoder)
@@ -32,9 +40,11 @@ class MenuCell: UITableViewCell {
     {
         //First Call Super
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.titleLbl = UILabel.init(frame:CGRectMake(self.frame.size.width * 0.375, 0, self.frame.size.width/2, self.frame.size.height))
+        self.titleLbl = UILabel.init(frame:CGRectMake(self.frame.size.width * 0.375, 0, (self.frame.size.width / 3) * 2.2, self.frame.size.height))
         self.titleLbl.font = UIFont.init(name: "SourceSansPro-Light", size: 25)
         self.titleLbl.textColor = UIColor.whiteColor()
+        self.titleLbl.textAlignment = NSTextAlignment.Left
+
         self.addSubview(titleLbl)
         self.backgroundColor = UIColor.clearColor()
         

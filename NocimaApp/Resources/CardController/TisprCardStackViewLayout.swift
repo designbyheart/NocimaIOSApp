@@ -322,7 +322,15 @@ public class TisprCardStackViewLayout: UICollectionViewLayout, UIGestureRecogniz
         
         //// here you will get a trigger for a data
         if let c = cell as? LikeDislikeCollectionViewCell{
-            print("\(c.userID)")
+//            print("\(c.userID)")
+            var status = 1
+            if (c.center.x < (self.collectionView?.frame.size.width)! / 2) {
+                status = 2
+            }
+            APIClient.sendPOST(APIPath.MatchUser, params: [
+                "status":status,
+                "userID":c.userID!
+                ])
         }
         
         let shouldSnapBack = (deltaX < minimumXPanDistanceToSwipe && deltaY < minimumYPanDistanceToSwipe)

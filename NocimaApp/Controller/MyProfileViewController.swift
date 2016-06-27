@@ -10,14 +10,17 @@ import UIKit
 import FBSDKCoreKit
 
 class MyProfileViewController: MainViewController {
-
+    
     
     @IBOutlet weak var displayNameLbl: UITextField!
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var secondImageView: UIImageView!
     @IBOutlet weak var thirdImageView: UIImageView!
     @IBOutlet weak var fourthImageView: UIImageView!
+    @IBOutlet weak var maleLbl: UIButton!
+    @IBOutlet weak var femaleLbl: UIButton!
     
+    //MARK: - Main functions
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,8 +36,19 @@ class MyProfileViewController: MainViewController {
         self.navigationMenu.initMenuBttn()
         
         let userData = NSUserDefaults.standardUserDefaults().objectForKey("userDetails")
-        if let firstName = userData!["first_name"] as? String{
+        if let firstName = userData!["firstName"] as? String{
             self.displayNameLbl.text = firstName
+        }else{
+            self.displayNameLbl.text = ""
+        }
+        if let gender = userData!["gender"] as? String{
+            if(gender == "male"){
+                self.maleLbl.titleLabel?.font = UIFont.init(name:"SourceSansPro-Regular", size: 22)
+                self.femaleLbl.titleLabel?.font = UIFont.init(name:"SourceSansPro-Light", size: 22)
+            }else{
+                self.maleLbl.titleLabel?.font = UIFont.init(name:"SourceSansPro-Light", size: 22)
+                self.femaleLbl.titleLabel?.font = UIFont.init(name:"SourceSansPro-Regular", size: 22)
+            }
         }
         let params: [NSObject : AnyObject] = ["redirect": false, "height": 800, "width": 800, "type": "large"]
         let pictureRequest = FBSDKGraphRequest(graphPath: "me/picture?type=large&redirect=false", parameters: params)
@@ -53,20 +67,15 @@ class MyProfileViewController: MainViewController {
             }
         })
         //request(.GET, "https://robohash.org/123.png").response { (request, response, data, error) in
-          //  self.myImageView.image = UIImage(data: data, scale:1)
-//        }
+        //  self.myImageView.image = UIImage(data: data, scale:1)
+        //        }
         
-    }
-    
-    func getDataFromUrl(url:NSURL, completion: ((data: NSData?, response: NSURLResponse?, error: NSError? ) -> Void)) {
-        NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) in
-            completion(data: data, response: response, error: error)
-            }.resume()
     }
     func downloadImage(url: NSURL, imageView:UIImageView){
         print("Download Started")
         print("lastPathComponent: " + (url.lastPathComponent ?? ""))
-        getDataFromUrl(url) { (data, response, error)  in
+        
+        APIClient.getDataFromUrl(url) { (data, response, error)  in
             dispatch_async(dispatch_get_main_queue()) { () -> Void in
                 guard let data = data where error == nil else { return }
                 print(response?.suggestedFilename ?? "")

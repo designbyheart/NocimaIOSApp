@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "viewBackground.png",
+      "filename" : "Spinner.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "viewBackground@2x.png",
+      "filename" : "Spinner@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "viewBackground@3x.png",
+      "filename" : "Spinner@3x.png",
       "scale" : "3x"
     }
   ],
