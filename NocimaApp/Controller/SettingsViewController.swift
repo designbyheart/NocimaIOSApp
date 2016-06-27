@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class SettingsViewController: MainViewController {
     
@@ -114,6 +116,10 @@ class SettingsViewController: MainViewController {
         
     }
     func deleteAccount(){
+        
+        let loginManager = FBSDKLoginManager()
+        loginManager.logOut()
+        
         NSUserDefaults.standardUserDefaults().removeObjectForKey("facebookToken")
         self.performSegueWithIdentifier("openLogin", sender: self)
     }

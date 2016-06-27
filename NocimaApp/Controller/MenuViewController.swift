@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FBSDKCoreKit
 import FBSDKLoginKit
 
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {

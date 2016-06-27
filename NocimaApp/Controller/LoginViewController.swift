@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FBSDKCoreKit
 import FBSDKLoginKit
 import CoreLocation
 
@@ -47,14 +48,19 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
         //        return
         
         let loginManager = FBSDKLoginManager()
+        loginManager.logOut()
         
         loginManager.logInWithReadPermissions(self.facebookReadPermissions, fromViewController: self.parentViewController, handler: { (result, error) -> Void in
             if error != nil {
                 print(error)
+                let alert = UIAlertView.init(title: "Failed Fb login", message: "\(error)", delegate: self, cancelButtonTitle: "OK")
+                alert.show()
                 //                self.loginSuccess(result.token)
             } else if result.isCancelled {
                 print("Cancelled")
             } else {
+                let alert = UIAlertView.init(title: "Success Fb Login", message: "\(result)", delegate: self, cancelButtonTitle: "OK")
+                alert.show()
                 //                print(result)
                 self.loginSuccess(result.token)
             }
@@ -103,47 +109,40 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
          }
          */
     }
-    func loadUserData() -> Bool
+    func loadUserData()
     {
-        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: [
-            "fields" : "id, name, gender, first_name, last_name, email"
-            ]
-        )
-        var errorMsg = false
-        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+        if((FBSDKAccessToken.currentAccessToken()) != nil){
+            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).startWithCompletionHandler({ (connection, result, error) -> Void in
+                if (error == nil){
+                    
+                    print(result)
+                    
+                    var userDetails  = [String: AnyObject]()
+                    
+                    userDetails["gender"] = result["gender"]
+                    userDetails["lastName"] = result.valueForKey("last_name") as! String
+                    userDetails["firstName"] = result.valueForKey("first_name") as! String
+                    userDetails["email"] = result.valueForKey("email") as! String
+                    userDetails["displayName"] = result.valueForKey("name") as! String
+                    userDetails["facebookID"] = result.valueForKey("id") as! String
+                    userDetails["latitude"] = self.coord.latitude
+                    userDetails["longitude"] = self.coord.longitude
+                    userDetails["deviceID"] = UIDevice.currentDevice().identifierForVendor!.UUIDString
+                    
+                    NSUserDefaults.standardUserDefaults().setObject(userDetails, forKey: "userDetails")
+                    NSUserDefaults.standardUserDefaults().synchronize()
+                    
+                    APIClient.sendPOST(APIPath.UpdateUserData, params:userDetails);
+                    
+                }else{
+                    print("Error: \(error)")
             
-            var userDetails  = [String: AnyObject]()
-            
-            userDetails["gender"] = result["gender"]
-            userDetails["lastName"] = result["last_name"]
-            userDetails["firstName"] = result["first_name"]
-            userDetails["email"] = result["email"]
-            userDetails["displayName"] = result["name"]
-            userDetails["facebookID"] = result["id"]
-            userDetails["latitude"] = self.coord.latitude
-            userDetails["longitude"] = self.coord.longitude
-            userDetails["deviceID"] = UIDevice.currentDevice().identifierForVendor!.UUIDString
-            
-            let alert = UIAlertView.init(title: "User Fb Data", message: "\(userDetails)"   , delegate: self, cancelButtonTitle: "OK")
-            alert.show()
-            
-            NSUserDefaults.standardUserDefaults().setObject(userDetails, forKey: "userDetails")
-            NSUserDefaults.standardUserDefaults().synchronize()
-            if ((error) != nil)
-            {
-                // Process error
+                    let alert = UIAlertView.init(title: "Facebook login failed", message: "FB error: \(error)", delegate: self, cancelButtonTitle: "OK")
+                    alert.show()
+                }
                 
-                print("Error: \(error)")
-                errorMsg = true
-                let alert = UIAlertView.init(title: "Failed Login", message: "\(error)", delegate: self, cancelButtonTitle: "OK")
-                alert.show()
-            }
-            else
-            {
-                APIClient.sendPOST(APIPath.UpdateUserData, params:userDetails);
-            }
-        })
-        return errorMsg
+            })
+        }
     }
     func loginSuccess(result:FBSDKAccessToken){
         NSUserDefaults.standardUserDefaults().setObject(result.tokenString, forKey: "facebookToken")
@@ -178,7 +177,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
                             }
                         }
                     }else{
-                        let alert = UIAlertView.init(title: "Authentication Failed", message: nil, delegate: self, cancelButtonTitle: "OK")
+                        let alert = UIAlertView.init(title: "Authentication Failed", message: "Error in server response", delegate: self, cancelButtonTitle: "OK")
                         alert.show()
                     }
                 }
@@ -214,7 +213,15 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
                 if (method != APIPath.CheckUserStatus.rawValue) {
                     return;
                 }
-                
+                if let response = response["response"]{
+                    if let userStatus = response!["status"] as? Int{
+                        if(userStatus != 1){
+                            self.performSegueWithIdentifier("showPendingActivationView", sender: self)
+                        }else{
+                            self.openLocation()
+                        }
+                    }
+                }
             }
         }
     }

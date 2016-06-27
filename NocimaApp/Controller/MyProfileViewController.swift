@@ -55,9 +55,11 @@ class MyProfileViewController: MainViewController {
         pictureRequest.startWithCompletionHandler({
             (connection, result, error: NSError!) -> Void in
             if error == nil {
-                print(result["data"]);
+//                print(result["data"]);
                 if let data = result["data"]{
                     if let url = data!["url"] as? String{
+                        NSUserDefaults.standardUserDefaults().setObject(url, forKey: "myProfileImg")
+                        NSUserDefaults.standardUserDefaults().synchronize()
                         self.downloadImage(NSURL.init(string: url)!, imageView: self.mainImageView)
                     }
                 }

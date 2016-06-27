@@ -318,11 +318,9 @@ public class TisprCardStackViewLayout: UICollectionViewLayout, UIGestureRecogniz
     private func finishedDragging(cell: UICollectionViewCell) {
         let deltaX = abs(cell.center.x - initialCellCenter!.x)
         let deltaY = abs(cell.center.y - initialCellCenter!.y)
-        print("int center \(cell.center)")
         
         //// here you will get a trigger for a data
         if let c = cell as? LikeDislikeCollectionViewCell{
-//            print("\(c.userID)")
             var status = 1
             if (c.center.x < (self.collectionView?.frame.size.width)! / 2) {
                 status = 2

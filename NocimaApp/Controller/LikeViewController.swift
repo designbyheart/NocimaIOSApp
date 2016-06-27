@@ -26,6 +26,9 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
     private var usersList = [AnyObject]()
     
     @IBOutlet weak var dislikeBttn: UIButton!
+    var matchedUserID = String()
+    var matchedUserName = String()
+    var matchedUserImgURL = String()
     
     /* The speed of animation. */
     private let animationSpeedDefault: Float = 0.9
@@ -148,10 +151,15 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
     //MARK: - Like / Dislike action via buttons
     
     @IBAction func likeUser(sender: AnyObject) {
-        
+        //        if layout.index <= numberOfCards() - 1 {
+        //            layout.index += 1
+        //        }
         print("like me \(layout.index)")
     }
     @IBAction func dislikeUser(sender: AnyObject) {
+        //        if layout.index <= numberOfCards() - 1 {
+        //            layout.index += 1
+        //        }
         print("dislike me \(layout.index)")
     }
     
@@ -168,8 +176,8 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
                 self.likeBttn.hidden = self.usersList.count > 0 ? false : true
                 self.dislikeBttn.hidden = self.usersList.count > 0 ? false : true
                 
-//                let alert = UIAlertView.init(title: "Total", message: "\(self.usersList.count) users", delegate: self, cancelButtonTitle: "OK")
-//                alert.show()
+                //                let alert = UIAlertView.init(title: "Total", message: "\(self.usersList.count) users", delegate: self, cancelButtonTitle: "OK")
+                //                alert.show()
             }
         }
         
@@ -179,6 +187,31 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
         
     }
     func userMatchSuccess(n:NSNotification){
-        
+        if let response = n.object{
+            if let method = response["method"] as? String{
+                if (method != APIPath.MatchUser.rawValue){
+                    return
+                }
+            }
+            if let res = response["response"]{
+                if let result = res!["result"] as? Int{
+                    if (result == 1){
+                        self.matchedUserID = (res!["matchedUserID"] as? String)!
+                        self.matchedUserName = (res!["userName"] as? String)!
+                        self.matchedUserImgURL = (res!["imageURL"] as? String)!
+                        self.performSegueWithIdentifier("showMatchView", sender: self)
+                    }
+                }
+            }
+        }
+    }
+    //MARK: - prepare view
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier! == "showMatchView" {
+            let matchView = segue.destinationViewController as? MatchViewController
+            matchView!.matchedUserID = self.matchedUserID
+            matchView!.matchedUserName = self.matchedUserName
+            matchView!.matchedUserImgURL = self.matchedUserImgURL
+        }
     }
 }

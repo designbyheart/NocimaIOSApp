@@ -116,7 +116,6 @@ class LocationViewController: MainViewController,MGLMapViewDelegate, CLLocationM
                     
                 }
                 mapView.addAnnotation(point)
-                
             }
         }
     }
