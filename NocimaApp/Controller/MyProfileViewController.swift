@@ -53,27 +53,26 @@ class MyProfileViewController: MainViewController {
             }
         }
         let params: [NSObject : AnyObject] = ["redirect": false, "height": 800, "width": 800, "type": "large"]
-        let pictureRequest = FBSDKGraphRequest(graphPath: "me/picture?type=large&redirect=false", parameters: params)
-        pictureRequest.startWithCompletionHandler({
-            (connection, result, error: NSError!) -> Void in
-            if error == nil {
-//                print(result["data"]);
-                if let data = result["data"]{
-                    if let url = data!["url"] as? String{
-                        NSUserDefaults.standardUserDefaults().setObject(url, forKey: "myProfileImg")
-                        NSUserDefaults.standardUserDefaults().synchronize()
-                        self.downloadImage(NSURL.init(string: url)!, imageView: self.mainImageView)
+        if let userDetails = NSUserDefaults.standardUserDefaults().objectForKey("userDetails"){
+            if (userDetails["facebookID"] as? String) != nil{
+                let pictureRequest = FBSDKGraphRequest(graphPath: "me/picture?type=large&redirect=false", parameters: params)
+                pictureRequest.startWithCompletionHandler({
+                    (connection, result, error: NSError!) -> Void in
+                    if error == nil {
+                        if let data = result["data"]{
+                            if let url = data!["url"] as? String{
+                                NSUserDefaults.standardUserDefaults().setObject(url, forKey: "myProfileImg")
+                                NSUserDefaults.standardUserDefaults().synchronize()
+                                self.downloadImage(NSURL.init(string: url)!, imageView: self.mainImageView)
+                            }
+                        }
+                        
+                    } else {
+                        print("\(error)")
                     }
-                }
-                
-            } else {
-                print("\(error)")
+                })
             }
-        })
-        //request(.GET, "https://robohash.org/123.png").response { (request, response, data, error) in
-        //  self.myImageView.image = UIImage(data: data, scale:1)
-        //        }
-        
+        }        
     }
     func downloadImage(url: NSURL, imageView:UIImageView){
         print("Download Started")

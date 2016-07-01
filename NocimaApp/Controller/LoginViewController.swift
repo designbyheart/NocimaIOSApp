@@ -18,7 +18,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
     var coord = CLLocationCoordinate2D()
     var openedTimes:Int = 0
     var loginView = UIView()
-    let facebookReadPermissions = ["public_profile", "email"]
+    let facebookReadPermissions = ["public_profile", "email","user_birthday"]
     //, "user_friends", "user_birthday", "user_photos"]
     @IBOutlet weak var infoIcon: UIImageView!
     @IBOutlet weak var gbIcon: UIImageView!
@@ -138,7 +138,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
     func loadUserData()
     {
         if((FBSDKAccessToken.currentAccessToken()) != nil){
-            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, email"]).startWithCompletionHandler({ (connection, result, error) -> Void in
+            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, email, gender,birthday"]).startWithCompletionHandler({ (connection, result, error) -> Void in
                 if (error == nil){
                     
                     print(result)
@@ -151,7 +151,10 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                     userDetails["email"] = result.valueForKey("email") as! String
                     userDetails["displayName"] = result.valueForKey("name") as! String
                     userDetails["facebookID"] = result.valueForKey("id") as! String
-                    
+                    userDetails["status"] = 1
+                    if let birthday = result.valueForKey("birthday") as? String{
+                        userDetails["birthday"] = birthday
+                    }
                     if CLLocationManager.locationServicesEnabled() {
                         userDetails["latitude"] = self.coord.latitude
                         userDetails["longitude"] = self.coord.longitude
@@ -195,7 +198,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                     if let token = response["token"] as? String{
                         NSUserDefaults.standardUserDefaults().setObject(token, forKey: "userToken")
                         NSUserDefaults.standardUserDefaults().synchronize()
-                        if(coord.latitude != 0 && coord.longitude != 0){
+                        if(coord.latitude == 0 && coord.longitude == 0){
                             APIClient.sendPOST(APIPath.UpdateLocation, params: [
                                 "latitude":coord.latitude,
                                 "longitude":coord.longitude
@@ -214,6 +217,19 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                             }else{
                                     self.openLocation()
                             }
+                        }else{
+                            //consider status = 0
+                            if let userDetails = NSUserDefaults.standardUserDefaults().objectForKey("userDetails"){
+                                if (userDetails["facebookID"] as? String) != nil{
+                                    self.openLocation()
+                                    return
+                                }else{
+                                    self.openWelcomeScreen()
+                                    return
+                                }
+                            }
+                            self.openWelcomeScreen()
+                            return
                         }
                     }else{
                         if method == APIPath.CheckUserStatus.rawValue {
@@ -258,7 +274,12 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                 }
                 if let response = response["response"]{
                     if(method == APIPath.Login.rawValue || method == APIPath.Register.rawValue){
-                        
+                        if(coord.latitude != 0 && coord.longitude != 0){
+                            APIClient.sendPOST(APIPath.UpdateLocation, params: [
+                                "latitude":coord.latitude,
+                                "longitude":coord.longitude
+                                ])
+                        }
                         if let error = response!["error"] as? String {
                             let alert = UIAlertView.init(title: "Login", message: "\(error)", delegate: self, cancelButtonTitle: "OK")
                             alert.show()

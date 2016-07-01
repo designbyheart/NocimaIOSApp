@@ -138,7 +138,7 @@ class SettingsViewController: MainViewController {
     }
     //MARK: - API notification
     func saveSuccess(n:NSNotification){
-        
+        self.openMenu(self)
     }
     func saveFail(n:NSNotification){
         
