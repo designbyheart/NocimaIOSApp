@@ -11,14 +11,26 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import CoreLocation
 
-class LoginViewController: UIViewController, CLLocationManagerDelegate {
+class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var loginBttn: UIButton!
     let locationManager = CLLocationManager()
     var coord = CLLocationCoordinate2D()
     var openedTimes:Int = 0
-    let facebookReadPermissions = ["public_profile", "email", "user_friends", "user_birthday", "user_photos"]
+    var loginView = UIView()
+    let facebookReadPermissions = ["public_profile", "email"]
+    //, "user_friends", "user_birthday", "user_photos"]
+    @IBOutlet weak var infoIcon: UIImageView!
+    @IBOutlet weak var gbIcon: UIImageView!
+    var userNameTxt = UITextField()
+    var passwordTxt = UITextField()
     
+    @IBOutlet weak var privacyLbl: UILabel!
+    @IBOutlet weak var topContraint: NSLayoutConstraint!
+    @IBOutlet weak var loginBtn: UIButton!
+    @IBOutlet weak var registerBtn: UIButton!
+    
+    //MARK - View methods
     override func viewDidLoad() {
         self.loginBttn.layer.cornerRadius = 5;
         
@@ -27,10 +39,17 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
+        loginBtn.layer.cornerRadius = 5
+        registerBtn.layer.cornerRadius = 5
+        
+        self.openWelcomeScreen()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(LoginViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(LoginViewController.statusSuccess(_:)), name: APINotification.Success.rawValue, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.statusFail(_:)), name: APINotification.Fail.rawValue, object: nil)
@@ -59,8 +78,6 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
             } else if result.isCancelled {
                 print("Cancelled")
             } else {
-                let alert = UIAlertView.init(title: "Success Fb Login", message: "\(result)", delegate: self, cancelButtonTitle: "OK")
-                alert.show()
                 //                print(result)
                 self.loginSuccess(result.token)
             }
@@ -70,6 +87,15 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
         if(openedTimes == 0){
             super.performSegueWithIdentifier("openLocationView", sender: self)
             openedTimes += 1
+        }
+    }
+    func openWelcomeScreen(){
+        if let viewControllers = self.navigationController?.viewControllers{
+            if let activeController = viewControllers.last {
+                if !activeController.isKindOfClass(WelcomeViewController){
+                    self.performSegueWithIdentifier("openWelcomeView", sender: self)
+                }
+            }
         }
     }
     func openProfile(){
@@ -112,22 +138,27 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
     func loadUserData()
     {
         if((FBSDKAccessToken.currentAccessToken()) != nil){
-            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).startWithCompletionHandler({ (connection, result, error) -> Void in
+            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, email"]).startWithCompletionHandler({ (connection, result, error) -> Void in
                 if (error == nil){
                     
                     print(result)
                     
                     var userDetails  = [String: AnyObject]()
                     
-                    userDetails["gender"] = result["gender"]
+                    userDetails["gender"] = result["gender"] as! String
                     userDetails["lastName"] = result.valueForKey("last_name") as! String
                     userDetails["firstName"] = result.valueForKey("first_name") as! String
                     userDetails["email"] = result.valueForKey("email") as! String
                     userDetails["displayName"] = result.valueForKey("name") as! String
                     userDetails["facebookID"] = result.valueForKey("id") as! String
-                    userDetails["latitude"] = self.coord.latitude
-                    userDetails["longitude"] = self.coord.longitude
-                    userDetails["deviceID"] = UIDevice.currentDevice().identifierForVendor!.UUIDString
+                    
+                    if CLLocationManager.locationServicesEnabled() {
+                        userDetails["latitude"] = self.coord.latitude
+                        userDetails["longitude"] = self.coord.longitude
+                    }
+                    if let identifierForVendor =  UIDevice.currentDevice().identifierForVendor{
+                        userDetails["deviceID"] = identifierForVendor.UUIDString
+                    }
                     
                     NSUserDefaults.standardUserDefaults().setObject(userDetails, forKey: "userDetails")
                     NSUserDefaults.standardUserDefaults().synchronize()
@@ -136,7 +167,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
                     
                 }else{
                     print("Error: \(error)")
-            
+                    
                     let alert = UIAlertView.init(title: "Facebook login failed", message: "FB error: \(error)", delegate: self, cancelButtonTitle: "OK")
                     alert.show()
                 }
@@ -148,37 +179,47 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
         NSUserDefaults.standardUserDefaults().setObject(result.tokenString, forKey: "facebookToken")
         
         self.loadUserData()
-
+        
     }
     //MARK: - API notifications
     func updateSuccess(n:NSNotification){
         if let data = n.object as? Dictionary<String, AnyObject>{
             if let method = data["method"] as? String{
-                if (method != "storeUserData"){
+                if (method != APIPath.UpdateUserData.rawValue &&
+                    method != APIPath.Register.rawValue &&
+                    method != APIPath.Login.rawValue){
                     return
                 }
                 if let response = data["response"] as? Dictionary<String, AnyObject>{
+                    print(response)
                     if let token = response["token"] as? String{
                         NSUserDefaults.standardUserDefaults().setObject(token, forKey: "userToken")
                         NSUserDefaults.standardUserDefaults().synchronize()
-                        APIClient.sendPOST(APIPath.UpdateLocation, params: [
-                            "latitude":coord.latitude,
-                            "longitude":coord.longitude
-                            ])
-                        
-                        if let userStatus = response["status"]?.integerValue! {
+                        if(coord.latitude != 0 && coord.longitude != 0){
+                            APIClient.sendPOST(APIPath.UpdateLocation, params: [
+                                "latitude":coord.latitude,
+                                "longitude":coord.longitude
+                                ])
+                        }
+                        if let userStatus = response["status"] as? Int {
                             NSUserDefaults.standardUserDefaults().setObject(userStatus, forKey: "userStatus")
                             NSUserDefaults.standardUserDefaults().synchronize()
                             
                             if (userStatus == 0) {
+                                if (method == APIPath.Register.rawValue){
+                                    self.openWelcomeScreen()
+                                    return
+                                }
                                 self.performSegueWithIdentifier("showPendingActivationView", sender: self)
                             }else{
-                                self.openLocation()
+                                    self.openLocation()
                             }
                         }
                     }else{
-                        let alert = UIAlertView.init(title: "Authentication Failed", message: "Error in server response", delegate: self, cancelButtonTitle: "OK")
-                        alert.show()
+                        if method == APIPath.CheckUserStatus.rawValue {
+                            let alert = UIAlertView.init(title: "Authentication Failed", message: "Error in server response", delegate: self, cancelButtonTitle: "OK")
+                            alert.show()
+                        }
                     }
                 }
             }
@@ -210,17 +251,36 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
         
         if let response = n.object {
             if let method = response["method"] as? String {
-                if (method != APIPath.CheckUserStatus.rawValue) {
+                if (method != APIPath.CheckUserStatus.rawValue &&
+                    method != APIPath.Login.rawValue &&
+                    method != APIPath.Register.rawValue) {
                     return;
                 }
                 if let response = response["response"]{
-                    if let userStatus = response!["status"] as? Int{
-                        if(userStatus != 1){
-                            self.performSegueWithIdentifier("showPendingActivationView", sender: self)
+                    if(method == APIPath.Login.rawValue || method == APIPath.Register.rawValue){
+                        
+                        if let error = response!["error"] as? String {
+                            let alert = UIAlertView.init(title: "Login", message: "\(error)", delegate: self, cancelButtonTitle: "OK")
+                            alert.show()
+                            return;
                         }else{
-                            self.openLocation()
+                            self.updateSuccess(n)
                         }
+                        
                     }
+                    
+                    if(method == APIPath.CheckUserStatus.rawValue){
+                        if let userStatus = response!["status"] as? Int{
+                            
+                            if(userStatus != 1){
+                                if let userID = response!["userID"] as? String{
+                                    print(userID)
+                                    self.performSegueWithIdentifier("showPendingActivationView", sender: self)
+                                }
+                            }else{
+                                self.openLocation()
+                            }
+                        }}
                 }
             }
         }
@@ -228,4 +288,169 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
     func statusFail(n:NSNotification){
         
     }
+    //MARK: - user authentication
+    @IBAction func regularLogin(sender: AnyObject) {
+        self.showView("Uloguj se", isLogin:true)
+    }
+    @IBAction func regularRegister(sender: AnyObject) {
+        self.showView("Registruj se", isLogin:false)
+    }
+    func showView(viewTitleStr:String, isLogin:Bool){
+        registerBtn.hidden = true
+        loginBtn.hidden = true
+        loginBttn.hidden = true
+        privacyLbl.hidden = true
+        infoIcon.hidden = true
+        gbIcon.hidden = true
+
+        if self.loginView.tag == 0{
+            self.loginView.removeFromSuperview()
+            self.loginView = UIView.init(frame: CGRectMake(40, self.view.frame.size.height + 20, self.view.frame.size.width - 80, 340))
+            self.loginView.tag = 1
+            
+            var startPointY:CGFloat = 15
+            let width = self.loginView.frame.size.width - 60
+            
+            self.loginView.backgroundColor = UIColor.clearColor()
+            self.loginView.layer.cornerRadius = 5
+            
+            let viewTitle = UILabel.init(frame: CGRectMake(20, startPointY, width + 20, 30))
+            viewTitle.text = viewTitleStr
+            viewTitle.font = UIFont.init(name: "SourceSansPro-Light", size: 22)
+            viewTitle.textAlignment = NSTextAlignment.Center
+            viewTitle.textColor = UIColor.whiteColor()
+            self.loginView.addSubview(viewTitle)
+            
+            startPointY += 45
+            let usernameTxt = UITextField.init(frame: CGRectMake(30, startPointY, width, 44))
+            startPointY += 64
+            usernameTxt.backgroundColor = UIColor.whiteColor()
+            usernameTxt.textAlignment = NSTextAlignment.Center
+            usernameTxt.font = UIFont.init(name: "SourceSansPro-Regular", size: 17)
+            usernameTxt.placeholder = "Unesi email adresu"
+            usernameTxt.layer.cornerRadius = 3
+            usernameTxt.delegate = self
+            usernameTxt.autocapitalizationType = UITextAutocapitalizationType.None
+            usernameTxt.autocorrectionType = UITextAutocorrectionType.No
+            usernameTxt.keyboardType = UIKeyboardType.EmailAddress
+            usernameTxt.tag = isLogin ? 1 : 3
+            self.userNameTxt = usernameTxt
+            self.loginView.addSubview(usernameTxt)
+            
+            
+            let passTxt = UITextField.init(frame: CGRectMake(30, startPointY, width, 44))
+            startPointY += 74
+            passTxt.backgroundColor = UIColor.whiteColor()
+            passTxt.textAlignment = NSTextAlignment.Center
+            passTxt.font = UIFont.init(name: "SourceSansPro-Regular", size: 17)
+            passTxt.placeholder = "Unesi lozinku"
+            passTxt.layer.cornerRadius = 3
+            passTxt.delegate = self
+            passTxt.tag = isLogin ? 2 : 4
+            passTxt.secureTextEntry = true
+            self.passwordTxt = passTxt
+            self.loginView.addSubview(passTxt)
+            
+            self.view.addSubview(self.loginView)
+            
+            let submitBttn = UIButton.init(frame: CGRectMake(30, startPointY, width, 44))
+            submitBttn.setTitle("Pošalji", forState: UIControlState.Normal)
+            submitBttn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+            submitBttn.titleLabel?.font = UIFont.init(name: "SourceSansPro-Regular", size: 18)
+            submitBttn.layer.cornerRadius = 3
+            submitBttn.tag = isLogin ? 1 : 2
+            submitBttn.addTarget(self, action: #selector(LoginViewController.submitForm(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+            submitBttn.backgroundColor = UIColor.jsq_messageBubbleBlueColor()
+            //UIColor.init(red: 255.0/27.0, green: 255.0/143.0, blue: 255.0/255.0, alpha: 1)
+            self.loginView.addSubview(submitBttn)
+            startPointY += 65
+            
+            let cancelBttn = UIButton.init(frame: CGRectMake(30, startPointY, width, 44))
+            cancelBttn.setTitle("Odustani", forState: UIControlState.Normal)
+            cancelBttn.titleLabel?.font = UIFont.init(name: "SourceSansPro-Light", size: 16)
+            cancelBttn.addTarget(self, action: #selector(LoginViewController.cancelAllViews(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+            self.loginView.addSubview(cancelBttn)
+            
+        }
+        
+        UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+            
+            self.loginView.center = CGPointMake(self.view.center.x, self.view.frame.size.height - 220)
+            
+            }, completion: { (finished: Bool) -> Void in
+                self.removeVisibleView(2)
+        })
+        
+    }
+    @IBAction func cancelAllViews(sender: AnyObject){
+        if(userNameTxt.isFirstResponder()){
+            userNameTxt.resignFirstResponder()
+        }
+        if(passwordTxt.isFirstResponder()){
+            passwordTxt.resignFirstResponder()
+        }
+        self.removeVisibleView(1)
+        self.removeVisibleView(2)
+    }
+    func removeVisibleView(targetView: Int){
+        if(targetView == 1 && self.loginView.tag == 1){
+            registerBtn.hidden = false
+            loginBtn.hidden = false
+            loginBttn.hidden = false
+            privacyLbl.hidden = false
+            infoIcon.hidden = false
+            gbIcon.hidden = false
+
+            self.loginView.removeFromSuperview()
+            self.loginView.tag = 0
+        }
+    }
+    @IBAction func submitForm(sender:UIButton){
+        if(userNameTxt.text?.characters.count < 1 ||
+            passwordTxt.text?.characters.count < 1){
+            return;
+        }
+        let params:Dictionary<String,AnyObject> = [
+            "email":userNameTxt.text!,
+            "password":passwordTxt.text!
+        ];
+        
+        if(sender.tag == 1){
+            APIClient.sendPOST(APIPath.Login, params: params)
+        }else{
+            APIClient.sendPOST(APIPath.Register, params:params)
+        }
+        
+    }
+    //MARK: - text fields delegates
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        return true
+    }
+    
+    //MARK: - keyboard delegates
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+            self.loginView.center = CGPointMake(self.view.center.x, self.view.frame.size.height - 220 - contentInsets.bottom + 70)
+            
+            UIView.animateWithDuration(0.35, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+                self.topContraint.constant = 60
+                
+                }, completion: { (finished: Bool) -> Void in
+                    
+            })
+            
+        }
+    }
+    func keyboardWillHide(notification: NSNotification) {
+        self.loginView.center = CGPointMake(self.view.center.x, self.view.frame.size.height - 220)
+        UIView.animateWithDuration(0.35, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+            self.topContraint.constant = 140
+            }, completion: { (finished: Bool) -> Void in
+                
+        })
+    }
+    
+    
 }

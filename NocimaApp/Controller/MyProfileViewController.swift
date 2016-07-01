@@ -32,7 +32,9 @@ class MyProfileViewController: MainViewController {
         super.viewWillAppear(animated)
         
         self.navigationMenu = NavigationView(controller: self)
-        self.navigationMenu.titleView.text = "My Profile"
+        if let titleView = self.navigationMenu.titleView{
+            titleView.text = "My Profile"
+        }
         self.navigationMenu.initMenuBttn()
         
         let userData = NSUserDefaults.standardUserDefaults().objectForKey("userDetails")

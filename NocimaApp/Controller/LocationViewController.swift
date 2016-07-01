@@ -113,7 +113,6 @@ class LocationViewController: MainViewController,MGLMapViewDelegate, CLLocationM
                     if let city = c["city"] as? String {
                         point.subtitle = "\(address), \(city)"
                     }
-                    
                 }
                 mapView.addAnnotation(point)
             }
@@ -124,7 +123,6 @@ class LocationViewController: MainViewController,MGLMapViewDelegate, CLLocationM
     }
     func loadClubsSuccess(n:NSNotification){
         if let clubList = n.object!["response"] as? [AnyObject]{
-            //        if let response = n.object as? [AnyObject]{
             NSUserDefaults.standardUserDefaults().setObject(clubList, forKey: "clubsList")
             NSUserDefaults.standardUserDefaults().synchronize()
             self.clubs = clubList

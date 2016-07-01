@@ -12,6 +12,7 @@ import FBSDKLoginKit
 
 class SettingsViewController: MainViewController {
     
+    @IBOutlet weak var saveBttn: UIButton!
     @IBOutlet weak var radius: UISlider!
     @IBOutlet weak var fromSlider: UISlider!
     @IBOutlet weak var toSlider: UISlider!
@@ -24,6 +25,7 @@ class SettingsViewController: MainViewController {
         
         deleteAccountBttn.layer.cornerRadius = 3
         deleteAccountBttn.addTarget(self, action: #selector(SettingsViewController.deleteAccountConfirmation(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        self.saveBttn.layer.cornerRadius = 3
         
     }
     override func viewWillAppear(animated: Bool) {
@@ -45,6 +47,9 @@ class SettingsViewController: MainViewController {
             toLbl.text = to as? String
             toSlider.value = to.floatValue
         }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(SettingsViewController.saveSuccess(_:)), name: APINotification.Success.rawValue, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SettingsViewController.saveFail(_:)), name: APINotification.Fail.rawValue, object: nil)
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -122,5 +127,20 @@ class SettingsViewController: MainViewController {
         
         NSUserDefaults.standardUserDefaults().removeObjectForKey("facebookToken")
         self.performSegueWithIdentifier("openLogin", sender: self)
+    }
+    @IBAction func saveSettings(sender: AnyObject) {
+        let params = [
+            "radius":radius.value,
+            "from":fromSlider.value,
+            "to":toSlider.value
+        ]
+        APIClient.sendPOST(APIPath.UpdateSettings, params: params)
+    }
+    //MARK: - API notification
+    func saveSuccess(n:NSNotification){
+        
+    }
+    func saveFail(n:NSNotification){
+        
     }
 }

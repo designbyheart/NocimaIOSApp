@@ -15,6 +15,7 @@ enum APIResponse {
 enum APIPath:String {
     case Login                      = "user/login"
     case Logout                     = "user/logout"
+    case Register                   = "user/register"
     case UpdateUserData             = "storeUserData"
     case UpdateLocation             = "updateLocation"
     case UsersForMatch              = "getMatchCandidates"
@@ -25,6 +26,7 @@ enum APIPath:String {
     case MatchUser                  = "matchUser"
     case ClubsList                  = "clubs/list"
     case CheckUserStatus            = "user/status"
+    case WelcomeData                = "uploadWelcomeData"
 }
 
 
@@ -37,8 +39,8 @@ public class APIClient {
         #else
             IS_DEBUG_MODE = false
         #endif
-        
         let server = IS_DEBUG_MODE ? "datingapp.io/api" : "nocima.rs/api"
+        print(server)
         return "http://\(server)/\(path)"
     }
     static func path(path:APIPath)->String{
@@ -47,10 +49,13 @@ public class APIClient {
     static func defaultHeader(isAuthenticated:Bool,method:APIPath, params:Dictionary<String, AnyObject> = ["":""])->Dictionary<String, String>{
         if(isAuthenticated){
             print("token: \(NSUserDefaults.standardUserDefaults().objectForKey("userToken")!)")
-            let hParams = [
+            let token = NSUserDefaults.standardUserDefaults().objectForKey("userToken") as! String
+            var hParams = [
                 "Content-Type":"application/json",
-                "X-AUTH":NSUserDefaults.standardUserDefaults().objectForKey("userToken") as! String
             ]
+            if(token.characters.count > 0){
+                hParams["X-AUTH"] = token
+            }
             print("header params \(hParams)")
             return hParams
         }
@@ -254,4 +259,38 @@ public class APIClient {
             }.resume()
     }
     
+    static func uploadImage(image:UIImage, URL:String){
+        Alamofire.upload(.POST, URL, multipartFormData: {
+            multipartFormData in
+            if  let imageData = UIImageJPEGRepresentation(image, 0.6) {
+                multipartFormData.appendBodyPart(data: imageData, name: "image", fileName: "file.jpg", mimeType: "image/jpg")
+            }
+            var parameters = [String:AnyObject]()
+            parameters = ["userToken":NSUserDefaults.standardUserDefaults().objectForKey("userToken")!]
+            
+            
+            for (key, value) in parameters {
+                multipartFormData.appendBodyPart(data: value.dataUsingEncoding(NSUTF8StringEncoding)!, name: key)
+            }
+            }, encodingCompletion: {
+                encodingResult in
+                
+                switch encodingResult {
+                case .Success(let upload, _, _):
+                    print("s")
+                    upload.responseJSON { response in
+                        print(response.request)  // original URL request
+                        print(response.response) // URL response
+                        print(response.data)     // server data
+                        print(response.result)   // result of response serialization
+                        
+                        if let JSON = response.result.value {
+                            print("JSON: \(JSON)")
+                        }
+                    }
+                case .Failure(let encodingError):
+                    print(encodingError)
+                }
+        })
+    }
 }
