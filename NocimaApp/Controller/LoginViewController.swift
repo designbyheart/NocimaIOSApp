@@ -11,6 +11,13 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import CoreLocation
 
+enum SubmitType:Int {
+    case Login
+    case Register
+    case Reset
+
+    
+}
 class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var loginBttn: UIButton!
@@ -311,23 +318,23 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
     }
     //MARK: - user authentication
     @IBAction func regularLogin(sender: AnyObject) {
-        self.showView("Uloguj se", isLogin:true)
+        self.showView("Uloguj se", type: SubmitType.Login)
     }
     @IBAction func regularRegister(sender: AnyObject) {
-        self.showView("Registruj se", isLogin:false)
+        self.showView("Registruj se", type: SubmitType.Register)
     }
-    func showView(viewTitleStr:String, isLogin:Bool){
+    func showView(viewTitleStr:String, type:SubmitType){
         registerBtn.hidden = true
         loginBtn.hidden = true
-        loginBttn.hidden = true
+//        loginBttn.hidden = true
         privacyLbl.hidden = true
         infoIcon.hidden = true
-        gbIcon.hidden = true
+//        gbIcon.hidden = true
 
         if self.loginView.tag == 0{
             self.loginView.removeFromSuperview()
             self.loginView = UIView.init(frame: CGRectMake(40, self.view.frame.size.height + 20, self.view.frame.size.width - 80, 340))
-            self.loginView.tag = 1
+            self.loginView.tag = type.rawValue
             
             var startPointY:CGFloat = 15
             let width = self.loginView.frame.size.width - 60
@@ -354,10 +361,11 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
             usernameTxt.autocapitalizationType = UITextAutocapitalizationType.None
             usernameTxt.autocorrectionType = UITextAutocorrectionType.No
             usernameTxt.keyboardType = UIKeyboardType.EmailAddress
-            usernameTxt.tag = isLogin ? 1 : 3
+            usernameTxt.tag = type.rawValue
             self.userNameTxt = usernameTxt
             self.loginView.addSubview(usernameTxt)
             
+            if(type != SubmitType.Reset){
             
             let passTxt = UITextField.init(frame: CGRectMake(30, startPointY, width, 44))
             startPointY += 74
@@ -367,11 +375,12 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
             passTxt.placeholder = "Unesi lozinku"
             passTxt.layer.cornerRadius = 3
             passTxt.delegate = self
-            passTxt.tag = isLogin ? 2 : 4
+            passTxt.tag = type.rawValue
             passTxt.secureTextEntry = true
             self.passwordTxt = passTxt
             self.loginView.addSubview(passTxt)
             
+            }
             self.view.addSubview(self.loginView)
             
             let submitBttn = UIButton.init(frame: CGRectMake(30, startPointY, width, 44))
@@ -379,7 +388,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
             submitBttn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
             submitBttn.titleLabel?.font = UIFont.init(name: "SourceSansPro-Regular", size: 18)
             submitBttn.layer.cornerRadius = 3
-            submitBttn.tag = isLogin ? 1 : 2
+            submitBttn.tag = type.rawValue
             submitBttn.addTarget(self, action: #selector(LoginViewController.submitForm(_:)), forControlEvents: UIControlEvents.TouchUpInside)
             submitBttn.backgroundColor = UIColor.jsq_messageBubbleBlueColor()
             //UIColor.init(red: 255.0/27.0, green: 255.0/143.0, blue: 255.0/255.0, alpha: 1)
@@ -417,10 +426,10 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
         if(targetView == 1 && self.loginView.tag == 1){
             registerBtn.hidden = false
             loginBtn.hidden = false
-            loginBttn.hidden = false
+//            loginBttn.hidden = false
             privacyLbl.hidden = false
             infoIcon.hidden = false
-            gbIcon.hidden = false
+//            gbIcon.hidden = false
 
             self.loginView.removeFromSuperview()
             self.loginView.tag = 0
@@ -472,6 +481,10 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                 
         })
     }
+    //MARK: - reset pass
     
+    @IBAction func resetPassword(sender: AnyObject) {
+        self.showView("Resetuj lozinku", type: SubmitType.Reset)
+    }
     
 }

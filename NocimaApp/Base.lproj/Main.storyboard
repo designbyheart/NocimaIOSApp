@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1808" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="n17-n9-nC0">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A201w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="n17-n9-nC0">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -440,6 +440,7 @@
                                 </variation>
                                 <connections>
                                     <action selector="regularLogin:" destination="8zu-0h-Vow" eventType="touchUpInside" id="oWY-ea-JNy"/>
+                                    <action selector="resetPassword:" destination="8zu-0h-Vow" eventType="touchUpInside" id="bgf-1q-lCf"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1056,10 +1057,10 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6IH-cu-tYk" id="d8N-e2-ciJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RnG-DM-HFm">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RnG-DM-HFm">
                                                     <rect key="frame" x="18" y="18" width="60" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="t8O-6h-hN1"/>
@@ -1591,12 +1592,12 @@
         <image name="viewBackground" width="750" height="1334"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bT1-2H-b64"/>
-        <segue reference="mtR-h7-MIu"/>
-        <segue reference="auB-Vh-wr2"/>
-        <segue reference="aWr-Ag-8vy"/>
-        <segue reference="r9U-QL-2v3"/>
         <segue reference="A1q-cj-cbV"/>
+        <segue reference="eaX-ZG-MTg"/>
+        <segue reference="bT1-2H-b64"/>
         <segue reference="GJk-oN-oIb"/>
+        <segue reference="auB-Vh-wr2"/>
+        <segue reference="r9U-QL-2v3"/>
+        <segue reference="aWr-Ag-8vy"/>
     </inferredMetricsTieBreakers>
 </document>

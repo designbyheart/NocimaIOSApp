@@ -16,6 +16,7 @@ enum APIPath:String {
     case Login                      = "user/login"
     case Logout                     = "user/logout"
     case Register                   = "user/register"
+    case ResetPass                  = "user/resetPass"
     case UpdateUserData             = "storeUserData"
     case UpdateLocation             = "updateLocation"
     case UsersForMatch              = "getMatchCandidates"
