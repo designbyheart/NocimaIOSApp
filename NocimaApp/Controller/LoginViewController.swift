@@ -42,7 +42,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
         loginBtn.layer.cornerRadius = 5
         registerBtn.layer.cornerRadius = 5
         
-        self.openWelcomeScreen()
+//        self.openWelcomeScreen()
     }
     
     override func viewWillAppear(animated: Bool) {

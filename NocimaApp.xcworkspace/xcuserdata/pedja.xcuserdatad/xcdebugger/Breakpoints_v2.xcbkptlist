@@ -97,13 +97,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NocimaApp/Controller/WelcomeViewController.swift"
-            timestampString = "489080098.627461"
+            filePath = "NocimaApp/Controller/SettingsViewController.swift"
+            timestampString = "489028649.213623"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "updateGender(_:)"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "saveSettings(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -113,13 +113,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NocimaApp/Controller/SettingsViewController.swift"
-            timestampString = "489028649.213623"
+            filePath = "NocimaApp/Controller/WelcomeViewController.swift"
+            timestampString = "489081765.505341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
-            landmarkName = "saveSettings(_:)"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "updateProfile(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

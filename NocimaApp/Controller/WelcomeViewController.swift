@@ -38,9 +38,11 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         
         imagePicker.delegate = self
         
-        for year in 2003...1970 {
+        for year in 1970...2003 {
             years.append(year)
         }
+        years = years.reverse()
+        
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -114,9 +116,10 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     @IBAction func updateProfile(sender:AnyObject){
         let params = [
         "gender":self.gender,
-        "firstName":self.nameTxt.text!
+        "firstName":self.nameTxt.text!,
+        "birthYear":years[pickerView.selectedRowInComponent(0)]
         ];
-        APIClient.sendPOST(APIPath.WelcomeData, params: params);
+        APIClient.sendPOST(APIPath.WelcomeData, params: params as! Dictionary<String, AnyObject>);
     }
     func updateProfileSuccess(n:NSNotification){
         let alert = UIAlertView.init(title: "Success", message: "\(n.object)", delegate: self, cancelButtonTitle: "OK")
@@ -127,13 +130,13 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         alert.show()
     }
     //MARK: - PickerView Delegate
-//    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//    
-//        if self.years.count > row {
-//            return "\(self.years[row])"
-//        }
-//        return ""
-//    }
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    
+        if self.years.count > row {
+            return "\(self.years[row])"
+        }
+        return ""
+    }
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return years.count
     }
