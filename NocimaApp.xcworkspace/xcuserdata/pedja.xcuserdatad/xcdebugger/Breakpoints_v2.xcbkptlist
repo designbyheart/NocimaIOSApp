@@ -58,13 +58,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NocimaApp/Controller/MyProfileViewController.swift"
-            timestampString = "489263230.330133"
+            timestampString = "489265199.300317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
             landmarkName = "galleryLoadingSuccess(_:)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NocimaApp.MyProfileViewController.galleryLoadingSuccess (__ObjC.NSNotification) -&gt; ()"
+                  moduleName = "NocimaApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pedja/Work/DatingApp/iOS/NocimaApp/NocimaApp/Controller/MyProfileViewController.swift"
+                  timestampString = "489265200.471017"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "176"
+                  endingLineNumber = "176"
+                  offsetFromSymbolStart = "848">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NocimaApp.MyProfileViewController.galleryLoadingSuccess (__ObjC.NSNotification) -&gt; ()"
+                  moduleName = "NocimaApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pedja/Work/DatingApp/iOS/NocimaApp/NocimaApp/Controller/MyProfileViewController.swift"
+                  timestampString = "489265200.471218"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "176"
+                  endingLineNumber = "176"
+                  offsetFromSymbolStart = "1128">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -74,13 +106,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NocimaApp/Controller/MyProfileViewController.swift"
-            timestampString = "489263230.330133"
+            timestampString = "489265199.300317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
             landmarkName = "galleryLoadingFail(_:)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NocimaApp.MyProfileViewController.galleryLoadingFail (__ObjC.NSNotification) -&gt; ()"
+                  moduleName = "NocimaApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pedja/Work/DatingApp/iOS/NocimaApp/NocimaApp/Controller/MyProfileViewController.swift"
+                  timestampString = "489265200.472641"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "188"
+                  endingLineNumber = "188"
+                  offsetFromSymbolStart = "848">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NocimaApp.MyProfileViewController.galleryLoadingFail (__ObjC.NSNotification) -&gt; ()"
+                  moduleName = "NocimaApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pedja/Work/DatingApp/iOS/NocimaApp/NocimaApp/Controller/MyProfileViewController.swift"
+                  timestampString = "489265200.47308"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "188"
+                  endingLineNumber = "188"
+                  offsetFromSymbolStart = "1128">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -90,45 +154,157 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NocimaApp/Controller/MyProfileViewController.swift"
-            timestampString = "489263230.330133"
+            timestampString = "489265199.300317"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "galleryLoadingSuccess(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NocimaApp.MyProfileViewController.galleryLoadingSuccess (__ObjC.NSNotification) -&gt; ()"
+                  moduleName = "NocimaApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pedja/Work/DatingApp/iOS/NocimaApp/NocimaApp/Controller/MyProfileViewController.swift"
+                  timestampString = "489265200.474535"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "171"
+                  endingLineNumber = "171"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NocimaApp.MyProfileViewController.galleryLoadingSuccess (__ObjC.NSNotification) -&gt; ()"
+                  moduleName = "NocimaApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pedja/Work/DatingApp/iOS/NocimaApp/NocimaApp/Controller/MyProfileViewController.swift"
+                  timestampString = "489265200.474765"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "171"
+                  endingLineNumber = "171"
+                  offsetFromSymbolStart = "260">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NocimaApp/Controller/MyProfileViewController.swift"
+            timestampString = "489265199.300317"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
+            landmarkName = "galleryLoadingFail(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NocimaApp.MyProfileViewController.galleryLoadingFail (__ObjC.NSNotification) -&gt; ()"
+                  moduleName = "NocimaApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pedja/Work/DatingApp/iOS/NocimaApp/NocimaApp/Controller/MyProfileViewController.swift"
+                  timestampString = "489265200.476232"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "183"
+                  endingLineNumber = "183"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NocimaApp.MyProfileViewController.galleryLoadingFail (__ObjC.NSNotification) -&gt; ()"
+                  moduleName = "NocimaApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pedja/Work/DatingApp/iOS/NocimaApp/NocimaApp/Controller/MyProfileViewController.swift"
+                  timestampString = "489265200.476452"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "183"
+                  endingLineNumber = "183"
+                  offsetFromSymbolStart = "260">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NocimaApp/Controller/MyProfileViewController.swift"
+            timestampString = "489265199.300317"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NocimaApp.MyProfileViewController.imagePickerController (__ObjC.UIImagePickerController, didFinishPickingMediaWithInfo : Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;) -&gt; ()"
+                  moduleName = "NocimaApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pedja/Work/DatingApp/iOS/NocimaApp/NocimaApp/Controller/MyProfileViewController.swift"
+                  timestampString = "489265200.477768"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "133"
+                  endingLineNumber = "133"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NocimaApp.MyProfileViewController.imagePickerController (__ObjC.UIImagePickerController, didFinishPickingMediaWithInfo : Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;) -&gt; ()"
+                  moduleName = "NocimaApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pedja/Work/DatingApp/iOS/NocimaApp/NocimaApp/Controller/MyProfileViewController.swift"
+                  timestampString = "489265200.477999"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "133"
+                  endingLineNumber = "133"
+                  offsetFromSymbolStart = "276">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NocimaApp/Controller/MyProfileViewController.swift"
+            timestampString = "489265199.300317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "167"
             endingLineNumber = "167"
-            landmarkName = "galleryLoadingSuccess(_:)"
+            landmarkName = "imagePickerControllerDidCancel(_:)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "NocimaApp.MyProfileViewController.galleryLoadingSuccess (__ObjC.NSNotification) -&gt; ()"
-                  moduleName = "NocimaApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pedja/Work/DatingApp/iOS/NocimaApp/NocimaApp/Controller/MyProfileViewController.swift"
-                  timestampString = "489263232.965236"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "167"
-                  endingLineNumber = "167"
-                  offsetFromSymbolStart = "32">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "NocimaApp.MyProfileViewController.galleryLoadingSuccess (__ObjC.NSNotification) -&gt; ()"
-                  moduleName = "NocimaApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pedja/Work/DatingApp/iOS/NocimaApp/NocimaApp/Controller/MyProfileViewController.swift"
-                  timestampString = "489263232.965683"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "167"
-                  endingLineNumber = "167"
-                  offsetFromSymbolStart = "260">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -138,45 +314,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NocimaApp/Controller/MyProfileViewController.swift"
-            timestampString = "489263230.330133"
+            timestampString = "489265199.300317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "galleryLoadingFail(_:)"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "uploadSecondaryImg(_:)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "NocimaApp.MyProfileViewController.galleryLoadingFail (__ObjC.NSNotification) -&gt; ()"
-                  moduleName = "NocimaApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pedja/Work/DatingApp/iOS/NocimaApp/NocimaApp/Controller/MyProfileViewController.swift"
-                  timestampString = "489263232.967969"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "179"
-                  endingLineNumber = "179"
-                  offsetFromSymbolStart = "32">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "NocimaApp.MyProfileViewController.galleryLoadingFail (__ObjC.NSNotification) -&gt; ()"
-                  moduleName = "NocimaApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pedja/Work/DatingApp/iOS/NocimaApp/NocimaApp/Controller/MyProfileViewController.swift"
-                  timestampString = "489263232.968412"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "179"
-                  endingLineNumber = "179"
-                  offsetFromSymbolStart = "260">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -186,12 +330,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NocimaApp/Controller/MyProfileViewController.swift"
-            timestampString = "489263032.059545"
+            timestampString = "489265199.300317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "viewWillAppear(_:)"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "uploadPrimaryImg(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -202,7 +346,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NocimaApp/Controller/MyProfileViewController.swift"
-            timestampString = "489263421.878459"
+            timestampString = "489264776.805558"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "95"
@@ -217,77 +361,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NocimaApp/Controller/MyProfileViewController.swift"
-            timestampString = "489263431.127272"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
-            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "NocimaApp.MyProfileViewController.imagePickerController (__ObjC.UIImagePickerController, didFinishPickingMediaWithInfo : Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;) -&gt; ()"
-                  moduleName = "NocimaApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pedja/Work/DatingApp/iOS/NocimaApp/NocimaApp/Controller/MyProfileViewController.swift"
-                  timestampString = "489263431.132979"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "129"
-                  endingLineNumber = "129"
-                  offsetFromSymbolStart = "36">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "NocimaApp.MyProfileViewController.imagePickerController (__ObjC.UIImagePickerController, didFinishPickingMediaWithInfo : Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;) -&gt; ()"
-                  moduleName = "NocimaApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pedja/Work/DatingApp/iOS/NocimaApp/NocimaApp/Controller/MyProfileViewController.swift"
-                  timestampString = "489263431.133166"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "129"
-                  endingLineNumber = "129"
-                  offsetFromSymbolStart = "276">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NocimaApp/Controller/MyProfileViewController.swift"
-            timestampString = "489263435.051369"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
-            landmarkName = "imagePickerControllerDidCancel(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NocimaApp/Controller/MyProfileViewController.swift"
-            timestampString = "489263441.667307"
+            filePath = "NocimaApp/API/APIClient.swift"
+            timestampString = "489265242.740003"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "121"
             endingLineNumber = "121"
-            landmarkName = "uploadSecondaryImg(_:)"
+            landmarkName = "sendPOST(_:params:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -297,13 +377,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NocimaApp/Controller/MyProfileViewController.swift"
-            timestampString = "489263442.665349"
+            filePath = "NocimaApp/API/APIClient.swift"
+            timestampString = "489265378.499352"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "uploadPrimaryImg(_:)"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "sendPOST(_:params:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

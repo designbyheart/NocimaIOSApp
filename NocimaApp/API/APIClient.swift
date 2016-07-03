@@ -131,11 +131,11 @@ public class APIClient {
                 
                 if let JSON = response.result.value {
 //                    print("JSON: \(JSON)")
-                    let error = response.result.value!["errorFields"]!
                     
-                    if(error != nil){
-                        let errorMessage = error![0]["errorField"]!!["errorMessage"]!
-                        responseObject = errorMessage!;
+                    
+                    if(response.result.value!["errorFields"] != nil){
+//                        let errorMessage = error![0]["errorField"]!!["errorMessage"]!
+//                        responseObject = errorMessage!;
                     }else if(JSON["errorMessage"]! != nil){
                         responseObject = JSON["errorMessage"] as! String
 //                        print("here \(responseObject)")

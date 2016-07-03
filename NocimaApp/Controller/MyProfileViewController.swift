@@ -88,8 +88,7 @@ class MyProfileViewController: MainViewController,UIImagePickerControllerDelegat
         }
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(MyProfileViewController.galleryLoadingSuccess(_:)), name: APINotification.Success.rawValue, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MyProfileViewController.galleryLoadingFail(_:)), name: APINotification.Fail.rawValue, object: nil)
-        
-        APIClient.sendPOST(APIPath.UserGallery, params:["test":1]);
+//        let params = NSUserDefaults.standardUserDefaults().objectForKey("userDetails") as? Dictionary<String, AnyObject>
         
     }
     func downloadImage(url: NSURL, imageView:UIImageView){
@@ -98,7 +97,9 @@ class MyProfileViewController: MainViewController,UIImagePickerControllerDelegat
         
         APIClient.getDataFromUrl(url) { (data, response, error)  in
             dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                guard let data = data where error == nil else { return }
+                guard let data = data where error == nil else {
+                    return
+                }
                 print(response?.suggestedFilename ?? "")
                 print("Download Finished")
                 imageView.image = UIImage(data: data)
@@ -108,6 +109,8 @@ class MyProfileViewController: MainViewController,UIImagePickerControllerDelegat
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        APIClient.sendPOST(APIPath.UserGallery, params:[:]);
     }
     
     //MARK: - upload image actions
