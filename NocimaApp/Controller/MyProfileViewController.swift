@@ -67,28 +67,28 @@ class MyProfileViewController: MainViewController,UIImagePickerControllerDelegat
             }
             
             //        let params: [NSObject : AnyObject] = ["redirect": false, "height": 800, "width": 800, "type": "large"]
-//            if (userDetails["facebookID"] as? String) != nil{
-//                let pictureRequest = FBSDKGraphRequest(graphPath: "me/picture?type=large&redirect=false", parameters: params)
-//                pictureRequest.startWithCompletionHandler({
-//                    (connection, result, error: NSError!) -> Void in
-//                    if error == nil {
-//                        if let data = result["data"]{
-//                            if let url = data!["url"] as? String{
-//                                NSUserDefaults.standardUserDefaults().setObject(url, forKey: "myProfileImg")
-//                                NSUserDefaults.standardUserDefaults().synchronize()
-//                                self.downloadImage(NSURL.init(string: url)!, imageView: self.mainImageView)
-//                            }
-//                        }
-//                        
-//                    } else {
-//                        print("\(error)")
-//                    }
-//                })
-//            }
+            //            if (userDetails["facebookID"] as? String) != nil{
+            //                let pictureRequest = FBSDKGraphRequest(graphPath: "me/picture?type=large&redirect=false", parameters: params)
+            //                pictureRequest.startWithCompletionHandler({
+            //                    (connection, result, error: NSError!) -> Void in
+            //                    if error == nil {
+            //                        if let data = result["data"]{
+            //                            if let url = data!["url"] as? String{
+            //                                NSUserDefaults.standardUserDefaults().setObject(url, forKey: "myProfileImg")
+            //                                NSUserDefaults.standardUserDefaults().synchronize()
+            //                                self.downloadImage(NSURL.init(string: url)!, imageView: self.mainImageView)
+            //                            }
+            //                        }
+            //
+            //                    } else {
+            //                        print("\(error)")
+            //                    }
+            //                })
+            //            }
         }
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(MyProfileViewController.galleryLoadingSuccess(_:)), name: APINotification.Success.rawValue, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MyProfileViewController.galleryLoadingFail(_:)), name: APINotification.Fail.rawValue, object: nil)
-//        let params = NSUserDefaults.standardUserDefaults().objectForKey("userDetails") as? Dictionary<String, AnyObject>
+        //        let params = NSUserDefaults.standardUserDefaults().objectForKey("userDetails") as? Dictionary<String, AnyObject>
         
     }
     func downloadImage(url: NSURL, imageView:UIImageView){
@@ -119,15 +119,15 @@ class MyProfileViewController: MainViewController,UIImagePickerControllerDelegat
         self.imgIndex = 1
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .PhotoLibrary
-           presentViewController(imagePicker, animated: true, completion: nil)
+        presentViewController(imagePicker, animated: true, completion: nil)
     }
     @IBAction func uploadSecondaryImg(sender: AnyObject) {
         self.imgIndex = sender.tag
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .PhotoLibrary
-           presentViewController(imagePicker, animated: true, completion: nil)
+        presentViewController(imagePicker, animated: true, completion: nil)
     }
-
+    
     //MARK: - Image picker delegates
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -154,9 +154,9 @@ class MyProfileViewController: MainViewController,UIImagePickerControllerDelegat
             img.contentMode = .ScaleAspectFill
             img.image = pickedImage
             
-//            image.image = UIImage.init(named: "editIcon")
-//            self.addVerticalConstraint.constant = 100
-//            self.addHorizontalContraint.constant = 130
+            //            image.image = UIImage.init(named: "editIcon")
+            //            self.addVerticalConstraint.constant = 100
+            //            self.addHorizontalContraint.constant = 130
         }
         dismissViewControllerAnimated(true, completion: nil)
         
@@ -173,8 +173,30 @@ class MyProfileViewController: MainViewController,UIImagePickerControllerDelegat
                 if (method != APIPath.UserGallery.rawValue){
                     return
                 }
-                if let response = data["response"] as? Dictionary<String, AnyObject>{
-                    print(response)
+                if let response = data["response"] as? [AnyObject]{
+                    for imageData in response{
+                        if let imageURL = imageData["imageURL"] as? String{
+                            if let position  = imageData["position"] as? Int{
+                                switch(position){
+                                case 1:
+                                    
+                                    break;
+                                case 2:
+                                    
+                                    break;
+                                case 3:
+                                    
+                                    break;
+                                case 4:
+                                    
+                                    break;
+                                default:
+                                    print(imageData)
+                                    break;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }

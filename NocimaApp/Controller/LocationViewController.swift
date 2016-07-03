@@ -122,11 +122,18 @@ class LocationViewController: MainViewController,MGLMapViewDelegate, CLLocationM
         
     }
     func loadClubsSuccess(n:NSNotification){
-        if let clubList = n.object!["response"] as? [AnyObject]{
-            NSUserDefaults.standardUserDefaults().setObject(clubList, forKey: "clubsList")
-            NSUserDefaults.standardUserDefaults().synchronize()
-            self.clubs = clubList
-            self.displayClubs()
+        if let data = n.object as? Dictionary<String, AnyObject>{
+            if let method = data["method"] as? String{
+                if method != APIPath.ClubsList.rawValue {
+                    return
+                }
+            }
+            if let clubList = data["response"] as? [AnyObject]{
+                NSUserDefaults.standardUserDefaults().setObject(clubList, forKey: "clubsList")
+                NSUserDefaults.standardUserDefaults().synchronize()
+                self.clubs = clubList
+                self.displayClubs()
+            }
         }
     }
 }

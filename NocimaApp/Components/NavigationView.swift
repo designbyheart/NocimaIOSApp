@@ -50,7 +50,7 @@ class NavigationView: UIView {
         
         self.chatBttn = UIButton(frame: CGRectMake(self.frame.size.width - 70, 20, 60, 40))
         self.chatBttn.setImage(UIImage(named: "chatIcon"), forState: UIControlState.Normal)
-        self.chatBttn.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10)
+        self.chatBttn.contentEdgeInsets = UIEdgeInsetsMake(10, 20, 10, 20)
         self.addSubview(chatBttn)
 
     }
