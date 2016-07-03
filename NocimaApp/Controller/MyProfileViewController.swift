@@ -9,7 +9,7 @@
 import UIKit
 import FBSDKCoreKit
 
-class MyProfileViewController: MainViewController {
+class MyProfileViewController: MainViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate,UIPickerViewDelegate {
     
     
     @IBOutlet weak var displayNameLbl: UITextField!
@@ -37,23 +37,24 @@ class MyProfileViewController: MainViewController {
         }
         self.navigationMenu.initMenuBttn()
         
-        let userData = NSUserDefaults.standardUserDefaults().objectForKey("userDetails")
-        if let firstName = userData!["firstName"] as? String{
-            self.displayNameLbl.text = firstName
-        }else{
-            self.displayNameLbl.text = ""
-        }
-        if let gender = userData!["gender"] as? String{
-            if(gender == "male"){
-                self.maleLbl.titleLabel?.font = UIFont.init(name:"SourceSansPro-Regular", size: 22)
-                self.femaleLbl.titleLabel?.font = UIFont.init(name:"SourceSansPro-Light", size: 22)
-            }else{
-                self.maleLbl.titleLabel?.font = UIFont.init(name:"SourceSansPro-Light", size: 22)
-                self.femaleLbl.titleLabel?.font = UIFont.init(name:"SourceSansPro-Regular", size: 22)
-            }
-        }
         let params: [NSObject : AnyObject] = ["redirect": false, "height": 800, "width": 800, "type": "large"]
         if let userDetails = NSUserDefaults.standardUserDefaults().objectForKey("userDetails"){
+            
+            if let firstName = userDetails["firstName"] as? String{
+                self.displayNameLbl.text = firstName
+            }else{
+                self.displayNameLbl.text = ""
+            }
+            if let gender = userDetails["gender"] as? String{
+                if(gender == "male"){
+                    self.maleLbl.titleLabel?.font = UIFont.init(name:"SourceSansPro-Regular", size: 22)
+                    self.femaleLbl.titleLabel?.font = UIFont.init(name:"SourceSansPro-Light", size: 22)
+                }else{
+                    self.maleLbl.titleLabel?.font = UIFont.init(name:"SourceSansPro-Light", size: 22)
+                    self.femaleLbl.titleLabel?.font = UIFont.init(name:"SourceSansPro-Regular", size: 22)
+                }
+            }
+            
             if (userDetails["facebookID"] as? String) != nil{
                 let pictureRequest = FBSDKGraphRequest(graphPath: "me/picture?type=large&redirect=false", parameters: params)
                 pictureRequest.startWithCompletionHandler({
@@ -91,6 +92,17 @@ class MyProfileViewController: MainViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
     }
+    
+    //MARK: - upload image actions
+    
+    @IBAction func uploadPrimaryImg(sender: AnyObject) {
+        print("primary")
+    }
+    @IBAction func uploadSecondaryImg(sender: AnyObject) {
+        print("secondary")
+    }
+
+    
 }
 
 
@@ -116,3 +128,4 @@ class MyProfileViewController: MainViewController {
  }
  
  */
+

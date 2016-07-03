@@ -28,6 +28,7 @@ enum APIPath:String {
     case ClubsList                  = "clubs/list"
     case CheckUserStatus            = "user/status"
     case WelcomeData                = "uploadWelcomeData"
+    case UploadImage                = "uploadImage"
 }
 
 
@@ -53,7 +54,7 @@ public class APIClient {
             let token = NSUserDefaults.standardUserDefaults().objectForKey("userToken") as! String
             var hParams = [
                 "Content-Type":"application/json",
-            ]
+                ]
             if(token.characters.count > 0){
                 hParams["X-AUTH"] = token
             }
@@ -293,5 +294,58 @@ public class APIClient {
                     print(encodingError)
                 }
         })
+    }
+    // this function creates the required URLRequestConvertible and NSData we need to use Alamofire.upload
+    static func urlRequestWithComponents(urlString:String, parameters:Dictionary<String, AnyObject>, imageData:NSData) -> (URLRequestConvertible, NSData) {
+        
+        // create url request to send
+        let mutableURLRequest = NSMutableURLRequest(URL: NSURL(string: urlString)!)
+        mutableURLRequest.HTTPMethod = Alamofire.Method.POST.rawValue
+        let boundaryConstant = "myRandomBoundary12345";
+        let contentType = "multipart/form-data;boundary="+boundaryConstant
+        mutableURLRequest.setValue(contentType, forHTTPHeaderField: "Content-Type")
+        if let userToken = NSUserDefaults.standardUserDefaults().objectForKey("userToken") as? String{
+            mutableURLRequest.setValue(userToken, forHTTPHeaderField:"X-AUTH")
+        }
+        // create upload data to send
+        let uploadData = NSMutableData()
+        
+        // add image
+        uploadData.appendData("\r\n--\(boundaryConstant)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+        uploadData.appendData("Content-Disposition: form-data; name=\"file\"; filename=\"file.png\"\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+        uploadData.appendData("Content-Type: image/png\r\n\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+        uploadData.appendData(imageData)
+        
+        // add parameters
+        for (key, value) in parameters {
+            uploadData.appendData("\r\n--\(boundaryConstant)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            uploadData.appendData("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n\(value)".dataUsingEncoding(NSUTF8StringEncoding)!)
+        }
+        uploadData.appendData("\r\n--\(boundaryConstant)--\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+        
+        
+        
+        // return URLRequestConvertible and NSData
+        return (Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: nil).0, uploadData)
+    }
+    static func uploadImage(image:UIImage, isPrimary:Bool){
+        let params = ["isPrimary":isPrimary]
+        let isAuthenticated:Bool! = NSUserDefaults.standardUserDefaults().objectForKey("userToken") != nil
+        let headers = self.defaultHeader(isAuthenticated, method:APIPath.UploadImage)
+        print(headers)
+        
+        let imageData = UIImageJPEGRepresentation(image, 70)
+        let urlRequest = APIClient.urlRequestWithComponents("\(APIClient.apiRoot(APIPath.WelcomeData.rawValue))", parameters: params, imageData: imageData!)
+        
+        Alamofire.upload(urlRequest.0, data: urlRequest.1)
+            .progress { (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite) in
+                print("\(totalBytesWritten) / \(totalBytesExpectedToWrite)")
+            }
+            .responseJSON { (response) in
+                print(response)
+                //                let alert = UIAlertView.init(title: "Success", message: "Korisnik je ažuriran", delegate: self, cancelButtonTitle: "OK")
+                //                alert.show()
+                //                self.performSegueWithIdentifier("openPendingView", sender: self)
+        }
     }
 }

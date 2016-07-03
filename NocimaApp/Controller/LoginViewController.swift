@@ -12,15 +12,17 @@ import FBSDKLoginKit
 import CoreLocation
 
 enum SubmitType:Int {
+    case None
     case Login
     case Register
     case Reset
-
+    
     
 }
 class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var loginBttn: UIButton!
+    @IBOutlet weak var resetBttn: UIButton!
     let locationManager = CLLocationManager()
     var coord = CLLocationCoordinate2D()
     var openedTimes:Int = 0
@@ -48,8 +50,6 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
         
         loginBtn.layer.cornerRadius = 5
         registerBtn.layer.cornerRadius = 5
-        
-//        self.openWelcomeScreen()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -64,6 +64,15 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.updateFail(_:)), name: APINotification.Fail.rawValue, object: nil)
         
         self.checkUserStatus()
+        if NSUserDefaults.standardUserDefaults().objectForKey("userToken") != nil{
+            if(coord.latitude != 0 && coord.longitude != 0){
+                APIClient.sendPOST(APIPath.UpdateLocation, params: [
+                    "latitude":coord.latitude,
+                    "longitude":coord.longitude
+                    ])
+            }
+        }
+//        self.openWelcomeScreen()
     }
     
     @IBAction func loginWithFacebook(sender: AnyObject) {
@@ -85,7 +94,6 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
             } else if result.isCancelled {
                 print("Cancelled")
             } else {
-                //                print(result)
                 self.loginSuccess(result.token)
             }
         })
@@ -203,13 +211,16 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                 if let response = data["response"] as? Dictionary<String, AnyObject>{
                     print(response)
                     if let token = response["token"] as? String{
-                        NSUserDefaults.standardUserDefaults().setObject(token, forKey: "userToken")
-                        NSUserDefaults.standardUserDefaults().synchronize()
-                        if(coord.latitude == 0 && coord.longitude == 0){
-                            APIClient.sendPOST(APIPath.UpdateLocation, params: [
-                                "latitude":coord.latitude,
-                                "longitude":coord.longitude
-                                ])
+                        if(token.characters.count > 10){
+                            NSUserDefaults.standardUserDefaults().setObject(token, forKey: "userToken")
+                            NSUserDefaults.standardUserDefaults().synchronize()
+                            
+                            if(coord.latitude == 0 && coord.longitude == 0){
+                                APIClient.sendPOST(APIPath.UpdateLocation, params: [
+                                    "latitude":coord.latitude,
+                                    "longitude":coord.longitude
+                                    ])
+                            }
                         }
                         if let userStatus = response["status"] as? Int {
                             NSUserDefaults.standardUserDefaults().setObject(userStatus, forKey: "userStatus")
@@ -222,7 +233,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                                 }
                                 self.performSegueWithIdentifier("showPendingActivationView", sender: self)
                             }else{
-                                    self.openLocation()
+                                self.openLocation()
                             }
                         }else{
                             //consider status = 0
@@ -281,6 +292,12 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                 }
                 if let response = response["response"]{
                     if(method == APIPath.Login.rawValue || method == APIPath.Register.rawValue){
+                        if let token = response!["token"] as? String{
+                            if(token.characters.count > 10){
+                                NSUserDefaults.standardUserDefaults().setObject(token, forKey: "userToken")
+                                NSUserDefaults.standardUserDefaults().synchronize()
+                            }
+                        }
                         if(coord.latitude != 0 && coord.longitude != 0){
                             APIClient.sendPOST(APIPath.UpdateLocation, params: [
                                 "latitude":coord.latitude,
@@ -298,8 +315,8 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                     }
                     
                     if(method == APIPath.CheckUserStatus.rawValue){
+                        UserEntity.updateUserDetails(response! as! Dictionary<String, AnyObject>)
                         if let userStatus = response!["status"] as? Int{
-                            
                             if(userStatus != 1){
                                 if let userID = response!["userID"] as? String{
                                     print(userID)
@@ -326,11 +343,13 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
     func showView(viewTitleStr:String, type:SubmitType){
         registerBtn.hidden = true
         loginBtn.hidden = true
-//        loginBttn.hidden = true
+        //        loginBttn.hidden = true
         privacyLbl.hidden = true
         infoIcon.hidden = true
-//        gbIcon.hidden = true
-
+        resetBttn.hidden = true
+        //        gbIcon.hidden = true
+        self.removeVisibleView(1)
+        
         if self.loginView.tag == 0{
             self.loginView.removeFromSuperview()
             self.loginView = UIView.init(frame: CGRectMake(40, self.view.frame.size.height + 20, self.view.frame.size.width - 80, 340))
@@ -366,20 +385,20 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
             self.loginView.addSubview(usernameTxt)
             
             if(type != SubmitType.Reset){
-            
-            let passTxt = UITextField.init(frame: CGRectMake(30, startPointY, width, 44))
-            startPointY += 74
-            passTxt.backgroundColor = UIColor.whiteColor()
-            passTxt.textAlignment = NSTextAlignment.Center
-            passTxt.font = UIFont.init(name: "SourceSansPro-Regular", size: 17)
-            passTxt.placeholder = "Unesi lozinku"
-            passTxt.layer.cornerRadius = 3
-            passTxt.delegate = self
-            passTxt.tag = type.rawValue
-            passTxt.secureTextEntry = true
-            self.passwordTxt = passTxt
-            self.loginView.addSubview(passTxt)
-            
+                
+                let passTxt = UITextField.init(frame: CGRectMake(30, startPointY, width, 44))
+                startPointY += 74
+                passTxt.backgroundColor = UIColor.whiteColor()
+                passTxt.textAlignment = NSTextAlignment.Center
+                passTxt.font = UIFont.init(name: "SourceSansPro-Regular", size: 17)
+                passTxt.placeholder = "Unesi lozinku"
+                passTxt.layer.cornerRadius = 3
+                passTxt.delegate = self
+                passTxt.tag = type.rawValue
+                passTxt.secureTextEntry = true
+                self.passwordTxt = passTxt
+                self.loginView.addSubview(passTxt)
+                
             }
             self.view.addSubview(self.loginView)
             
@@ -408,7 +427,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
             self.loginView.center = CGPointMake(self.view.center.x, self.view.frame.size.height - 220)
             
             }, completion: { (finished: Bool) -> Void in
-                self.removeVisibleView(2)
+                //                self.removeVisibleView(2)
         })
         
     }
@@ -423,32 +442,40 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
         self.removeVisibleView(2)
     }
     func removeVisibleView(targetView: Int){
-        if(targetView == 1 && self.loginView.tag == 1){
+        if(self.loginView.tag > 0){
             registerBtn.hidden = false
             loginBtn.hidden = false
-//            loginBttn.hidden = false
-            privacyLbl.hidden = false
-            infoIcon.hidden = false
-//            gbIcon.hidden = false
-
+            //            loginBttn.hidden = false
+            //            privacyLbl.hidden = false
+            //            infoIcon.hidden = false
+            //            gbIcon.hidden = false
+            resetBttn.hidden = false
+            
             self.loginView.removeFromSuperview()
             self.loginView.tag = 0
         }
     }
     @IBAction func submitForm(sender:UIButton){
-        if(userNameTxt.text?.characters.count < 1 ||
-            passwordTxt.text?.characters.count < 1){
-            return;
+        if(sender.tag != SubmitType.Reset.rawValue){
+            if(userNameTxt.text?.characters.count < 1 || passwordTxt.text?.characters.count < 1){
+                return;
+            }
+        }else{
+            if(userNameTxt.text?.characters.count < 1){
+                return;
+            }
         }
         let params:Dictionary<String,AnyObject> = [
             "email":userNameTxt.text!,
             "password":passwordTxt.text!
         ];
         
-        if(sender.tag == 1){
+        if(sender.tag == SubmitType.Login.rawValue){
             APIClient.sendPOST(APIPath.Login, params: params)
-        }else{
+        }else if(sender.tag == SubmitType.Register.rawValue){
             APIClient.sendPOST(APIPath.Register, params:params)
+        }else{
+            
         }
         
     }

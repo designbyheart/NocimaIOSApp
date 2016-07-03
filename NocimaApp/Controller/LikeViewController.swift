@@ -70,8 +70,6 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LikeViewController.userMatchFail(_:)), name: APINotification.Fail.rawValue, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LikeViewController.userMatchSuccess(_:)), name: APINotification.Success.rawValue, object: nil)
-        
-        APIClient.sendPOST(APIPath.UsersForMatch, params:["latitude":44.795417, "longitude":20.438267])
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -138,28 +136,41 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
         return LikeDislikeCollectionViewCell()
     }
     func moveCardUp() {
-        if layout.index > 0 {
-            layout.index -= 1
-        }
+        //        if layout.index > 0 {
+        //            self.layout.index -= 1
+        //        }
     }
     
     func moveCardDown() {
-        if layout.index <= numberOfCards() - 1 {
-            layout.index += 1
-        }
+        //        if self.layout.index <= numberOfCards() - 1 {
+        //            self.layout.index += 1
+        //        }
     }
     //MARK: - Like / Dislike action via buttons
     
     @IBAction func likeUser(sender: AnyObject) {
-        //        if layout.index <= numberOfCards() - 1 {
-        //            layout.index += 1
-        //        }
+        if self.layout.index < usersList.count{
+            layout.index += 1
+        }
+        if self.layout.index < usersList.count{
+            layout.index += 1
+        }
+        print(usersList[layout.index])
+        if let user = usersList[layout.index] as? Dictionary<String, AnyObject>{
+            if let userID = user["userID"] as? String{
+                APIClient.sendPOST(APIPath.MatchUser, params: [
+                    "status":1,
+                    "userID":userID
+                    ])
+            }
+        }
         print("like me \(layout.index)")
     }
     @IBAction func dislikeUser(sender: AnyObject) {
-        //        if layout.index <= numberOfCards() - 1 {
-        //            layout.index += 1
-        //        }
+//        APIClient.sendPOST(APIPath.MatchUser, params: [
+//            "status":status,
+//            "userID":c.userID!
+//            ])
         print("dislike me \(layout.index)")
     }
     

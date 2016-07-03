@@ -6,6 +6,8 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'NocimaApp' do
+    
+    pod 'SwiftyJSON'
 	pod 'Crashlytics', '~> 3.4'
 	pod 'Fabric', '~> 1.6'
 	pod 'Alamofire', '~> 3.1'

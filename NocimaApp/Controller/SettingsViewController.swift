@@ -50,6 +50,18 @@ class SettingsViewController: MainViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(SettingsViewController.saveSuccess(_:)), name: APINotification.Success.rawValue, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SettingsViewController.saveFail(_:)), name: APINotification.Fail.rawValue, object: nil)
+        
+        if(DateHelper.calculateAge() > 18){
+            self.fromSlider.maximumValue = 99
+            self.fromSlider.minimumValue = 18
+            self.toSlider.maximumValue = 99
+            self.toSlider.minimumValue = 19
+        }else{
+            self.fromSlider.maximumValue = 18
+            self.fromSlider.minimumValue = 13
+            self.toSlider.maximumValue = 18
+            self.toSlider.minimumValue = 14
+        }
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)

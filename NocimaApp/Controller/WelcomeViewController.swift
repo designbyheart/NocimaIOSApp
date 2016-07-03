@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class WelcomeViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate,UIPickerViewDelegate {
     
@@ -42,7 +43,7 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UIImagePicke
             years.append(year)
         }
         years = years.reverse()
-        
+        self.gender = "male"
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -50,7 +51,7 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(WelcomeViewController.updateProfileSuccess(_:)), name: APINotification.Success.rawValue, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(WelcomeViewController.updateProfileFail(_:)), name: APINotification.Fail.rawValue, object: nil)
         
-//        pickerView.selectedRowInComponent(<#T##component: Int##Int#>)
+        //        pickerView.selectedRowInComponent(<#T##component: Int##Int#>)
         
     }
     
@@ -109,29 +110,68 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         
         dismissViewControllerAnimated(true, completion: nil)
     }
-   func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     //MARK: - update profile
     @IBAction func updateProfile(sender:AnyObject){
         let params = [
-        "gender":self.gender,
-        "firstName":self.nameTxt.text!,
-        "birthYear":years[pickerView.selectedRowInComponent(0)]
+            "gender":self.gender,
+            "firstName":self.nameTxt.text!,
+            "birthYear":years[pickerView.selectedRowInComponent(0)]
         ];
-        APIClient.sendPOST(APIPath.WelcomeData, params: params as! Dictionary<String, AnyObject>);
+        
+        // example image data
+        //        let image = profileImg.image   /// UIImage(named: "177143.jpg")
+        let imageData = UIImageJPEGRepresentation(profileImg.image!, 70)
+        // CREATE AND SEND REQUEST ----------
+        let urlRequest = APIClient.urlRequestWithComponents("\(APIClient.apiRoot(APIPath.WelcomeData.rawValue))", parameters: params as! Dictionary<String, AnyObject>, imageData: imageData!)
+        
+        Alamofire.upload(urlRequest.0, data: urlRequest.1)
+            .progress { (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite) in
+                print("\(totalBytesWritten) / \(totalBytesExpectedToWrite)")
+            }
+            .responseJSON { (response) in
+                let alert = UIAlertView.init(title: "Success", message: "Korisnik je ažuriran", delegate: self, cancelButtonTitle: "OK")
+                alert.show()
+                self.performSegueWithIdentifier("openPendingView", sender: self)
+        }
     }
     func updateProfileSuccess(n:NSNotification){
-        let alert = UIAlertView.init(title: "Success", message: "\(n.object)", delegate: self, cancelButtonTitle: "OK")
-        alert.show()
+        if let response = n.object {
+            if let method = response["method"] as? String {
+                if (method != APIPath.WelcomeData.rawValue) {
+                    return;
+                }
+            }
+            if let resp = response["response"]{
+                if let success = resp!["success"] as? String{
+                    let alert = UIAlertView.init(title: "Success", message: "\(success)", delegate: self, cancelButtonTitle: "OK")
+                    alert.show()
+                    self.performSegueWithIdentifier("openPendingView", sender: self)
+                }else{
+                    
+                    let alert = UIAlertView.init(title: "Error", message: "\(resp!["error"])", delegate: self, cancelButtonTitle: "OK")
+                    alert.show()
+                }
+                
+            }
+        }
     }
     func updateProfileFail(n:NSNotification){
+        if let response = n.object {
+            if let method = response["method"] as? String {
+                if (method != APIPath.WelcomeData.rawValue) {
+                    return;
+                }
+            }
+        }
         let alert = UIAlertView.init(title: "Fail", message: "\(n.object)", delegate: self, cancelButtonTitle: "OK")
         alert.show()
     }
     //MARK: - PickerView Delegate
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-    
+        
         if self.years.count > row {
             return "\(self.years[row])"
         }
