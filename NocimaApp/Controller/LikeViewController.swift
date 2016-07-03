@@ -155,7 +155,7 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
         if self.layout.index < usersList.count{
             layout.index += 1
         }
-        print(usersList[layout.index])
+//        print(usersList[layout.index])
         if let user = usersList[layout.index] as? Dictionary<String, AnyObject>{
             if let userID = user["userID"] as? String{
                 APIClient.sendPOST(APIPath.MatchUser, params: [
@@ -171,7 +171,7 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
 //            "status":status,
 //            "userID":c.userID!
 //            ])
-        print("dislike me \(layout.index)")
+//        print("dislike me \(layout.index)")
     }
     
     //MARK: - API Delegates

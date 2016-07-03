@@ -29,6 +29,7 @@ enum APIPath:String {
     case CheckUserStatus            = "user/status"
     case WelcomeData                = "uploadWelcomeData"
     case UploadImage                = "uploadImage"
+    case UserGallery                = "listGallery"
 }
 
 
@@ -42,7 +43,6 @@ public class APIClient {
             IS_DEBUG_MODE = false
         #endif
         let server = IS_DEBUG_MODE ? "datingapp.io/api" : "nocima.rs/api"
-        print(server)
         return "http://\(server)/\(path)"
     }
     static func path(path:APIPath)->String{
@@ -50,7 +50,7 @@ public class APIClient {
     }
     static func defaultHeader(isAuthenticated:Bool,method:APIPath, params:Dictionary<String, AnyObject> = ["":""])->Dictionary<String, String>{
         if(isAuthenticated){
-            print("token: \(NSUserDefaults.standardUserDefaults().objectForKey("userToken")!)")
+//            print("token: \(NSUserDefaults.standardUserDefaults().objectForKey("userToken")!)")
             let token = NSUserDefaults.standardUserDefaults().objectForKey("userToken") as! String
             var hParams = [
                 "Content-Type":"application/json",
@@ -58,7 +58,7 @@ public class APIClient {
             if(token.characters.count > 0){
                 hParams["X-AUTH"] = token
             }
-            print("header params \(hParams)")
+//            print("header params \(hParams)")
             return hParams
         }
         return [
@@ -66,7 +66,7 @@ public class APIClient {
         ]
     }
     static func sendGET(methodName:APIPath){
-        print(self.path(methodName))
+//        print(self.path(methodName))
         let isAuthenticated:Bool! = NSUserDefaults.standardUserDefaults().objectForKey("userToken") != nil
         Alamofire.request(
             .GET,
@@ -76,7 +76,7 @@ public class APIClient {
             .responseJSON{ response in
                 // response in
                 //print(response.request)  // original URL request
-                print(response.response) // URL response
+//                print(response.response) // URL response
                 //let responseData = NSString(data:response.data!, encoding:NSUTF8StringEncoding) as! String
                 //print(responseData)     // server data
                 //print(response.result)   // result of response serialization
@@ -107,7 +107,7 @@ public class APIClient {
      - Returns: void (Will be triggered NSNotification with Success / Fail AVWAPINotification type)
      */
     static func sendPOST(methodName:APIPath, params:Dictionary<String, AnyObject>){
-        print("method: \(methodName) \n params: \(params)")
+//        print("method: \(methodName) \n params: \(params)")
         let isAuthenticated:Bool! = NSUserDefaults.standardUserDefaults().objectForKey("userToken") != nil
         Alamofire.request(
             .POST,
@@ -118,11 +118,11 @@ public class APIClient {
             )
             .responseJSON {
                 response in
-                print(response.request)  // original URL request
-                print(response.response) // URL response
+//                print(response.request)  // original URL request
+//                print(response.response) // URL response
                 let responseData = NSString(data:response.data!, encoding:NSUTF8StringEncoding) as! String
-                print(responseData)     // server data
-                print(response.result)   // result of response serialization
+//                print(responseData)     // server data
+//                print(response.result)   // result of response serialization
                 
                 let isSuccess = response.response?.statusCode < 202
                 let notificationStatus =  isSuccess ? APINotification.Success.rawValue:APINotification.Fail.rawValue;
@@ -130,7 +130,7 @@ public class APIClient {
                 var responseObject:AnyObject = []
                 
                 if let JSON = response.result.value {
-                    print("JSON: \(JSON)")
+//                    print("JSON: \(JSON)")
                     let error = response.result.value!["errorFields"]!
                     
                     if(error != nil){
@@ -138,7 +138,7 @@ public class APIClient {
                         responseObject = errorMessage!;
                     }else if(JSON["errorMessage"]! != nil){
                         responseObject = JSON["errorMessage"] as! String
-                        print("here \(responseObject)")
+//                        print("here \(responseObject)")
                     }else{
                         if let resultValue = response.result.value {
                             responseObject = resultValue
@@ -177,19 +177,19 @@ public class APIClient {
             )
             .responseJSON {
                 response in
-                print(response.request)  // original URL request
-                print(response.response) // URL response
+//                print(response.request)  // original URL request
+//                print(response.response) // URL response
                 let responseData = NSString(data:response.data!, encoding:NSUTF8StringEncoding) as! String
-                print(responseData)     // server data
-                print(response.result)   // result of response serialization
+//                print(responseData)     // server data
+//                print(response.result)   // result of response serialization
                 
                 let isSuccess = response.response?.statusCode < 202
                 let notificationStatus =  isSuccess ? APINotification.Success.rawValue:APINotification.Fail.rawValue;
                 
                 var responseObject:AnyObject = []
                 
-                if let JSON = response.result.value {
-                    print("JSON: \(JSON)")
+                if response.result.value != nil {
+//                    print("JSON: \(JSON)")
                     responseObject = response.result.value!
                 }
                 return NSNotificationCenter.defaultCenter().postNotificationName(notificationStatus, object: isSuccess ? responseObject: responseData)
@@ -212,11 +212,11 @@ public class APIClient {
             )
             .responseJSON {
                 response in
-                print(response.request)  // original URL request
-                print(response.response) // URL response
+//                print(response.request)  // original URL request
+//                print(response.response) // URL response
                 let responseData = NSString(data:response.data!, encoding:NSUTF8StringEncoding) as! String
-                print(responseData)     // server data
-                print(response.result)   // result of response serialization
+//                print(responseData)     // server data
+//                print(response.result)   // result of response serialization
                 
                 let isSuccess = response.response?.statusCode < 202
                 let notificationStatus =  isSuccess ? APINotification.DeleteSuccess.rawValue:APINotification.DeleteFail.rawValue;
@@ -224,7 +224,7 @@ public class APIClient {
                 var responseObject:AnyObject = []
                 
                 if let JSON = response.result.value {
-                    print("JSON: \(JSON)")
+//                    print("JSON: \(JSON)")
                     let error = response.result.value!["errorFields"]!
                     
                     if(error != nil){
@@ -232,7 +232,7 @@ public class APIClient {
                         responseObject = errorMessage!;
                     }else if(JSON["errorMessage"]! != nil){
                         responseObject = JSON["errorMessage"] as! String
-                        print("here \(responseObject)")
+//                        print("here \(responseObject)")
                     }else{
                         responseObject = response.result.value!
                     }
@@ -279,15 +279,15 @@ public class APIClient {
                 
                 switch encodingResult {
                 case .Success(let upload, _, _):
-                    print("s")
+//                    print("s")
                     upload.responseJSON { response in
-                        print(response.request)  // original URL request
-                        print(response.response) // URL response
-                        print(response.data)     // server data
-                        print(response.result)   // result of response serialization
+//                        print(response.request)  // original URL request
+//                        print(response.response) // URL response
+//                        print(response.data)     // server data
+//                        print(response.result)   // result of response serialization
                         
-                        if let JSON = response.result.value {
-                            print("JSON: \(JSON)")
+                        if response.result.value != nil {
+//                            print("JSON: \(JSON)")
                         }
                     }
                 case .Failure(let encodingError):
@@ -328,21 +328,21 @@ public class APIClient {
         // return URLRequestConvertible and NSData
         return (Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: nil).0, uploadData)
     }
-    static func uploadImage(image:UIImage, isPrimary:Bool){
-        let params = ["isPrimary":isPrimary]
-        let isAuthenticated:Bool! = NSUserDefaults.standardUserDefaults().objectForKey("userToken") != nil
-        let headers = self.defaultHeader(isAuthenticated, method:APIPath.UploadImage)
-        print(headers)
+    static func uploadImage(image:UIImage, position:Int){
+        let params = ["position":position]
+//        let isAuthenticated:Bool! = NSUserDefaults.standardUserDefaults().objectForKey("userToken") != nil
+//        let headers = self.defaultHeader(isAuthenticated, method:APIPath.UploadImage)
+//        print(headers)
         
         let imageData = UIImageJPEGRepresentation(image, 70)
         let urlRequest = APIClient.urlRequestWithComponents("\(APIClient.apiRoot(APIPath.WelcomeData.rawValue))", parameters: params, imageData: imageData!)
         
         Alamofire.upload(urlRequest.0, data: urlRequest.1)
             .progress { (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite) in
-                print("\(totalBytesWritten) / \(totalBytesExpectedToWrite)")
+//                print("\(totalBytesWritten) / \(totalBytesExpectedToWrite)")
             }
             .responseJSON { (response) in
-                print(response)
+//                print(response)
                 //                let alert = UIAlertView.init(title: "Success", message: "Korisnik je ažuriran", delegate: self, cancelButtonTitle: "OK")
                 //                alert.show()
                 //                self.performSegueWithIdentifier("openPendingView", sender: self)

@@ -87,12 +87,12 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
         
         loginManager.logInWithReadPermissions(self.facebookReadPermissions, fromViewController: self.parentViewController, handler: { (result, error) -> Void in
             if error != nil {
-                print(error)
+//                print(error)
                 let alert = UIAlertView.init(title: "Failed Fb login", message: "\(error)", delegate: self, cancelButtonTitle: "OK")
                 alert.show()
                 //                self.loginSuccess(result.token)
             } else if result.isCancelled {
-                print("Cancelled")
+//                print("Cancelled")
             } else {
                 self.loginSuccess(result.token)
             }
@@ -133,7 +133,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                 APIClient.sendGET(APIPath.CheckUserStatus)
             }
         }else{
-            print("login user with facebook")
+//            print("login user with facebook")
         }
         /*
          if(NSUserDefaults.standardUserDefaults().objectForKey("userToken") != nil){
@@ -156,7 +156,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
             FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, email, gender,birthday"]).startWithCompletionHandler({ (connection, result, error) -> Void in
                 if (error == nil){
                     
-                    print(result)
+//                    print(result)
                     
                     var userDetails  = [String: AnyObject]()
                     

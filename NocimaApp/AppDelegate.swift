@@ -133,7 +133,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     annotation:annotation];
     }*/
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        print(deviceToken)
+//        print(deviceToken)
     }
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         print(error)

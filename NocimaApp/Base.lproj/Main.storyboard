@@ -910,6 +910,7 @@
                             </imageView>
                             <imageView tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="54c-ra-Qfx">
                                 <rect key="frame" x="19" y="550" width="102" height="90"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="54c-ra-Qfx" secondAttribute="height" multiplier="101:3" id="DM7-7e-T5f"/>
                                     <constraint firstAttribute="height" constant="90" id="QAm-GB-OgK"/>
@@ -924,6 +925,7 @@
                             </imageView>
                             <imageView tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zlm-2x-vVK">
                                 <rect key="frame" x="137" y="550" width="102" height="90"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Zlm-2x-vVK" secondAttribute="height" multiplier="101:90" id="I2C-4w-cKP"/>
                                     <constraint firstAttribute="width" secondItem="Zlm-2x-vVK" secondAttribute="height" multiplier="101:3" id="MtI-9b-GzO"/>
@@ -938,6 +940,7 @@
                             </imageView>
                             <imageView tag="4" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xlo-iK-EQ6">
                                 <rect key="frame" x="254" y="550" width="103" height="90"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="ViR-Ev-84Q"/>
                                     <constraint firstAttribute="width" secondItem="xlo-iK-EQ6" secondAttribute="height" multiplier="101:90" id="eAH-Pm-Vqg"/>
