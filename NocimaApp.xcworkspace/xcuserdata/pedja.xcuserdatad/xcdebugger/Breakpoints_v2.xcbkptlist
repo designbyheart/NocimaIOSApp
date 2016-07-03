@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NocimaApp/Controller/LoginViewController.swift"
-            timestampString = "489256810.872179"
+            timestampString = "489268032.016525"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "437"
-            endingLineNumber = "437"
+            startingLineNumber = "438"
+            endingLineNumber = "438"
             landmarkName = "cancelAllViews(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -73,13 +73,13 @@
                   symbolName = "NocimaApp.MyProfileViewController.galleryLoadingSuccess (__ObjC.NSNotification) -&gt; ()"
                   moduleName = "NocimaApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pedja/Work/DatingApp/iOS/NocimaApp/NocimaApp/Controller/MyProfileViewController.swift"
-                  timestampString = "489265200.471017"
+                  urlString = "file:///Users/Pedja/Work/nocima/NocimaApp/Controller/MyProfileViewController.swift"
+                  timestampString = "489268227.010377"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "176"
                   endingLineNumber = "176"
-                  offsetFromSymbolStart = "848">
+                  offsetFromSymbolStart = "1058">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -88,13 +88,13 @@
                   symbolName = "NocimaApp.MyProfileViewController.galleryLoadingSuccess (__ObjC.NSNotification) -&gt; ()"
                   moduleName = "NocimaApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pedja/Work/DatingApp/iOS/NocimaApp/NocimaApp/Controller/MyProfileViewController.swift"
-                  timestampString = "489265200.471218"
+                  urlString = "file:///Users/Pedja/Work/nocima/NocimaApp/Controller/MyProfileViewController.swift"
+                  timestampString = "489268227.010611"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "176"
                   endingLineNumber = "176"
-                  offsetFromSymbolStart = "1128">
+                  offsetFromSymbolStart = "1386">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -121,13 +121,13 @@
                   symbolName = "NocimaApp.MyProfileViewController.galleryLoadingFail (__ObjC.NSNotification) -&gt; ()"
                   moduleName = "NocimaApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pedja/Work/DatingApp/iOS/NocimaApp/NocimaApp/Controller/MyProfileViewController.swift"
-                  timestampString = "489265200.472641"
+                  urlString = "file:///Users/Pedja/Work/nocima/NocimaApp/Controller/MyProfileViewController.swift"
+                  timestampString = "489268227.01179"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "188"
                   endingLineNumber = "188"
-                  offsetFromSymbolStart = "848">
+                  offsetFromSymbolStart = "1058">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -136,13 +136,13 @@
                   symbolName = "NocimaApp.MyProfileViewController.galleryLoadingFail (__ObjC.NSNotification) -&gt; ()"
                   moduleName = "NocimaApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pedja/Work/DatingApp/iOS/NocimaApp/NocimaApp/Controller/MyProfileViewController.swift"
-                  timestampString = "489265200.47308"
+                  urlString = "file:///Users/Pedja/Work/nocima/NocimaApp/Controller/MyProfileViewController.swift"
+                  timestampString = "489268227.011959"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "188"
                   endingLineNumber = "188"
-                  offsetFromSymbolStart = "1128">
+                  offsetFromSymbolStart = "1386">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -169,13 +169,13 @@
                   symbolName = "NocimaApp.MyProfileViewController.galleryLoadingSuccess (__ObjC.NSNotification) -&gt; ()"
                   moduleName = "NocimaApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pedja/Work/DatingApp/iOS/NocimaApp/NocimaApp/Controller/MyProfileViewController.swift"
-                  timestampString = "489265200.474535"
+                  urlString = "file:///Users/Pedja/Work/nocima/NocimaApp/Controller/MyProfileViewController.swift"
+                  timestampString = "489268227.012962"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "171"
                   endingLineNumber = "171"
-                  offsetFromSymbolStart = "32">
+                  offsetFromSymbolStart = "19">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -184,13 +184,13 @@
                   symbolName = "NocimaApp.MyProfileViewController.galleryLoadingSuccess (__ObjC.NSNotification) -&gt; ()"
                   moduleName = "NocimaApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pedja/Work/DatingApp/iOS/NocimaApp/NocimaApp/Controller/MyProfileViewController.swift"
-                  timestampString = "489265200.474765"
+                  urlString = "file:///Users/Pedja/Work/nocima/NocimaApp/Controller/MyProfileViewController.swift"
+                  timestampString = "489268227.013105"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "171"
                   endingLineNumber = "171"
-                  offsetFromSymbolStart = "260">
+                  offsetFromSymbolStart = "292">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -217,13 +217,13 @@
                   symbolName = "NocimaApp.MyProfileViewController.galleryLoadingFail (__ObjC.NSNotification) -&gt; ()"
                   moduleName = "NocimaApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pedja/Work/DatingApp/iOS/NocimaApp/NocimaApp/Controller/MyProfileViewController.swift"
-                  timestampString = "489265200.476232"
+                  urlString = "file:///Users/Pedja/Work/nocima/NocimaApp/Controller/MyProfileViewController.swift"
+                  timestampString = "489268227.013924"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "183"
                   endingLineNumber = "183"
-                  offsetFromSymbolStart = "32">
+                  offsetFromSymbolStart = "19">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -232,13 +232,13 @@
                   symbolName = "NocimaApp.MyProfileViewController.galleryLoadingFail (__ObjC.NSNotification) -&gt; ()"
                   moduleName = "NocimaApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pedja/Work/DatingApp/iOS/NocimaApp/NocimaApp/Controller/MyProfileViewController.swift"
-                  timestampString = "489265200.476452"
+                  urlString = "file:///Users/Pedja/Work/nocima/NocimaApp/Controller/MyProfileViewController.swift"
+                  timestampString = "489268227.014109"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "183"
                   endingLineNumber = "183"
-                  offsetFromSymbolStart = "260">
+                  offsetFromSymbolStart = "292">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -265,13 +265,13 @@
                   symbolName = "NocimaApp.MyProfileViewController.imagePickerController (__ObjC.UIImagePickerController, didFinishPickingMediaWithInfo : Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;) -&gt; ()"
                   moduleName = "NocimaApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pedja/Work/DatingApp/iOS/NocimaApp/NocimaApp/Controller/MyProfileViewController.swift"
-                  timestampString = "489265200.477768"
+                  urlString = "file:///Users/Pedja/Work/nocima/NocimaApp/Controller/MyProfileViewController.swift"
+                  timestampString = "489268227.014905"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "133"
                   endingLineNumber = "133"
-                  offsetFromSymbolStart = "36">
+                  offsetFromSymbolStart = "30">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -280,13 +280,13 @@
                   symbolName = "NocimaApp.MyProfileViewController.imagePickerController (__ObjC.UIImagePickerController, didFinishPickingMediaWithInfo : Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;) -&gt; ()"
                   moduleName = "NocimaApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pedja/Work/DatingApp/iOS/NocimaApp/NocimaApp/Controller/MyProfileViewController.swift"
-                  timestampString = "489265200.477999"
+                  urlString = "file:///Users/Pedja/Work/nocima/NocimaApp/Controller/MyProfileViewController.swift"
+                  timestampString = "489268227.015031"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "133"
                   endingLineNumber = "133"
-                  offsetFromSymbolStart = "276">
+                  offsetFromSymbolStart = "310">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -361,12 +361,44 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NocimaApp/API/APIClient.swift"
-            timestampString = "489265242.740003"
+            filePath = "NocimaApp/Controller/WelcomeViewController.swift"
+            timestampString = "489267684.15003"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "updateProfileSuccess(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NocimaApp/Controller/WelcomeViewController.swift"
+            timestampString = "489267688.563492"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "updateProfile(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NocimaApp/API/APIClient.swift"
+            timestampString = "489268093.381468"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "sendPOST(_:params:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -378,11 +410,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NocimaApp/API/APIClient.swift"
-            timestampString = "489265378.499352"
+            timestampString = "489268095.248868"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "137"
             endingLineNumber = "137"
+            landmarkName = "sendPOST(_:params:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NocimaApp/API/APIClient.swift"
+            timestampString = "489268098.533637"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
             landmarkName = "sendPOST(_:params:)"
             landmarkType = "5">
          </BreakpointContent>

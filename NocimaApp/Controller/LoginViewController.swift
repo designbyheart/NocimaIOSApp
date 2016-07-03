@@ -202,6 +202,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
     //MARK: - API notifications
     func updateSuccess(n:NSNotification){
         if let data = n.object as? Dictionary<String, AnyObject>{
+            print(data)
             if let method = data["method"] as? String{
                 if (method != APIPath.UpdateUserData.rawValue &&
                     method != APIPath.Register.rawValue &&
