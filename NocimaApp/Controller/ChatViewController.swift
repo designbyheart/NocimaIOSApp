@@ -37,7 +37,7 @@ class ChatViewController: JSQMessagesViewController  {
         self.collectionView.contentInset = UIEdgeInsetsMake(240, -20, 20, -20)
         
         userThumb = UIImageView.init(frame: CGRectMake(0, 0, 80, 80))
-        userThumb.center = CGPointMake(self.view.frame.size.width / 2 + 60, 120)
+        userThumb.center = CGPointMake(self.view.frame.size.width / 2 + 50, 120)
         userThumb.layer.cornerRadius = 15
         userThumb.layer.masksToBounds = true
         self.view .addSubview(userThumb)
@@ -71,7 +71,7 @@ class ChatViewController: JSQMessagesViewController  {
     }
     func setupTitle(){
         let titleWidth = self.view.frame.size.width * 0.8
-        self.titleView = UILabel(frame: CGRectMake((self.view.frame.size.width-titleWidth)/2 + 60, 30, titleWidth, 40))
+        self.titleView = UILabel(frame: CGRectMake((self.view.frame.size.width-titleWidth)/2 + 50, 30, titleWidth, 40))
         self.titleView.textColor = UIColor.whiteColor()
         self.titleView.textAlignment = NSTextAlignment.Center
         self.titleView.font = UIFont.init(name: "Source Sans Pro", size: 25)

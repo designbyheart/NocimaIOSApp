@@ -138,6 +138,7 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UIImagePicke
                 print("\(totalBytesWritten) / \(totalBytesExpectedToWrite)")
             }
             .responseJSON { (response) in
+
                 let alert = UIAlertView.init(title: "Success", message: "Korisnik je ažuriran", delegate: self, cancelButtonTitle: "OK")
                 alert.show()
                 self.performSegueWithIdentifier("openPendingView", sender: self)

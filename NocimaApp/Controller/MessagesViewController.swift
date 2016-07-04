@@ -21,6 +21,8 @@ class MessagesViewController: MainViewController {
 //        self.navigationMenu.initMenuBttn()
         self.navigationMenu.initBackBttn()
         
+        self.tableView.separatorColor = UIColor.init(white: 0.3, alpha: 0.3)
+        
         self.navigationController?.navigationBarHidden = true
         
         noChatLbl.text = "Trenutno nema aktivnih dopisivanja"

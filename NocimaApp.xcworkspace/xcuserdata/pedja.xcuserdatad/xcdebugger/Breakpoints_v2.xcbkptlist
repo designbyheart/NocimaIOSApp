@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NocimaApp/Controller/WelcomeViewController.swift"
-            timestampString = "489256810.872179"
+            timestampString = "489328767.499355"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
-            landmarkName = "updateProfileFail(_:)"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "updateProfileSuccess(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
