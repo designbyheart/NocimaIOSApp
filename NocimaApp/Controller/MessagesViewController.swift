@@ -10,13 +10,30 @@ import UIKit
 
 class MessagesViewController: MainViewController {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noChatLbl: UILabel!
+    
     var userChats = []
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationMenu = NavigationView(controller: self)
-        self.navigationMenu.titleView.text = "HeatMap"
-        self.navigationMenu.initMenuBttn()
+        self.navigationMenu.titleView.text = "Moja dopisivanja"
+//        self.navigationMenu.initMenuBttn()
+        self.navigationMenu.initBackBttn()
+        
+        self.navigationController?.navigationBarHidden = true
+        
+        noChatLbl.text = "Trenutno nema aktivnih dopisivanja"
+        noChatLbl.hidden = true
+        
+    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(MessagesViewController.loadMessagesSuccess(_:)), name: APINotification.Success.rawValue, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MessagesViewController.loadMessagesFail(_:)), name: APINotification.Fail.rawValue, object: nil)
+
+        APIClient.sendPOST(APIPath.ChatHistory, params: [:])
     }
     
     //MARK: - TableView delegates
@@ -42,5 +59,29 @@ class MessagesViewController: MainViewController {
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 80.0
+    }
+    //MARK: - Load messages delegate
+    func loadMessagesSuccess(n:NSNotification){
+        if let response = n.object {
+            if let method = response["method"] as? String {
+                if (method != APIPath.ChatHistory.rawValue) {
+                    return;
+                }
+                if let res = response["response"]{
+                    if let chatHistory = res!["chats"] as? [AnyObject]{
+                        if chatHistory.count > 0{
+                            userChats = chatHistory
+                            self.tableView.reloadData()
+                            self.noChatLbl.hidden = true
+                        }else{
+                            self.noChatLbl.hidden = false
+                        }
+                    }
+                }
+            }
+        }
+    }
+    func loadMessagesFail(n:NSNotification){
+        
     }
 }

@@ -19,6 +19,7 @@ class MyProfileViewController: MainViewController,UIImagePickerControllerDelegat
     @IBOutlet weak var fourthImageView: UIImageView!
     @IBOutlet weak var maleLbl: UIButton!
     @IBOutlet weak var femaleLbl: UIButton!
+    let gallery = [Dictionary<String, AnyObject>]()
     let imagePicker = UIImagePickerController()
     
     var imgIndex = 0
@@ -37,6 +38,11 @@ class MyProfileViewController: MainViewController,UIImagePickerControllerDelegat
         self.fourthImageView.layer.cornerRadius = 3
         self.mainImageView.layer.cornerRadius = 3
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(MyProfileViewController.galleryLoadingSuccess(_:)), name: APINotification.Success.rawValue, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MyProfileViewController.galleryLoadingFail(_:)), name: APINotification.Fail.rawValue, object: nil)
+        
+        APIClient.sendPOST(APIPath.UserGallery, params:[:]);
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -46,8 +52,9 @@ class MyProfileViewController: MainViewController,UIImagePickerControllerDelegat
         if let titleView = self.navigationMenu.titleView{
             titleView.text = "My Profile"
         }
-        self.navigationMenu.initMenuBttn()
         self.navigationMenu.initChatBttn()
+        self.navigationMenu.initMenuBttn()
+        
         
         if let userDetails = NSUserDefaults.standardUserDefaults().objectForKey("userDetails"){
             
@@ -67,50 +74,55 @@ class MyProfileViewController: MainViewController,UIImagePickerControllerDelegat
             }
             
             //        let params: [NSObject : AnyObject] = ["redirect": false, "height": 800, "width": 800, "type": "large"]
-//            if (userDetails["facebookID"] as? String) != nil{
-//                let pictureRequest = FBSDKGraphRequest(graphPath: "me/picture?type=large&redirect=false", parameters: params)
-//                pictureRequest.startWithCompletionHandler({
-//                    (connection, result, error: NSError!) -> Void in
-//                    if error == nil {
-//                        if let data = result["data"]{
-//                            if let url = data!["url"] as? String{
-//                                NSUserDefaults.standardUserDefaults().setObject(url, forKey: "myProfileImg")
-//                                NSUserDefaults.standardUserDefaults().synchronize()
-//                                self.downloadImage(NSURL.init(string: url)!, imageView: self.mainImageView)
-//                            }
-//                        }
-//                        
-//                    } else {
-//                        print("\(error)")
-//                    }
-//                })
-//            }
+            //            if (userDetails["facebookID"] as? String) != nil{
+            //                let pictureRequest = FBSDKGraphRequest(graphPath: "me/picture?type=large&redirect=false", parameters: params)
+            //                pictureRequest.startWithCompletionHandler({
+            //                    (connection, result, error: NSError!) -> Void in
+            //                    if error == nil {
+            //                        if let data = result["data"]{
+            //                            if let url = data!["url"] as? String{
+            //                                NSUserDefaults.standardUserDefaults().setObject(url, forKey: "myProfileImg")
+            //                                NSUserDefaults.standardUserDefaults().synchronize()
+            //                                self.downloadImage(NSURL.init(string: url)!, imageView: self.mainImageView)
+            //                            }
+            //                        }
+            //
+            //                    } else {
+            //                        print("\(error)")
+            //                    }
+            //                })
+            //            }
         }
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(MyProfileViewController.galleryLoadingSuccess(_:)), name: APINotification.Success.rawValue, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MyProfileViewController.galleryLoadingFail(_:)), name: APINotification.Fail.rawValue, object: nil)
-//        let params = NSUserDefaults.standardUserDefaults().objectForKey("userDetails") as? Dictionary<String, AnyObject>
         
     }
+
     func downloadImage(url: NSURL, imageView:UIImageView){
-        print("Download Started")
-        print("lastPathComponent: " + (url.lastPathComponent ?? ""))
+//        print("Download Started")
+//        print("lastPathComponent: " + (url.lastPathComponent ?? ""))
+        if let imageData = NSUserDefaults.standardUserDefaults().objectForKey(url.URLString) as? NSData{
+            imageView.image = UIImage(data: imageData)
+            return
+        }
         
         APIClient.getDataFromUrl(url) { (data, response, error)  in
             dispatch_async(dispatch_get_main_queue()) { () -> Void in
                 guard let data = data where error == nil else {
                     return
                 }
-                print(response?.suggestedFilename ?? "")
-                print("Download Finished")
+//                print(response?.suggestedFilename ?? "")
+//                print("Download Finished")
                 imageView.image = UIImage(data: data)
+                NSUserDefaults.standardUserDefaults().setObject(data, forKey: url.URLString)
+                NSUserDefaults.standardUserDefaults().synchronize()
             }
         }
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        APIClient.sendPOST(APIPath.UserGallery, params:[:]);
+        if let images = NSUserDefaults.standardUserDefaults().objectForKey("gallery")  as? Array<AnyObject>{
+            self.loadImages(images)
+        }
     }
     
     //MARK: - upload image actions
@@ -119,15 +131,15 @@ class MyProfileViewController: MainViewController,UIImagePickerControllerDelegat
         self.imgIndex = 1
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .PhotoLibrary
-           presentViewController(imagePicker, animated: true, completion: nil)
+        presentViewController(imagePicker, animated: true, completion: nil)
     }
     @IBAction func uploadSecondaryImg(sender: AnyObject) {
         self.imgIndex = sender.tag
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .PhotoLibrary
-           presentViewController(imagePicker, animated: true, completion: nil)
+        presentViewController(imagePicker, animated: true, completion: nil)
     }
-
+    
     //MARK: - Image picker delegates
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -154,13 +166,12 @@ class MyProfileViewController: MainViewController,UIImagePickerControllerDelegat
             img.contentMode = .ScaleAspectFill
             img.image = pickedImage
             
-//            image.image = UIImage.init(named: "editIcon")
-//            self.addVerticalConstraint.constant = 100
-//            self.addHorizontalContraint.constant = 130
+            APIClient.uploadImage(pickedImage, position: self.imgIndex)
+            //            image.image = UIImage.init(named: "editIcon")
+            //            self.addVerticalConstraint.constant = 100
+            //            self.addHorizontalContraint.constant = 130
         }
         dismissViewControllerAnimated(true, completion: nil)
-        
-        
         //start uploading image
     }
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
@@ -173,8 +184,38 @@ class MyProfileViewController: MainViewController,UIImagePickerControllerDelegat
                 if (method != APIPath.UserGallery.rawValue){
                     return
                 }
-                if let response = data["response"] as? Dictionary<String, AnyObject>{
-                    print(response)
+                if let response = data["response"] as? [String:AnyObject]{
+                    if let images = response["images"] as? [AnyObject]{
+                        self.loadImages(images)
+                        NSUserDefaults.standardUserDefaults().setObject(images, forKey: "gallery")
+                        NSUserDefaults.standardUserDefaults().synchronize()
+                    }
+                }
+            }
+        }
+    }
+    func loadImages(images:Array<AnyObject>){
+        for imageData in images{
+            if let imageURL = imageData["imageURL"] as? String{
+                if let position = imageData["position"] as? Int{
+                    switch(position){
+                    case 1:
+                        self.downloadImage(NSURL.init(string: imageURL)!, imageView: self.mainImageView)
+                        break
+                    case 2:
+                        self.downloadImage(NSURL.init(string: imageURL)!, imageView: self.secondImageView)
+                        break
+                    case 3:
+                        self.downloadImage(NSURL.init(string: imageURL)!, imageView: self.thirdImageView)
+                        break
+                    case 4:
+                        self.downloadImage(NSURL.init(string: imageURL)!, imageView: self.fourthImageView)
+                        break
+                        
+                    default:
+                        self.downloadImage(NSURL.init(string: imageURL)!, imageView: self.mainImageView)
+                        break;
+                    }
                 }
             }
         }

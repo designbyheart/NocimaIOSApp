@@ -34,6 +34,7 @@ class SettingsViewController: MainViewController {
         self.navigationMenu = NavigationView(controller: self)
         self.navigationMenu.titleView.text = "Podešavanja"
         self.navigationMenu.initMenuBttn()
+        self.navigationMenu.initChatBttn()
         
         if let rad = NSUserDefaults.standardUserDefaults().objectForKey("radius"){
             radiusLbl.text = rad as? String

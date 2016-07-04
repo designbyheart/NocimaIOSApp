@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A201w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="n17-n9-nC0">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="n17-n9-nC0">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -12,6 +12,7 @@
             <string>SourceSansPro-Bold</string>
         </mutableArray>
         <mutableArray key="SourceSansPro-Light.ttf">
+            <string>SourceSansPro-Light</string>
             <string>SourceSansPro-Light</string>
             <string>SourceSansPro-Light</string>
             <string>SourceSansPro-Light</string>
@@ -297,14 +298,14 @@
                         <segue destination="nlr-GY-Igh" kind="show" identifier="openMyProfileView" id="UEU-ZX-sbh"/>
                         <segue destination="UZz-BF-qua" kind="show" identifier="openLocationView" id="2lJ-3Q-ByR"/>
                         <segue destination="6tS-UR-kae" kind="show" identifier="openSettingsView" id="OsO-rF-pVP"/>
-                        <segue destination="SU4-3h-GK4" kind="presentation" identifier="openMessages" id="a4u-qC-grb"/>
                         <segue destination="8zu-0h-Vow" kind="show" identifier="openLoginView" id="P4t-VA-e4r"/>
                         <segue destination="Dj4-dQ-tZ1" kind="presentation" identifier="showMatchView" id="Vmf-6G-yu6"/>
+                        <segue destination="SU4-3h-GK4" kind="show" identifier="openMessageList" id="XKU-VZ-TRY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EoA-kj-Lje" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1470.5" y="822.5"/>
+            <point key="canvasLocation" x="2282.5" y="822.5"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="L5q-5H-NPH">
@@ -551,8 +552,8 @@
                         <segue destination="nlr-GY-Igh" kind="show" identifier="openMyProfileView" id="bIU-dy-tkD"/>
                         <segue destination="6tS-UR-kae" kind="show" identifier="openSettingsView" id="auB-Vh-wr2"/>
                         <segue destination="hET-Qg-eph" kind="show" identifier="openLocationView" id="ZNN-z4-kaY"/>
-                        <segue destination="SU4-3h-GK4" kind="presentation" identifier="openMessages" id="kf4-8f-cWt"/>
                         <segue destination="8zu-0h-Vow" kind="show" identifier="openLoginView" id="rkF-GS-cZN"/>
+                        <segue destination="SU4-3h-GK4" kind="show" identifier="openMessageList" id="kBD-JV-e8y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ctX-lR-VBa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -574,7 +575,6 @@
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <segue destination="SU4-3h-GK4" kind="presentation" identifier="openMessages" id="17e-ub-Z2Z"/>
                         <segue destination="8zu-0h-Vow" kind="show" identifier="openLoginView" id="Qay-Rk-mfF"/>
                     </connections>
                 </viewController>
@@ -833,13 +833,13 @@
                         <segue destination="UZz-BF-qua" kind="show" identifier="openLocationView" id="UDe-f4-U09"/>
                         <segue destination="QhC-aS-quI" kind="show" identifier="openLikeView" id="S6H-yd-Wsm"/>
                         <segue destination="8zu-0h-Vow" kind="show" identifier="openLogin" id="17h-yT-9xW"/>
-                        <segue destination="SU4-3h-GK4" kind="presentation" identifier="openMessages" id="r9U-QL-2v3"/>
                         <segue destination="8zu-0h-Vow" kind="show" identifier="openLoginView" id="mtR-h7-MIu"/>
+                        <segue destination="SU4-3h-GK4" kind="show" identifier="openMessageList" id="5g6-Mc-Y7S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Y4-Tk-0IP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2205.5" y="1057.5"/>
+            <point key="canvasLocation" x="3017.5" y="1057.5"/>
         </scene>
         <!--My Profile View Controller-->
         <scene sceneID="HTk-6h-VeV">
@@ -895,7 +895,7 @@
                                     <color key="titleColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
-                            <imageView tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iBF-XD-a64">
+                            <imageView clipsSubviews="YES" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iBF-XD-a64">
                                 <rect key="frame" x="19" y="200" width="338" height="340"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -908,7 +908,7 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <imageView tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="54c-ra-Qfx">
+                            <imageView clipsSubviews="YES" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="54c-ra-Qfx">
                                 <rect key="frame" x="19" y="550" width="102" height="90"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -923,7 +923,7 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <imageView tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zlm-2x-vVK">
+                            <imageView clipsSubviews="YES" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zlm-2x-vVK">
                                 <rect key="frame" x="137" y="550" width="102" height="90"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -938,7 +938,7 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <imageView tag="4" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xlo-iK-EQ6">
+                            <imageView clipsSubviews="YES" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xlo-iK-EQ6">
                                 <rect key="frame" x="254" y="550" width="103" height="90"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -953,13 +953,13 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bEE-hG-af4" userLabel="thirdImgBttn">
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bEE-hG-af4" userLabel="thirdImgBttn">
                                 <rect key="frame" x="137" y="550" width="102" height="90"/>
                                 <connections>
                                     <action selector="uploadSecondaryImg:" destination="nlr-GY-Igh" eventType="touchUpInside" id="WAA-kn-Jk9"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Olr-xh-nq8" userLabel="fourthImgBttn">
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Olr-xh-nq8" userLabel="fourthImgBttn">
                                 <rect key="frame" x="254" y="550" width="103" height="90"/>
                                 <connections>
                                     <action selector="uploadSecondaryImg:" destination="nlr-GY-Igh" eventType="touchUpInside" id="7Lb-Xi-ClO"/>
@@ -971,21 +971,51 @@
                                     <action selector="uploadPrimaryImg:" destination="nlr-GY-Igh" eventType="touchUpInside" id="QiF-RW-VNo"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbi-7E-Ukw" userLabel="secondaryImgBttn">
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbi-7E-Ukw" userLabel="secondaryImgBttn">
                                 <rect key="frame" x="19" y="550" width="102" height="90"/>
                                 <connections>
                                     <action selector="uploadSecondaryImg:" destination="nlr-GY-Igh" eventType="touchUpInside" id="8WN-8e-f3X"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="editIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ONx-QN-YMX">
+                                <rect key="frame" x="213" y="614" width="16" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="16" id="AlF-Th-ooh"/>
+                                    <constraint firstAttribute="height" constant="16" id="grv-fq-bru"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="editIcon" translatesAutoresizingMaskIntoConstraints="NO" id="EK3-1M-OVh">
+                                <rect key="frame" x="95" y="614" width="16" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="f09-pt-vl1"/>
+                                    <constraint firstAttribute="width" constant="16" id="hXw-p6-FxK"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="editIcon" translatesAutoresizingMaskIntoConstraints="NO" id="k3R-R8-xs1">
+                                <rect key="frame" x="313" y="496" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="JKZ-60-Wcl"/>
+                                    <constraint firstAttribute="height" constant="24" id="vN6-0t-9Gg"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="editIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Avo-WI-6pX">
+                                <rect key="frame" x="331" y="614" width="16" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="SbI-YI-Vj6"/>
+                                    <constraint firstAttribute="width" constant="16" id="Tvy-0a-COB"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Avo-WI-6pX" firstAttribute="bottom" secondItem="Olr-xh-nq8" secondAttribute="bottom" constant="-10" id="25T-Ry-TXa"/>
                             <constraint firstItem="54c-ra-Qfx" firstAttribute="width" secondItem="iBF-XD-a64" secondAttribute="width" multiplier="0.3" constant="1" id="3Lu-1V-fGo"/>
                             <constraint firstItem="uMC-PJ-aCJ" firstAttribute="width" secondItem="Jrm-cs-MMK" secondAttribute="width" multiplier="0.45" id="5SI-Pw-Y6K"/>
                             <constraint firstItem="pWj-gx-fe3" firstAttribute="width" secondItem="Jrm-cs-MMK" secondAttribute="width" multiplier="0.2" id="7Hk-eg-ikd"/>
                             <constraint firstItem="tbi-7E-Ukw" firstAttribute="height" secondItem="54c-ra-Qfx" secondAttribute="height" id="7dR-Io-uvR"/>
                             <constraint firstItem="bEE-hG-af4" firstAttribute="centerY" secondItem="Zlm-2x-vVK" secondAttribute="centerY" id="8cG-h3-pqz"/>
                             <constraint firstItem="Olr-xh-nq8" firstAttribute="width" secondItem="xlo-iK-EQ6" secondAttribute="width" id="93P-s8-2FQ"/>
+                            <constraint firstItem="k3R-R8-xs1" firstAttribute="bottom" secondItem="fWm-sA-C4z" secondAttribute="bottom" constant="-20" id="9Qa-KR-S9i"/>
                             <constraint firstItem="fWm-sA-C4z" firstAttribute="centerX" secondItem="iBF-XD-a64" secondAttribute="centerX" id="AcF-Rh-U6h"/>
                             <constraint firstItem="uMC-PJ-aCJ" firstAttribute="leading" secondItem="iBF-XD-a64" secondAttribute="leading" id="AoK-X1-Oiw"/>
                             <constraint firstItem="tbi-7E-Ukw" firstAttribute="centerX" secondItem="54c-ra-Qfx" secondAttribute="centerX" id="B1j-jm-uiw"/>
@@ -997,7 +1027,11 @@
                             <constraint firstItem="xlo-iK-EQ6" firstAttribute="trailing" secondItem="iBF-XD-a64" secondAttribute="trailing" id="ECJ-d0-a1o"/>
                             <constraint firstItem="fWm-sA-C4z" firstAttribute="centerY" secondItem="iBF-XD-a64" secondAttribute="centerY" id="EOP-ho-5vF"/>
                             <constraint firstItem="fWm-sA-C4z" firstAttribute="top" secondItem="iBF-XD-a64" secondAttribute="top" id="EUD-2M-ey1"/>
+                            <constraint firstItem="EK3-1M-OVh" firstAttribute="bottom" secondItem="tbi-7E-Ukw" secondAttribute="bottom" constant="-10" id="F0W-yB-lm5"/>
+                            <constraint firstItem="EK3-1M-OVh" firstAttribute="trailing" secondItem="tbi-7E-Ukw" secondAttribute="trailing" constant="-10" id="GmM-z5-Y8S"/>
+                            <constraint firstItem="k3R-R8-xs1" firstAttribute="trailing" secondItem="fWm-sA-C4z" secondAttribute="trailing" constant="-20" id="H8U-Da-J2f"/>
                             <constraint firstItem="fWm-sA-C4z" firstAttribute="width" secondItem="iBF-XD-a64" secondAttribute="width" id="HrM-v0-Yli"/>
+                            <constraint firstItem="Avo-WI-6pX" firstAttribute="trailing" secondItem="Olr-xh-nq8" secondAttribute="trailing" constant="-10" id="IaC-a4-ewA"/>
                             <constraint firstItem="kYI-sT-e94" firstAttribute="width" secondItem="KAz-qR-0QH" secondAttribute="width" id="NFD-M0-r1v"/>
                             <constraint firstItem="fWm-sA-C4z" firstAttribute="height" secondItem="iBF-XD-a64" secondAttribute="height" id="ODs-Zm-zQa"/>
                             <constraint firstItem="0n2-8x-Rlo" firstAttribute="leading" secondItem="kYI-sT-e94" secondAttribute="leading" id="Rb6-ZQ-Wn3"/>
@@ -1014,6 +1048,7 @@
                             <constraint firstItem="Olr-xh-nq8" firstAttribute="height" secondItem="xlo-iK-EQ6" secondAttribute="height" id="eJS-jl-Kmh"/>
                             <constraint firstItem="pWj-gx-fe3" firstAttribute="top" secondItem="kYI-sT-e94" secondAttribute="bottom" constant="-5" id="g9Y-re-Fo0"/>
                             <constraint firstItem="KAz-qR-0QH" firstAttribute="leading" secondItem="Jrm-cs-MMK" secondAttribute="leading" constant="20" id="h2x-ec-ukI"/>
+                            <constraint firstItem="ONx-QN-YMX" firstAttribute="trailing" secondItem="bEE-hG-af4" secondAttribute="trailing" constant="-10" id="hY5-oS-RgO"/>
                             <constraint firstItem="uMC-PJ-aCJ" firstAttribute="top" secondItem="KAz-qR-0QH" secondAttribute="bottom" constant="-5" id="hjd-bY-jXR"/>
                             <constraint firstItem="54c-ra-Qfx" firstAttribute="width" secondItem="iBF-XD-a64" secondAttribute="width" multiplier="0.3" id="ily-mC-gF7"/>
                             <constraint firstItem="bEE-hG-af4" firstAttribute="height" secondItem="Zlm-2x-vVK" secondAttribute="height" id="lJq-Cw-H2v"/>
@@ -1029,6 +1064,7 @@
                             <constraint firstItem="bEE-hG-af4" firstAttribute="centerX" secondItem="Zlm-2x-vVK" secondAttribute="centerX" id="x3e-cR-e1U"/>
                             <constraint firstItem="iBF-XD-a64" firstAttribute="width" secondItem="Jrm-cs-MMK" secondAttribute="width" multiplier="0.9" id="y1r-Zl-mq3"/>
                             <constraint firstItem="KAz-qR-0QH" firstAttribute="top" secondItem="fOo-1B-2Dd" secondAttribute="bottom" constant="100" id="yNV-Te-V4r"/>
+                            <constraint firstItem="ONx-QN-YMX" firstAttribute="bottom" secondItem="bEE-hG-af4" secondAttribute="bottom" constant="-10" id="z2a-bm-Kz4"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -1053,8 +1089,8 @@
                         <segue destination="UZz-BF-qua" kind="show" identifier="openLocationView" id="huP-jL-gxA"/>
                         <segue destination="6tS-UR-kae" kind="show" identifier="openSettingsView" id="Ds3-ap-cgB"/>
                         <segue destination="QhC-aS-quI" kind="show" identifier="openLikeView" id="T93-nS-nIf"/>
-                        <segue destination="SU4-3h-GK4" kind="presentation" identifier="openMessages" id="mhI-2R-AC4"/>
                         <segue destination="8zu-0h-Vow" kind="show" identifier="openLoginView" id="eRK-U2-4MM"/>
+                        <segue destination="SU4-3h-GK4" kind="show" identifier="openMessageList" id="ffy-mx-xuj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y7Z-lN-mV7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1081,7 +1117,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oKq-dD-Hw3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2449.5" y="740.5"/>
+            <point key="canvasLocation" x="3261.5" y="740.5"/>
         </scene>
         <!--Messages View Controller-->
         <scene sceneID="Nlf-ea-6ID">
@@ -1106,7 +1142,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6IH-cu-tYk" id="d8N-e2-ciJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RnG-DM-HFm">
@@ -1148,6 +1184,12 @@
                                     <outlet property="delegate" destination="SU4-3h-GK4" id="9Lv-Az-L69"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="missing Chat" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fs-Q1-vu1">
+                                <rect key="frame" x="37" y="322" width="300" height="24"/>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Light" family="Source Sans Pro" pointSize="19"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -1156,20 +1198,30 @@
                             <constraint firstAttribute="trailing" secondItem="VRe-JG-8EG" secondAttribute="trailing" id="5no-tb-Bzk"/>
                             <constraint firstItem="fh4-Tw-cg7" firstAttribute="top" secondItem="Xa7-yq-3yc" secondAttribute="top" id="AtA-2S-5Fg"/>
                             <constraint firstItem="fh4-Tw-cg7" firstAttribute="leading" secondItem="Xa7-yq-3yc" secondAttribute="leading" id="OHh-30-pcW"/>
+                            <constraint firstItem="2fs-Q1-vu1" firstAttribute="centerX" secondItem="Xa7-yq-3yc" secondAttribute="centerX" id="P4K-md-b9d"/>
+                            <constraint firstItem="2fs-Q1-vu1" firstAttribute="centerY" secondItem="Xa7-yq-3yc" secondAttribute="centerY" id="U1N-XN-uyp"/>
                             <constraint firstItem="VRe-JG-8EG" firstAttribute="leading" secondItem="Xa7-yq-3yc" secondAttribute="leading" id="XmX-2Z-AOL"/>
                             <constraint firstItem="VRe-JG-8EG" firstAttribute="top" secondItem="BFJ-IW-mUf" secondAttribute="bottom" id="b2V-m4-uyf"/>
                             <constraint firstItem="nTw-rq-cJQ" firstAttribute="top" secondItem="fh4-Tw-cg7" secondAttribute="bottom" id="v9D-hH-Jak"/>
+                            <constraint firstItem="2fs-Q1-vu1" firstAttribute="width" secondItem="Xa7-yq-3yc" secondAttribute="width" multiplier="0.8" id="xtk-ef-kCO"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="oZj-uo-Lc2"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="noChatLbl" destination="2fs-Q1-vu1" id="mcu-pP-0Pn"/>
                         <outlet property="tableView" destination="VRe-JG-8EG" id="U50-qB-i9a"/>
                         <segue destination="8zu-0h-Vow" kind="show" identifier="openLoginView" id="hhR-td-L3L"/>
+                        <segue destination="UZz-BF-qua" kind="show" identifier="openLocationView" id="9LQ-2p-jta"/>
+                        <segue destination="QhC-aS-quI" kind="show" identifier="openLikeView" id="obb-ZA-ODz"/>
+                        <segue destination="6tS-UR-kae" kind="show" identifier="openSettingsView" id="cgN-sF-VLY"/>
+                        <segue destination="8zu-0h-Vow" kind="show" identifier="openLoginView" id="aI0-tV-Waa"/>
+                        <segue destination="nlr-GY-Igh" kind="show" identifier="openMyProfileView" id="g8X-xs-25S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rpC-xo-vLM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="658.5" y="799.5"/>
+            <point key="canvasLocation" x="1086.5" y="833.5"/>
         </scene>
         <!--Pending Activation View Controller-->
         <scene sceneID="WFc-FD-a6b">
@@ -1654,6 +1706,7 @@
     <resources>
         <image name="bottomDecoration" width="750" height="140"/>
         <image name="dislikeBttn" width="240" height="154"/>
+        <image name="editIcon" width="30" height="30"/>
         <image name="facebookIcon" width="32" height="32"/>
         <image name="heatmapIcon" width="32" height="29"/>
         <image name="infoIcon" width="24" height="24"/>
@@ -1665,12 +1718,12 @@
         <image name="viewBackground" width="750" height="1334"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="huP-jL-gxA"/>
-        <segue reference="bIU-dy-tkD"/>
-        <segue reference="eRK-U2-4MM"/>
-        <segue reference="T93-nS-nIf"/>
-        <segue reference="Ds3-ap-cgB"/>
-        <segue reference="mhI-2R-AC4"/>
+        <segue reference="9LQ-2p-jta"/>
+        <segue reference="ffy-mx-xuj"/>
+        <segue reference="g8X-xs-25S"/>
+        <segue reference="obb-ZA-ODz"/>
+        <segue reference="cgN-sF-VLY"/>
+        <segue reference="hhR-td-L3L"/>
         <segue reference="GJk-oN-oIb"/>
         <segue reference="dYj-pF-e1i"/>
     </inferredMetricsTieBreakers>

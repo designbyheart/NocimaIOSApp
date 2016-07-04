@@ -79,6 +79,7 @@ class LocationViewController: MainViewController,MGLMapViewDelegate, CLLocationM
         self.navigationMenu = NavigationView(controller: self)
         self.navigationMenu.titleView.text = "Gde izaći?"
         self.navigationMenu.initMenuBttn()
+        self.navigationMenu.initChatBttn()
         
         //        self.mapView.setCenterCoordinate(currentLocation,zoomLevel: 12, animated: false)
     }

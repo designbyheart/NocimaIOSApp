@@ -45,13 +45,18 @@ class NavigationView: UIView {
         self.menuBttn.imageEdgeInsets = UIEdgeInsetsMake(13, 20, 12, 20)
         self .addSubview(menuBttn)
     }
+    func initBackBttn(){
+        self.menuBttn = UIButton(frame:CGRectMake(5, 20, 60, 40))
+        self.menuBttn.setImage(UIImage(named: "backIcon"), forState: UIControlState.Normal)
+        self.menuBttn.imageEdgeInsets = UIEdgeInsetsMake(13, 20, 12, 20)
+        self .addSubview(menuBttn)
+    }
     
     func initChatBttn(){
         
-        self.chatBttn = UIButton(frame: CGRectMake(self.frame.size.width - 70, 20, 60, 40))
+        self.chatBttn = UIButton(frame: CGRectMake(self.frame.size.width - 65, 20, 60, 40))
         self.chatBttn.setImage(UIImage(named: "chatIcon"), forState: UIControlState.Normal)
-        self.chatBttn.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10)
+        self.chatBttn.contentEdgeInsets = UIEdgeInsetsMake(10, 18, 10, 18)
         self.addSubview(chatBttn)
-
     }
 }

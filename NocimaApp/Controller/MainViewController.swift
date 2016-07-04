@@ -29,15 +29,22 @@ class MainViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.openMyProfileView(_:)), name: "OpenMyProfileView", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.openSettingsView(_:)), name: "OpenSettingsView", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.openLoginView(_:)), name: "OpenLoginView", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.openLikeView(_:)), name: "OpenLikeView", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.openLikeView(_:)),
+                                                         name: "OpenLikeView", object: nil)
     }
     override func viewDidAppear(animated: Bool) {
         if let menuB:UIButton = self.navigationMenu.menuBttn{
             menuB .addTarget(self, action: #selector(MainViewController.openMenu(_:)), forControlEvents: UIControlEvents.TouchUpInside)
-            
-//            messsageB.addTarget(self, action: #selector(MainViewController.openMessages), forControlEvents: UIControlEvents.TouchUpOutside)
+        }
+        if let messageB:UIButton = self.navigationMenu.chatBttn{
+            messageB.addTarget(self, action: #selector(MainViewController.openMessages(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         }
     }
+//    func startBttns(){
+//        if let messageB:UIButton = self.navigationMenu.chatBttn{
+//            messageB.addTarget(self, action: #selector(MainViewController.openMessages(_:)), forControlEvents: UIControlEvents.TouchUpOutside)
+//        }
+//    }
     
     func openMenu(sender: AnyObject){
         UIView.animateWithDuration(0.3, delay: 0, options: .CurveEaseOut, animations: {
@@ -47,11 +54,21 @@ class MainViewController: UIViewController {
                 if let menuB:UIButton = self.navigationMenu.menuBttn{
                     menuB.hidden = true
                 }
+                if let chatB:UIButton = self.navigationMenu.chatBttn{
+                    chatB.hidden = true
+                }
         })
         
     }
-    func openMessages(){
-        self.performSegueWithIdentifier("openMessages", sender: self)
+    func openMessages(sender: AnyObject){
+        if let viewControllers = self.navigationController?.viewControllers{
+            if let activeController = viewControllers.last {
+                if !activeController.isKindOfClass(MessagesViewController){
+                    self.performSegueWithIdentifier("openMessageList", sender: self)
+                }
+            }
+        }
+        closeMenu()
     }
     func closeMenu(){
         UIView.animateWithDuration(0.3, delay: 0, options: .CurveEaseOut, animations: {
@@ -60,6 +77,9 @@ class MainViewController: UIViewController {
                 self.navigationMenu.titleView.hidden = false
                 if let menuB:UIButton = self.navigationMenu.menuBttn{
                     menuB.hidden = false
+                }
+                if let chatB:UIButton = self.navigationMenu.chatBttn{
+                    chatB.hidden = false
                 }
         })
     }
@@ -92,7 +112,7 @@ class MainViewController: UIViewController {
                 }
             }
         }
-
+        
         closeMenu()
     }
     func openMyProfileView(n:AnyObject) {
@@ -103,7 +123,7 @@ class MainViewController: UIViewController {
                 }
             }
         }
-
+        
         closeMenu()
     }
     func openLoginView(n:AnyObject){

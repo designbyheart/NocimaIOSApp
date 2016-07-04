@@ -23,6 +23,7 @@ enum APIPath:String {
     case UpdateSettings             = "updateSettings"
     case MessageList                = "messages"
     case NewMessage                 = "messages/new"
+    case ChatHistory                = "chatHistory"
     case UpdateImages               = "updateUserImages"
     case MatchUser                  = "matchUser"
     case ClubsList                  = "clubs/list"
@@ -58,7 +59,7 @@ public class APIClient {
             if(token.characters.count > 0){
                 hParams["X-AUTH"] = token
             }
-//            print("header params \(hParams)")
+            print("header params \(hParams)")
             return hParams
         }
         return [
@@ -323,29 +324,65 @@ public class APIClient {
         }
         uploadData.appendData("\r\n--\(boundaryConstant)--\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
         
-        
-        
         // return URLRequestConvertible and NSData
         return (Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: nil).0, uploadData)
     }
     static func uploadImage(image:UIImage, position:Int){
+        let resizedImg = self.ResizeImage(image, targetSize: CGSizeMake(image.size.width * 0.5, image.size.height*0.5))
         let params = ["position":position]
 //        let isAuthenticated:Bool! = NSUserDefaults.standardUserDefaults().objectForKey("userToken") != nil
 //        let headers = self.defaultHeader(isAuthenticated, method:APIPath.UploadImage)
 //        print(headers)
         
-        let imageData = UIImageJPEGRepresentation(image, 70)
-        let urlRequest = APIClient.urlRequestWithComponents("\(APIClient.apiRoot(APIPath.WelcomeData.rawValue))", parameters: params, imageData: imageData!)
+        let imageData = UIImageJPEGRepresentation(resizedImg, 70)
+        let urlRequest = APIClient.urlRequestWithComponents("\(APIClient.apiRoot(APIPath.UploadImage.rawValue))", parameters: params, imageData: imageData!)
         
         Alamofire.upload(urlRequest.0, data: urlRequest.1)
             .progress { (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite) in
-//                print("\(totalBytesWritten) / \(totalBytesExpectedToWrite)")
+                let progress = Double((totalBytesWritten * 100) / totalBytesExpectedToWrite).roundToPlaces(3)
+                print("\(progress)")
             }
             .responseJSON { (response) in
-//                print(response)
-                //                let alert = UIAlertView.init(title: "Success", message: "Korisnik je ažuriran", delegate: self, cancelButtonTitle: "OK")
-                //                alert.show()
-                //                self.performSegueWithIdentifier("openPendingView", sender: self)
+                
+                print(response)
+                if let value = response.result.value{
+                    if let imageURL = value["imageURL"] as? String{
+                        print(imageURL)
+                    }
+                }
+                
         }
+    }
+    static func ResizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
+        let size = image.size
+        
+        let widthRatio  = targetSize.width  / image.size.width
+        let heightRatio = targetSize.height / image.size.height
+        
+        // Figure out what our orientation is, and use that to form the rectangle
+        var newSize: CGSize
+        if(widthRatio > heightRatio) {
+            newSize = CGSizeMake(size.width * heightRatio, size.height * heightRatio)
+        } else {
+            newSize = CGSizeMake(size.width * widthRatio,  size.height * widthRatio)
+        }
+        
+        // This is the rect that we've calculated out and this is what is actually used below
+        let rect = CGRectMake(0, 0, newSize.width, newSize.height)
+        
+        // Actually do the resizing to the rect using the ImageContext stuff
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        image.drawInRect(rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
+}
+extension Double {
+    /// Rounds the double to decimal places value
+    func roundToPlaces(places:Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return round(self * divisor) / divisor
     }
 }

@@ -64,6 +64,7 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
         self.navigationMenu = NavigationView(controller: self)
         self.navigationMenu.titleView.text = "Da li mi se sviđa?"
         self.navigationMenu.initMenuBttn()
+        self.navigationMenu.initChatBttn()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LikeViewController.usersMatchListFail(_:)), name: APINotification.Fail.rawValue, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LikeViewController.usersMatchListSuccess(_:)), name: APINotification.Success.rawValue, object: nil)

@@ -115,15 +115,21 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     }
     //MARK: - update profile
     @IBAction func updateProfile(sender:AnyObject){
+        if(self.profileImg.image == nil){
+            let alert = UIAlertView.init(title: "Podsetnik", message: "Izaberite sliku za profil", delegate: self, cancelButtonTitle: "OK")
+            alert.show()
+            return
+        }
         let params = [
             "gender":self.gender,
             "firstName":self.nameTxt.text!,
             "birthYear":years[pickerView.selectedRowInComponent(0)]
         ];
-        
+        let img = self.profileImg.image
+       let resizedImg = APIClient.ResizeImage(img!, targetSize: CGSizeMake(img!.size.width * 0.5, img!.size.height * 0.5))
         // example image data
         //        let image = profileImg.image   /// UIImage(named: "177143.jpg")
-        let imageData = UIImageJPEGRepresentation(profileImg.image!, 70)
+        let imageData = UIImageJPEGRepresentation(resizedImg, 70)
         // CREATE AND SEND REQUEST ----------
         let urlRequest = APIClient.urlRequestWithComponents("\(APIClient.apiRoot(APIPath.WelcomeData.rawValue))", parameters: params as! Dictionary<String, AnyObject>, imageData: imageData!)
         
