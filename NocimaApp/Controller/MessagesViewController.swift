@@ -75,7 +75,7 @@ class MessagesViewController: MainViewController {
                 if let imageURL = sender!["imageURL"] as? String{
                     chatVC!.userThumbURL = imageURL
                 }
-                if let userName = sender!["userName"] as? String{
+                if let userName = sender!["name"] as? String{
                     chatVC!.userName = userName
                 }
             }

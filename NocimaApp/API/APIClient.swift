@@ -31,6 +31,7 @@ enum APIPath:String {
     case WelcomeData                = "uploadWelcomeData"
     case UploadImage                = "uploadImage"
     case UserGallery                = "listGallery"
+    case ListUserMessages           = "listUserMessages"
 }
 
 
