@@ -38,11 +38,6 @@ class MyProfileViewController: MainViewController,UIImagePickerControllerDelegat
         self.fourthImageView.layer.cornerRadius = 3
         self.mainImageView.layer.cornerRadius = 3
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(MyProfileViewController.galleryLoadingSuccess(_:)), name: APINotification.Success.rawValue, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MyProfileViewController.galleryLoadingFail(_:)), name: APINotification.Fail.rawValue, object: nil)
-        
-        APIClient.sendPOST(APIPath.UserGallery, params:[:]);
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -94,11 +89,13 @@ class MyProfileViewController: MainViewController,UIImagePickerControllerDelegat
             //            }
         }
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(MyProfileViewController.galleryLoadingSuccess(_:)), name: APINotification.Success.rawValue, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MyProfileViewController.galleryLoadingFail(_:)), name: APINotification.Fail.rawValue, object: nil)
     }
-
+    
     func downloadImage(url: NSURL, imageView:UIImageView){
-//        print("Download Started")
-//        print("lastPathComponent: " + (url.lastPathComponent ?? ""))
+        //        print("Download Started")
+        //        print("lastPathComponent: " + (url.lastPathComponent ?? ""))
         if let imageData = NSUserDefaults.standardUserDefaults().objectForKey(url.URLString) as? NSData{
             imageView.image = UIImage(data: imageData)
             return
@@ -109,8 +106,8 @@ class MyProfileViewController: MainViewController,UIImagePickerControllerDelegat
                 guard let data = data where error == nil else {
                     return
                 }
-//                print(response?.suggestedFilename ?? "")
-//                print("Download Finished")
+                //                print(response?.suggestedFilename ?? "")
+                //                print("Download Finished")
                 imageView.image = UIImage(data: data)
                 NSUserDefaults.standardUserDefaults().setObject(data, forKey: url.URLString)
                 NSUserDefaults.standardUserDefaults().synchronize()
@@ -120,6 +117,9 @@ class MyProfileViewController: MainViewController,UIImagePickerControllerDelegat
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        APIClient.sendPOST(APIPath.UserGallery, params:[:]);
+        
         if let images = NSUserDefaults.standardUserDefaults().objectForKey("gallery")  as? Array<AnyObject>{
             self.loadImages(images)
         }
@@ -142,6 +142,19 @@ class MyProfileViewController: MainViewController,UIImagePickerControllerDelegat
     
     //MARK: - Image picker delegates
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let images = NSUserDefaults.standardUserDefaults().objectForKey("gallery")  as? Array<AnyObject>{
+            var newImages = [AnyObject]()
+            for img in images{
+                if let position = img["position"] as? Int{
+                    if(position != self.imgIndex){
+                        newImages.append(img)
+                    }
+                }
+            }
+            NSUserDefaults.standardUserDefaults().setObject(newImages, forKey: "gallery")
+            NSUserDefaults.standardUserDefaults().synchronize()
+            
+        }
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             var img = UIImageView()
             switch self.imgIndex {

@@ -47,18 +47,39 @@ class MessagesViewController: MainViewController {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
-        let cell = tableView.dequeueReusableCellWithIdentifier("userChatCell", forIndexPath: indexPath) as! MenuCell
-       
+        let cell = tableView.dequeueReusableCellWithIdentifier("userChatCell", forIndexPath: indexPath) as! UserChatListCell
+        let chatItem = self.userChats[indexPath.row]
+        
+        if let userName = chatItem["name"] as? String{
+            cell.userNameLbl.text = userName
+        }
+        if let userImg = chatItem["imageURL"] as? String{
+            APIClient.load_image(userImg, imageView: cell.userImg)
+        }
         
         return cell
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        
+        self.performSegueWithIdentifier("openChatView", sender: self.userChats[indexPath.row])
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 80.0
+    }
+    //MARK: - Prepare segue
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "openChatView"{
+            if let userID = sender!["userID"] as? String{
+                let chatVC = segue.destinationViewController as? ChatViewController
+                chatVC!.userID = userID
+                if let imageURL = sender!["imageURL"] as? String{
+                    chatVC!.userThumbURL = imageURL
+                }
+                if let userName = sender!["userName"] as? String{
+                    chatVC!.userName = userName
+                }
+            }
+        }
     }
     //MARK: - Load messages delegate
     func loadMessagesSuccess(n:NSNotification){

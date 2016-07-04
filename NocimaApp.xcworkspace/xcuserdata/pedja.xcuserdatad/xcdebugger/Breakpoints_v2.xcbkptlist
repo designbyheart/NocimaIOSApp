@@ -42,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NocimaApp/Controller/MyProfileViewController.swift"
-            timestampString = "489279794.338824"
+            timestampString = "489286018.565518"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
-            landmarkName = "galleryLoadingFail(_:)"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,46 +57,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NocimaApp/Controller/MyProfileViewController.swift"
-            timestampString = "489279794.338824"
+            filePath = "NocimaApp/Controller/MessagesViewController.swift"
+            timestampString = "489290396.94444"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
-            landmarkName = "galleryLoadingFail(_:)"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "loadMessagesSuccess(_:)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "NocimaApp.MyProfileViewController.galleryLoadingFail (__ObjC.NSNotification) -&gt; ()"
-                  moduleName = "NocimaApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Pedja/Work/nocima/NocimaApp/Controller/MyProfileViewController.swift"
-                  timestampString = "489284061.143475"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "224"
-                  endingLineNumber = "224"
-                  offsetFromSymbolStart = "19">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "NocimaApp.MyProfileViewController.galleryLoadingFail (__ObjC.NSNotification) -&gt; ()"
-                  moduleName = "NocimaApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Pedja/Work/nocima/NocimaApp/Controller/MyProfileViewController.swift"
-                  timestampString = "489284061.143723"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "224"
-                  endingLineNumber = "224"
-                  offsetFromSymbolStart = "292">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
