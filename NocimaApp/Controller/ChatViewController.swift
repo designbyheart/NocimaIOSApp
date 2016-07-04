@@ -165,7 +165,7 @@ extension ChatViewController {
     override func collectionView(collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageBubbleImageDataSource! {
         let data = messages[indexPath.row]
         
-            if data.senderId != self.userID{
+            if data.senderId == self.userID{
                 return self.incomingBubble
             }else{
                 return self.outgoingBubble

@@ -28,7 +28,11 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
+<<<<<<< HEAD
 	<string>1028</string>
+=======
+	<string>1027</string>
+>>>>>>> a64f3e36d9c98bca69230fafffc96131ab5649fd
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
