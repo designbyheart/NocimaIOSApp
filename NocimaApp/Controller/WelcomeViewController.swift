@@ -23,6 +23,7 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     
     @IBOutlet weak var addBttn: UIButton!
     @IBOutlet var imageView: UIImageView!
+    var profileImgView = UIImageView()
     let imagePicker = UIImagePickerController()
     var years = [Int]()
     
@@ -138,6 +139,11 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UIImagePicke
                 print("\(totalBytesWritten) / \(totalBytesExpectedToWrite)")
             }
             .responseJSON { (response) in
+                if let imgURL = response.result.value!["imageURL"] as? String{
+                    NSUserDefaults.standardUserDefaults().setObject(imgURL, forKey: "myProfileImg")
+                    NSUserDefaults.standardUserDefaults().synchronize()
+                    APIClient.load_image(imgURL, imageView: self.profileImgView)
+                }
                 let alert = UIAlertView.init(title: "Success", message: "Korisnik je ažuriran", delegate: self, cancelButtonTitle: "OK")
                 alert.show()
                 self.performSegueWithIdentifier("openPendingView", sender: self)
@@ -192,5 +198,12 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let string = "\(years[row])"
         return NSAttributedString(string: string, attributes: [NSForegroundColorAttributeName:UIColor.whiteColor()])
+    }
+    
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "openPendingView"){
+            let pV = segue.destinationViewController as? PendingActivationViewController
+            pV.facebookprofileImgView.image = 
+        }
     }
 }

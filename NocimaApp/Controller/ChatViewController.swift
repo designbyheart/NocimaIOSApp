@@ -123,7 +123,6 @@ class ChatViewController: JSQMessagesViewController  {
             let sender = m["senderID"] as? String
             let messageContent = m["message"] as? String
             let message = JSQMessage(senderId: sender, displayName:sender, text: messageContent)
-        
             self.messages += [message]
         }
         self.reloadMessagesView()

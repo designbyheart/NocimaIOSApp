@@ -1149,7 +1149,7 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RnG-DM-HFm">
                                                     <rect key="frame" x="28" y="13" width="60" height="60"/>
-                                                    <color key="backgroundColor" patternImage="26011585-12C2-4EB1-BE03-A09D078A9CE7" colorSpace="pattern"/>
+                                                    <color key="backgroundColor" patternImage="3F116ECF-B97D-4BCA-9E65-50AB20674083" colorSpace="pattern"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="fyV-D9-E3D"/>
                                                         <constraint firstAttribute="width" constant="60" id="t8O-6h-hN1"/>
@@ -1525,6 +1525,7 @@
                         <outlet property="sendMessageBttn" destination="Spg-jz-7Xw" id="1tc-PG-pmM"/>
                         <outlet property="statusLbl" destination="oia-LR-8R1" id="oCp-IE-5yC"/>
                         <outlet property="userImg" destination="Hyg-YX-ovt" id="LBe-pZ-fTn"/>
+                        <segue destination="aCj-3L-XuC" kind="show" identifier="openChatView" id="g3F-2W-EI3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pWV-7l-lMK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1742,7 +1743,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="26011585-12C2-4EB1-BE03-A09D078A9CE7" width="320" height="460">
+        <image name="3F116ECF-B97D-4BCA-9E65-50AB20674083" width="320" height="460">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -11566,7 +11567,7 @@ AAABAAEAAAEGAAMAAAABAAIAAAERAAQAAAAFAAj80gESAAMAAAABAAEAAAEVAAMAAAABAAQAAAEWAAMA
 AAABAGYAAAEXAAQAAAAFAAj8vgEcAAMAAAABAAEAAAFSAAMAAAABAAEAAAFTAAMAAAAEAAj85odzAAcA
 AAxIAAj87gAAAAAACAAIAAgACAAB/gAAAf4AAAH+AAAB/gAAAQQAAAAACAAB/ggAA/wIAAX6CAAH+AgA
 AQABAAEAAQAADEhMaW5vAhAAAG1udHJSR0IgWFlaIAfOAAIACQAGADEAAGFjc3BNU0ZUAAAAAElFQyBz
-UkdCAAAAAAAAAAAAAAABAAD21gABAAAAANMtSFAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+UkdCAAAAAAAAAAAAAAAAAAD21gABAAAAANMtSFAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAEWNwcnQAAAFQAAAAM2Rlc2MAAAGEAAAAbHd0cHQAAAHwAAAAFGJrcHQA
 AAIEAAAAFHJYWVoAAAIYAAAAFGdYWVoAAAIsAAAAFGJYWVoAAAJAAAAAFGRtbmQAAAJUAAAAcGRtZGQA
 AALEAAAAiHZ1ZWQAAANMAAAAhnZpZXcAAAPUAAAAJGx1bWkAAAP4AAAAFG1lYXMAAAQMAAAAJHRlY2gA
@@ -11642,12 +11643,13 @@ AAkKzAAJCt4ACQrhAAkK5gAAAAAAAAQBAAAAAAAAAEEAAAAAAAAAAAAAAAAACQroA
         <image name="viewBackground" width="750" height="1334"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9LQ-2p-jta"/>
-        <segue reference="blJ-cd-nGv"/>
+        <segue reference="P4t-VA-e4r"/>
         <segue reference="obb-ZA-ODz"/>
-        <segue reference="cgN-sF-VLY"/>
-        <segue reference="g8X-xs-25S"/>
-        <segue reference="hhR-td-L3L"/>
+        <segue reference="XKU-VZ-TRY"/>
+        <segue reference="UEU-ZX-sbh"/>
+        <segue reference="2lJ-3Q-ByR"/>
+        <segue reference="OsO-rF-pVP"/>
+        <segue reference="g3F-2W-EI3"/>
         <segue reference="GJk-oN-oIb"/>
         <segue reference="dYj-pF-e1i"/>
     </inferredMetricsTieBreakers>

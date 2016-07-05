@@ -52,6 +52,8 @@ class SettingsViewController: MainViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(SettingsViewController.saveSuccess(_:)), name: APINotification.Success.rawValue, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SettingsViewController.saveFail(_:)), name: APINotification.Fail.rawValue, object: nil)
         
+        print(DateHelper.calculateAge())
+        
         if(DateHelper.calculateAge() > 18){
             self.fromSlider.maximumValue = 99
             self.fromSlider.minimumValue = 18

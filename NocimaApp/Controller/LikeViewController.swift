@@ -29,6 +29,7 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
     var matchedUserID = String()
     var matchedUserName = String()
     var matchedUserImgURL = String()
+    var likedUsers = [AnyObject]()
     
     /* The speed of animation. */
     private let animationSpeedDefault: Float = 0.9
@@ -55,7 +56,7 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
         setAnimationSpeed(animationSpeedDefault)
         layout.gesturesEnabled = true
         collectionView!.scrollEnabled = false
-        setCardSize(CGSizeMake(collectionView!.bounds.width - 60, 2*collectionView!.bounds.height/3))
+        setCardSize(CGSizeMake(collectionView!.bounds.width - 60, 2 * collectionView!.bounds.height/3))
         
     }
     override func viewWillAppear(animated: Bool) {
@@ -71,6 +72,17 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LikeViewController.userMatchFail(_:)), name: APINotification.Fail.rawValue, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LikeViewController.userMatchSuccess(_:)), name: APINotification.Success.rawValue, object: nil)
+        
+        var latitude:Float = 0
+        var longitude:Float = 0
+        
+        if let lat = NSUserDefaults.standardUserDefaults().objectForKey("latitude") as? Float{
+            latitude = lat
+        }
+        if let long = NSUserDefaults.standardUserDefaults().objectForKey("longitude") as? Float{
+            longitude = long
+        }
+        APIClient.sendPOST(APIPath.UsersForMatch, params: ["latitude":latitude, "longitude":longitude])
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -86,9 +98,16 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
     //MARK: - CollectionView Delegates
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        self.noUsersLbl.hidden = self.usersList.count > 0 ? true : false
-        self.likeBttn.hidden = self.usersList.count > 0 ? false : true
-        self.dislikeBttn.hidden = self.usersList.count > 0 ? false : true
+        if(usersList.count == likedUsers.count){
+            self.noUsersLbl.hidden = false
+            self.likeBttn.hidden = true
+            self.dislikeBttn.hidden = true
+        }else{
+            self.noUsersLbl.hidden = self.usersList.count > 0 ? true : false
+            self.likeBttn.hidden = self.usersList.count > 0 ? false : true
+            self.dislikeBttn.hidden = self.usersList.count > 0 ? false : true
+        }
+        
         return self.usersList.count
     }
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -150,13 +169,7 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
     //MARK: - Like / Dislike action via buttons
     
     @IBAction func likeUser(sender: AnyObject) {
-        if self.layout.index < usersList.count{
-            layout.index += 1
-        }
-        if self.layout.index < usersList.count{
-            layout.index += 1
-        }
-//        print(usersList[layout.index])
+        
         if let user = usersList[layout.index] as? Dictionary<String, AnyObject>{
             if let userID = user["userID"] as? String{
                 APIClient.sendPOST(APIPath.MatchUser, params: [
@@ -164,20 +177,36 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
                     "userID":userID
                     ])
             }
+            likedUsers.append(user)
         }
-        print("like me \(layout.index)")
+        if self.layout.index < usersList.count{
+            layout.index += 1
+        }
     }
     @IBAction func dislikeUser(sender: AnyObject) {
-//        APIClient.sendPOST(APIPath.MatchUser, params: [
-//            "status":status,
-//            "userID":c.userID!
-//            ])
-//        print("dislike me \(layout.index)")
+        if let user = usersList[layout.index] as? Dictionary<String, AnyObject>{
+            if let userID = user["userID"] as? String{
+                APIClient.sendPOST(APIPath.MatchUser, params: [
+                    "status":2,
+                    "userID":userID
+                    ])
+            }
+            likedUsers.append(user)
+        }
+        if self.layout.index < usersList.count{
+            if self.layout.index == usersList.count - 1{
+                self.noUsersLbl.hidden = false
+                self.likeBttn.hidden = true
+                self.dislikeBttn.hidden =  true
+            }
+            layout.index += 1
+        }
     }
     
     //MARK: - API Delegates
     func usersMatchListFail(n:NSNotification){
-        let alert = UIAlertView.init(title: "Users match list failed", message: nil, delegate: self, cancelButtonTitle: "OK")
+        print(n.object)
+        let alert = UIAlertView.init(title: "Users match list failed", message: "\(n.object)", delegate: self, cancelButtonTitle: "OK")
         alert.show()
     }
     func usersMatchListSuccess(n:NSNotification){
@@ -188,8 +217,7 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
                 self.likeBttn.hidden = self.usersList.count > 0 ? false : true
                 self.dislikeBttn.hidden = self.usersList.count > 0 ? false : true
                 
-                //                let alert = UIAlertView.init(title: "Total", message: "\(self.usersList.count) users", delegate: self, cancelButtonTitle: "OK")
-                //                alert.show()
+                self.likedUsers.removeAll()
             }
         }
         
