@@ -13,6 +13,7 @@ class MatchViewController: MainViewController {
     var matchedUserID = String()
     var matchedUserName = String()
     var matchedUserImgURL = String()
+    var matchedUImg = UIImage()
     
     @IBOutlet weak var sendMessageBttn: UIButton!
     @IBOutlet weak var keepPlayingBttn: UIButton!
@@ -38,6 +39,7 @@ class MatchViewController: MainViewController {
             APIClient.load_image(urlString, imageView: self.userImg)
         }
         statusLbl.text = "Ti i \(matchedUserName.capitalizedString) se sviđate jedno drugom."
+        matchedUserImg.image = self.matchedUImg
     }
     
     @IBOutlet weak var matchedUserImg: UIImageView!
@@ -49,6 +51,18 @@ class MatchViewController: MainViewController {
         }
     }
     @IBAction func sendMessage(sender: AnyObject) {
-        
+        self.performSegueWithIdentifier("openChatView", sender: self)
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier! == "openChatView" {
+//            if let chatView = segue.destinationViewController as? ChatViewController{
+//                if let user = usersList[layout.index] as? Dictionary<String, AnyObject>{
+//                    print(user)
+//                    //                chatView!.userID = user["userID"]
+//                    //                chatView!.userName =
+//                }
+//            }
+        }
+
     }
 }

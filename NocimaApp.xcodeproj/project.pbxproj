@@ -30,6 +30,7 @@
 		0776C9DA1D2402A800F76BA0 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0776C9D91D2402A800F76BA0 /* WelcomeViewController.swift */; };
 		079FECC01CF766BC00293141 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079FECBF1CF766BC00293141 /* LocationViewController.swift */; };
 		079FECC21CF768A400293141 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079FECC11CF768A400293141 /* MapKit.framework */; };
+		07A014201D2B2F9700DC62B6 /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A0141F1D2B2F9700DC62B6 /* DataHelper.swift */; };
 		07AB57AA1D27CAB30022586C /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AB57A91D27CAB30022586C /* DateHelper.swift */; };
 		07B4E8B21D11BC13007A5981 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B4E8B11D11BC13007A5981 /* ChatViewController.swift */; };
 		07B8BEF81CFA55D300BF2E58 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B8BEF71CFA55D300BF2E58 /* NavigationView.swift */; };
@@ -98,6 +99,7 @@
 		0776C9D91D2402A800F76BA0 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WelcomeViewController.swift; path = Controller/WelcomeViewController.swift; sourceTree = "<group>"; };
 		079FECBF1CF766BC00293141 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationViewController.swift; path = Controller/LocationViewController.swift; sourceTree = "<group>"; };
 		079FECC11CF768A400293141 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		07A0141F1D2B2F9700DC62B6 /* DataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataHelper.swift; path = Helpers/DataHelper.swift; sourceTree = "<group>"; };
 		07AB57A91D27CAB30022586C /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateHelper.swift; path = Helpers/DateHelper.swift; sourceTree = "<group>"; };
 		07B4E8B11D11BC13007A5981 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = Controller/ChatViewController.swift; sourceTree = "<group>"; };
 		07B8BEF71CFA55D300BF2E58 /* NavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationView.swift; path = Components/NavigationView.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				07BBCCB31D09AB6700E1D7B4 /* NotificationHelper.swift */,
 				07AB57A91D27CAB30022586C /* DateHelper.swift */,
 				071555D11D2832AB003039CF /* UserEntity.swift */,
+				07A0141F1D2B2F9700DC62B6 /* DataHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -406,6 +409,11 @@
 						DevelopmentTeam = 3ZF6URM4HS;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					076638951CED0F0E001A8AE1 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -597,6 +605,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07A014201D2B2F9700DC62B6 /* DataHelper.swift in Sources */,
 				07AB57AA1D27CAB30022586C /* DateHelper.swift in Sources */,
 				076638851CED0F0E001A8AE1 /* ViewController.swift in Sources */,
 				076D400F1CEE62BB00F63275 /* LoginViewController.swift in Sources */,
@@ -795,8 +804,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",

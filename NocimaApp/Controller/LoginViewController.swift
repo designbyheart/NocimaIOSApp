@@ -279,6 +279,9 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
         let locationArray = locations as NSArray
         if let locationObj = locationArray.lastObject as? CLLocation{
             self.coord = locationObj.coordinate
+            NSUserDefaults.standardUserDefaults().setObject(self.coord.latitude, forKey: "latitude")
+            NSUserDefaults.standardUserDefaults().setObject(self.coord.longitude, forKey: "longitude")
+            NSUserDefaults.standardUserDefaults().synchronize()
         }
     }
     //MARK: - Update user status response
