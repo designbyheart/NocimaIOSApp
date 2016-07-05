@@ -13,7 +13,8 @@ class PendingActivationViewController: UIViewController {
 
     @IBOutlet weak var spinner: UIImageView!
     @IBOutlet weak var facebookprofileImgView: UIImageView!
-    
+    var userImg = UIImage()
+
     @IBOutlet weak var facebookIcon: UIImageView!
     
     override func viewDidLoad() {
@@ -29,6 +30,7 @@ class PendingActivationViewController: UIViewController {
         self.facebookprofileImgView.layer.cornerRadius = facebookprofileImgView.frame.size.width/2
         self.facebookprofileImgView.layer.masksToBounds = true
         
+    
 //        self.rotateView(self.spinner)
         let params: [NSObject : AnyObject] = ["redirect": false, "height": 300, "width": 300, "type": "large"]
         let pictureRequest = FBSDKGraphRequest(graphPath: "me/picture?type=large&redirect=false", parameters: params)
@@ -46,6 +48,7 @@ class PendingActivationViewController: UIViewController {
                 print("\(error)")
             }
         })
+        self.facebookprofileImgView.image = userImg
     }
     
     func downloadFbImage(url: NSURL, imageView:UIImageView){

@@ -111,7 +111,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "173"
             endingLineNumber = "173"
-            landmarkName = "updateProfileSuccess(_:)"
+            landmarkName = "updateProfileFail(_:)"
             landmarkType = "5">
             <Locations>
                <Location
