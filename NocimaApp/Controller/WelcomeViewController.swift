@@ -139,11 +139,15 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UIImagePicke
                 print("\(totalBytesWritten) / \(totalBytesExpectedToWrite)")
             }
             .responseJSON { (response) in
+<<<<<<< HEAD
                 if let imgURL = response.result.value!["imageURL"] as? String{
                     NSUserDefaults.standardUserDefaults().setObject(imgURL, forKey: "myProfileImg")
                     NSUserDefaults.standardUserDefaults().synchronize()
                     APIClient.load_image(imgURL, imageView: self.profileImgView)
                 }
+=======
+
+>>>>>>> 5f5ee5ed235305d4b94968273bb7c883c0673ce5
                 let alert = UIAlertView.init(title: "Success", message: "Korisnik je ažuriran", delegate: self, cancelButtonTitle: "OK")
                 alert.show()
                 self.performSegueWithIdentifier("openPendingView", sender: self)
