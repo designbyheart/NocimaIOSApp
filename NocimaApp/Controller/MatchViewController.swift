@@ -14,6 +14,7 @@ class MatchViewController: MainViewController {
     var matchedUserName = String()
     var matchedUserImgURL = String()
     var matchedUImg = UIImage()
+    var userImage = UIImage()
     
     @IBOutlet weak var sendMessageBttn: UIButton!
     @IBOutlet weak var keepPlayingBttn: UIButton!
@@ -40,6 +41,7 @@ class MatchViewController: MainViewController {
         }
         statusLbl.text = "Ti i \(matchedUserName.capitalizedString) se sviđate jedno drugom."
         matchedUserImg.image = self.matchedUImg
+        
     }
     
     @IBOutlet weak var matchedUserImg: UIImageView!
