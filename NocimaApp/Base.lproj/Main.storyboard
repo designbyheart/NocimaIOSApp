@@ -1151,7 +1151,7 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RnG-DM-HFm">
                                                     <rect key="frame" x="28" y="13" width="60" height="60"/>
-                                                    <color key="backgroundColor" patternImage="2C4BC807-A876-404E-BF3A-4126244BE916" colorSpace="pattern"/>
+                                                    <color key="backgroundColor" patternImage="9CB29B6B-2CE7-41B4-A091-3A289B9FB519" colorSpace="pattern"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="fyV-D9-E3D"/>
                                                         <constraint firstAttribute="width" constant="60" id="t8O-6h-hN1"/>
@@ -1259,7 +1259,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <segue destination="TVt-Pu-4jz" kind="show" id="7o3-bF-o2L"/>
+                        <segue destination="TVt-Pu-4jz" kind="show" identifier="openUserProfile" id="7o3-bF-o2L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Qq-W7-h95" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1804,7 +1804,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="2C4BC807-A876-404E-BF3A-4126244BE916" width="320" height="460">
+        <image name="9CB29B6B-2CE7-41B4-A091-3A289B9FB519" width="320" height="460">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
