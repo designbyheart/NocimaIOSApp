@@ -213,6 +213,9 @@ class MyProfileViewController: MainViewController,UIImagePickerControllerDelegat
                 if let position = imageData["position"] as? Int{
                     switch(position){
                     case 1:
+                        NSUserDefaults.standardUserDefaults().setObject(imageURL, forKey: "myProfileImg")
+                        NSUserDefaults.standardUserDefaults().synchronize()
+                        
                         self.downloadImage(NSURL.init(string: imageURL)!, imageView: self.mainImageView)
                         break
                     case 2:

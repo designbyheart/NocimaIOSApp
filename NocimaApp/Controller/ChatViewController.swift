@@ -173,6 +173,33 @@ extension ChatViewController {
     override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
         return nil
     }
+    override func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSizeMake(collectionView.frame.size.width, 120.0);
+    }
+    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        let headerCell = UICollectionReusableView.init(frame: CGRectMake(0, 0, self.collectionView.frame.size.width, 120))
+        
+        headerCell.backgroundColor = UIColor.redColor()
+        
+        return headerCell
+    }
+    /*
+    
+    - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+    {
+    NSAssert([kind isEqualToString:UICollectionElementKindSectionHeader], @"Unexpected supplementary element kind");
+    UICollectionReusableView* cell = [collectionView dequeueReusableSupplementaryViewOfKind:kind
+    withReuseIdentifier:ImageCollectionViewHeaderCellIdentifier
+    forIndexPath:indexPath];
+    
+    NSAssert([cell isKindOfClass:[ImageCollectionViewHeaderCell class]], @"Unexpected class for header cell");
+    
+    ImageCollectionViewHeaderCell* header_view = (ImageCollectionViewHeaderCell*) cell;
+    
+    // custom content
+    
+    return cell;
+    }*/
 }
 //extension JSQMessagesCollectionViewCellOutgoing {
 //    public func messageContentSmaller() {
