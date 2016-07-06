@@ -9,7 +9,7 @@
 import UIKit
 
 class MatchViewController: MainViewController {
-
+    
     var matchedUserID = String()
     var matchedUserName = String()
     var matchedUserImgURL = String()
@@ -48,7 +48,7 @@ class MatchViewController: MainViewController {
     @IBOutlet weak var userImg: UIImageView!
     @IBOutlet weak var statusLbl: UILabel!
     @IBAction func keepPlaying(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true) { 
+        self.dismissViewControllerAnimated(true) {
             
         }
     }
@@ -57,14 +57,14 @@ class MatchViewController: MainViewController {
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier! == "openChatView" {
-//            if let chatView = segue.destinationViewController as? ChatViewController{
-//                if let user = usersList[layout.index] as? Dictionary<String, AnyObject>{
-//                    print(user)
-//                    //                chatView!.userID = user["userID"]
-//                    //                chatView!.userName =
-//                }
-//            }
+            if let chatView = segue.destinationViewController as? ChatViewController{
+                
+                chatView!.userID = matchedUserID
+                chatView!.userName = self.matchedUserName
+                chatView!.userThumbURL = matchedUserImgURL
+                
+            }
         }
-
+        
     }
 }
