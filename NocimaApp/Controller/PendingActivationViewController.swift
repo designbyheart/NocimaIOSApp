@@ -50,11 +50,11 @@ class PendingActivationViewController: UIViewController {
             }
         })
  */
-        if let myImgURL = NSUserDefaults.standardUserDefaults().setObject(imgURL, forKey: "myProfileImg") as? String{
-            APIClient.load_image(<#T##urlString: AnyObject##AnyObject#>, imageView: <#T##UIImageView#>)
-            //self.facebookprofileImgView.image = userImg
+        if let myImgURL = NSUserDefaults.standardUserDefaults().objectForKey("myProfileImg") as? String {
+            APIClient.load_image(myImgURL, imageView: self.facebookprofileImgView)
+        }else{
+            self.facebookprofileImgView.image = userImg
         }
-        self.facebookprofileImgView.image = userImg
     }
     
     func downloadFbImage(url: NSURL, imageView:UIImageView){

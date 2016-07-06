@@ -23,6 +23,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
     
     @IBOutlet weak var loginBttn: UIButton!
     @IBOutlet weak var resetBttn: UIButton!
+    @IBOutlet weak var subTitle: UILabel!
     let locationManager = CLLocationManager()
     var coord = CLLocationCoordinate2D()
     var openedTimes:Int = 0
@@ -72,7 +73,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                     ])
             }
         }
-//        self.openWelcomeScreen()
+        //        self.openWelcomeScreen()
     }
     
     @IBAction func loginWithFacebook(sender: AnyObject) {
@@ -87,12 +88,12 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
         
         loginManager.logInWithReadPermissions(self.facebookReadPermissions, fromViewController: self.parentViewController, handler: { (result, error) -> Void in
             if error != nil {
-//                print(error)
+                //                print(error)
                 let alert = UIAlertView.init(title: "Failed Fb login", message: "\(error)", delegate: self, cancelButtonTitle: "OK")
                 alert.show()
                 //                self.loginSuccess(result.token)
             } else if result.isCancelled {
-//                print("Cancelled")
+                //                print("Cancelled")
             } else {
                 self.loginSuccess(result.token)
             }
@@ -101,6 +102,12 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
     func openLocation(){
         if(openedTimes == 0){
             super.performSegueWithIdentifier("openLocationView", sender: self)
+            if let pushToken = NSUserDefaults.standardUserDefaults().objectForKey("pushNotificationToken"){
+                let params = ["pushToken":pushToken]
+                APIClient.sendPOST(APIPath.UploadPushToken, params: params)
+            }
+            
+            
             openedTimes += 1
         }
     }
@@ -133,7 +140,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                 APIClient.sendGET(APIPath.CheckUserStatus)
             }
         }else{
-//            print("login user with facebook")
+            //            print("login user with facebook")
         }
         /*
          if(NSUserDefaults.standardUserDefaults().objectForKey("userToken") != nil){
@@ -156,7 +163,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
             FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, email, gender,birthday"]).startWithCompletionHandler({ (connection, result, error) -> Void in
                 if (error == nil){
                     
-//                    print(result)
+                    //                    print(result)
                     
                     var userDetails  = [String: AnyObject]()
                     
@@ -469,17 +476,21 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                 return;
             }
         }
-        let params:Dictionary<String,AnyObject> = [
-            "email":userNameTxt.text!,
-            "password":passwordTxt.text!
+        var params:Dictionary<String,AnyObject> = [
+            "email":userNameTxt.text!
         ];
+        if sender.tag != SubmitType.Reset.rawValue{
+            params["password"] = passwordTxt.text!
+        }
         
         if(sender.tag == SubmitType.Login.rawValue){
             APIClient.sendPOST(APIPath.Login, params: params)
         }else if(sender.tag == SubmitType.Register.rawValue){
             APIClient.sendPOST(APIPath.Register, params:params)
+        }else if(sender.tag == SubmitType.Reset.rawValue){
+            APIClient.sendPOST(APIPath.ResetPass, params:params)
         }else{
-            
+    
         }
         
     }
@@ -491,6 +502,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
     //MARK: - keyboard delegates
     
     func keyboardWillShow(notification: NSNotification) {
+        self.subTitle.hidden = true
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
             let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
             self.loginView.center = CGPointMake(self.view.center.x, self.view.frame.size.height - 220 - contentInsets.bottom + 70)
@@ -505,6 +517,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
         }
     }
     func keyboardWillHide(notification: NSNotification) {
+        self.subTitle.hidden = false
         self.loginView.center = CGPointMake(self.view.center.x, self.view.frame.size.height - 220)
         UIView.animateWithDuration(0.35, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
             self.topContraint.constant = 140

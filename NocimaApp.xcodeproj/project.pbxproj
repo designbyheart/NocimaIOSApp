@@ -10,8 +10,10 @@
 		07003AF91D02B99A0083AC5F /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07003AF81D02B99A0083AC5F /* MessagesViewController.swift */; };
 		070300BD1D1C6CDA000B2B57 /* PendingActivationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070300BC1D1C6CDA000B2B57 /* PendingActivationViewController.swift */; };
 		070511201D192F2C0051E684 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0705111F1D192F2C0051E684 /* CoreLocation.framework */; };
+		071353641D2D7F2300455C4E /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071353631D2D7F2300455C4E /* UserProfile.swift */; };
 		071555D21D2832AB003039CF /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071555D11D2832AB003039CF /* UserEntity.swift */; };
 		072EB3741D2CE68A001FE2EE /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072EB3731D2CE689001FE2EE /* Fabric.framework */; };
+		072EB3771D2D5DF9001FE2EE /* RPCircularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072EB3761D2D5DF9001FE2EE /* RPCircularProgress.swift */; };
 		0736DE071D273F6C004FDE7B /* UserChatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0736DE061D273F6C004FDE7B /* UserChatListCell.swift */; };
 		075EE16E1D1F39CC006E853F /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075EE16D1D1F39CC006E853F /* MatchViewController.swift */; };
 		076638831CED0F0E001A8AE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076638821CED0F0E001A8AE1 /* AppDelegate.swift */; };
@@ -74,8 +76,10 @@
 		07003AF81D02B99A0083AC5F /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagesViewController.swift; path = Controller/MessagesViewController.swift; sourceTree = "<group>"; };
 		070300BC1D1C6CDA000B2B57 /* PendingActivationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PendingActivationViewController.swift; path = Controller/PendingActivationViewController.swift; sourceTree = "<group>"; };
 		0705111F1D192F2C0051E684 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		071353631D2D7F2300455C4E /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProfile.swift; path = Controller/UserProfile.swift; sourceTree = "<group>"; };
 		071555D11D2832AB003039CF /* UserEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
 		072EB3731D2CE689001FE2EE /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = Pods/Fabric/Fabric.framework; sourceTree = "<group>"; };
+		072EB3761D2D5DF9001FE2EE /* RPCircularProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RPCircularProgress.swift; path = Resources/Progress/RPCircularProgress.swift; sourceTree = "<group>"; };
 		0736DE061D273F6C004FDE7B /* UserChatListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserChatListCell.swift; path = Components/cells/UserChatListCell.swift; sourceTree = "<group>"; };
 		075EE16D1D1F39CC006E853F /* MatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatchViewController.swift; path = Controller/MatchViewController.swift; sourceTree = "<group>"; };
 		0766387F1CED0F0E001A8AE1 /* NocimaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NocimaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,6 +165,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		072EB3751D2D5DC6001FE2EE /* Progress */ = {
+			isa = PBXGroup;
+			children = (
+				072EB3761D2D5DF9001FE2EE /* RPCircularProgress.swift */,
+			);
+			name = Progress;
+			sourceTree = "<group>";
+		};
 		076638761CED0F0E001A8AE1 = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +247,7 @@
 				070300BC1D1C6CDA000B2B57 /* PendingActivationViewController.swift */,
 				075EE16D1D1F39CC006E853F /* MatchViewController.swift */,
 				0776C9D91D2402A800F76BA0 /* WelcomeViewController.swift */,
+				071353631D2D7F2300455C4E /* UserProfile.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -242,6 +255,7 @@
 		076D40041CEE622100F63275 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				072EB3751D2D5DC6001FE2EE /* Progress */,
 				07F711581D04D01E0099D342 /* CardController */,
 				076D40051CEE624C00F63275 /* Fonts */,
 			);
@@ -499,7 +513,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run 92593381ff86078cfcda30d607ae90847a3f1725 368374a0110f81a93ffa0911ca623bb8bef15edca3d31d0ba188b5908f12684d";
+			shellScript = "#./Fabric.framework/run 92593381ff86078cfcda30d607ae90847a3f1725 368374a0110f81a93ffa0911ca623bb8bef15edca3d31d0ba188b5908f12684d";
+			showEnvVarsInLog = 0;
 		};
 		07F711611D05D7EE0099D342 /* Auto Build Version */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -620,6 +635,7 @@
 				07B8BEFF1CFAF48300BF2E58 /* SettingsViewController.swift in Sources */,
 				07B8BEF81CFA55D300BF2E58 /* NavigationView.swift in Sources */,
 				0776C9DA1D2402A800F76BA0 /* WelcomeViewController.swift in Sources */,
+				071353641D2D7F2300455C4E /* UserProfile.swift in Sources */,
 				076638831CED0F0E001A8AE1 /* AppDelegate.swift in Sources */,
 				07F7115E1D04D0500099D342 /* TisprCardStackViewController.swift in Sources */,
 				07FE8F171CF9CDD70029DE52 /* MenuViewController.swift in Sources */,
@@ -631,6 +647,7 @@
 				07B8BEFA1CFA780600BF2E58 /* MainViewController.swift in Sources */,
 				079FECC01CF766BC00293141 /* LocationViewController.swift in Sources */,
 				07E05CA41CF296A900B4AF28 /* LikeViewController.swift in Sources */,
+				072EB3771D2D5DF9001FE2EE /* RPCircularProgress.swift in Sources */,
 				07F7115D1D04D0500099D342 /* TisprCardStackViewCell.swift in Sources */,
 				07BBCCB41D09AB6700E1D7B4 /* NotificationHelper.swift in Sources */,
 				07F711601D04D0FB0099D342 /* LikeDislikeCollectionViewCell.swift in Sources */,
@@ -784,7 +801,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Predrag Jevtic (773BLNMK52)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -813,7 +830,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",

@@ -32,6 +32,8 @@ enum APIPath:String {
     case UploadImage                = "uploadImage"
     case UserGallery                = "listGallery"
     case ListUserMessages           = "listUserMessages"
+    case UploadPushToken            = "storeDeviceNotificationToken"
+    case LoadImagesForUser          = "loadImagesForUser"
 }
 
 

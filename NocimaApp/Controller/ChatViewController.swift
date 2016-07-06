@@ -9,7 +9,7 @@
 import UIKit
 import JSQMessagesViewController
 
-class ChatViewController: JSQMessagesViewController  {
+class ChatViewController: JSQMessagesViewController,UIGestureRecognizerDelegate  {
     
     var userID = String()
     var userName = String()
@@ -30,6 +30,8 @@ class ChatViewController: JSQMessagesViewController  {
         self.setupBackBttn()
         self.collectionView.frame = CGRectMake(0, 170, self.view.frame.size.width, self.view.frame.size.height - 180)
         
+         self.topContentAdditionalInset = 200
+        self.collectionView.scrollsToTop = true
         
         self.setup()
         //        self.addDemoMessages()
@@ -40,6 +42,11 @@ class ChatViewController: JSQMessagesViewController  {
         userThumb.center = CGPointMake(self.view.frame.size.width / 2 + 50, 120)
         userThumb.layer.cornerRadius = 15
         userThumb.layer.masksToBounds = true
+        userThumb.userInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action:#selector(ChatViewController.openUserProfile))
+        tap.delegate = self
+        userThumb.addGestureRecognizer(tap)
+        
         self.view .addSubview(userThumb)
         
         //        matchedLbl = UILabel.init(frame: CGRectMake(20, 220, self.view.frame.width * 0.8, 20))
@@ -65,6 +72,18 @@ class ChatViewController: JSQMessagesViewController  {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    func openUserProfile(){
+        self.performSegueWithIdentifier("openUserProfile", sender: self)
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "openUserProfile"){
+            if let userP = segue.destinationViewController as? UserProfile {
+                userP.userName = self.userName
+                userP.userID = self.userID
+            }
+            
+        }
     }
     func reloadMessagesView() {
         self.collectionView?.reloadData()
@@ -173,6 +192,33 @@ extension ChatViewController {
     override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
         return nil
     }
+//    override func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+//        return CGSizeMake(collectionView.frame.size.width, 120.0);
+//    }
+//    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+//        let headerCell = UICollectionReusableView.init(frame: CGRectMake(0, 0, self.collectionView.frame.size.width, 120))
+//        
+//        headerCell.backgroundColor = UIColor.redColor()
+//        
+//        return headerCell
+//    }
+    /*
+    
+    - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+    {
+    NSAssert([kind isEqualToString:UICollectionElementKindSectionHeader], @"Unexpected supplementary element kind");
+    UICollectionReusableView* cell = [collectionView dequeueReusableSupplementaryViewOfKind:kind
+    withReuseIdentifier:ImageCollectionViewHeaderCellIdentifier
+    forIndexPath:indexPath];
+    
+    NSAssert([cell isKindOfClass:[ImageCollectionViewHeaderCell class]], @"Unexpected class for header cell");
+    
+    ImageCollectionViewHeaderCell* header_view = (ImageCollectionViewHeaderCell*) cell;
+    
+    // custom content
+    
+    return cell;
+    }*/
 }
 //extension JSQMessagesCollectionViewCellOutgoing {
 //    public func messageContentSmaller() {

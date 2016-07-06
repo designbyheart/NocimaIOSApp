@@ -50,6 +50,7 @@
             <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
+            <string>SourceSansPro-Regular</string>
         </mutableArray>
         <mutableArray key="SourceSansPro-Semibold.ttf">
             <string>SourceSansPro-Semibold</string>
@@ -501,6 +502,7 @@
                         <outlet property="privacyLbl" destination="t8x-X1-ffM" id="w7G-eB-Ryk"/>
                         <outlet property="registerBtn" destination="LBD-3g-IEL" id="Rlr-BF-Gxb"/>
                         <outlet property="resetBttn" destination="SdE-Dz-4fY" id="Hsp-vK-WTa"/>
+                        <outlet property="subTitle" destination="cpp-SL-3Ce" id="sWO-JG-TwL"/>
                         <outlet property="topContraint" destination="fne-oK-cRx" id="Yzi-WQ-qst"/>
                         <segue destination="QhC-aS-quI" kind="show" identifier="openLike" id="A1q-cj-cbV"/>
                         <segue destination="UZz-BF-qua" kind="show" identifier="openLocationView" id="bT1-2H-b64"/>
@@ -664,8 +666,8 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ynx-36-9Li">
-                                <rect key="frame" x="179" y="530" width="240" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ynx-36-9Li">
+                                <rect key="frame" x="180" y="530" width="240" height="40"/>
                                 <color key="backgroundColor" red="1" green="0.99983716011047363" blue="0.99994850158691406" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="tOn-d1-aXy"/>
@@ -763,8 +765,8 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ury-9Z-yNu">
-                                <rect key="frame" x="239" y="490" width="120" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ury-9Z-yNu">
+                                <rect key="frame" x="240" y="490" width="120" height="50"/>
                                 <color key="backgroundColor" red="0.1450980392" green="0.56078431370000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="4Gb-DG-o3j"/>
@@ -1149,7 +1151,7 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RnG-DM-HFm">
                                                     <rect key="frame" x="28" y="13" width="60" height="60"/>
-                                                    <color key="backgroundColor" patternImage="3F116ECF-B97D-4BCA-9E65-50AB20674083" colorSpace="pattern"/>
+                                                    <color key="backgroundColor" patternImage="9CB29B6B-2CE7-41B4-A091-3A289B9FB519" colorSpace="pattern"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="fyV-D9-E3D"/>
                                                         <constraint firstAttribute="width" constant="60" id="t8O-6h-hN1"/>
@@ -1256,6 +1258,9 @@
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <segue destination="TVt-Pu-4jz" kind="show" identifier="openUserProfile" id="7o3-bF-o2L"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Qq-W7-h95" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1741,9 +1746,65 @@
             </objects>
             <point key="canvasLocation" x="138.5" y="-758.5"/>
         </scene>
+        <!--User Profile-->
+        <scene sceneID="2pm-Qi-Ss6">
+            <objects>
+                <viewController id="TVt-Pu-4jz" customClass="UserProfile" customModule="NocimaApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="D7H-pF-lJ6"/>
+                        <viewControllerLayoutGuide type="bottom" id="faU-Ku-CRc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="R6o-8C-VQe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="viewBackground" translatesAutoresizingMaskIntoConstraints="NO" id="CmE-qI-d2Y">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9gK-aG-m4W">
+                                <rect key="frame" x="0.0" y="100" width="375" height="567"/>
+                                <connections>
+                                    <outlet property="delegate" destination="TVt-Pu-4jz" id="pzz-Ga-XsM"/>
+                                </connections>
+                            </scrollView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pcf-bf-EiS">
+                                <rect key="frame" x="20" y="50" width="335" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="bp6-LL-IJh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Pcf-bf-EiS" firstAttribute="top" secondItem="D7H-pF-lJ6" secondAttribute="bottom" constant="30" id="1mB-zP-Fll"/>
+                            <constraint firstAttribute="bottom" secondItem="CmE-qI-d2Y" secondAttribute="bottom" id="Ono-04-RtG"/>
+                            <constraint firstAttribute="trailing" secondItem="CmE-qI-d2Y" secondAttribute="trailing" id="S0R-iQ-fSQ"/>
+                            <constraint firstItem="Pcf-bf-EiS" firstAttribute="leading" secondItem="R6o-8C-VQe" secondAttribute="leading" constant="20" id="SIc-qy-1IE"/>
+                            <constraint firstItem="faU-Ku-CRc" firstAttribute="top" secondItem="9gK-aG-m4W" secondAttribute="bottom" id="WPC-Iz-vGn"/>
+                            <constraint firstAttribute="trailing" secondItem="9gK-aG-m4W" secondAttribute="trailing" id="Xkz-PD-8Sr"/>
+                            <constraint firstItem="CmE-qI-d2Y" firstAttribute="top" secondItem="R6o-8C-VQe" secondAttribute="top" id="iah-NG-F5C"/>
+                            <constraint firstAttribute="trailing" secondItem="Pcf-bf-EiS" secondAttribute="trailing" constant="20" id="lcg-A3-2wW"/>
+                            <constraint firstItem="9gK-aG-m4W" firstAttribute="top" secondItem="D7H-pF-lJ6" secondAttribute="bottom" constant="80" id="qJT-dA-IXy"/>
+                            <constraint firstItem="CmE-qI-d2Y" firstAttribute="leading" secondItem="R6o-8C-VQe" secondAttribute="leading" id="qrq-U7-aR6"/>
+                            <constraint firstItem="9gK-aG-m4W" firstAttribute="leading" secondItem="R6o-8C-VQe" secondAttribute="leading" id="yFL-YH-4i9"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="scrollView" destination="9gK-aG-m4W" id="y21-U4-9sL"/>
+                        <outlet property="userLbl" destination="Pcf-bf-EiS" id="29k-39-h1W"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fGm-1s-FU4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2282.5" y="1572.5"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="3F116ECF-B97D-4BCA-9E65-50AB20674083" width="320" height="460">
+        <image name="9CB29B6B-2CE7-41B4-A091-3A289B9FB519" width="320" height="460">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
