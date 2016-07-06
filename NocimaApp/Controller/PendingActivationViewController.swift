@@ -30,6 +30,7 @@ class PendingActivationViewController: UIViewController {
         self.facebookprofileImgView.layer.cornerRadius = facebookprofileImgView.frame.size.width/2
         self.facebookprofileImgView.layer.masksToBounds = true
         
+        /*
     
 //        self.rotateView(self.spinner)
         let params: [NSObject : AnyObject] = ["redirect": false, "height": 300, "width": 300, "type": "large"]
@@ -48,6 +49,11 @@ class PendingActivationViewController: UIViewController {
                 print("\(error)")
             }
         })
+ */
+        if let myImgURL = NSUserDefaults.standardUserDefaults().setObject(imgURL, forKey: "myProfileImg") as? String{
+            APIClient.load_image(<#T##urlString: AnyObject##AnyObject#>, imageView: <#T##UIImageView#>)
+            //self.facebookprofileImgView.image = userImg
+        }
         self.facebookprofileImgView.image = userImg
     }
     

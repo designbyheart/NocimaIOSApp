@@ -59,9 +59,9 @@ class MatchViewController: MainViewController {
         if segue.identifier! == "openChatView" {
             if let chatView = segue.destinationViewController as? ChatViewController{
                 
-                chatView!.userID = matchedUserID
-                chatView!.userName = self.matchedUserName
-                chatView!.userThumbURL = matchedUserImgURL
+                chatView.userID = matchedUserID
+                chatView.userName = self.matchedUserName
+                chatView.userThumbURL = matchedUserImgURL
                 
             }
         }
