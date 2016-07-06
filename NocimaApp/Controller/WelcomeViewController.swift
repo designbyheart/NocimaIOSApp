@@ -26,6 +26,7 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     var profileImgView = UIImageView()
     let imagePicker = UIImagePickerController()
     var years = [Int]()
+    var progressView = RPCircularProgress()
     
     @IBOutlet weak var editImg: UIImageView!
     var gender = "male"
@@ -121,6 +122,10 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UIImagePicke
             alert.show()
             return
         }
+        self.progressView = RPCircularProgress.init()
+        progressView.enableIndeterminate(true)
+        self.view .addSubview(progressView)
+        self.progressView.center = self.view.center
         let params = [
             "gender":self.gender,
             "firstName":self.nameTxt.text!,
@@ -133,7 +138,7 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         let imageData = UIImageJPEGRepresentation(resizedImg, 70)
         // CREATE AND SEND REQUEST ----------
         let urlRequest = APIClient.urlRequestWithComponents("\(APIClient.apiRoot(APIPath.WelcomeData.rawValue))", parameters: params as! Dictionary<String, AnyObject>, imageData: imageData!)
-        
+
         Alamofire.upload(urlRequest.0, data: urlRequest.1)
             .progress { (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite) in
                 print("\(totalBytesWritten) / \(totalBytesExpectedToWrite)")
@@ -203,7 +208,7 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "openPendingView"){
             let pV = segue.destinationViewController as? PendingActivationViewController
-            pV?.userImg = self.imageView.image!
+            pV?.userImg = self.profileImgView.image!
         }
     }
 }

@@ -28,6 +28,8 @@ class MessagesViewController: MainViewController {
         noChatLbl.text = "Trenutno nema aktivnih dopisivanja"
         noChatLbl.hidden = true
         
+        self.tableView.tableFooterView = UIView()
+        
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)

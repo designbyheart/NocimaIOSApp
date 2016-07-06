@@ -50,6 +50,7 @@
             <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
+            <string>SourceSansPro-Regular</string>
         </mutableArray>
         <mutableArray key="SourceSansPro-Semibold.ttf">
             <string>SourceSansPro-Semibold</string>
@@ -1150,7 +1151,7 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RnG-DM-HFm">
                                                     <rect key="frame" x="28" y="13" width="60" height="60"/>
-                                                    <color key="backgroundColor" patternImage="0783C6E2-13C6-4240-9A74-AC8FB4DD22D1" colorSpace="pattern"/>
+                                                    <color key="backgroundColor" patternImage="2C4BC807-A876-404E-BF3A-4126244BE916" colorSpace="pattern"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="fyV-D9-E3D"/>
                                                         <constraint firstAttribute="width" constant="60" id="t8O-6h-hN1"/>
@@ -1745,27 +1746,65 @@
             </objects>
             <point key="canvasLocation" x="138.5" y="-758.5"/>
         </scene>
-        <!--View Controller-->
+        <!--User Profile-->
         <scene sceneID="2pm-Qi-Ss6">
             <objects>
-                <viewController id="TVt-Pu-4jz" sceneMemberID="viewController">
+                <viewController id="TVt-Pu-4jz" customClass="UserProfile" customModule="NocimaApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="D7H-pF-lJ6"/>
                         <viewControllerLayoutGuide type="bottom" id="faU-Ku-CRc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="R6o-8C-VQe">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="viewBackground" translatesAutoresizingMaskIntoConstraints="NO" id="CmE-qI-d2Y">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9gK-aG-m4W">
+                                <rect key="frame" x="0.0" y="100" width="375" height="567"/>
+                                <connections>
+                                    <outlet property="delegate" destination="TVt-Pu-4jz" id="pzz-Ga-XsM"/>
+                                </connections>
+                            </scrollView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pcf-bf-EiS">
+                                <rect key="frame" x="20" y="50" width="335" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="bp6-LL-IJh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Pcf-bf-EiS" firstAttribute="top" secondItem="D7H-pF-lJ6" secondAttribute="bottom" constant="30" id="1mB-zP-Fll"/>
+                            <constraint firstAttribute="bottom" secondItem="CmE-qI-d2Y" secondAttribute="bottom" id="Ono-04-RtG"/>
+                            <constraint firstAttribute="trailing" secondItem="CmE-qI-d2Y" secondAttribute="trailing" id="S0R-iQ-fSQ"/>
+                            <constraint firstItem="Pcf-bf-EiS" firstAttribute="leading" secondItem="R6o-8C-VQe" secondAttribute="leading" constant="20" id="SIc-qy-1IE"/>
+                            <constraint firstItem="faU-Ku-CRc" firstAttribute="top" secondItem="9gK-aG-m4W" secondAttribute="bottom" id="WPC-Iz-vGn"/>
+                            <constraint firstAttribute="trailing" secondItem="9gK-aG-m4W" secondAttribute="trailing" id="Xkz-PD-8Sr"/>
+                            <constraint firstItem="CmE-qI-d2Y" firstAttribute="top" secondItem="R6o-8C-VQe" secondAttribute="top" id="iah-NG-F5C"/>
+                            <constraint firstAttribute="trailing" secondItem="Pcf-bf-EiS" secondAttribute="trailing" constant="20" id="lcg-A3-2wW"/>
+                            <constraint firstItem="9gK-aG-m4W" firstAttribute="top" secondItem="D7H-pF-lJ6" secondAttribute="bottom" constant="80" id="qJT-dA-IXy"/>
+                            <constraint firstItem="CmE-qI-d2Y" firstAttribute="leading" secondItem="R6o-8C-VQe" secondAttribute="leading" id="qrq-U7-aR6"/>
+                            <constraint firstItem="9gK-aG-m4W" firstAttribute="leading" secondItem="R6o-8C-VQe" secondAttribute="leading" id="yFL-YH-4i9"/>
+                        </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="scrollView" destination="9gK-aG-m4W" id="y21-U4-9sL"/>
+                        <outlet property="userLbl" destination="Pcf-bf-EiS" id="29k-39-h1W"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fGm-1s-FU4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2328" y="1569"/>
+            <point key="canvasLocation" x="2282.5" y="1572.5"/>
         </scene>
     </scenes>
     <resources>
-        <image name="0783C6E2-13C6-4240-9A74-AC8FB4DD22D1" width="320" height="460">
+        <image name="2C4BC807-A876-404E-BF3A-4126244BE916" width="320" height="460">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
