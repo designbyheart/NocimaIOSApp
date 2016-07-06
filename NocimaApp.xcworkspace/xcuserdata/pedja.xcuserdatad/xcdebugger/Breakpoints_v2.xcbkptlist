@@ -105,46 +105,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NocimaApp/Controller/WelcomeViewController.swift"
-            timestampString = "489416394.555782"
+            filePath = "NocimaApp/AppDelegate.swift"
+            timestampString = "489480947.47479"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
-            landmarkName = "updateProfileFail(_:)"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "application(_:didRegisterForRemoteNotificationsWithDeviceToken:)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "NocimaApp.WelcomeViewController.updateProfileFail (__ObjC.NSNotification) -&gt; ()"
-                  moduleName = "NocimaApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Pedja/Work/nocima/NocimaApp/Controller/WelcomeViewController.swift"
-                  timestampString = "489416394.617065"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "173"
-                  endingLineNumber = "173"
-                  offsetFromSymbolStart = "32">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "NocimaApp.WelcomeViewController.updateProfileFail (__ObjC.NSNotification) -&gt; ()"
-                  moduleName = "NocimaApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Pedja/Work/nocima/NocimaApp/Controller/WelcomeViewController.swift"
-                  timestampString = "489416394.617258"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "173"
-                  endingLineNumber = "173"
-                  offsetFromSymbolStart = "88">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

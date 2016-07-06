@@ -135,9 +135,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
 
             let deviceTokenStr = DataHelper.convertDeviceTokenToString(deviceToken)
+        let tokenChars = UnsafePointer<CChar>(deviceToken.bytes)
+        var tokenString = ""
+        
+        for i in 0..<deviceToken.length {
+            tokenString += String(format: "%02.2hhx", arguments: [tokenChars[i]])
+        }
             
             NSUserDefaults.standardUserDefaults().setObject(deviceTokenStr, forKey: "pushNotificationToken")
             NSUserDefaults.standardUserDefaults().synchronize()
+        
+        print("pushToken \(tokenString)")
     }
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         print(error)
