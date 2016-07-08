@@ -34,6 +34,7 @@ enum APIPath:String {
     case ListUserMessages           = "listUserMessages"
     case UploadPushToken            = "storeDeviceNotificationToken"
     case LoadImagesForUser          = "loadImagesForUser"
+    case BlockUser                  = "blockUser"
 }
 
 
@@ -62,7 +63,7 @@ public class APIClient {
             if(token.characters.count > 0){
                 hParams["X-AUTH"] = token
             }
-            print("header params \(hParams)")
+//            print("header params \(hParams)")
             return hParams
         }
         return [
@@ -88,7 +89,7 @@ public class APIClient {
                 let isSuccess = response.response?.statusCode < 202
                 let notificationStatus =  isSuccess ? APINotification.Success.rawValue:APINotification.Fail.rawValue;
                 
-                print("Response JSON: \(response.result.value)")
+//                print("Response JSON: \(response.result.value)")
                 
                 var responseObject = [String:AnyObject]()
                 responseObject["method"] = methodName.rawValue

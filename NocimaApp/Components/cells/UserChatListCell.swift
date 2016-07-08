@@ -11,6 +11,7 @@ import UIKit
 class UserChatListCell: UITableViewCell {
     @IBOutlet weak var userNameLbl: UILabel!
     @IBOutlet weak var userImg: UIImageView!
+    @IBOutlet weak var blockBttn: UIButton!
     
     
     override func awakeFromNib() {

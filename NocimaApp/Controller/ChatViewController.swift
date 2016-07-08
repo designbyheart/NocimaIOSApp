@@ -18,7 +18,7 @@ class ChatViewController: JSQMessagesViewController,UIGestureRecognizerDelegate 
     var userThumb = UIImageView()
     var matchedLbl = UILabel()
     var menuBttn = UIButton()
-    
+    var timer: NSTimer!
     let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImageWithColor(UIColor(red: 42/255, green: 43/255, blue: 45/255, alpha: 1.0))
     let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImageWithColor(UIColor(red: 37/255, green: 143/255, blue: 255/255, alpha: 1.0))
     var messages = [JSQMessage]()
@@ -30,24 +30,18 @@ class ChatViewController: JSQMessagesViewController,UIGestureRecognizerDelegate 
         self.setupBackBttn()
         self.collectionView.frame = CGRectMake(0, 170, self.view.frame.size.width, self.view.frame.size.height - 180)
         
-         self.topContentAdditionalInset = 200
+        collectionView.registerClass(ChatHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader , withReuseIdentifier: "Header")
+        
+        self.topContentAdditionalInset = 0
         self.collectionView.scrollsToTop = true
         
         self.setup()
         //        self.addDemoMessages()
         self.collectionView.backgroundView = UIImageView.init(image: UIImage.init(named: "viewBackground"))
-        self.collectionView.contentInset = UIEdgeInsetsMake(240, -20, 20, -20)
+        self.collectionView.contentInset = UIEdgeInsetsMake(30, -20, 20, -20)
         
-        userThumb = UIImageView.init(frame: CGRectMake(0, 0, 80, 80))
-        userThumb.center = CGPointMake(self.view.frame.size.width / 2 + 50, 120)
-        userThumb.layer.cornerRadius = 15
-        userThumb.layer.masksToBounds = true
-        userThumb.userInteractionEnabled = true
-        let tap = UITapGestureRecognizer(target: self, action:#selector(ChatViewController.openUserProfile))
-        tap.delegate = self
-        userThumb.addGestureRecognizer(tap)
         
-        self.view .addSubview(userThumb)
+        
         
         //        matchedLbl = UILabel.init(frame: CGRectMake(20, 220, self.view.frame.width * 0.8, 20))
         //        matchedLbl.font = UIFont.init(name: "Source Sans Pro", size: 17)
@@ -55,8 +49,10 @@ class ChatViewController: JSQMessagesViewController,UIGestureRecognizerDelegate 
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.titleView.text = self.userName
+        
         APIClient.load_image(userThumbURL, imageView: userThumb)
+        self.messages .removeAll()
+        self.collectionView?.reloadData()
         
         if let savedMsg = NSUserDefaults.standardUserDefaults().objectForKey("messages\(self.userID)") {
             self.prepareMessages(savedMsg as! [AnyObject])
@@ -66,8 +62,18 @@ class ChatViewController: JSQMessagesViewController,UIGestureRecognizerDelegate 
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(ChatViewController.loadedMessagesSuccess(_:)), name: APINotification.Success.rawValue, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ChatViewController.loadedMessagesFail(_:)), name: APINotification.Fail.rawValue, object: nil)
         
+        self.messages.removeAll()
         
         APIClient.sendPOST(APIPath.ListUserMessages, params: ["userID":userID])
+//        print(userID)
+    }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        timer = NSTimer.scheduledTimerWithTimeInterval(5 , target: self, selector: #selector(ChatViewController.loadMessages), userInfo: nil, repeats: true)
+    }
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        timer.invalidate()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -89,12 +95,7 @@ class ChatViewController: JSQMessagesViewController,UIGestureRecognizerDelegate 
         self.collectionView?.reloadData()
     }
     func setupTitle(){
-        let titleWidth = self.view.frame.size.width * 0.8
-        self.titleView = UILabel(frame: CGRectMake((self.view.frame.size.width-titleWidth)/2 + 50, 30, titleWidth, 40))
-        self.titleView.textColor = UIColor.whiteColor()
-        self.titleView.textAlignment = NSTextAlignment.Center
-        self.titleView.font = UIFont.init(name: "Source Sans Pro", size: 25)
-        self.view.addSubview(self.titleView)
+        
         
     }
     func setupBackBttn(){
@@ -111,6 +112,10 @@ class ChatViewController: JSQMessagesViewController,UIGestureRecognizerDelegate 
         self.navigationController?.popViewControllerAnimated(true)
     }
     //MARK - API delegates
+    func loadMessages(){
+        APIClient.sendPOST(APIPath.ListUserMessages, params: ["userID":userID])
+    }
+    
     func loadedMessagesSuccess(n:NSNotification){
         if let data = n.object as? Dictionary<String, AnyObject>{
             if let method = data["method"] as? String{
@@ -131,6 +136,7 @@ class ChatViewController: JSQMessagesViewController,UIGestureRecognizerDelegate 
         
     }
     func prepareMessages(messageList:[AnyObject]){
+        self.messages.removeAll()
         for m in messageList {
             if let senderID = m["senderID"] as? String{
                 if self.userID != senderID{
@@ -173,7 +179,8 @@ extension ChatViewController {
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, messageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageData! {
         let data = self.messages[indexPath.row]
-        return data
+            return data
+        
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, didDeleteMessageAtIndexPath indexPath: NSIndexPath!) {
@@ -183,49 +190,80 @@ extension ChatViewController {
     override func collectionView(collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageBubbleImageDataSource! {
         let data = messages[indexPath.row]
         
-            if data.senderId == self.userID{
-                return self.incomingBubble
-            }else{
-                return self.outgoingBubble
-            }
+        if data.senderId == self.userID{
+            return self.incomingBubble
+        }else{
+            return self.outgoingBubble
+        }
+        
     }
     override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
         return nil
     }
-//    override func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        return CGSizeMake(collectionView.frame.size.width, 120.0);
-//    }
-//    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-//        let headerCell = UICollectionReusableView.init(frame: CGRectMake(0, 0, self.collectionView.frame.size.width, 120))
-//        
-//        headerCell.backgroundColor = UIColor.redColor()
-//        
-//        return headerCell
-//    }
-    /*
     
-    - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-    {
-    NSAssert([kind isEqualToString:UICollectionElementKindSectionHeader], @"Unexpected supplementary element kind");
-    UICollectionReusableView* cell = [collectionView dequeueReusableSupplementaryViewOfKind:kind
-    withReuseIdentifier:ImageCollectionViewHeaderCellIdentifier
-    forIndexPath:indexPath];
     
-    NSAssert([cell isKindOfClass:[ImageCollectionViewHeaderCell class]], @"Unexpected class for header cell");
-    
-    ImageCollectionViewHeaderCell* header_view = (ImageCollectionViewHeaderCell*) cell;
-    
-    // custom content
-    
-    return cell;
-    }*/
+    override func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSizeMake(collectionView.frame.size.width, 220.0);
+    }
+    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        
+        var headerView = UICollectionReusableView()
+        
+        if(indexPath.section == 0){
+            switch kind {
+                
+            case UICollectionElementKindSectionHeader:
+                
+                self.titleView .removeFromSuperview()
+                self.userThumb.removeFromSuperview()
+                
+                headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "Header", forIndexPath: indexPath)
+                
+                userThumb.frame = CGRectMake(headerView.center.x - 50, 40, 100, 100)
+                userThumb.layer.cornerRadius = 15
+                userThumb.contentMode = UIViewContentMode.ScaleAspectFill
+                userThumb.backgroundColor = UIColor.blackColor()
+                userThumb.layer.masksToBounds = true
+                userThumb.userInteractionEnabled = true
+                let tap = UITapGestureRecognizer(target: self, action:#selector(ChatViewController.openUserProfile))
+                if userThumb.image == nil{
+                   userThumb.image = UIImage.init(named: "defaultImg")
+                }
+                tap.delegate = self
+                userThumb.addGestureRecognizer(tap)
+                headerView.addSubview(userThumb)
+                
+                let titleWidth = headerView.frame.size.width * 0.8
+                self.titleView = UILabel(frame: CGRectMake(self.view.frame.size.width * 0.1, 0, titleWidth, 40))
+                self.titleView.textColor = UIColor.whiteColor()
+                self.titleView.backgroundColor = UIColor.clearColor()
+                self.titleView.textAlignment = NSTextAlignment.Center
+                self.titleView.font = UIFont.init(name: "Source Sans Pro", size: 25)
+                self.titleView.center = CGPointMake(headerView.center.x, 10)
+                self.titleView.text = self.userName
+                headerView.addSubview(self.titleView)
+                
+                
+                
+                
+                return headerView
+                
+            default:
+                
+                assert(false, "Unexpected element kind")
+                
+            }
+            
+        }
+        return headerView
+    }
 }
-//extension JSQMessagesCollectionViewCellOutgoing {
-//    public func messageContentSmaller() {
-//        self.messageBubbleContainerView?.setContentCompressionResistancePriority(UILayoutPriorityDefaultLow, forAxis: .Horizontal)
-//        
-//    }
-//}
+
+extension JSQMessagesCollectionViewCellOutgoing {
+    public func messageContentSmaller() {
+        self.messageBubbleContainerView?.setContentCompressionResistancePriority(UILayoutPriorityDefaultLow, forAxis: .Horizontal)
+    }
+}
 //MARK - Toolbar
 extension ChatViewController {
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {

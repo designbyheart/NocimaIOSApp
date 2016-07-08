@@ -21,6 +21,7 @@ enum SubmitType:Int {
 }
 class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
     
+    @IBOutlet weak var splashScreen: UIImageView!
     @IBOutlet weak var loginBttn: UIButton!
     @IBOutlet weak var resetBttn: UIButton!
     @IBOutlet weak var subTitle: UILabel!
@@ -75,7 +76,10 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
         }
         //        self.openWelcomeScreen()
     }
-    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.splashScreen.hidden = true
+    }
     @IBAction func loginWithFacebook(sender: AnyObject) {
         
         //        super.performSegueWithIdentifier("openLocationView", sender: self)
@@ -101,10 +105,10 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
     }
     func openLocation(){
         if(openedTimes == 0){
+            print("deviceID \(UIDevice.currentDevice().identifierForVendor?.UUIDString)")
             super.performSegueWithIdentifier("openLocationView", sender: self)
             if let pushToken = NSUserDefaults.standardUserDefaults().objectForKey("pushNotificationToken"){
-                let params = ["pushToken":pushToken]
-                APIClient.sendPOST(APIPath.UploadPushToken, params: params)
+                APIClient.sendPOST(APIPath.UploadPushToken, params: ["token":pushToken, "deviceID":(UIDevice.currentDevice().identifierForVendor?.UUIDString)!])
             }
             
             
@@ -209,7 +213,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
     //MARK: - API notifications
     func updateSuccess(n:NSNotification){
         if let data = n.object as? Dictionary<String, AnyObject>{
-            print(data)
+        
             if let method = data["method"] as? String{
                 if (method != APIPath.UpdateUserData.rawValue &&
                     method != APIPath.Register.rawValue &&
@@ -218,6 +222,10 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                 }
                 if let response = data["response"] as? Dictionary<String, AnyObject>{
                     print(response)
+                    if let userID = response["userID"] as? String{
+                        NSUserDefaults.standardUserDefaults().setObject(userID, forKey: "userID")
+                        NSUserDefaults.standardUserDefaults().synchronize()
+                    }
                     if let token = response["token"] as? String{
                         if(token.characters.count > 10){
                             NSUserDefaults.standardUserDefaults().setObject(token, forKey: "userToken")
