@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NocimaApp/Controller/LoginViewController.swift"
-            timestampString = "489519152.573136"
+            timestampString = "489553199.468932"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "448"
-            endingLineNumber = "448"
+            startingLineNumber = "456"
+            endingLineNumber = "456"
             landmarkName = "cancelAllViews(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -57,13 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NocimaApp/AppDelegate.swift"
-            timestampString = "489480947.47479"
+            filePath = "NocimaApp/Controller/WelcomeViewController.swift"
+            timestampString = "489523183.597828"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
-            landmarkName = "application(_:didRegisterForRemoteNotificationsWithDeviceToken:)"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
+            landmarkName = "updateProfileSuccess(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -73,14 +73,104 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NocimaApp/Controller/WelcomeViewController.swift"
-            timestampString = "489523183.597828"
+            filePath = "NocimaApp/Controller/UserProfile.swift"
+            timestampString = "489615888.918209"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
-            landmarkName = "updateProfileSuccess(_:)"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "galleryLoadingSuccess(_:)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NocimaApp.UserProfile.galleryLoadingSuccess (__ObjC.NSNotification) -&gt; ()"
+                  moduleName = "NocimaApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pedja/Work/DatingApp/iOS/NocimaApp/NocimaApp/Controller/UserProfile.swift"
+                  timestampString = "489636566.300611"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "92">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NocimaApp.UserProfile.galleryLoadingSuccess (__ObjC.NSNotification) -&gt; ()"
+                  moduleName = "NocimaApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pedja/Work/DatingApp/iOS/NocimaApp/NocimaApp/Controller/UserProfile.swift"
+                  timestampString = "489636566.300796"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "362">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NocimaApp/Controller/UserProfile.swift"
+            timestampString = "489615888.918209"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "galleryLoadingFail(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NocimaApp/Controller/ChatViewController.swift"
+            timestampString = "489636566.098298"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "274"
+            endingLineNumber = "274"
+            landmarkName = "didPressSendButton(_:withMessageText:senderId:senderDisplayName:date:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NocimaApp/Controller/PendingActivationViewController.swift"
+            timestampString = "489573665.554053"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "0"
+            stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

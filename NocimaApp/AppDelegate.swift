@@ -41,6 +41,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        if let userStatus = NSUserDefaults.standardUserDefaults().objectForKey("userStatus") as? Int {
+            if userStatus == 0 {
+                APIClient.sendGET(APIPath.CheckUserStatus)
+            }       
+        }
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
@@ -155,21 +160,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // foreground (or if the app was in the background and the user clicks on the notification).
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         // display the userInfo
-        if let notification = userInfo["aps"] as? NSDictionary,
-            let alert = notification["alert"] as? String {
-            let alertCtrl = UIAlertController(title: "Time Entry", message: alert as String, preferredStyle: UIAlertControllerStyle.Alert)
-            alertCtrl.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            // Find the presented VC...
-            var presentedVC = self.window?.rootViewController
-            while (presentedVC!.presentedViewController != nil)  {
-                presentedVC = presentedVC!.presentedViewController
-            }
-            presentedVC!.presentViewController(alertCtrl, animated: true, completion: nil)
-            
-            // call the completion handler
-            // -- pass in NoData, since no new data was fetched from the server.
-            completionHandler(UIBackgroundFetchResult.NoData)
-        }
+//        print(userInfo)
+//        if let notification = userInfo["aps"] as? NSDictionary,
+//            let alert = notification["alert"] as? String {
+//            let alertCtrl = UIAlertController(title: "Time Entry", message: alert as String, preferredStyle: UIAlertControllerStyle.Alert)
+//            alertCtrl.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+//            // Find the presented VC...
+//            var presentedVC = self.window?.rootViewController
+//            while (presentedVC!.presentedViewController != nil)  {
+//                presentedVC = presentedVC!.presentedViewController
+//            }
+//            presentedVC!.presentViewController(alertCtrl, animated: true, completion: nil)
+//            
+//            // call the completion handler
+//            // -- pass in NoData, since no new data was fetched from the server.
+//            completionHandler(UIBackgroundFetchResult.NoData)
+//        }
     }
 }
 
