@@ -1151,7 +1151,7 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RnG-DM-HFm">
                                                     <rect key="frame" x="28" y="13" width="60" height="60"/>
-                                                    <color key="backgroundColor" patternImage="9CB29B6B-2CE7-41B4-A091-3A289B9FB519" colorSpace="pattern"/>
+                                                    <color key="backgroundColor" patternImage="A6060379-1C9D-45F9-B56C-EE4363A62268" colorSpace="pattern"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="fyV-D9-E3D"/>
                                                         <constraint firstAttribute="width" constant="60" id="t8O-6h-hN1"/>
@@ -1804,7 +1804,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="9CB29B6B-2CE7-41B4-A091-3A289B9FB519" width="320" height="460">
+        <image name="A6060379-1C9D-45F9-B56C-EE4363A62268" width="320" height="460">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
