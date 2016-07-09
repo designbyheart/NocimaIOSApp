@@ -13,7 +13,7 @@ class MatchViewController: MainViewController {
     var matchedUserID = String()
     var matchedUserName = String()
     var matchedUserImgURL = String()
-    var matchedUImg = UIImage()
+    var matchedUImg:UIImage!
     var userImage = UIImage()
     
     @IBOutlet weak var sendMessageBttn: UIButton!
@@ -36,11 +36,15 @@ class MatchViewController: MainViewController {
         super.viewWillAppear(animated)
         
         APIClient.load_image(matchedUserImgURL, imageView: self.matchedUserImg)
+        if self.matchedUImg != nil {
+            matchedUserImg.image = self.matchedUImg
+        }
         if let urlString = NSUserDefaults.standardUserDefaults().objectForKey("myProfileImg") {
             APIClient.load_image(urlString, imageView: self.userImg)
         }
+        
         statusLbl.text = "Ti i \(matchedUserName.capitalizedString) se sviđate jedno drugom."
-        matchedUserImg.image = self.matchedUImg
+        
         
     }
     

@@ -24,6 +24,7 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
     private let reuseIdentifier = "LikeCell"
     @IBOutlet weak var noUsersLbl: UILabel!
     private var usersList = [AnyObject]()
+    var progressView = RPCircularProgress()
     
     @IBOutlet weak var dislikeBttn: UIButton!
     var matchedUserID = String()
@@ -82,7 +83,12 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
         if let long = NSUserDefaults.standardUserDefaults().objectForKey("longitude") as? Float{
             longitude = long
         }
+        self.progressView = RPCircularProgress.init()
+        progressView.enableIndeterminate(true)
+        self.view .addSubview(progressView)
+        progressView.center = CGPointMake(self.view.center.x, self.collectionView.center.y)
         APIClient.sendPOST(APIPath.UsersForMatch, params: ["latitude":latitude, "longitude":longitude])
+        self.noUsersLbl.hidden = true
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -205,15 +211,18 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
     
     //MARK: - API Delegates
     func usersMatchListFail(n:NSNotification){
-        print(n.object)
-        let alert = UIAlertView.init(title: "Users match list failed", message: "\(n.object)", delegate: self, cancelButtonTitle: "OK")
-        alert.show()
+//        print(n.object)
+//        let alert = UIAlertView.init(title: "Users match list failed", message: "\(n.object)", delegate: self, cancelButtonTitle: "OK")
+//        alert.show()
+        self.progressView.removeFromSuperview()
     }
     func usersMatchListSuccess(n:NSNotification){
+        
         if let response = n.object!["response"]{
+            self.progressView.removeFromSuperview()
             if let userList = response!["users"] as? [AnyObject]{
                 self.usersList = userList
-                self.noUsersLbl.hidden = self.usersList.count > 0 ? true : false
+                self.noUsersLbl.hidden = usersList.count > 0 ? true : false
                 self.likeBttn.hidden = self.usersList.count > 0 ? false : true
                 self.dislikeBttn.hidden = self.usersList.count > 0 ? false : true
                 

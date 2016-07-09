@@ -125,7 +125,7 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         self.progressView = RPCircularProgress.init()
         progressView.enableIndeterminate(true)
         self.view .addSubview(progressView)
-        self.progressView.center = self.view.center
+        self.progressView.center = self.imageView.center
         let params = [
             "gender":self.gender,
             "firstName":self.nameTxt.text!,
