@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A239j" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="n17-n9-nC0">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="n17-n9-nC0">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -446,7 +446,7 @@
                                     <action selector="resetPassword:" destination="8zu-0h-Vow" eventType="touchUpInside" id="bgf-1q-lCf"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SplashScreen" translatesAutoresizingMaskIntoConstraints="NO" id="oXc-t5-vGf">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SplashScreen" translatesAutoresizingMaskIntoConstraints="NO" id="oXc-t5-vGf">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                         </subviews>
@@ -461,6 +461,8 @@
                             <constraint firstAttribute="bottom" secondItem="FdU-wM-Csc" secondAttribute="bottom" id="AzR-Wd-GPz"/>
                             <constraint firstItem="SdE-Dz-4fY" firstAttribute="width" secondItem="gf8-PQ-K3P" secondAttribute="width" multiplier="0.6" id="CwQ-XD-ACf"/>
                             <constraint firstItem="LBD-3g-IEL" firstAttribute="centerX" secondItem="gf8-PQ-K3P" secondAttribute="centerX" id="Dj7-dk-mvN"/>
+                            <constraint firstAttribute="bottom" secondItem="oXc-t5-vGf" secondAttribute="bottom" id="EeD-UU-RoF"/>
+                            <constraint firstItem="oXc-t5-vGf" firstAttribute="top" secondItem="gf8-PQ-K3P" secondAttribute="top" id="GQq-xb-ocQ"/>
                             <constraint firstItem="t8x-X1-ffM" firstAttribute="top" secondItem="n0d-mv-CWh" secondAttribute="bottom" constant="483" id="GSo-oY-mk9"/>
                             <constraint firstItem="tMO-zH-pag" firstAttribute="width" secondItem="gf8-PQ-K3P" secondAttribute="width" multiplier="0.65" id="ILR-YA-bcf"/>
                             <constraint firstItem="t8x-X1-ffM" firstAttribute="width" secondItem="FdU-wM-Csc" secondAttribute="width" multiplier="0.7" id="J4u-9O-eVo"/>
@@ -476,12 +478,14 @@
                             <constraint firstItem="vh8-pc-0kB" firstAttribute="centerY" secondItem="bjG-Qd-jOa" secondAttribute="centerY" id="bPo-V0-TXc"/>
                             <constraint firstItem="LBD-3g-IEL" firstAttribute="width" secondItem="gf8-PQ-K3P" secondAttribute="width" multiplier="0.65" id="bvf-m9-RCN"/>
                             <constraint firstItem="cpp-SL-3Ce" firstAttribute="top" secondItem="l04-tX-Ies" secondAttribute="bottom" constant="20" id="cgc-OJ-QAD"/>
+                            <constraint firstItem="oXc-t5-vGf" firstAttribute="leading" secondItem="gf8-PQ-K3P" secondAttribute="leading" id="eCf-FJ-3R8"/>
                             <constraint firstItem="vh8-pc-0kB" firstAttribute="top" secondItem="bjG-Qd-jOa" secondAttribute="bottom" constant="-40" id="eI0-qK-nzS"/>
                             <constraint firstItem="l04-tX-Ies" firstAttribute="top" secondItem="gf8-PQ-K3P" secondAttribute="top" constant="140" id="fne-oK-cRx"/>
                             <constraint firstItem="cpp-SL-3Ce" firstAttribute="width" secondItem="gf8-PQ-K3P" secondAttribute="width" multiplier="0.7" id="gDT-86-3kT"/>
                             <constraint firstItem="t8x-X1-ffM" firstAttribute="bottom" secondItem="FdU-wM-Csc" secondAttribute="bottom" constant="-70" id="gSr-Ye-jBw"/>
                             <constraint firstItem="LBD-3g-IEL" firstAttribute="top" secondItem="tMO-zH-pag" secondAttribute="bottom" constant="15" id="iBI-Ov-xhv"/>
                             <constraint firstItem="tMO-zH-pag" firstAttribute="top" secondItem="cpp-SL-3Ce" secondAttribute="bottom" constant="110" id="mD2-yt-tdK"/>
+                            <constraint firstAttribute="trailing" secondItem="oXc-t5-vGf" secondAttribute="trailing" id="p4J-Qh-DbL"/>
                             <constraint firstItem="cpp-SL-3Ce" firstAttribute="centerX" secondItem="gf8-PQ-K3P" secondAttribute="centerX" id="uKD-WB-Qlz"/>
                             <constraint firstItem="o26-3J-oGN" firstAttribute="top" secondItem="bjG-Qd-jOa" secondAttribute="bottom" id="uPT-xa-gxd"/>
                             <constraint firstItem="tMO-zH-pag" firstAttribute="centerX" secondItem="gf8-PQ-K3P" secondAttribute="centerX" id="vMQ-pq-AcC"/>
@@ -1151,12 +1155,12 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6IH-cu-tYk" id="d8N-e2-ciJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RnG-DM-HFm">
                                                     <rect key="frame" x="28" y="13" width="60" height="60"/>
-                                                    <color key="backgroundColor" patternImage="3067351F-725C-4BF0-9CFC-FCA47D73CBFE" colorSpace="pattern"/>
+                                                    <color key="backgroundColor" patternImage="C842A483-67A2-4799-8D0A-F764C1699649" colorSpace="pattern"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="fyV-D9-E3D"/>
                                                         <constraint firstAttribute="width" constant="60" id="t8O-6h-hN1"/>
@@ -1391,11 +1395,12 @@
                             <constraint firstAttribute="trailing" secondItem="adn-jR-IkQ" secondAttribute="trailing" id="Jth-dL-Gtf"/>
                             <constraint firstItem="lWT-sV-5Lx" firstAttribute="centerX" secondItem="WFp-t1-9mo" secondAttribute="centerX" id="Oqi-Un-Ps4"/>
                             <constraint firstItem="P2L-cD-VIN" firstAttribute="width" secondItem="adn-jR-IkQ" secondAttribute="width" multiplier="0.86" id="Q9n-mo-PPR"/>
-                            <constraint firstAttribute="bottom" secondItem="P2L-cD-VIN" secondAttribute="bottom" constant="90" id="VHW-fT-0kT"/>
+                            <constraint firstAttribute="bottom" secondItem="P2L-cD-VIN" secondAttribute="bottom" priority="800" constant="90" id="VHW-fT-0kT"/>
                             <constraint firstItem="Ksp-vA-QN8" firstAttribute="top" secondItem="wPM-sC-qp1" secondAttribute="bottom" constant="50" id="XjZ-Oe-UYe"/>
                             <constraint firstItem="lWT-sV-5Lx" firstAttribute="top" secondItem="Ksp-vA-QN8" secondAttribute="bottom" constant="90" id="YZs-7z-fxK"/>
                             <constraint firstItem="L6P-L6-XS8" firstAttribute="centerX" secondItem="WFp-t1-9mo" secondAttribute="centerX" id="aea-Ig-KFB"/>
                             <constraint firstItem="Ksp-vA-QN8" firstAttribute="centerX" secondItem="WFp-t1-9mo" secondAttribute="centerX" id="bye-h4-f7D"/>
+                            <constraint firstItem="L6P-L6-XS8" firstAttribute="top" relation="greaterThanOrEqual" secondItem="3g1-8C-xgC" secondAttribute="bottom" constant="40" id="c8y-sn-jqR"/>
                             <constraint firstItem="adn-jR-IkQ" firstAttribute="top" secondItem="WFp-t1-9mo" secondAttribute="topMargin" id="dRo-CF-t0W"/>
                             <constraint firstItem="AQC-KP-M8c" firstAttribute="top" secondItem="hPq-IO-TJh" secondAttribute="bottom" constant="60" id="fmA-0l-LN3"/>
                             <constraint firstItem="L6P-L6-XS8" firstAttribute="width" secondItem="adn-jR-IkQ" secondAttribute="width" id="pco-Gm-doC"/>
@@ -1827,7 +1832,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="3067351F-725C-4BF0-9CFC-FCA47D73CBFE" width="320" height="460">
+        <image name="C842A483-67A2-4799-8D0A-F764C1699649" width="320" height="460">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -11728,14 +11733,14 @@ AAkKzAAJCt4ACQrhAAkK5gAAAAAAAAQBAAAAAAAAAEEAAAAAAAAAAAAAAAAACQroA
         <image name="viewBackground" width="750" height="1334"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="hhR-td-L3L"/>
         <segue reference="XKU-VZ-TRY"/>
-        <segue reference="obb-ZA-ODz"/>
+        <segue reference="A1q-cj-cbV"/>
         <segue reference="HJd-ab-yQD"/>
         <segue reference="g8X-xs-25S"/>
         <segue reference="cgN-sF-VLY"/>
-        <segue reference="hhR-td-L3L"/>
         <segue reference="GJk-oN-oIb"/>
+        <segue reference="bT1-2H-b64"/>
         <segue reference="dYj-pF-e1i"/>
-        <segue reference="b1X-A8-x0h"/>
     </inferredMetricsTieBreakers>
 </document>

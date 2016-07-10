@@ -75,10 +75,10 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
             }
         }
         //        self.openWelcomeScreen()
+        self.splashScreen.hidden = true
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self.splashScreen.hidden = true
     }
     @IBAction func loginWithFacebook(sender: AnyObject) {
         

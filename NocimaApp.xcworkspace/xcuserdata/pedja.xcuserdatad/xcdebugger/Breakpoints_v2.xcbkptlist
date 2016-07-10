@@ -90,12 +90,12 @@
                   moduleName = "NocimaApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Pedja/Work/nocima/NocimaApp/Controller/UserProfile.swift"
-                  timestampString = "489710278.379789"
+                  timestampString = "489777350.182631"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "49"
                   endingLineNumber = "49"
-                  offsetFromSymbolStart = "92">
+                  offsetFromSymbolStart = "105">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -105,12 +105,12 @@
                   moduleName = "NocimaApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Pedja/Work/nocima/NocimaApp/Controller/UserProfile.swift"
-                  timestampString = "489710278.380257"
+                  timestampString = "489777350.182814"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "49"
                   endingLineNumber = "49"
-                  offsetFromSymbolStart = "362">
+                  offsetFromSymbolStart = "383">
                </Location>
             </Locations>
          </BreakpointContent>
