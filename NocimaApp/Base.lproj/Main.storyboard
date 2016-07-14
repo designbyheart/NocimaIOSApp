@@ -301,7 +301,7 @@
                         <segue destination="UZz-BF-qua" kind="show" identifier="openLocationView" id="2lJ-3Q-ByR"/>
                         <segue destination="6tS-UR-kae" kind="show" identifier="openSettingsView" id="OsO-rF-pVP"/>
                         <segue destination="8zu-0h-Vow" kind="show" identifier="openLoginView" id="P4t-VA-e4r"/>
-                        <segue destination="Dj4-dQ-tZ1" kind="presentation" identifier="showMatchView" id="Vmf-6G-yu6"/>
+                        <segue destination="Dj4-dQ-tZ1" kind="show" identifier="showMatchView" id="Vmf-6G-yu6"/>
                         <segue destination="SU4-3h-GK4" kind="show" identifier="openMessageList" id="XKU-VZ-TRY"/>
                     </connections>
                 </viewController>
@@ -1160,7 +1160,7 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RnG-DM-HFm">
                                                     <rect key="frame" x="28" y="13" width="60" height="60"/>
-                                                    <color key="backgroundColor" patternImage="C842A483-67A2-4799-8D0A-F764C1699649" colorSpace="pattern"/>
+                                                    <color key="backgroundColor" patternImage="BF068F3C-9E99-46E7-B6FE-C12FF7BA6EAD" colorSpace="pattern"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="fyV-D9-E3D"/>
                                                         <constraint firstAttribute="width" constant="60" id="t8O-6h-hN1"/>
@@ -1832,7 +1832,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="C842A483-67A2-4799-8D0A-F764C1699649" width="320" height="460">
+        <image name="BF068F3C-9E99-46E7-B6FE-C12FF7BA6EAD" width="320" height="460">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -11733,14 +11733,14 @@ AAkKzAAJCt4ACQrhAAkK5gAAAAAAAAQBAAAAAAAAAEEAAAAAAAAAAAAAAAAACQroA
         <image name="viewBackground" width="750" height="1334"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hhR-td-L3L"/>
-        <segue reference="XKU-VZ-TRY"/>
         <segue reference="A1q-cj-cbV"/>
-        <segue reference="HJd-ab-yQD"/>
-        <segue reference="g8X-xs-25S"/>
-        <segue reference="cgN-sF-VLY"/>
+        <segue reference="P4t-VA-e4r"/>
         <segue reference="GJk-oN-oIb"/>
-        <segue reference="bT1-2H-b64"/>
         <segue reference="dYj-pF-e1i"/>
+        <segue reference="OsO-rF-pVP"/>
+        <segue reference="XKU-VZ-TRY"/>
+        <segue reference="2lJ-3Q-ByR"/>
+        <segue reference="UEU-ZX-sbh"/>
+        <segue reference="g3F-2W-EI3"/>
     </inferredMetricsTieBreakers>
 </document>

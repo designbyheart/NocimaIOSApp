@@ -52,6 +52,7 @@ class MatchViewController: MainViewController {
     @IBOutlet weak var userImg: UIImageView!
     @IBOutlet weak var statusLbl: UILabel!
     @IBAction func keepPlaying(sender: AnyObject) {
+        self.navigationController?.popViewControllerAnimated(true)
         self.dismissViewControllerAnimated(true) {
             
         }

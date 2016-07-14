@@ -211,13 +211,27 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
     
     //MARK: - API Delegates
     func usersMatchListFail(n:NSNotification){
-//        print(n.object)
-//        let alert = UIAlertView.init(title: "Users match list failed", message: "\(n.object)", delegate: self, cancelButtonTitle: "OK")
-//        alert.show()
+        if let data = n.object as? Dictionary<String, AnyObject>{
+            
+            if let method = data["method"] as? String{
+                if (method != APIPath.UsersForMatch.rawValue){
+                    return
+                }
+            }
+        }
+        //        print(n.object)
+        //        let alert = UIAlertView.init(title: "Users match list failed", message: "\(n.object)", delegate: self, cancelButtonTitle: "OK")
+        //        alert.show()
         self.progressView.removeFromSuperview()
     }
     func usersMatchListSuccess(n:NSNotification){
-        
+        if let response = n.object{
+            if let method = response["method"] as? String{
+                if (method != APIPath.UsersForMatch.rawValue){
+                    return
+                }
+            }
+        }
         if let response = n.object!["response"]{
             self.progressView.removeFromSuperview()
             if let userList = response!["users"] as? [AnyObject]{
@@ -248,19 +262,25 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
                         self.matchedUserID = (res!["matchedUserID"] as? String)!
                         self.matchedUserName = (res!["userName"] as? String)!
                         self.matchedUserImgURL = (res!["imageURL"] as? String)!
-                        self.performSegueWithIdentifier("showMatchView", sender: self)
+                        if let viewControllers = self.navigationController?.viewControllers{
+                            if let activeController = viewControllers.last {
+                                if !activeController.isKindOfClass(MessagesViewController){
+                                    self.performSegueWithIdentifier("showMatchView", sender: self)
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
     }
-    //MARK: - prepare view
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier! == "showMatchView" {
-            let matchView = segue.destinationViewController as? MatchViewController
-            matchView!.matchedUserID = self.matchedUserID
-            matchView!.matchedUserName = self.matchedUserName
-            matchView!.matchedUserImgURL = self.matchedUserImgURL
+        //MARK: - prepare view
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+            if segue.identifier! == "showMatchView" {
+                let matchView = segue.destinationViewController as? MatchViewController
+                matchView!.matchedUserID = self.matchedUserID
+                matchView!.matchedUserName = self.matchedUserName
+                matchView!.matchedUserImgURL = self.matchedUserImgURL
+            }
         }
-    }
 }

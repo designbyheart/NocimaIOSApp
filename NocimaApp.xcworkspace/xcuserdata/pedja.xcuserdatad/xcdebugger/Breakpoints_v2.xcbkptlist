@@ -90,12 +90,12 @@
                   moduleName = "NocimaApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Pedja/Work/nocima/NocimaApp/Controller/UserProfile.swift"
-                  timestampString = "489777350.182631"
+                  timestampString = "489873261.149958"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "49"
                   endingLineNumber = "49"
-                  offsetFromSymbolStart = "105">
+                  offsetFromSymbolStart = "92">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -105,12 +105,12 @@
                   moduleName = "NocimaApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Pedja/Work/nocima/NocimaApp/Controller/UserProfile.swift"
-                  timestampString = "489777350.182814"
+                  timestampString = "489873261.15021"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "49"
                   endingLineNumber = "49"
-                  offsetFromSymbolStart = "383">
+                  offsetFromSymbolStart = "362">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -128,22 +128,6 @@
             startingLineNumber = "63"
             endingLineNumber = "63"
             landmarkName = "galleryLoadingFail(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NocimaApp/Controller/ChatViewController.swift"
-            timestampString = "489636566.098298"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "274"
-            endingLineNumber = "274"
-            landmarkName = "didPressSendButton(_:withMessageText:senderId:senderDisplayName:date:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -179,29 +163,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NocimaApp/Controller/MatchViewController.swift"
-            timestampString = "489708150.869256"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "prepareForSegue(_:sender:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "NocimaApp/Controller/LikeViewController.swift"
-            timestampString = "489710706.917783"
+            timestampString = "489869181.999131"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
-            landmarkName = "usersMatchListSuccess(_:)"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
+            landmarkName = "userMatchFail(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
