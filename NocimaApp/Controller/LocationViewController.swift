@@ -8,6 +8,7 @@
 
 import UIKit
 import Mapbox
+import CoreLocation
 
 class LocationViewController: MainViewController,MGLMapViewDelegate, CLLocationManagerDelegate {
     

@@ -51,6 +51,7 @@
 		07F7115D1D04D0500099D342 /* TisprCardStackViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F7115B1D04D0500099D342 /* TisprCardStackViewCell.swift */; };
 		07F7115E1D04D0500099D342 /* TisprCardStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F7115C1D04D0500099D342 /* TisprCardStackViewController.swift */; };
 		07F711601D04D0FB0099D342 /* LikeDislikeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F7115F1D04D0FB0099D342 /* LikeDislikeCollectionViewCell.swift */; };
+		07FB54EA1D375C4B009165D9 /* LocationUpdateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FB54E91D375C4B009165D9 /* LocationUpdateController.swift */; };
 		07FE8F171CF9CDD70029DE52 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FE8F161CF9CDD70029DE52 /* MenuViewController.swift */; };
 		5A27788F7C212E2A2716324E /* Pods_NocimaApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BDFFD27E4117CC604834ED1 /* Pods_NocimaApp.framework */; };
 /* End PBXBuildFile section */
@@ -123,6 +124,7 @@
 		07F7115B1D04D0500099D342 /* TisprCardStackViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TisprCardStackViewCell.swift; path = Resources/CardController/TisprCardStackViewCell.swift; sourceTree = "<group>"; };
 		07F7115C1D04D0500099D342 /* TisprCardStackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TisprCardStackViewController.swift; path = Resources/CardController/TisprCardStackViewController.swift; sourceTree = "<group>"; };
 		07F7115F1D04D0FB0099D342 /* LikeDislikeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LikeDislikeCollectionViewCell.swift; path = Components/cells/LikeDislikeCollectionViewCell.swift; sourceTree = "<group>"; };
+		07FB54E91D375C4B009165D9 /* LocationUpdateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationUpdateController.swift; path = Controller/LocationUpdateController.swift; sourceTree = "<group>"; };
 		07FE8F161CF9CDD70029DE52 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = Controller/MenuViewController.swift; sourceTree = "<group>"; };
 		1BDFFD27E4117CC604834ED1 /* Pods_NocimaApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NocimaApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29EA541C5004153039804E78 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				075EE16D1D1F39CC006E853F /* MatchViewController.swift */,
 				0776C9D91D2402A800F76BA0 /* WelcomeViewController.swift */,
 				071353631D2D7F2300455C4E /* UserProfile.swift */,
+				07FB54E91D375C4B009165D9 /* LocationUpdateController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -632,6 +635,7 @@
 				076D400F1CEE62BB00F63275 /* LoginViewController.swift in Sources */,
 				07003AF91D02B99A0083AC5F /* MessagesViewController.swift in Sources */,
 				07B8BEFF1CFAF48300BF2E58 /* SettingsViewController.swift in Sources */,
+				07FB54EA1D375C4B009165D9 /* LocationUpdateController.swift in Sources */,
 				07B8BEF81CFA55D300BF2E58 /* NavigationView.swift in Sources */,
 				0776C9DA1D2402A800F76BA0 /* WelcomeViewController.swift in Sources */,
 				071353641D2D7F2300455C4E /* UserProfile.swift in Sources */,
@@ -830,7 +834,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: NOCIMA TECHNOLOGIES DOO (LTD) (3ZF6URM4HS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -841,7 +845,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nocima.nocima;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0583ef00-4939-445c-9f68-5c95aa6838c5";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 2.3;

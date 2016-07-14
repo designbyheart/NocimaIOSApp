@@ -22,22 +22,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NocimaApp/Controller/MyProfileViewController.swift"
-            timestampString = "489286018.565518"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
-            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -89,13 +73,13 @@
                   symbolName = "NocimaApp.UserProfile.galleryLoadingSuccess (__ObjC.NSNotification) -&gt; ()"
                   moduleName = "NocimaApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Pedja/Work/nocima/NocimaApp/Controller/UserProfile.swift"
-                  timestampString = "489710278.379789"
+                  urlString = "file:///Users/pedja/Work/DatingApp/iOS/NocimaApp/NocimaApp/Controller/UserProfile.swift"
+                  timestampString = "490182606.183887"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "49"
                   endingLineNumber = "49"
-                  offsetFromSymbolStart = "92">
+                  offsetFromSymbolStart = "112">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -104,13 +88,13 @@
                   symbolName = "NocimaApp.UserProfile.galleryLoadingSuccess (__ObjC.NSNotification) -&gt; ()"
                   moduleName = "NocimaApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Pedja/Work/nocima/NocimaApp/Controller/UserProfile.swift"
-                  timestampString = "489710278.380257"
+                  urlString = "file:///Users/pedja/Work/DatingApp/iOS/NocimaApp/NocimaApp/Controller/UserProfile.swift"
+                  timestampString = "490182606.184264"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "49"
                   endingLineNumber = "49"
-                  offsetFromSymbolStart = "362">
+                  offsetFromSymbolStart = "336">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -202,6 +186,38 @@
             startingLineNumber = "220"
             endingLineNumber = "220"
             landmarkName = "usersMatchListSuccess(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NocimaApp/Controller/LocationUpdateController.swift"
+            timestampString = "490182657.064049"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "locationManager(_:didUpdateToLocation:fromLocation:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NocimaApp/Controller/LocationUpdateController.swift"
+            timestampString = "490182675.43033"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "locationManager(_:didUpdateToLocation:fromLocation:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
