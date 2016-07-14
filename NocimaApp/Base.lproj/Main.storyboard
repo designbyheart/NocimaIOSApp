@@ -301,7 +301,7 @@
                         <segue destination="UZz-BF-qua" kind="show" identifier="openLocationView" id="2lJ-3Q-ByR"/>
                         <segue destination="6tS-UR-kae" kind="show" identifier="openSettingsView" id="OsO-rF-pVP"/>
                         <segue destination="8zu-0h-Vow" kind="show" identifier="openLoginView" id="P4t-VA-e4r"/>
-                        <segue destination="Dj4-dQ-tZ1" kind="presentation" identifier="showMatchView" id="Vmf-6G-yu6"/>
+                        <segue destination="Dj4-dQ-tZ1" kind="show" identifier="showMatchView" id="Vmf-6G-yu6"/>
                         <segue destination="SU4-3h-GK4" kind="show" identifier="openMessageList" id="XKU-VZ-TRY"/>
                     </connections>
                 </viewController>

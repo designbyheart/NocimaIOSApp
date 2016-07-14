@@ -110,6 +110,9 @@ class ChatViewController: JSQMessagesViewController,UIGestureRecognizerDelegate 
     }
     @IBAction func goBack(sender:AnyObject){
         self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.dismissViewControllerAnimated(true, completion: { 
+            
+        })
     }
     //MARK - API delegates
     func loadMessages(){
