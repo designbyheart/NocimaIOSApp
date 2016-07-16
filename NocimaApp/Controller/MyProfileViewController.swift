@@ -199,9 +199,28 @@ class MyProfileViewController: MainViewController,UIImagePickerControllerDelegat
                 }
                 if let response = data["response"] as? [String:AnyObject]{
                     if let images = response["images"] as? [AnyObject]{
-                        self.loadImages(images)
-                        NSUserDefaults.standardUserDefaults().setObject(images, forKey: "gallery")
-                        NSUserDefaults.standardUserDefaults().synchronize()
+                        if(images.count > 0){
+                            self.loadImages(images)
+                            NSUserDefaults.standardUserDefaults().setObject(images, forKey: "gallery")
+                            NSUserDefaults.standardUserDefaults().synchronize()
+                        }else{
+                            let pictureRequest = FBSDKGraphRequest(graphPath: "me/picture?width=600&type=large&redirect=false", parameters: nil)
+                            pictureRequest.startWithCompletionHandler({
+                                (connection, result, error: NSError!) -> Void in
+                                if error == nil {
+                                    if let data = result["data"]{
+                                        if let url = data!["url"] as? String{
+                                            print(url)
+                                            APIClient.load_image(url, imageView: self.mainImageView)
+                                            APIClient.uploadImage(self.mainImageView.image!, URL: url)
+                                        }
+                                    }
+                                    print("\(result)")
+                                } else {
+                                    print("\(error)")
+                                }
+                            })
+                        }
                     }
                 }
             }
