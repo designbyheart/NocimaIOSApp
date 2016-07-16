@@ -104,7 +104,7 @@ class SettingsViewController: MainViewController {
         //        let confirmView = UIAlertView.init(title: "Delete account", message: "Are you sure? ", delegate: self, cancelButtonTitle: "OK", otherButtonTitles: "Cancel", nil)
         //        confirmView.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
         //        self.presentViewController(confirmView, animated: true, completion: nil)
-        let alert = UIAlertController(title: "Delete Account", message: "Are you sure?", preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "Brisanje naloga", message: "Da li ste sigurni?", preferredStyle: UIAlertControllerStyle.Alert)
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { action in
             switch action.style{
@@ -137,10 +137,35 @@ class SettingsViewController: MainViewController {
     }
     func deleteAccount(){
         
-        let loginManager = FBSDKLoginManager()
-        loginManager.logOut()
+//        let loginManager = FBSDKLoginManager()
+//        loginManager.logOut()
+        let facebookRequest: FBSDKGraphRequest! = FBSDKGraphRequest(graphPath: "/me/permissions", parameters: nil, HTTPMethod: "DELETE")
+        
+        facebookRequest.startWithCompletionHandler { (connection: FBSDKGraphRequestConnection!, result: AnyObject!, error: NSError!) -> Void in
+            
+            if(error == nil && result != nil){
+                print("Permission successfully revoked. This app will no longer post to Facebook on your behalf.")
+                print("result = \(result)")
+            } else {
+                if let error: NSError = error {
+                    if let errorString = error.userInfo["error"] as? String {
+                        print("errorString variable equals: \(errorString)")
+                    }
+                } else {
+                    print("No value for error key")
+                }
+            }
+        }
         
         NSUserDefaults.standardUserDefaults().removeObjectForKey("facebookToken")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("userToken")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("userDetails")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("latitude")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("longitude")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("clubList")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("userStatus")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("userID")
+        
         self.performSegueWithIdentifier("openLogin", sender: self)
     }
     @IBAction func saveSettings(sender: AnyObject) {

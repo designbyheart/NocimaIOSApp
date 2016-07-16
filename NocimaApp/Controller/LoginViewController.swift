@@ -174,7 +174,9 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                     userDetails["gender"] = result["gender"] as! String
                     userDetails["lastName"] = result.valueForKey("last_name") as! String
                     userDetails["firstName"] = result.valueForKey("first_name") as! String
-                    userDetails["email"] = result.valueForKey("email") as! String
+                    if let email = result.valueForKey("email") as? String {
+                        userDetails["email"] = email
+                    }
                     userDetails["displayName"] = result.valueForKey("name") as! String
                     userDetails["facebookID"] = result.valueForKey("id") as! String
                     userDetails["status"] = 1
@@ -360,12 +362,12 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
         self.showView("Registruj se", type: SubmitType.Register)
     }
     func showView(viewTitleStr:String, type:SubmitType){
-        registerBtn.hidden = true
-        loginBtn.hidden = true
+//        registerBtn.hidden = true
+//        loginBtn.hidden = true
         //        loginBttn.hidden = true
-        privacyLbl.hidden = true
-        infoIcon.hidden = true
-        resetBttn.hidden = true
+//        privacyLbl.hidden = true
+//        infoIcon.hidden = true
+//        resetBttn.hidden = true
         //        gbIcon.hidden = true
         self.removeVisibleView(1)
         
@@ -462,13 +464,13 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
     }
     func removeVisibleView(targetView: Int){
         if(self.loginView.tag > 0){
-            registerBtn.hidden = false
-            loginBtn.hidden = false
+//            registerBtn.hidden = false
+//            loginBtn.hidden = false
             //            loginBttn.hidden = false
             //            privacyLbl.hidden = false
             //            infoIcon.hidden = false
             //            gbIcon.hidden = false
-            resetBttn.hidden = false
+//            resetBttn.hidden = false
             
             self.loginView.removeFromSuperview()
             self.loginView.tag = 0
