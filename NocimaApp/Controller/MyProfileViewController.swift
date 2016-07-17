@@ -210,9 +210,9 @@ class MyProfileViewController: MainViewController,UIImagePickerControllerDelegat
                                 if error == nil {
                                     if let data = result["data"]{
                                         if let url = data!["url"] as? String{
-                                            print(url)
                                             APIClient.load_image(url, imageView: self.mainImageView)
-                                            APIClient.uploadImage(self.mainImageView.image!, URL: url)
+                                            APIClient.sendPOST(APIPath.UploadFacebookImage, params: ["url":url])
+                                            
                                         }
                                     }
                                     print("\(result)")

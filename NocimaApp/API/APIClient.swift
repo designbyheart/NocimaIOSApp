@@ -30,6 +30,7 @@ enum APIPath:String {
     case CheckUserStatus            = "user/status"
     case WelcomeData                = "uploadWelcomeData"
     case UploadImage                = "uploadImage"
+    case UploadFacebookImage        = "uploadFacebookImage"
     case UserGallery                = "listGallery"
     case ListUserMessages           = "listUserMessages"
     case UploadPushToken            = "storeDeviceNotificationToken"
