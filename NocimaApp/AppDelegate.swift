@@ -11,22 +11,49 @@ import CoreData
 import FBSDKCoreKit
 import Fabric
 import Crashlytics
+import Rollout
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var locationUpdateManager:LocationUpdateController?
+//    var mMoviePlayer:MPMoviePlayerViewController?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         Fabric.with([Crashlytics.self])
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        Rollout.setupWithKey("57a38eda276346bd385bf0c4")
         
-        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
-        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
-        UIApplication.sharedApplication().registerForRemoteNotifications()
+            print(UIDevice.currentDevice().name)
         
-        LocationUpdateController.startUpdating()
+//            let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+//            UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+//            UIApplication.sharedApplication().registerForRemoteNotifications()
+        
+//        var mMovieURL:NSURL
+//        let bundle = NSBundle.mainBundle()
+//        if(bundle != nil)
+//        {
+//            if let moviePath = bundle.pathForResource("splashVideo", ofType: "mp4") as? String{
+//                mMovieURL = NSURL.fileURLWithPath(moviePath)
+//            }
+//        }
+        
+//        mMoviePlayer = MPMoviePlayerViewController.init()
+//            //[[MPMoviePlayerViewController alloc] initWithContentURL:mMovieURL];
+//        [[NSNotificationCenter defaultCenter] addObserver:self
+//            selector:@selector(moviePlayBackDidFinish)
+//        name:MPMoviePlayerPlaybackDidFinishNotification
+//        object:mMoviePlayer.moviePlayer];
+//        mMoviePlayer.moviePlayer.controlStyle = MPMovieControlStyleNone;
+//        [mMoviePlayer.moviePlayer.backgroundView  addSubview:[[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SplashCopy.png"]] autorelease]];
+//        mMoviePlayer.moviePlayer.scalingMode = MPMovieScalingModeFill;
+//        [window.rootViewController.view addSubview:mMoviePlayer.moviePlayer.view];
+//        [mMoviePlayer.moviePlayer setFullscreen:YES animated:NO];
+//        [mMoviePlayer.moviePlayer play];
+        
         return true
     }
 
@@ -38,6 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+         locationUpdateManager = LocationUpdateController.startUpdating()
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -47,6 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 APIClient.sendGET(APIPath.CheckUserStatus)
             }       
         }
+        locationUpdateManager!.stopUpdating()
     }
 
     func applicationDidBecomeActive(application: UIApplication) {

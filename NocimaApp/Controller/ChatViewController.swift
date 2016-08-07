@@ -80,15 +80,20 @@ class ChatViewController: JSQMessagesViewController,UIGestureRecognizerDelegate 
         // Dispose of any resources that can be recreated.
     }
     func openUserProfile(){
-        self.performSegueWithIdentifier("openUserProfile", sender: self)
+        if let viewControllers = self.navigationController?.viewControllers{
+            if let activeController = viewControllers.last {
+                if !activeController.isKindOfClass(UserProfileController){
+                    self.performSegueWithIdentifier("openUserProfile", sender: self)
+                }
+            }
+        }
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "openUserProfile"){
-            if let userP = segue.destinationViewController as? UserProfile {
+            if let userP = segue.destinationViewController as? UserProfileController {
                 userP.userName = self.userName
                 userP.userID = self.userID
             }
-            
         }
     }
     func reloadMessagesView() {
@@ -141,17 +146,32 @@ class ChatViewController: JSQMessagesViewController,UIGestureRecognizerDelegate 
     func prepareMessages(messageList:[AnyObject]){
         self.messages.removeAll()
         for m in messageList {
-            if let senderID = m["senderID"] as? String{
-                if self.userID != senderID{
-                    self.senderId = senderID
-                }else{
-                    self.senderId = m["receiverID"] as? String
+            if var messageContent = m["message"] as? String{
+                if let senderID = m["senderID"] as? String{
+                    if self.userID != senderID{
+                        self.senderId = senderID
+                    }else{
+                        self.senderId = m["receiverID"] as? String
+                    }
                 }
+                let sender = m["senderID"] as? String
+                
+                
+                if let base64Decoded = NSData(base64EncodedString: messageContent, options:   NSDataBase64DecodingOptions(rawValue: 0))
+                    .map({ NSString(data: $0, encoding: NSUTF8StringEncoding) })
+                {
+                    // Convert back to a string
+                    if let decoded  = base64Decoded as? String  {
+                        messageContent = decoded
+                    }else{
+                        messageContent = m["message"] as! String
+                    }
+                }
+                
+                
+                let message = JSQMessage(senderId: sender, displayName:sender, text: messageContent)
+                self.messages += [message]
             }
-            let sender = m["senderID"] as? String
-            let messageContent = m["message"] as? String
-            let message = JSQMessage(senderId: sender, displayName:sender, text: messageContent)
-            self.messages += [message]
         }
         self.reloadMessagesView()
     }
@@ -270,14 +290,25 @@ extension JSQMessagesCollectionViewCellOutgoing {
 //MARK - Toolbar
 extension ChatViewController {
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
+        var messageText:String = text
+        
+        let utf8str = text.dataUsingEncoding(NSUTF8StringEncoding)
+        
+        if let base64Encoded = utf8str?.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
+        {
+            messageText = base64Encoded
+        }
+        
         let message = JSQMessage(senderId: senderId, senderDisplayName: senderDisplayName, date: date, text: text)
         self.messages += [message]
         self.finishSendingMessage()
         
-        APIClient.sendPOST(APIPath.NewMessage, params: ["userID":self.userID, "message":text])
+        
+        APIClient.sendPOST(APIPath.NewMessage, params: ["userID":self.userID, "message":messageText])
     }
     
     override func didPressAccessoryButton(sender: UIButton!) {
         
     }
 }
+

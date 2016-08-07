@@ -6,19 +6,21 @@
 //  Copyright © 2016 Pedja Jevtic. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import Mapbox
 import CoreLocation
 
-class LocationViewController: MainViewController,MGLMapViewDelegate, CLLocationManagerDelegate {
+class LocationViewController: MainViewController, MGLMapViewDelegate, CLLocationManagerDelegate {
     
     @IBOutlet var mapView:MGLMapView!
     let locationManager = CLLocationManager()
     var currentLocation = CLLocationCoordinate2D()
+    let styleURL = NSURL(string: "mapbox://styles/dbyh/cip0hdumy0003dlnq2eqkvo9i")
     var clubs = [AnyObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Put this in your -viewDidLoad method
         //        var template = "http://tile.openstreetmap.org/{z}/{x}/{y}.png"
         //        var overlay = MKTileOverlay()
@@ -28,46 +30,17 @@ class LocationViewController: MainViewController,MGLMapViewDelegate, CLLocationM
         //        overlay.canReplaceMapContent = YES;
         //        [self.mapView addOverlay:overlay level:MKOverlayLevelAboveLabels];
         
-        let styleURL = NSURL(string: "mapbox://styles/dbyh/cip0hdumy0003dlnq2eqkvo9i")
-        mapView = MGLMapView(frame: view.bounds,
-                             styleURL: styleURL)
-        mapView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-        
-        // set the map's center coordinate
-        self.view.addSubview(mapView)
-        
-        mapView.delegate = self
-        
-        mapView.showsUserLocation = true
-        
-        self.locationManager.requestAlwaysAuthorization()
-        // For use in foreground
-        self.locationManager.requestWhenInUseAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
-        }
-        
-        APIClient.sendGET(APIPath.ClubsList)
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LocationViewController.loadClubsFail(_:)), name: APINotification.Fail.rawValue, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LocationViewController.loadClubsSuccess(_:)), name: APINotification.Success.rawValue, object: nil)
-        
-        if let clubsList = NSUserDefaults.standardUserDefaults().objectForKey("clubsList") as? [AnyObject]{
-            self.clubs = clubsList
-            self.displayClubs()
-        }
-        
-        
+       
     }
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(manager: CLLocationManager,
+                         didUpdateLocations locations: [CLLocation]){
         if let loc = manager.location {
             if let locValue:CLLocationCoordinate2D = loc.coordinate{
                 currentLocation = locValue
-                mapView.setCenterCoordinate(CLLocationCoordinate2D(latitude: locValue.latitude,
-                    longitude:locValue.longitude),zoomLevel: 14, animated: false)
+//                if let map = self.mapView!{
+                    self.mapView.setCenterCoordinate(CLLocationCoordinate2D(latitude: locValue.latitude,
+                    longitude:locValue.longitude),zoomLevel: 14, animated: true)
+//                }
                 
                 manager.stopUpdatingLocation()
             }
@@ -82,10 +55,58 @@ class LocationViewController: MainViewController,MGLMapViewDelegate, CLLocationM
         self.navigationMenu.initMenuBttn()
         self.navigationMenu.initChatBttn()
         
-        //        self.mapView.setCenterCoordinate(currentLocation,zoomLevel: 12, animated: false)
+        if currentLocation.latitude != 0 || currentLocation.longitude != 0{
+        self.mapView.setCenterCoordinate(CLLocationCoordinate2D(latitude: currentLocation.latitude, longitude: currentLocation.longitude), zoomLevel: 14, animated: false)
+        }
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+//        self.mapView.showsUserLocation = true
+        self.mapView = MGLMapView.init(frame:view.bounds, styleURL:styleURL)
+        self.mapView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        
+        self.mapView.showsUserLocation = true
+        // set the map's center coordinate
+        self.view.insertSubview(mapView, atIndex: 0)
+//        self.view.
+//        addSubview(mapView)
+        
+        mapView.delegate = self
+        
+        APIClient.sendGET(APIPath.ClubsList)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LocationViewController.loadClubsFail(_:)), name: APINotification.Fail.rawValue, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LocationViewController.loadClubsSuccess(_:)), name: APINotification.Success.rawValue, object: nil)
+        
+        if !CLLocationManager.locationServicesEnabled() {
+            self.locationManager.requestWhenInUseAuthorization()
+        }
+        
+        //
+        // For use in foreground
+        //        if (self.locationManager.respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        //            [self.locationManager requestWhenInUseAuthorization];
+        //        }
+        
+        //
+        //        if !CLLocationManager.locationServicesEnabled {
+        //            self.locationManager.requestWhenInUseAuthorization()
+        //        }
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+            self.locationManager.startUpdatingLocation()
+        }
+        
+        if let clubsList = NSUserDefaults.standardUserDefaults().objectForKey("clubsList") as? [AnyObject]{
+            self.clubs = clubsList
+            self.displayClubs()
+        }
+    }
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     func mapView(mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {

@@ -190,6 +190,7 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
         }
     }
     @IBAction func dislikeUser(sender: AnyObject) {
+        if usersList.count > layout.index {
         if let user = usersList[layout.index] as? Dictionary<String, AnyObject>{
             if let userID = user["userID"] as? String{
                 APIClient.sendPOST(APIPath.MatchUser, params: [
@@ -197,7 +198,9 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
                     "userID":userID
                     ])
             }
+            
             likedUsers.append(user)
+            }
         }
         if self.layout.index < usersList.count{
             if self.layout.index == usersList.count - 1{

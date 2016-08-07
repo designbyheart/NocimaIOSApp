@@ -10,16 +10,15 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 import CoreLocation
+import AVFoundation
 
 enum SubmitType:Int {
     case None
     case Login
     case Register
     case Reset
-    
-    
 }
-class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
+class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate, AVAudioPlayerDelegate {
     
     @IBOutlet weak var splashScreen: UIImageView!
     @IBOutlet weak var loginBttn: UIButton!
@@ -35,6 +34,11 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
     @IBOutlet weak var gbIcon: UIImageView!
     var userNameTxt = UITextField()
     var passwordTxt = UITextField()
+    let path = NSBundle.mainBundle().pathForResource("splashVideo", ofType: "mov")
+    var player: AVPlayer?
+    var loadUserDataIndex = 0
+    var isWelcomeLoaded:Int = 0
+    
     
     @IBOutlet weak var privacyLbl: UILabel!
     @IBOutlet weak var topContraint: NSLayoutConstraint!
@@ -43,15 +47,14 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
     
     //MARK - View methods
     override func viewDidLoad() {
-        self.loginBttn.layer.cornerRadius = 5;
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
-        loginBtn.layer.cornerRadius = 5
-        registerBtn.layer.cornerRadius = 5
+        loginBttn.layer.cornerRadius = 5
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -76,9 +79,34 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
         }
         //        self.openWelcomeScreen()
         self.splashScreen.hidden = true
+        
+        //        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.playerItemDidReachEnd), name: AVPlayerItemDidPlayToEndTimeNotification, object: player!.currentItem)
+        
+        self .startPlayingVideo()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.playerItemDidReachEnd), name:AVPlayerItemDidPlayToEndTimeNotification, object:nil)
+        
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+    }
+    func startPlayingVideo(){
+        if(self.player != nil){
+            self.player = nil
+        }
+        self.player = AVPlayer(URL: NSURL(fileURLWithPath: self.path!))
+        let playerLayer = AVPlayerLayer(player: player)
+        playerLayer.frame = self.view.frame
+        playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+        self.view.layer.insertSublayer(playerLayer, atIndex: 1)
+        self.player!.seekToTime(kCMTimeZero)
+        self.player!.play()
+        
+    }
+    func playerItemDidReachEnd() {
+        self.player!.seekToTime(kCMTimeZero)
+        self.player!.play()
     }
     @IBAction func loginWithFacebook(sender: AnyObject) {
         
@@ -116,12 +144,15 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
         }
     }
     func openWelcomeScreen(){
-        if let viewControllers = self.navigationController?.viewControllers{
-            if let activeController = viewControllers.last {
-                if !activeController.isKindOfClass(WelcomeViewController){
-                    self.performSegueWithIdentifier("openWelcomeView", sender: self)
+        if isWelcomeLoaded == 0{
+            if let viewControllers = self.navigationController?.viewControllers{
+                if let activeController = viewControllers.last {
+                    if !activeController.isKindOfClass(WelcomeViewController){
+                        self.performSegueWithIdentifier("openWelcomeView", sender: self)
+                    }
                 }
             }
+            isWelcomeLoaded = 1
         }
     }
     func openProfile(){
@@ -144,7 +175,12 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                 APIClient.sendGET(APIPath.CheckUserStatus)
             }
         }else{
-            //            print("login user with facebook")
+            //            if NSUserDefaults.standardUserDefaults().objectForKey("batteryWarning") == nil{
+            //                let alert = UIAlertView.init(title: "Napomena", message: "Kontinuirana upotreba GPS-a u pozadini može smanjiti trajanje baterije.", delegate: self, cancelButtonTitle: "OK")
+            //                alert.show()
+            //                NSUserDefaults.standardUserDefaults().setObject("1", forKey: "batteryWarning")
+            //                NSUserDefaults.standardUserDefaults().synchronize()
+            //            }
         }
         /*
          if(NSUserDefaults.standardUserDefaults().objectForKey("userToken") != nil){
@@ -163,7 +199,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
     }
     func loadUserData()
     {
-        if((FBSDKAccessToken.currentAccessToken()) != nil){
+        if((FBSDKAccessToken.currentAccessToken()) != nil && loadUserDataIndex == 0){
             FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, email, gender,birthday"]).startWithCompletionHandler({ (connection, result, error) -> Void in
                 if (error == nil){
                     
@@ -179,7 +215,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                     }
                     userDetails["displayName"] = result.valueForKey("name") as! String
                     userDetails["facebookID"] = result.valueForKey("id") as! String
-                    userDetails["status"] = 1
+                    userDetails["status"] = 0
                     if let birthday = result.valueForKey("birthday") as? String{
                         userDetails["birthday"] = birthday
                     }
@@ -205,6 +241,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                 
             })
         }
+        loadUserDataIndex += 1
     }
     func loginSuccess(result:FBSDKAccessToken){
         NSUserDefaults.standardUserDefaults().setObject(result.tokenString, forKey: "facebookToken")
@@ -215,7 +252,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
     //MARK: - API notifications
     func updateSuccess(n:NSNotification){
         if let data = n.object as? Dictionary<String, AnyObject>{
-        
+            
             if let method = data["method"] as? String{
                 if (method != APIPath.UpdateUserData.rawValue &&
                     method != APIPath.Register.rawValue &&
@@ -223,7 +260,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                     return
                 }
                 if let response = data["response"] as? Dictionary<String, AnyObject>{
-                    print(response)
+                    //                    print(response)
                     if let userID = response["userID"] as? String{
                         NSUserDefaults.standardUserDefaults().setObject(userID, forKey: "userID")
                         NSUserDefaults.standardUserDefaults().synchronize()
@@ -245,10 +282,10 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                             NSUserDefaults.standardUserDefaults().synchronize()
                             
                             if (userStatus == 0) {
-                                if (method == APIPath.Register.rawValue){
-                                    self.openWelcomeScreen()
-                                    return
-                                }
+//                                if response["registered"] != nil {
+//                                    self.openWelcomeScreen()
+//                                    return
+//                                }
                                 self.performSegueWithIdentifier("showPendingActivationView", sender: self)
                             }else{
                                 self.openLocation()
@@ -335,7 +372,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                         
                     }
                     
-                    if(method == APIPath.CheckUserStatus.rawValue){
+                    if(method == APIPath.CheckUserStatus.rawValue && response != nil){
                         UserEntity.updateUserDetails(response! as! Dictionary<String, AnyObject>)
                         if let userStatus = response!["status"] as? Int{
                             if(userStatus != 1){
@@ -362,12 +399,12 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
         self.showView("Registruj se", type: SubmitType.Register)
     }
     func showView(viewTitleStr:String, type:SubmitType){
-//        registerBtn.hidden = true
-//        loginBtn.hidden = true
+        //        registerBtn.hidden = true
+        //        loginBtn.hidden = true
         //        loginBttn.hidden = true
-//        privacyLbl.hidden = true
-//        infoIcon.hidden = true
-//        resetBttn.hidden = true
+        //        privacyLbl.hidden = true
+        //        infoIcon.hidden = true
+        //        resetBttn.hidden = true
         //        gbIcon.hidden = true
         self.removeVisibleView(1)
         
@@ -464,13 +501,13 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
     }
     func removeVisibleView(targetView: Int){
         if(self.loginView.tag > 0){
-//            registerBtn.hidden = false
-//            loginBtn.hidden = false
+            //            registerBtn.hidden = false
+            //            loginBtn.hidden = false
             //            loginBttn.hidden = false
             //            privacyLbl.hidden = false
             //            infoIcon.hidden = false
             //            gbIcon.hidden = false
-//            resetBttn.hidden = false
+            //            resetBttn.hidden = false
             
             self.loginView.removeFromSuperview()
             self.loginView.tag = 0
@@ -500,7 +537,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
         }else if(sender.tag == SubmitType.Reset.rawValue){
             APIClient.sendPOST(APIPath.ResetPass, params:params)
         }else{
-    
+            
         }
         
     }

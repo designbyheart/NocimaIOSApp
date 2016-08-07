@@ -275,7 +275,6 @@ public class TisprCardStackViewLayout: UICollectionViewLayout, UIGestureRecogniz
             updateCenterPositionOfDraggingCell(newCenter)
         } else {
             if let indexPath = draggedCellPath {
-                
                 finishedDragging(collectionView!.cellForItemAtIndexPath(indexPath)!)
             }
         }
@@ -299,18 +298,19 @@ public class TisprCardStackViewLayout: UICollectionViewLayout, UIGestureRecogniz
             //workaround for fix issue with zIndex
             let cell = collectionView!.cellForItemAtIndexPath(draggedCellPath!)
             collectionView?.bringSubviewToFront(cell!)
-            
         }
     }
     
     //Change position of dragged card
     private func updateCenterPositionOfDraggingCell(touchCoordinate:CGPoint) {
+        if initialCellCenter != nil {
         if let strongDraggedCellPath = draggedCellPath {
             if let cell = collectionView?.cellForItemAtIndexPath(strongDraggedCellPath) {
                 let newCenterX = (initialCellCenter!.x + touchCoordinate.x)
-                let newCenterY =  (initialCellCenter!.y) //+ touchCoordinate.y)
+                let newCenterY =  (initialCellCenter!.y)
                 cell.center = CGPoint(x: newCenterX, y:newCenterY)
                 cell.transform = CGAffineTransformMakeRotation(CGFloat(storeAngleOfRotation()))
+            }
             }
         }
     }

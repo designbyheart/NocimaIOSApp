@@ -34,28 +34,28 @@ class PendingActivationViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(PendingActivationViewController.statusSuccess(_:)), name: APINotification.Success.rawValue, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PendingActivationViewController.statusFail(_:)), name: APINotification.Fail.rawValue, object: nil)
         
-        /*
-         
-         //        self.rotateView(self.spinner)
-         let params: [NSObject : AnyObject] = ["redirect": false, "height": 300, "width": 300, "type": "large"]
-         let pictureRequest = FBSDKGraphRequest(graphPath: "me/picture?type=large&redirect=false", parameters: params)
-         pictureRequest.startWithCompletionHandler({
-         (connection, result, error: NSError!) -> Void in
-         if error == nil {
-         print(result["data"]);
-         if let data = result["data"]{
-         if let url = data!["url"] as? String{
-         self.downloadFbImage(NSURL.init(string: url)!, imageView: self.facebookprofileImgView)
-         }
-         }
-         
-         } else {
-         print("\(error)")
-         }
-         })
-         */
+        //        self.rotateView(self.spinner)
+        let params: [NSObject : AnyObject] = ["redirect": false, "height": 300, "width": 300, "type": "large"]
+        let pictureRequest = FBSDKGraphRequest(graphPath: "me/picture?type=large&redirect=false", parameters: params)
+        pictureRequest.startWithCompletionHandler({
+            (connection, result, error: NSError!) -> Void in
+            if error == nil {
+                print(result["data"]);
+                if let data = result["data"]{
+                    if let url = data!["url"] as? String{
+                        self.downloadFbImage(NSURL.init(string: url)!, imageView: self.facebookprofileImgView)
+                        self.facebookIcon.hidden = false
+                        APIClient.sendPOST(APIPath.UploadFacebookImage, params: ["url":url])
+                    }
+                }
+                
+            } else {
+                print("\(error)")
+            }
+        })
         if let myImgURL = NSUserDefaults.standardUserDefaults().objectForKey("myProfileImg") as? String {
             APIClient.load_image(myImgURL, imageView: self.facebookprofileImgView)
+            facebookIcon.hidden = true
         }else{
             APIClient.sendPOST(APIPath.UserGallery, params: [:])
             self.facebookprofileImgView.image = userImg

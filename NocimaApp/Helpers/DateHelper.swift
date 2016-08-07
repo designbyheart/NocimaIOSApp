@@ -6,9 +6,9 @@
 //  Copyright © 2016 Pedja Jevtic. All rights reserved.
 //
 import UIKit
-    
-class DateHelper: NSObject  {
 
+class DateHelper: NSObject  {
+    
     static func getCurrentYear() -> Int {
         
         let date = NSDate()
@@ -19,13 +19,12 @@ class DateHelper: NSObject  {
     }
     static func calculateAge() -> Int {
         let currentYear = self.getCurrentYear()
-        
+        var age:Int = 1
         if let userDetails = NSUserDefaults.standardUserDefaults().objectForKey("userDetails"){
             if let birthday = userDetails["birthday"]{
-                let year = birthday?.integerValue
-                let age = currentYear - year!
-
-                return age
+                if let year = birthday?.integerValue {
+                    age = currentYear - year
+                }
             }
             //when come facebook
             //                let dateFormatter = NSDateFormatter.init()
@@ -33,6 +32,6 @@ class DateHelper: NSObject  {
             //                let year = dateFormatter.
             
         }
-        return 1;
+        return age
     }
 }

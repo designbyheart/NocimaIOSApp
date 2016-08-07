@@ -145,7 +145,7 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UIImagePicke
             }
             .responseJSON { (response) in
                 if let imgURL = response.result.value!["imageURL"] as? String{
-                    NSUserDefaults.standardUserDefaults().setObject(imgURL, forKey: "myProfileImg")
+                    NSUserDefaults.standardUserDefaults().setObject(imgURL, forKey: "n")
                     NSUserDefaults.standardUserDefaults().synchronize()
                     APIClient.load_image(imgURL, imageView: self.profileImgView)
                 }

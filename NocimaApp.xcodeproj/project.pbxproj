@@ -10,13 +10,14 @@
 		07003AF91D02B99A0083AC5F /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07003AF81D02B99A0083AC5F /* MessagesViewController.swift */; };
 		070300BD1D1C6CDA000B2B57 /* PendingActivationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070300BC1D1C6CDA000B2B57 /* PendingActivationViewController.swift */; };
 		070511201D192F2C0051E684 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0705111F1D192F2C0051E684 /* CoreLocation.framework */; };
-		071353641D2D7F2300455C4E /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071353631D2D7F2300455C4E /* UserProfile.swift */; };
+		071353641D2D7F2300455C4E /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071353631D2D7F2300455C4E /* UserProfileController.swift */; };
 		071555D21D2832AB003039CF /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071555D11D2832AB003039CF /* UserEntity.swift */; };
 		072EB3741D2CE68A001FE2EE /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072EB3731D2CE689001FE2EE /* Fabric.framework */; };
 		072EB3771D2D5DF9001FE2EE /* RPCircularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072EB3761D2D5DF9001FE2EE /* RPCircularProgress.swift */; };
 		072F6D081D2DDF76000550D5 /* ChatHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072F6D071D2DDF76000550D5 /* ChatHeaderView.swift */; };
 		0736DE071D273F6C004FDE7B /* UserChatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0736DE061D273F6C004FDE7B /* UserChatListCell.swift */; };
 		075EE16E1D1F39CC006E853F /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075EE16D1D1F39CC006E853F /* MatchViewController.swift */; };
+		076073B71D3EB5BB00DA4B3B /* splashVideo.mov in Resources */ = {isa = PBXBuildFile; fileRef = 076073B61D3EB5BB00DA4B3B /* splashVideo.mov */; };
 		076638831CED0F0E001A8AE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076638821CED0F0E001A8AE1 /* AppDelegate.swift */; };
 		076638881CED0F0E001A8AE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 076638861CED0F0E001A8AE1 /* Main.storyboard */; };
 		0766388B1CED0F0E001A8AE1 /* NocimaApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 076638891CED0F0E001A8AE1 /* NocimaApp.xcdatamodeld */; };
@@ -53,7 +54,7 @@
 		07F711601D04D0FB0099D342 /* LikeDislikeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F7115F1D04D0FB0099D342 /* LikeDislikeCollectionViewCell.swift */; };
 		07FB54EA1D375C4B009165D9 /* LocationUpdateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FB54E91D375C4B009165D9 /* LocationUpdateController.swift */; };
 		07FE8F171CF9CDD70029DE52 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FE8F161CF9CDD70029DE52 /* MenuViewController.swift */; };
-		5A27788F7C212E2A2716324E /* Pods_NocimaApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BDFFD27E4117CC604834ED1 /* Pods_NocimaApp.framework */; };
+		6C7F1936F0F1A73059A1CD06 /* Pods_NocimaApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE9D4AE878F7A72A3353BF9E /* Pods_NocimaApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,16 +75,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0380AF5337B3DFD406CC811D /* Pods-NocimaApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NocimaApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NocimaApp/Pods-NocimaApp.debug.xcconfig"; sourceTree = "<group>"; };
 		07003AF81D02B99A0083AC5F /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagesViewController.swift; path = Controller/MessagesViewController.swift; sourceTree = "<group>"; };
 		070300BC1D1C6CDA000B2B57 /* PendingActivationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PendingActivationViewController.swift; path = Controller/PendingActivationViewController.swift; sourceTree = "<group>"; };
 		0705111F1D192F2C0051E684 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		071353631D2D7F2300455C4E /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProfile.swift; path = Controller/UserProfile.swift; sourceTree = "<group>"; };
+		071353631D2D7F2300455C4E /* UserProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProfileController.swift; path = Controller/UserProfileController.swift; sourceTree = "<group>"; };
 		071555D11D2832AB003039CF /* UserEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
 		072EB3731D2CE689001FE2EE /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = Pods/Fabric/Fabric.framework; sourceTree = "<group>"; };
 		072EB3761D2D5DF9001FE2EE /* RPCircularProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RPCircularProgress.swift; path = Resources/Progress/RPCircularProgress.swift; sourceTree = "<group>"; };
 		072F6D071D2DDF76000550D5 /* ChatHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatHeaderView.swift; path = Components/ChatHeaderView.swift; sourceTree = "<group>"; };
 		0736DE061D273F6C004FDE7B /* UserChatListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserChatListCell.swift; path = Components/cells/UserChatListCell.swift; sourceTree = "<group>"; };
 		075EE16D1D1F39CC006E853F /* MatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatchViewController.swift; path = Controller/MatchViewController.swift; sourceTree = "<group>"; };
+		076073B61D3EB5BB00DA4B3B /* splashVideo.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = splashVideo.mov; path = ../../../splashVideo.mov; sourceTree = "<group>"; };
 		0766387F1CED0F0E001A8AE1 /* NocimaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NocimaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		076638821CED0F0E001A8AE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		076638871CED0F0E001A8AE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -126,12 +129,9 @@
 		07F7115F1D04D0FB0099D342 /* LikeDislikeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LikeDislikeCollectionViewCell.swift; path = Components/cells/LikeDislikeCollectionViewCell.swift; sourceTree = "<group>"; };
 		07FB54E91D375C4B009165D9 /* LocationUpdateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationUpdateController.swift; path = Controller/LocationUpdateController.swift; sourceTree = "<group>"; };
 		07FE8F161CF9CDD70029DE52 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = Controller/MenuViewController.swift; sourceTree = "<group>"; };
-		1BDFFD27E4117CC604834ED1 /* Pods_NocimaApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NocimaApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		29EA541C5004153039804E78 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		48E06CAE602F91F05EE50CEC /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		AB99AA346DFD057749370FA3 /* Pods-NocimaApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NocimaApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NocimaApp/Pods-NocimaApp.debug.xcconfig"; sourceTree = "<group>"; };
-		AEEBDF8AF33174B92B4556E6 /* Pods-NocimaApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NocimaApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-NocimaApp/Pods-NocimaApp.release.xcconfig"; sourceTree = "<group>"; };
 		B10CFA5B79F97D75C3C393FA /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EACBBC621407500F993EAF7F /* Pods-NocimaApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NocimaApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-NocimaApp/Pods-NocimaApp.release.xcconfig"; sourceTree = "<group>"; };
+		EE9D4AE878F7A72A3353BF9E /* Pods_NocimaApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NocimaApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +146,7 @@
 				07E05CA01CF27AA900B4AF28 /* FBSDKCoreKit.framework in Frameworks */,
 				07E05CA21CF27AA900B4AF28 /* FBSDKShareKit.framework in Frameworks */,
 				07E05CA11CF27AA900B4AF28 /* FBSDKLoginKit.framework in Frameworks */,
-				5A27788F7C212E2A2716324E /* Pods_NocimaApp.framework in Frameworks */,
+				6C7F1936F0F1A73059A1CD06 /* Pods_NocimaApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,8 +182,8 @@
 				076638991CED0F0E001A8AE1 /* NocimaAppTests */,
 				076638A41CED0F0E001A8AE1 /* NocimaAppUITests */,
 				076638801CED0F0E001A8AE1 /* Products */,
-				E084CCA085C8D0734714C798 /* Pods */,
 				4DA1DA2C7ACE07FEB3EE6E42 /* Frameworks */,
+				5E67C9C3D3D11256A147ED80 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -248,7 +248,7 @@
 				070300BC1D1C6CDA000B2B57 /* PendingActivationViewController.swift */,
 				075EE16D1D1F39CC006E853F /* MatchViewController.swift */,
 				0776C9D91D2402A800F76BA0 /* WelcomeViewController.swift */,
-				071353631D2D7F2300455C4E /* UserProfile.swift */,
+				071353631D2D7F2300455C4E /* UserProfileController.swift */,
 				07FB54E91D375C4B009165D9 /* LocationUpdateController.swift */,
 			);
 			name = Controllers;
@@ -257,6 +257,7 @@
 		076D40041CEE622100F63275 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				076073B61D3EB5BB00DA4B3B /* splashVideo.mov */,
 				072EB3751D2D5DC6001FE2EE /* Progress */,
 				07F711581D04D01E0099D342 /* CardController */,
 				076D40051CEE624C00F63275 /* Fonts */,
@@ -335,18 +336,16 @@
 				07E05C9F1CF27AA900B4AF28 /* FBSDKShareKit.framework */,
 				076D40101CEE62FF00F63275 /* UIKit.framework */,
 				B10CFA5B79F97D75C3C393FA /* Pods.framework */,
-				1BDFFD27E4117CC604834ED1 /* Pods_NocimaApp.framework */,
+				EE9D4AE878F7A72A3353BF9E /* Pods_NocimaApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E084CCA085C8D0734714C798 /* Pods */ = {
+		5E67C9C3D3D11256A147ED80 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				48E06CAE602F91F05EE50CEC /* Pods.debug.xcconfig */,
-				29EA541C5004153039804E78 /* Pods.release.xcconfig */,
-				AB99AA346DFD057749370FA3 /* Pods-NocimaApp.debug.xcconfig */,
-				AEEBDF8AF33174B92B4556E6 /* Pods-NocimaApp.release.xcconfig */,
+				0380AF5337B3DFD406CC811D /* Pods-NocimaApp.debug.xcconfig */,
+				EACBBC621407500F993EAF7F /* Pods-NocimaApp.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -367,8 +366,6 @@
 				30C0D419A7077A338E423616 /* [CP] Copy Pods Resources */,
 				07E05CA51CF33B0800B4AF28 /* Crashlytics */,
 				07F711611D05D7EE0099D342 /* Auto Build Version */,
-				61DFE5F3E34A852C4E29578F /* Embed Pods Frameworks */,
-				BC6D628A0CC19E5F9F845925 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -478,6 +475,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				076638901CED0F0E001A8AE1 /* LaunchScreen.storyboard in Resources */,
+				076073B71D3EB5BB00DA4B3B /* splashVideo.mov in Resources */,
 				0766388D1CED0F0E001A8AE1 /* Assets.xcassets in Resources */,
 				076D400D1CEE626000F63275 /* SourceSansPro-Semibold.ttf in Resources */,
 				076638881CED0F0E001A8AE1 /* Main.storyboard in Resources */,
@@ -563,21 +561,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NocimaApp/Pods-NocimaApp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		61DFE5F3E34A852C4E29578F /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NocimaApp/Pods-NocimaApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		B3BD475DE59B6AAB590A6314 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -591,21 +574,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		BC6D628A0CC19E5F9F845925 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NocimaApp/Pods-NocimaApp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FEC2AF560304B9BE12BA5AA6 /* [CP] Embed Pods Frameworks */ = {
@@ -638,7 +606,7 @@
 				07FB54EA1D375C4B009165D9 /* LocationUpdateController.swift in Sources */,
 				07B8BEF81CFA55D300BF2E58 /* NavigationView.swift in Sources */,
 				0776C9DA1D2402A800F76BA0 /* WelcomeViewController.swift in Sources */,
-				071353641D2D7F2300455C4E /* UserProfile.swift in Sources */,
+				071353641D2D7F2300455C4E /* UserProfileController.swift in Sources */,
 				076638831CED0F0E001A8AE1 /* AppDelegate.swift in Sources */,
 				07F7115E1D04D0500099D342 /* TisprCardStackViewController.swift in Sources */,
 				07FE8F171CF9CDD70029DE52 /* MenuViewController.swift in Sources */,
@@ -799,7 +767,7 @@
 		};
 		076638AB1CED0F0E001A8AE1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AB99AA346DFD057749370FA3 /* Pods-NocimaApp.debug.xcconfig */;
+			baseConfigurationReference = 0380AF5337B3DFD406CC811D /* Pods-NocimaApp.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -827,7 +795,7 @@
 		};
 		076638AC1CED0F0E001A8AE1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AEEBDF8AF33174B92B4556E6 /* Pods-NocimaApp.release.xcconfig */;
+			baseConfigurationReference = EACBBC621407500F993EAF7F /* Pods-NocimaApp.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;

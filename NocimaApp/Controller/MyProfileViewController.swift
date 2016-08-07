@@ -62,9 +62,13 @@ class MyProfileViewController: MainViewController,UIImagePickerControllerDelegat
                 if(gender == "male"){
                     self.maleLbl.titleLabel?.font = UIFont.init(name:"SourceSansPro-Regular", size: 22)
                     self.femaleLbl.titleLabel?.font = UIFont.init(name:"SourceSansPro-Light", size: 22)
+                    self.femaleLbl.hidden = true
+                    self.maleLbl.hidden = false
                 }else{
                     self.maleLbl.titleLabel?.font = UIFont.init(name:"SourceSansPro-Light", size: 22)
                     self.femaleLbl.titleLabel?.font = UIFont.init(name:"SourceSansPro-Regular", size: 22)
+                    self.femaleLbl.hidden = false
+                    self.maleLbl.hidden = true
                 }
             }
             
@@ -98,6 +102,7 @@ class MyProfileViewController: MainViewController,UIImagePickerControllerDelegat
         //        print("lastPathComponent: " + (url.lastPathComponent ?? ""))
         if let imageData = NSUserDefaults.standardUserDefaults().objectForKey(url.URLString) as? NSData{
             imageView.image = UIImage(data: imageData)
+            imageView.contentMode = UIViewContentMode.ScaleAspectFill
             return
         }
         
@@ -142,6 +147,7 @@ class MyProfileViewController: MainViewController,UIImagePickerControllerDelegat
     
     //MARK: - Image picker delegates
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        print("image position \(self.imgIndex)")
         if let images = NSUserDefaults.standardUserDefaults().objectForKey("gallery")  as? Array<AnyObject>{
             var newImages = [AnyObject]()
             for img in images{
