@@ -11,8 +11,10 @@ import UIKit
 class MessagesViewController: MainViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noChatLbl: UILabel!
+    var progressView = RPCircularProgress()
     
     var userChats = []
+    var selectedUserImg:UIImage = UIImage()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,6 +22,7 @@ class MessagesViewController: MainViewController {
         self.navigationMenu.titleView.text = "Moja dopisivanja"
         //        self.navigationMenu.initMenuBttn()
         self.navigationMenu.initBackBttn()
+        
         
         self.tableView.separatorColor = UIColor.init(white: 0.3, alpha: 0.3)
         
@@ -33,13 +36,25 @@ class MessagesViewController: MainViewController {
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    override func viewDidAppear(animated:Bool){
+        super.viewDidAppear(animated)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(MessagesViewController.loadMessagesSuccess(_:)), name: APINotification.Success.rawValue, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MessagesViewController.loadMessagesFail(_:)), name: APINotification.Fail.rawValue, object: nil)
         
+        self.progressView = RPCircularProgress.init()
+        progressView.enableIndeterminate(true)
+        self.view .addSubview(progressView)
+        progressView.center = CGPointMake(self.view.center.x, self.view.center.y)
+        
         APIClient.sendPOST(APIPath.ChatHistory, params: [:])
+        
     }
-    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
     //MARK: - TableView delegates
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -65,6 +80,9 @@ class MessagesViewController: MainViewController {
                 APIClient.load_image(userImg, imageView: cell.userImg)
             }
         }
+        if let totalNew = chatItem["totalNew"] as? Int{
+            cell.notificationIcon.hidden = totalNew == 0 ? true : false
+        }
         if let blockBttn = cell.blockBttn{
             blockBttn.tag = indexPath.row
         }
@@ -72,7 +90,15 @@ class MessagesViewController: MainViewController {
         return cell
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? UserChatListCell {
+            if let img = cell.userImg.image{
+                self.selectedUserImg = img
+            }
+        }
+        
         self.performSegueWithIdentifier("openChatView", sender: self.userChats[indexPath.row])
+        
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -81,20 +107,18 @@ class MessagesViewController: MainViewController {
     //MARK: - Prepare segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "openChatView"{
-            if let loggedUser = NSUserDefaults.standardUserDefaults().objectForKey("userID") as? String{
-                if var userID = sender!["receiverID"] as? String{
-                    if loggedUser == userID{
-                        if let senderID = sender!["senderID"] as? String{
-                            userID = senderID
-                        }
-                    }
+            if let user = sender as? [String:AnyObject]{
+                if let userID = user["userID"] as? String{
                     let chatVC = segue.destinationViewController as? ChatViewController
                     chatVC!.userID = userID
-                    if let imageURL = sender!["imageURL"] as? String{
+                    if let imageURL = user["imageURL"] as? String{
                         chatVC!.userThumbURL = imageURL
                     }
-                    if let userName = sender!["name"] as? String{
+                    chatVC!.userImg = selectedUserImg
+                
+                    if let userName = user["name"] as? String{
                         chatVC!.userName = userName
+                        print(userName)
                     }
                 }
             }
@@ -111,6 +135,7 @@ class MessagesViewController: MainViewController {
                 if (method != APIPath.ChatHistory.rawValue) {
                     return;
                 }
+                self.progressView.removeFromSuperview()
                 if let res = response["response"]{
                     if let chatHistory = res!["chats"] as? [AnyObject]{
                         if chatHistory.count > 0{
@@ -126,7 +151,7 @@ class MessagesViewController: MainViewController {
         }
     }
     func loadMessagesFail(n:NSNotification){
-        
+        self.progressView.removeFromSuperview()
     }
     @IBAction func blockUser(sender: AnyObject) {
         let alert = UIAlertController(title: "Blokiraj korisnika", message: "Blokirani korisnici se neće više pojavljivati u listi", preferredStyle: UIAlertControllerStyle.Alert)

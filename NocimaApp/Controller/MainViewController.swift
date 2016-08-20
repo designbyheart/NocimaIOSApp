@@ -22,8 +22,6 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.menu.view.center = CGPointMake(self.view.center.x * -1, self.view.center.y)
-        self.view .addSubview(menu.view)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.openLocationView(_:)), name: "OpenLocationView", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.openMyProfileView(_:)), name: "OpenMyProfileView", object: nil)
@@ -33,6 +31,12 @@ class MainViewController: UIViewController {
                                                          name: "OpenLikeView", object: nil)
     }
     override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.menu.view.center = CGPointMake(self.view.center.x * -1, self.view.center.y)
+        self.view .addSubview(menu.view)
+        
+        
         if let menuB:UIButton = self.navigationMenu.menuBttn{
             menuB .addTarget(self, action: #selector(MainViewController.openMenu(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         }
@@ -97,7 +101,7 @@ class MainViewController: UIViewController {
     func openLikeView(n:AnyObject) {
         if let viewControllers = self.navigationController?.viewControllers{
             if let activeController = viewControllers.last {
-                if !activeController.isKindOfClass(LikeViewController){
+                if !activeController.isKindOfClass(LikeViewController) && activeController.canPerformSegue("openLikeView"){
                     self.performSegueWithIdentifier("openLikeView", sender: self)
                 }
             }
@@ -137,5 +141,22 @@ class MainViewController: UIViewController {
         
         closeMenu()
         
+    }
+}
+
+extension UIViewController {
+    func canPerformSegue(id: String) -> Bool {
+        let segues = self.valueForKey("storyboardSegueTemplates") as? [NSObject]
+        let filtered = segues?.filter({ $0.valueForKey("identifier") as? String == id })
+        return (filtered?.count > 0) ?? false
+    }
+    
+    // Just so you dont have to check all the time
+    func performSegue(id: String, sender: AnyObject?) -> Bool {
+        if canPerformSegue(id) {
+            self.performSegueWithIdentifier(id, sender: sender)
+            return true
+        }
+        return false
     }
 }

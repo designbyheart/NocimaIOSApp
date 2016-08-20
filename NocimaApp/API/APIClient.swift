@@ -42,7 +42,10 @@ enum APIPath:String {
 public class APIClient {
     
     static func apiRoot(path:String!)->String{
-        let server = /*"nocima.rs/api" /  / */ "datingapp.io/api"
+        let server =
+            //"46.101.197.182/api"
+        "nocima.rs/api"
+//        "datingapp.io/api"
         
         
         return "http://\(server)/\(path)"
@@ -109,7 +112,7 @@ public class APIClient {
      - Returns: void (Will be triggered NSNotification with Success / Fail AVWAPINotification type)
      */
     static func sendPOST(methodName:APIPath, params:Dictionary<String, AnyObject>){
-        //        print("method: \(methodName) \n params: \(params)")
+                print("method: \(methodName) \n params: \(params)")
         let isAuthenticated:Bool! = NSUserDefaults.standardUserDefaults().objectForKey("userToken") != nil
         print(self.defaultHeader(isAuthenticated, method:methodName, params:params))
         Alamofire.request(

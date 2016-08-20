@@ -28,7 +28,16 @@ class UserProfileController:MainViewController{
     @IBOutlet weak var displayName: UITextField!
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         self.setupBackBttn()
+        mainImageView.layer.cornerRadius = 8
+        secondImageView.layer.cornerRadius = 5
+        thirdImageView.layer.cornerRadius = 5
+        fourthImageView.layer.cornerRadius = 5
+        
+        displayName.textColor = UIColor.whiteColor()
+        
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -36,13 +45,21 @@ class UserProfileController:MainViewController{
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(UserProfileController.statusSuccess(_:)), name: APINotification.Success.rawValue, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(UserProfileController.statusFail(_:)), name: APINotification.Fail.rawValue, object: nil)
         
-        displayName.text = self.userName
-        APIClient.sendPOST(APIPath.LoadImagesForUser, params: ["userID":self.userID])
+        self.displayName.text = self.userName
         
         self.progressView = RPCircularProgress.init()
         progressView.enableIndeterminate(true)
         self.view .addSubview(progressView)
         self.progressView.center = self.view.center
+    }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        APIClient.sendPOST(APIPath.LoadImagesForUser, params: ["userID":self.userID])
+    }
+    override func viewWillDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     //MARK: - gallery delegates
     func galleryLoadingSuccess(n:NSNotification){

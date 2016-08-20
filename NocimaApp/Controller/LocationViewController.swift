@@ -55,12 +55,20 @@ class LocationViewController: MainViewController, MGLMapViewDelegate, CLLocation
         self.navigationMenu.initMenuBttn()
         self.navigationMenu.initChatBttn()
         
-        if currentLocation.latitude != 0 || currentLocation.longitude != 0{
-        self.mapView.setCenterCoordinate(CLLocationCoordinate2D(latitude: currentLocation.latitude, longitude: currentLocation.longitude), zoomLevel: 14, animated: false)
-        }
+        
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+            self.locationManager.startUpdatingLocation()
+        }
+       
+        
+        
 //        self.mapView.showsUserLocation = true
         self.mapView = MGLMapView.init(frame:view.bounds, styleURL:styleURL)
         self.mapView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
@@ -73,14 +81,14 @@ class LocationViewController: MainViewController, MGLMapViewDelegate, CLLocation
         
         mapView.delegate = self
         
+        if currentLocation.latitude != 0 || currentLocation.longitude != 0{
+            self.mapView.setCenterCoordinate(CLLocationCoordinate2D(latitude: currentLocation.latitude, longitude: currentLocation.longitude), zoomLevel: 14, animated: false)
+        }
+        
         APIClient.sendGET(APIPath.ClubsList)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LocationViewController.loadClubsFail(_:)), name: APINotification.Fail.rawValue, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LocationViewController.loadClubsSuccess(_:)), name: APINotification.Success.rawValue, object: nil)
-        
-        if !CLLocationManager.locationServicesEnabled() {
-            self.locationManager.requestWhenInUseAuthorization()
-        }
         
         //
         // For use in foreground
@@ -92,12 +100,6 @@ class LocationViewController: MainViewController, MGLMapViewDelegate, CLLocation
         //        if !CLLocationManager.locationServicesEnabled {
         //            self.locationManager.requestWhenInUseAuthorization()
         //        }
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
-            self.locationManager.startUpdatingLocation()
-        }
         
         if let clubsList = NSUserDefaults.standardUserDefaults().objectForKey("clubsList") as? [AnyObject]{
             self.clubs = clubsList

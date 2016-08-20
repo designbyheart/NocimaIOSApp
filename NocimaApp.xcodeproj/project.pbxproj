@@ -31,6 +31,7 @@
 		076D400D1CEE626000F63275 /* SourceSansPro-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 076D40091CEE626000F63275 /* SourceSansPro-Semibold.ttf */; };
 		076D400F1CEE62BB00F63275 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076D400E1CEE62BB00F63275 /* LoginViewController.swift */; };
 		076D40111CEE62FF00F63275 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076D40101CEE62FF00F63275 /* UIKit.framework */; };
+		0772DC441D5BB7C8005D174D /* TermsConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0772DC431D5BB7C8005D174D /* TermsConditionsViewController.swift */; };
 		0776C9DA1D2402A800F76BA0 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0776C9D91D2402A800F76BA0 /* WelcomeViewController.swift */; };
 		079FECC01CF766BC00293141 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079FECBF1CF766BC00293141 /* LocationViewController.swift */; };
 		079FECC21CF768A400293141 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079FECC11CF768A400293141 /* MapKit.framework */; };
@@ -106,6 +107,7 @@
 		076D40091CEE626000F63275 /* SourceSansPro-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceSansPro-Semibold.ttf"; path = "Resources/Fonts/SourceSansPro-Semibold.ttf"; sourceTree = "<group>"; };
 		076D400E1CEE62BB00F63275 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controller/LoginViewController.swift; sourceTree = "<group>"; };
 		076D40101CEE62FF00F63275 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		0772DC431D5BB7C8005D174D /* TermsConditionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TermsConditionsViewController.swift; path = Controller/TermsConditionsViewController.swift; sourceTree = "<group>"; };
 		0776C9D91D2402A800F76BA0 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WelcomeViewController.swift; path = Controller/WelcomeViewController.swift; sourceTree = "<group>"; };
 		079FECBF1CF766BC00293141 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationViewController.swift; path = Controller/LocationViewController.swift; sourceTree = "<group>"; };
 		079FECC11CF768A400293141 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -250,6 +252,7 @@
 				0776C9D91D2402A800F76BA0 /* WelcomeViewController.swift */,
 				071353631D2D7F2300455C4E /* UserProfileController.swift */,
 				07FB54E91D375C4B009165D9 /* LocationUpdateController.swift */,
+				0772DC431D5BB7C8005D174D /* TermsConditionsViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -608,6 +611,7 @@
 				0776C9DA1D2402A800F76BA0 /* WelcomeViewController.swift in Sources */,
 				071353641D2D7F2300455C4E /* UserProfileController.swift in Sources */,
 				076638831CED0F0E001A8AE1 /* AppDelegate.swift in Sources */,
+				0772DC441D5BB7C8005D174D /* TermsConditionsViewController.swift in Sources */,
 				07F7115E1D04D0500099D342 /* TisprCardStackViewController.swift in Sources */,
 				07FE8F171CF9CDD70029DE52 /* MenuViewController.swift in Sources */,
 				07B8BF011CFAF4BE00BF2E58 /* MyProfileViewController.swift in Sources */,

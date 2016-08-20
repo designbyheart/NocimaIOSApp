@@ -11,13 +11,14 @@ import JSQMessagesViewController
 
 class ChatViewController: JSQMessagesViewController,UIGestureRecognizerDelegate  {
     
-    var userID = String()
-    var userName = String()
-    var userThumbURL = String()
+    var userID = ""
+    var userName = ""
+    var userThumbURL = ""
     var titleView = UILabel()
     var userThumb = UIImageView()
     var matchedLbl = UILabel()
     var menuBttn = UIButton()
+    var userImg = UIImage()
     var timer: NSTimer!
     let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImageWithColor(UIColor(red: 42/255, green: 43/255, blue: 45/255, alpha: 1.0))
     let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImageWithColor(UIColor(red: 37/255, green: 143/255, blue: 255/255, alpha: 1.0))
@@ -25,10 +26,7 @@ class ChatViewController: JSQMessagesViewController,UIGestureRecognizerDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        self.setupTitle()
-        self.setupBackBttn()
-        self.collectionView.frame = CGRectMake(0, 170, self.view.frame.size.width, self.view.frame.size.height - 180)
+        self.collectionView.frame = CGRectMake(0, 170, self.view.frame.size.width, self.view.frame.size.height - 200)
         
         collectionView.registerClass(ChatHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader , withReuseIdentifier: "Header")
         
@@ -38,19 +36,28 @@ class ChatViewController: JSQMessagesViewController,UIGestureRecognizerDelegate 
         self.setup()
         //        self.addDemoMessages()
         self.collectionView.backgroundView = UIImageView.init(image: UIImage.init(named: "viewBackground"))
-        self.collectionView.contentInset = UIEdgeInsetsMake(30, -20, 20, -20)
+        self.collectionView.contentInset = UIEdgeInsetsMake(30, -20, 20, -50)
         
         
-        
-        
-        //        matchedLbl = UILabel.init(frame: CGRectMake(20, 220, self.view.frame.width * 0.8, 20))
+        // Do any additional setup after loading the view, typically from a nib.
+                //        matchedLbl = UILabel.init(frame: CGRectMake(20, 220, self.view.frame.width * 0.8, 20))
         //        matchedLbl.font = UIFont.init(name: "Source Sans Pro", size: 17)
         //        matchedLbl.text = "Prijate"
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+    
+        userThumb.image = userImg
+
+//        print(userID)
+    }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         
-        APIClient.load_image(userThumbURL, imageView: userThumb)
+        self.setupTitle()
+        self.setupBackBttn()
+        
+//        APIClient.load_image(userThumbURL, imageView: userThumb)
         self.messages .removeAll()
         self.collectionView?.reloadData()
         
@@ -65,14 +72,13 @@ class ChatViewController: JSQMessagesViewController,UIGestureRecognizerDelegate 
         self.messages.removeAll()
         
         APIClient.sendPOST(APIPath.ListUserMessages, params: ["userID":userID])
-//        print(userID)
-    }
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+        
         timer = NSTimer.scheduledTimerWithTimeInterval(5 , target: self, selector: #selector(ChatViewController.loadMessages), userInfo: nil, repeats: true)
     }
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
         timer.invalidate()
     }
     override func didReceiveMemoryWarning() {
@@ -155,16 +161,21 @@ class ChatViewController: JSQMessagesViewController,UIGestureRecognizerDelegate 
                     }
                 }
                 let sender = m["senderID"] as? String
-                
-                
+//            }
+//        }
+//               print()
+//                
                 if let base64Decoded = NSData(base64EncodedString: messageContent, options:   NSDataBase64DecodingOptions(rawValue: 0))
                     .map({ NSString(data: $0, encoding: NSUTF8StringEncoding) })
                 {
                     // Convert back to a string
                     if let decoded  = base64Decoded as? String  {
                         messageContent = decoded
+                        print("old decode \(decoded)")
+                    
                     }else{
                         messageContent = m["message"] as! String
+                        print("old decode \(messageContent)")
                     }
                 }
                 
@@ -175,6 +186,26 @@ class ChatViewController: JSQMessagesViewController,UIGestureRecognizerDelegate 
         }
         self.reloadMessagesView()
     }
+}
+extension String
+{
+    func base64Decoded() -> String {
+        
+        if let base64Decoded = NSData(base64EncodedString: self, options:   NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
+            .map({ NSString(data: $0, encoding: NSUTF8StringEncoding) })
+        {
+            // Convert back to a string
+            if let decoded  = base64Decoded as? String  {
+                return decoded
+            }else{
+                
+            }
+        }else{
+            print(self)
+        }
+        return self
+    }
+
 }
 
 //MARK - Setup
@@ -265,9 +296,6 @@ extension ChatViewController {
                 self.titleView.center = CGPointMake(headerView.center.x, 10)
                 self.titleView.text = self.userName
                 headerView.addSubview(self.titleView)
-                
-                
-                
                 
                 return headerView
                 

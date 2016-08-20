@@ -12,12 +12,17 @@ class UserChatListCell: UITableViewCell {
     @IBOutlet weak var userNameLbl: UILabel!
     @IBOutlet weak var userImg: UIImageView!
     @IBOutlet weak var blockBttn: UIButton!
+    @IBOutlet weak var notificationIcon: UIView!
     
     
     override func awakeFromNib() {
         
         self.userImg.layer.cornerRadius = self.userImg.frame.size.width / 2
         self.userImg.layer.masksToBounds = true
+        self.notificationIcon.layer.cornerRadius = 10
+        self.notificationIcon.layer.masksToBounds = true
+        self.notificationIcon.layer.borderColor = UIColor.init(white: 0, alpha: 0.9).CGColor
+        self.notificationIcon.layer.borderWidth = 4
         
     }
     override func setSelected(selected: Bool, animated: Bool) {

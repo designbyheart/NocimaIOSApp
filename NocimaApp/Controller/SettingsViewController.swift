@@ -72,6 +72,7 @@ class SettingsViewController: MainViewController {
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     @IBAction func fromValChanged(sender: UISlider) {
@@ -137,8 +138,8 @@ class SettingsViewController: MainViewController {
     }
     func deleteAccount(){
         
-//        let loginManager = FBSDKLoginManager()
-//        loginManager.logOut()
+        //        let loginManager = FBSDKLoginManager()
+        //        loginManager.logOut()
         let facebookRequest: FBSDKGraphRequest! = FBSDKGraphRequest(graphPath: "/me/permissions", parameters: nil, HTTPMethod: "DELETE")
         
         facebookRequest.startWithCompletionHandler { (connection: FBSDKGraphRequestConnection!, result: AnyObject!, error: NSError!) -> Void in
@@ -181,6 +182,65 @@ class SettingsViewController: MainViewController {
         self.openMenu(self)
     }
     func saveFail(n:NSNotification){
+        
+    }
+    //MARK: - Open terms and privacy
+    
+    @IBAction func openConditions(sender: AnyObject) {
+        let sender:Int = 2
+        self.performSegue("openTermsView", sender: sender)
+    }
+    @IBAction func openPrivacy(sender: AnyObject) {
+        let sender:Int = 1
+        self.performSegue("openTermsView", sender: sender)
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+
+        var format = NSPropertyListFormat.XMLFormat_v1_0 //format of the property list
+
+        let plistPath:String? = NSBundle.mainBundle().pathForResource("Info", ofType: "plist")!
+        var plistData = [String:AnyObject]()
+
+        print(plistPath)
+        
+        let plistXML = NSFileManager.defaultManager().contentsAtPath(plistPath!)!
+
+        do{
+            plistData = try NSPropertyListSerialization.propertyListWithData(plistXML,
+                                                                             options: .MutableContainersAndLeaves,
+                                                                             format: &format)
+                as! [String:AnyObject]
+        }
+        catch{
+            print("Error reading plist: \(error), format: \(format)")
+        }
+//        print(plistData)
+        
+        if let termsVC = segue.destinationViewController as? TermsConditionsViewController{
+            
+            if let s = sender as? Int{
+                switch(s){
+                case 1:
+                    termsVC.isPrivacy = true
+                    termsVC.titleString = "Politika privatnosti"
+                    if let content = plistData["privacy"] as? String{
+                        termsVC.content = content
+                    }
+                    break;
+                case 2:
+                    termsVC.isPrivacy = false
+                    termsVC.titleString = "Uslovi korišćenja"
+                    if let content = plistData["conditions"] as? String{
+                        termsVC.content = content
+                    }
+                    break;
+                    
+                default:
+                    
+                    break;
+                }
+            }
+        }
         
     }
 }

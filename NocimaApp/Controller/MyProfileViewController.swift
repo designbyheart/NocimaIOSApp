@@ -45,7 +45,7 @@ class MyProfileViewController: MainViewController,UIImagePickerControllerDelegat
         
         self.navigationMenu = NavigationView(controller: self)
         if let titleView = self.navigationMenu.titleView{
-            titleView.text = "My Profile"
+            titleView.text = "Moj profil"
         }
         self.navigationMenu.initChatBttn()
         self.navigationMenu.initMenuBttn()
@@ -129,7 +129,10 @@ class MyProfileViewController: MainViewController,UIImagePickerControllerDelegat
             self.loadImages(images)
         }
     }
-    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
     //MARK: - upload image actions
     
     @IBAction func uploadPrimaryImg(sender: AnyObject) {

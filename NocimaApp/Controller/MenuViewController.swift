@@ -47,8 +47,13 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         //Auto-set the UITableViewCells height (requires iOS8+)
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 70
+     
         
-        self.view .addSubview(self.tableView)
+        
+        
+    }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         
         let blurEffect = UIBlurEffect(style:UIBlurEffectStyle.Dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
@@ -57,6 +62,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight] // for supporting device rotation
         view.insertSubview(blurEffectView, belowSubview: tableView)
         
+        self.view .addSubview(self.tableView)
         self.prepareLogoutBttn()
     }
     // MARK: - Table view data source

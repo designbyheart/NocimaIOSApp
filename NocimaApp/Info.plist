@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.02</string>
+	<string>1.11</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -28,7 +28,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1616</string>
+	<string>1773</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -66,6 +66,7 @@
 	<string>You location will be used for displaying nightclubs in your neighborhood</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>SourceSansPro-Bold.ttf</string>
 		<string>SourceSansPro-Regular.ttf</string>
 		<string>SourceSansPro-Light.ttf</string>
 		<string>SourceSansPro-Semibold.ttf</string>
@@ -93,5 +94,242 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>conditions</key>
+	<string>&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta http-equiv="content-type" content="text/html;charset=UTF-8"/&gt;
+        &lt;meta charset="utf-8"/&gt;
+        &lt;link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'&gt;
+        &lt;style&gt;
+            body{
+                background:transparent; color:white;font-family:"Source Sans Pro", sans-serif;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;Uslovi korišćenja&lt;br&gt;&lt;br&gt;1. Opšte &lt;br&gt;&lt;br&gt;
+    Korišćenjem bilo koje od NOCIMA usluga (NOCIMA, „mi“ ili „nas“) dostupnih na WWW.NOCIMA.COM ili na iPhone aplikaciji „NOCIMA“, potvrđujete da ste pročitali, razumeli i bez ograničenja prihvatili sledeće odredbe i uslove korišćenja („Uslovi korišćenja“) i saglasni ste da ćete iste poštovati. &lt;br&gt;&lt;br&gt;
+    
+    NOCIMA zadržava pravo da ažurira i izmeni Uslove korišćenja u bilo kom trenutku bez prethodne najave. Možete pogledati najnoviju verziju Uslova korišćenja na: WWW.NOCIMA.COM/TERMS.
+    
+    Neuspeh NOCIMA da primeni ili sprovede neko pravo ili obavezu iz Uslova korišćenja ne predstavlja odricanje od tog prava ili obaveze.
+    
+    Kršenje bilo kog od uslova ispod može dovesti do gašenja Vašeg naloga ili zabrane pristupa uslugama. Kršenje bilo kog uslova takođe okončava Vaše pravo korišćenja tih usluga.
+    
+    Ako je neka odredba ovog sporazuma nezakonita, nevažeća ili neprimenjiva u bilo kojoj jurisdikciji, ili to u nekom trenutku postane, to neće uticati na: validnost ili primenjivost bilo koje druge odredbe ovog sporazuma u toj jurisdikciji; ili na validnost ili primenjivost te ili bilo koje druge odredbe ovog sporazuma u drugim jurisdikcijama.
+    
+    Ovi Uslovi korišćenja čine kompletan sporazum između Vas i NOCIMA i zamenjuju sve prethodne sporazume pod ovim nazivom. Ne postoje usmeni zakonski sporazumi.
+    
+    Ovi Uslovi korišćenja, kao i Vaš odnos sa NOCIMA pod istim ovim Uslovima korišćenja, su regulisani zakonima Republike Srbije.
+    
+    Vi i NOCIMA ste saglasni da budete stavljeni pod isključivu jurisdikciju sudova Grada Šapca, za rešavanje bilo kakvih pravnih pitanja koja mogu proizaći iz ovih Uslova korišćenja.&lt;br&gt;&lt;br&gt;
+    2. Ko može da koristi NOCIMA
+    Morate imati bar 13 godina da biste koristili NOCIMA. Time što koristite NOCIMA, potvrđujete da imate pravo, dozvolu i sposobnost da zaključite ovaj Sporazum i da se pridržavate svih uslova i odredbi ovog Sporazuma. Ako koristite NOCIMA, potvrđujete da nikada niste bili osuđivani za neki zločin i da niste registrovani kao seksualni prestupnik kod bilo kog državnog organa.
+    
+    3. Korišćenje usluga
+    
+    Pristupom i korišćenjem NOCIMA usluga dajete NOCIMA i njegovim partnerima širom sveta, trajna, neopoziva i neisključiva prava, besplatnu licencu i pravo na kopiranje, prenos, distribuiranje, javno izvođenje i prikazivanje (putem svih sada poznatih ili kasnije nastalih medija), i stvaranje izvedenih dela iz Vaših sadržaja. Pored toga, odričete se svih takozvanih „moralnih prava“ na Vaše sadržaje.Svi materijali, povratne informacije ili druge vrste informacija koje dostavite NOCIMA povodom korišćenja ovog sajta neće biti smatrane za poverljive ili vlasničke. NOCIMA će biti isključivi vlasnik svih informacija prikupljenih korišćenjem NOCIMA aplikacije ili u vezi sa njom.
+    Zatim, dajete dozvolu svim NOCIMA korisnicima da pregledaju Vaše sadržaje u lične, nekomercijalne svrhe. Ako date neki predlog NOCIMA u vezi sa tim kako da poboljša ili doda nove funkcije u NOCIMA-App, NOCIMA ima pravo da koristi Vaše predloge bez ikakve novčane nadoknade.
+    
+    Saglasni ste da ćete koristiti Usluge samo u svrhe dozvoljene&lt;br&gt;&lt;br&gt;
+    (I) Uslovima korišćenja i&lt;br&gt;&lt;br&gt;
+    (II) svim važećim zakonima, propisima ili opšte-prihvaćenom praksom i smernicama u odgovarajućim pravnim sistemima.&lt;br&gt;&lt;br&gt;
+    
+    Da biste koristili NOCIMA potrebno je da se prijavite preko svog ličnog Fejsbuk naloga. Vaša je obaveza da se starate o tome da svi podaci za registraciju koje dajete uvek budu važeći, ispravni i aktuelni. Vi ste odgovorni za održavanje bezbednosti svog naloga i lozinke. Nalozi registrovani od strane botova ili putem drugih automatizovanih metoda nisu dozvoljeni.
+    
+    Time što nam omogućavate pristup Vašem Fejsbuk nalogu, nedvosmisleno prihvatate i saglasni ste sa tim da preuzmemo i podelimo Vaše ime, starost, slike, obrazovanje, interesovanja i lokacije.
+    Pored toga, možemo preuzeti i deliti ime i profilnu sliku Vaših Fejsbuk prijatelja.
+    
+    Vaša odgovornost je da ne postavljate bilo kakve uvredljive slike, da ne kršite autorska prava ili zaštitne znakove, i da ne koristite dizajn koji drugi NOCIMA korisnici mogu smatrati uvredljivim.
+    
+    Saglasni ste sa time da ćete koristiti samo svoj lični Fejsbuk nalog i da se nećete predstavljati kao neko drugi.
+    
+    Saglasni ste sa time da nećete učestvovati u aktivnostima koje mogu da ometaju ili poremete Usluge (ili servere i mreže koji su povezani sa Uslugama).
+    
+    Saglasni ste sa time da nećete umnožavati, duplirati, kopirati, prodavati, trgovati ili preprodavati Usluge u bilo koju svrhu bez prethodnog pismenog odobrenja od strane NOCIMA.
+    
+    NOCIMA zadržava pravo (ali nema obavezu) da prethodno skenira, pregleda, označi, filtrira, izmeni, odbije ili ukloni neki ili sve sadržaje ili naloge sa bilo koje od Usluga, po NOCIMA sopstvenom nahođenju. Vi razumete da korišćenjem Usluga možete biti izloženi sadržajima koje možete smatrati uvredljivim, nepristojnim ili nepoželjnim, i da, u tom smislu, koristite ove Usluge na sopstvenu odgovornost.
+    
+    Saglasni ste sa time da ste isključivo Vi odgovorni za (i da NOCIMA nema nikakvu odgovornost prema Vama ili bilo kom trećem licu za) svako kršenje Vaših obaveza u skladu sa Uslovima korišćenja, kao i za posledice (uključujući svaki gubitak ili štetu koju NOCIMA može da pretrpi) svakog takvog kršenja.
+    
+    Saglasni ste sa NOCIMA politikom privatnosti, dostupnom na WWW.NOCIMA.COM&lt;br&gt;&lt;br&gt;
+    
+    4. Pružanje usluga od strane NOCIMA
+    NOCIMA Vam pruža ograničenu, neisključivu dozvolu za pristup i korišćenje NOCIMA u svoje lične, nekomercijalne svrhe. Ova dozvola je za Vas lično i ne može biti dodeljena ili podlicencirana bilo kome drugom.
+    
+    Usluge koristite na sopstvenu odgovornost. Usluge se pružaju po „kao što jeste“ i „kao što je dostupno“ principu.
+    
+    Tehnička podrška se pruža po principu najbolje moguće podrške i samo putem mejla.
+    
+    Ovim prihvatate da NOCIMA zadržava pravo  da obezbedi neophodne resurse (npr. hardver, softver, umrežavanje, skladištenje, itd.) za pokretanje Usluga od strane trećih lica (npr. hosting partnera). Svako prikupljanje takvih resursa biće sprovedeno u skladu sa pravilima o privatnosti dostupnom  na WWW.NOCIMA.COM/.
+    
+    NOCIMA može da zaustavi, ukloni, izmeni, ili doda (trajno ili privremeno) Usluge (ili funkcije u okviru Usluga) po NOCIMA sopstvenom nahođenju. Sve nove, izmenjene, ili uklonjene funkcije podležu Uslovima korišćenja. Nastavak korišćenja Usluga nakon bilo kakvih izmena znači i Vašu saglasnost sa tim promenama.&lt;br&gt;&lt;br&gt;
+    
+    
+    5. Odricanje i ograničenje odgovornosti
+    
+    NOCIMA ne garantuje da:&lt;br&gt;&lt;br&gt;
+    
+    • će Usluge zadovoljiti Vaše zahteve ili očekivanja;
+    • će Usluge biti pružene bez prekida, na vreme, bezbedno, ili bez greške;
+    • će rezultati koji mogu biti dobijeni iz korišćenja Usluga biti precizni i pouzdani,
+    • će bilo kakve greške u Uslugama biti ispravljene.
+    Samo ste Vi odgovorni za svoju interakciju sa drugim NOCIMA korisnicima. Saglasni ste da  NOCIMA ne sprovodi proveru kriminalne prošlosti svojih korisnika. NOCIMA ne daje nikakve tvrdnje niti garancije u pogledu ponašanja korisnika ili njihove kompatibilnosti sa bilo kojim sadašnjim ili budućim korisnicima. NOCIMA zadržava pravo da sprovede proveru kriminalne prošlosti ili bilo kakvu drugu proveru u bilo kom trenutku, koristeći dostupnu javnu dokumentaciju.
+    
+    Ovim ste upoznati i saglasni ste da NOCIMA nije odgovoran za bilo kakvu direktnu, indirektnu, slučajnu, posebnu, posledičnu, kompenzatornu ili egzemplarnu štetu, uključujući ali ne ograničavajući se na duševnu bol, telesne povrede, smrt ili drugu štetu koja proizilazi iz:
+    
+    • korišćenja ili nemogućnosti korišćenja Usluga;
+    • bilo kakvih promena koje NOCIMA može izvršiti na Uslugama, ili bilo kakvog trajnog ili privremenog prekida u pružanju Usluga;
+    • neovlašćenog pristupa ili izmene Vaših prenosa ili podataka;
+    • brisanja, korupcije, ili neuspelog čuvanja bilo kakvih sadržaja i drugih komunikacijskih podataka koji se održavaju ili prenose uz pomoć ili korišćenjem Usluga;
+    • ili bilo koje druge stvari koja se odnosi na Usluge.
+    Saglasni ste da preduzmete rezumne mere predostrožnosti pri svim interakcijama sa drugim korisnicima usluge, naročito ako odlučite da se upoznate van mreže ili lično.&lt;br&gt;&lt;br&gt;
+    
+    6. Kodeks ponašanja i zabranjene aktivnosti
+    Dok koristite NOCIMA, morate se ponašati civilizovano i uljudno u svakom trenutku. Pored toga, nećete:
+    
+    • Uznemiravati ili uhoditi bilo koga;&lt;br&gt;&lt;br&gt;
+    • Povrediti ili iskoristiti maloletnike;&lt;br&gt;&lt;br&gt;
+    • Postupati na obmanljiv način, između ostalog, tako što ćete se predstavljati kao neko drugi;&lt;br&gt;&lt;br&gt;
+    • Sakupljati podatke o drugima;&lt;br&gt;&lt;br&gt;
+    • Nećete tvrditi niti nagovestiti da je bilo koja Vaša izjava podržana od strane NOCIMA bez našeg prethodnog posebnog pismenog odobrenja.&lt;br&gt;&lt;br&gt;
+    • Nećete distribuirati spam, i nećete koristiti bilo kakve „robot“ i „spider“ aplikacije, aplikacije za pretragu/pronalaženje sajtova, ili druge manualne ili automatske uređaje ili procese za pronalaženje, indeksiranje, analizu podataka („data mining“), ili za bilo kakvu reprodukciju ili zaobilaženje navigacione strukture ili prezentacije Usluge i njenih sadržaja..&lt;br&gt;&lt;br&gt;
+    • Nećete objavljivati, distribuirati ili reprodukovati na bilo koji način materijal zaštićen autorskim pravima, zaštitne znakove, ili druge zaštićene informacije bez prethodnog dobijanja saglasnosti vlasnika takve zaštićene svojine.&lt;br&gt;&lt;br&gt;
+    • Nećete ometati ili remetiti usluge, ili sajt, ili servere, ili mreže povezane sa uslugama ili sajtom.&lt;br&gt;&lt;br&gt;
+    • Nećete objavljivati, slati putem mejla, ili na drugi način prenositi bilo kakav materijal koji sadrži viruse ili bilo kakve druge kompjuterske kodove, datoteke ili programe napravljene da prekinu, unište ili ograniče funkcionalnost bilo kog kompjuterskog softvera ili hardvera, ili telekomunikacione opreme.&lt;br&gt;&lt;br&gt;
+    NOCIMA ima pravo, ali ne i obavezu, da prati svačije ponašanje i sadržaje koji se šalju na NOCIMA.&lt;br&gt;&lt;br&gt;
+    
+    7. Ograničenja sadržaja
+    Samo Vi ste odgovorni za sadržaje koje objavljujete ili prikazujete (u daljem tekstu, „objave“) u Servisu, ili koje šaljete drugim članovima. Nećete objavljivati putem ovog servisa, niti slati drugim korisnicima, bilo kakve omalovažavajuće, netačne, uvredljive, nepristojne, verski uvredljive, seksualno uvredljive, preteće, uznemirujuće, rasno uvredljive ili nezakonite materijale, ili bilo kakve materijale koji krše ili narušavaju prava drugih lica (uključujući, ali ne ograničavajući se na, prava intelektualne svojine i prava na privatnost i javnost). Nećete davati netačne, obmanjujuće ili lažne informacije NOCIMA ili drugim korisnicima. Ako informacije koje ste dali NOCIMA, ili nekom drugom korisniku, vremenom postanu netačne, obmanjujuće ili lažne, potrebno je da nas na vreme obavestite o takvoj promeni.
+    
+    Sledi delimična lista sadržaja koje ne možete postavljati, objavljivati, ili prenositi (sve zajedno, „slati“) sadržaj:&lt;br&gt;&lt;br&gt;
+    
+    
+    • koji je jasno uvredljiv za onlajn zajednicu, kao što su sadržaji koji promovišu rasizam, netrpeljivost, mržnju ili fizičku povredu bilo koje vrste prema nekoj grupi ili pojedincu;&lt;br&gt;&lt;br&gt;
+    • koji uznemirava ili podržava uznemiravanje druge osobe;&lt;br&gt;&lt;br&gt;
+    • koji promoviše informacije koje su lažne, obmanljive ili promovišu nezakonite aktivnosti ili ponašanje koje je nasilno, preteće, nepristojno, klevetničko ili pogrdno;&lt;br&gt;&lt;br&gt;
+    • koji sadrži materijal kojim se iskorišćavaju osobe mlađe od 18 godina na seksualan ili nasilan način, ili kojim se iznuđuju lični podaci od osoba mlađih od 18 godina;&lt;br&gt;&lt;br&gt;
+    • koji sadrži seksualno eksplicitni sadržaj;&lt;br&gt;&lt;br&gt;
+    • koji pruža uputstvene informacije u vezi sa nezakonitim aktivnostima kao što su izrada ili kupovina nelegalnog oružja, narušavanje nečije privatnosti, ili prosleđivanje i stvaranje kompjuterskih virusa;&lt;br&gt;&lt;br&gt;
+    • koji uključuje razmenu neželjenih poruka, lančanih pisama, ili masovno slanje neželjenih poruka ili „spam“;&lt;br&gt;&lt;br&gt;
+    • koji promoviše nelegalno ili neovlašćeno kopiranje tuđeg autorskog dela, kao što je deljenje piratskih kompjuterskih programa ili linkova ka njima, pružanje informacija za zaobilaženje fabrički-instalirane zabrane kopiranja na uređajima, ili deljenje piratskih slika, audio ili video zapisa, ili linkova ka piratskim slikama, audio ili video datotekama;&lt;br&gt;&lt;br&gt;
+    • kojim se pokušava iznuda lozinki ili ličnih identifikacionih podataka u komercijalne ili nezakonite svrhe, od strane drugih korisnika;&lt;br&gt;&lt;br&gt;
+    • koji se bavi komercijalnim aktivnostima i/ili prodajom, bez našeg prethodnog pismenog odobrenja, kao što su takmičenja, nagradne igre, trampe, oglašavanje i piramidalne šeme;&lt;br&gt;&lt;br&gt;
+    • kojim se krše autorska ili druga prava nekog trećeg lica (npr., zaštitni znak, pravo na privatnost, itd.)
+    Korišćenje Usluge, koje uključuje ali nije ograničeno sadržajima koje objavljujete putem ovog servisa, mora biti u skladu sa svim važećim zakonima i propisima.&lt;br&gt;&lt;br&gt;
+    
+    Vaš profil ne može sadržati telefonske brojeve, adrese, prezimena, URL ili imejl adrese.&lt;br&gt;&lt;br&gt;
+    
+    8. Vaše izjave i garancije
+    Za svaki sadržaj koji prosledite, izjavljujete i garantujete da:
+    
+    • (I) imate pravo da prosledite sadržaj na NOCIMA i obezbedite dozvole navedene iznad;&lt;br&gt;&lt;br&gt;
+    • (II) NOCIMA neće morati da traži dozvole od neke treće strane niti da plaća tantijeme nekoj trećoj strani;&lt;br&gt;&lt;br&gt;
+    • (III) sadržaj ne krši prava treće strane, uključujući prava intelektualne svojine i prava na privatnost;&lt;br&gt;&lt;br&gt;
+    i&lt;br&gt;&lt;br&gt;
+    • (IV) sadržaj je u skladu sa ovim Sporazumom i svim važećim zakonima.&lt;br&gt;&lt;br&gt;
+    9. Naknada štete
+    Vi ste dužni da nadoknadite štetu, branite i smatrate nedužnim NOCIMA i njene partnere, direktore, službenike, zaposlene, i zastupnike, od i protiv svih postupaka treće strane koji:
+    
+    • (I) proizilaze iz Vaših aktivnosti na NOCIMA;&lt;br&gt;&lt;br&gt;
+    • (II) znače da ste narušili neki od uslova ovog Sporazuma;&lt;br&gt;&lt;br&gt;
+    ili&lt;br&gt;&lt;br&gt;• (III) znače da neki od sadržaja koje ste prosledili na NOCIMA krše neki zakon ili pravo treće strane, uključujući pravo intelektualne svojine ili pravo na privatnost.&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Nocima Technologies DOO, Šabac, jun 2016&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</string>
+	<key>privacy</key>
+	<string>&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta http-equiv="content-type" content="text/html;charset=UTF-8"/&gt;
+        &lt;meta charset="utf-8"/&gt;
+        &lt;link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'&gt;
+        &lt;style&gt;
+            body{
+                background:transparent; color:white;font-family:"Source Sans Pro", sans-serif;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;Uvod u Politiku privatnosti&lt;br&gt;&lt;br&gt;
+            Tokom korišćenja ove mobilne aplikacije, mi ćemo prikupljati i obrađivati lične podatke.
+Konkretno, dozvolićete nam da pratimo Vašu lokaciju pomoću različitih tehnologija. 
+Imajte na umu da neki od podataka koje dobijamo od Vas mogu biti vidljivi trećim licima. Takođe možemo podeliti informacije o lokaciji i druge podatke sa trećim licima u analitičke ili promotivne svrhe. Ovo će se uvek dešavati na obezličenom, zbirnom nivou; nećemo otkrivati Vaš identitet.&lt;br&gt;&lt;br&gt;
+
+Prijavljivanjem pristajete na uslove naše Politike privatnosti.
+
+Politika privatnosti
+
+1. Važenje Politike privatnosti&lt;br&gt;&lt;br&gt;
+
+(a) Svaki put kada korisnik („Vi") pristupi ili upotrebi mobilnu aplikaciju NOCIMA („Aplikacija"), on ili ona pristaje na aktuelnu Politiku privatnosti („Politika privatnosti"), na verziju koja je važeća u trenutku pristupanja NOCIMA TECHNOLOGIES DOO („NOCIMA", „mi” ili „nama”). &lt;br&gt;&lt;br&gt;
+Na tajnačin, takođe dajete odobrenje za bilo koju od naših prethodnih obrada vaših ličnih podataka koje smo prikupili pre nego što ste obavešteni o izmenama i dopunama Politike privatnosti.&lt;br&gt;&lt;br&gt;
+
+(b) Ova Politika privatnosti je sastavni deo Opštih uslova korišćenja („ToU") NOCIMA aplikacije.&lt;br&gt;&lt;br&gt;
+
+(c) Zakonske regulative privatnosti podataka se mogu primeniti kao dodatak ovoj Politici privatnosti.&lt;br&gt;&lt;br&gt;
+
+(d) U slučaju bilo kakvih sukoba ili neslaganja između originalne verzije Politike privatnosti na srpskom jeziku i odgovarajućeg prevoda na druge jezike, prednost će imati verzija na srpskom jeziku.&lt;br&gt;&lt;br&gt;
+
+2. Prikupljanje ličnih podataka&lt;br&gt;&lt;br&gt;
+
+(a) Da biste se registrovali kao korisnik Aplikacije, od Vas će biti zatraženo da se prijavite pomoću svog Fejsbuk naloga i na taj način nas ovlastite da pristupimo i skladištimo određene podatke sa Vašeg Fejsbuk naloga, kao što su Vaše ime, datum rođenja, pol, imejl adresa, sviđanja, istorija obrazovanja, trenutnigrad, fotografije, lični opis, i lista prijatelja, pod uslovom da su i oni korisnici Aplikacije. Ovi podaci će biti ažurirani svaki put kada se prijavite.&lt;br&gt;&lt;br&gt;
+
+(b) Pored toga, od Vas će se tražiti pri registraciji da nam dostavite svoje želje za prikazivanje preporuka drugih korisnika Aplikacije koje biste možda želeli da upoznate, u vezi sa stvarima kao što su pol, starosni opseg i domet pretrage. Takođe Vas pozivamo da napišete kratak lični opis svog profila.&lt;br&gt;&lt;br&gt;
+
+(c) Zatim, od Vas će se tražiti da nam dozvolite da pratimo informacije o Vašoj lokaciji. Konkretno, koristimo tehnologije za praćenje lokacije kao što su GPS (sistem za globalno pozicioniranje). &lt;br&gt;&lt;br&gt;
+Imajte u vidu da možemo da odredimo Vašu lokaciju koristeći GPS alatke čak i kada je Aplikacija pokrenuta u pozadini.&lt;br&gt;&lt;br&gt;
+
+(d) Pored toga, sakupljaćemo i skladištiti lične podatke koje nam dobrovoljno prosledite tokom korišćenja naše Usluge, kao što su fotografije. Ako NOCIMA otkrijete lične podatke koji se tiču trećih lica, Vi ste odgovorni za dobijanje odobrenja od osoba u pitanju, kaoi za tačnost podataka.&lt;br&gt;&lt;br&gt;
+
+(e) Dok koristite Aplikaciju, mi automatski prikupljamo podatke sa Vašeg uređaja i u vezi sa Vašim ponašanjem tokom njenog korišćenja. Takvi podaci mogu uključivati Vašu IP adresu, ID i tip uređaja, tip pregledača,podešavanja jezika, operativni sistem uređaja, vreme interakcije sa serverom, ocene koje dodelite ili dobijete od drugih korisnika Aplikacije, podudaranja sa drugim korisnicima Aplikacije i njihove reakcije na njih (“Like” ili “Nope”), i poruke između korisnika Aplikacije.&lt;br&gt;&lt;br&gt;
+
+(f) Možemo kombinovati Vaše podatke sa drugim podacima koje dobijemo od Vas kroz druge proizvode i usluge koje Vam pružamo.&lt;br&gt;&lt;br&gt;
+
+(g) Na osnovu zbira ličnih podataka koje prikupimo o Vama i drugim korisnicima Aplikacije, možemo Vas svrstati u određenu grupu korisnika, koja može podrazumevatiodređena automatska predviđanja u vezi sa Vašim društvenim ponašanjem i potrošačkim obrascima.&lt;br&gt;&lt;br&gt;
+            3. Obrada ličnih podataka i njena svrha&lt;br&gt;&lt;br&gt;
+
+(a) NOCIMA su potrebni Vaši lični podaci u sledeće svrhe:&lt;br&gt;&lt;br&gt;
+(I) Provera da li ispunjavate uslove da budete korisnik Aplikacije;&lt;br&gt;&lt;br&gt;
+(II) Obezbeđivanje funkcionalnosti Aplikacije;&lt;br&gt;&lt;br&gt;
+(III) Rukovođenje Vašim korisničkim nalogom;&lt;br&gt;&lt;br&gt;
+(IV) Analiza Vašeg korišćenja, ili interesovanja za, Aplikaciju ili druge proizvode, usluge i sadržaje koje prižamo mi ili treća lica;
+(V) Pružanje sadržaja i reklama prilagođenih Vašoj ličnosti, interesovanjima ili okolnostima, putem Aplikacije ili medijskih kanala treće strane.&lt;br&gt;&lt;br&gt;
+
+(b) NOCIMA garantuje odgovarajuću privatnost podataka u skladu sa zakonskim uslovima. Konkretno, NOCIMA štiti Aplikaciju i sve druge sisteme, na odgovarajući način pomoću tehničkih i organizacionih mera, od gubitka, uništenja, pristupa, modifikacije ili otkrivanja Vaših ličnih podataka od strane neovlašćenih trećih lica.&lt;br&gt;&lt;br&gt;
+
+(c) NOCIMA zadržava parvo da skladišti Vaše lične podatke sve dok ne budete zahtevali njihovo brisanje. Zadržavaju se zakonski uslovi zadržavanja podataka.&lt;br&gt;&lt;br&gt;
+
+4. Otkrivanje ličnih podataka trećim licima&lt;br&gt;&lt;br&gt;
+
+(a) Sledeći podaci sa Vašeg profila Aplikacije će biti vidljivi drugim korisnicima Aplikacije: ime, starost, zajednička sviđanja, zajednički trenutni gradovi ili druge lokacije, do pet fotografija izabranih od strane korisnika, broj (ali ne i identitet) zajedničkih Fejsbuk prijatelja, lični opis profila, približna udaljenost između korisnika Aplikacije, vreme poslednjeg pristupa Aplikaciji, rodna interesovanja.&lt;br&gt;&lt;br&gt;
+(b) Možemo podeliti, na zbirnom i bezličnom nivou, podatke o učestalosti i trajanju poseta korisnika Aplikacije na određenim lokacijama, uključujući profile kretanja, sa trećim stranama kao što su barovi, klubovi, kafići, restorani, prodavnice, marketinški stručnjaci i medijske kompanije. Na primer, možemo otkriti nekoj prodavnici broj i segmentaciju pešaka koji su prošli pored izloga i kasnije posetili tu prodavnicu.&lt;br&gt;&lt;br&gt;
+
+5. Cookies&lt;br&gt;&lt;br&gt;
+
+(a) Web pregledi u okviru Aplikacije mogu koristiti "Cookies". Cookies su male tekstualne datoteke koje odgovarajući web serveri šalju korisnikovom pregledaču pri prvoj poseti sajtu i koji se čuvaju na korisnikovom uređaju ili u keš memoriji pregledača. Podatke prikupljene uz pomoć cookie’a Nocima koristi kako bi unapredio svoje usluge i analizirao korišćenje sajta. Nema drugih upotreba podataka, niti se podaci koriste da bi se identifikovao korisnik sajta.&lt;br&gt;&lt;br&gt;
+(b) Možete da podesite da Vaš pregledač uopšte ne čuva Cookie, odnosno da izbriše Cookie koji su već sačuvani na Vašem uređaju. Ipak, imajte u vidu da ako to uradite nećete više moći da koristite sve dostupne funkcije sajta u celosti. Procedure promene podešavanja pregledača se razlikuju od pregledača do pregledača.&lt;br&gt;&lt;br&gt;
+
+6. Pružaoci usluga&lt;br&gt;&lt;br&gt;
+
+(a) Aplikacija koristi Google Analytics, Guglov servis za veb-analizu, kao i druge analitičke funkcije koje nudi Fejsbuk. Ove usluge koriste Cookies koji omogućavaju analizu onlajn korišćenja. Podaci kreirani pomoću ovih Cookies se koriste za analiziranje korišćenja Aplikacije. Dodatni podaci o tome kako Googlekoristi podatke su dostupni na sledećem linku: https://www.google.com/.&lt;br&gt;&lt;br&gt;
+(b) Možemo podeliti Vaše lične podatke sa trećim licima koja vrše određene usluge u naše ime. Ove usluge mogu uključivati hosting podataka ili podršku funkcionalnosti Aplikacije.Ovi pružaoci usluga mogu imati pristup ličnim podacima neophodnim za izvršavanje i analizu korišćenja funkcija koje oni omogućavaju, ali oni nemaju našu dozvolu da dele i koriste takve podatke u druge svrhe.&lt;br&gt;&lt;br&gt;
+            7. Korišćenje dodataka društvenih mreža&lt;br&gt;&lt;br&gt;
+
+(a) Aplikacija koristi dodatke društvenih mreža ("dodaci") sajta facebook.com, kojim upravlja Facebook Inc, kao i dodatke drugih društvenih mreža (“društvene mreže”). Dodaci su obeleženi ikonom odgovarajuće društvene mreže. Kada posetite onlajn sadržaj koji sadrži dodatke, Vaš pregledač uspostavlja direktnu vezu sa serverima odgovarajućih društvenih mreža.&lt;br&gt;&lt;br&gt;
+(b) Ako ste prijavljeni na odgovarajuću društvenu mrežu, ona može dodeliti pristup onlajn sadržaju Vašem nalogu na odgovarajućoj društvenoj mreži. Kada dođete u interakciju sa dodacima, na primer sa Fejsbukovim dugmetom "Sviđa mi se", ili dodate komentar, odgovarajuća informacija se prenosi direktno do odgovarajuće društvene mreže.&lt;br&gt;&lt;br&gt;
+(c) Pogledajte izjave o privatnosti podataka odgovarajućih društvenih mreža u vezi sa svrhom i obimom prikupljanja, obrade i korišćenja podataka, kao i u vezi sa Vašim pravima po tom pogledu i podešavanjem opcija za zaštitu Vaše privatnosti.&lt;br&gt;&lt;br&gt;
+
+8. Privatnost dece&lt;br&gt;&lt;br&gt;
+
+NOCIMA ne dozvoljava osobama mlađim od 13 godina da se registruju na Aplikaciju. Osim toga, svesno ne prikupljamo niti obrađujemo bilo kakve podatke o deci mlađoj od 13godina.&lt;br&gt;&lt;br&gt;
+
+9. Vlasnik datoteke sa podacima&lt;br&gt;&lt;br&gt;
+
+NOCIMA TECHNOLOGIES DOO, 15000 Šabac, Srbija, je vlasnik datoteke sa podacima.&lt;br&gt;&lt;br&gt;
+
+10. Pravo na pristup i korekciju podataka&lt;br&gt;&lt;br&gt;
+
+Imate parvo na pristup i/ili korekciju Vaših ličnih podataka, u skladu sa zakonskim odredbama. Potrebno je poslati zahtev za pristup ili korekciju u pisanoj formi ili putem imejla, praćen kopijom dokumenta koji Vas identifikuje, na sledeću adresu: support@nocima.com .&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</string>
 </dict>
 </plist>

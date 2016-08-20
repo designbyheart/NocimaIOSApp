@@ -47,6 +47,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
     
     //MARK - View methods
     override func viewDidLoad() {
+        super.viewDidLoad()
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -83,6 +84,10 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
         //        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.playerItemDidReachEnd), name: AVPlayerItemDidPlayToEndTimeNotification, object: player!.currentItem)
         
         self .startPlayingVideo()
+        
+        if !CLLocationManager.locationServicesEnabled() {
+            self.locationManager.requestWhenInUseAuthorization()
+        }
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.playerItemDidReachEnd), name:AVPlayerItemDidPlayToEndTimeNotification, object:nil)
         
@@ -231,6 +236,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                     NSUserDefaults.standardUserDefaults().synchronize()
                     
                     APIClient.sendPOST(APIPath.UpdateUserData, params:userDetails);
+                    self.loadUserDataIndex += 1
                     
                 }else{
                     print("Error: \(error)")
@@ -241,11 +247,11 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                 
             })
         }
-        loadUserDataIndex += 1
+        
     }
     func loginSuccess(result:FBSDKAccessToken){
         NSUserDefaults.standardUserDefaults().setObject(result.tokenString, forKey: "facebookToken")
-        
+
         self.loadUserData()
         
     }

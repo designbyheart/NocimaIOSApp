@@ -45,6 +45,7 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.usersList = [AnyObject]()
         
         collectionView .setCollectionViewLayout(layout, animated: true)
         
@@ -53,6 +54,7 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
         collectionView.dataSource = self
         //        self.commandView.hidden = true
         noUsersLbl.text = "Trenutno nema aktivnih korisnika."
+        self.noUsersLbl.hidden = true
         
         setAnimationSpeed(animationSpeedDefault)
         layout.gesturesEnabled = true
@@ -85,16 +87,27 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
         }
         self.progressView = RPCircularProgress.init()
         progressView.enableIndeterminate(true)
-        self.view .addSubview(progressView)
+
         progressView.center = CGPointMake(self.view.center.x, self.collectionView.center.y)
         APIClient.sendPOST(APIPath.UsersForMatch, params: ["latitude":latitude, "longitude":longitude])
-        self.noUsersLbl.hidden = true
+    
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        self.view .addSubview(progressView)
+        
         NSUserDefaults.standardUserDefaults().setObject("LikeView", forKey: "ActiveView")
+        self.noUsersLbl.hidden = true
+        
+        if(collectionView.visibleCells().count > 0){
+            progressView.removeFromSuperview()
+        }
+    }
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     //MARK: - Heat map action
@@ -105,7 +118,9 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if(usersList.count == likedUsers.count){
-            self.noUsersLbl.hidden = false
+            if(usersList.count < 1){
+                self.noUsersLbl.hidden = false
+            }
             self.likeBttn.hidden = true
             self.dislikeBttn.hidden = true
         }else{
@@ -130,6 +145,8 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
             }
             if let city = user["city"] as? String{
                 cell.locationLbl.text = city
+            }else{
+                cell.locationLbl.text = ""
             }
             if let userName = user["firstName"] as? String{
                 cell.nameLbl.text = userName
