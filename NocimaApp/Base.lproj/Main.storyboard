@@ -1502,7 +1502,7 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RnG-DM-HFm">
                                                     <rect key="frame" x="28" y="13" width="60" height="60"/>
-                                                    <color key="backgroundColor" patternImage="0F0D29C2-CDA3-42DD-B719-42C19782DC4E" colorSpace="pattern"/>
+                                                    <color key="backgroundColor" patternImage="36235F72-1DE3-4AF6-BF67-EC04ED26AA57" colorSpace="pattern"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="fyV-D9-E3D"/>
                                                         <constraint firstAttribute="width" constant="60" id="t8O-6h-hN1"/>
@@ -2132,7 +2132,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="0F0D29C2-CDA3-42DD-B719-42C19782DC4E" width="320" height="460">
+        <image name="36235F72-1DE3-4AF6-BF67-EC04ED26AA57" width="320" height="460">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -12034,12 +12034,12 @@ AAkKzAAJCt4ACQrhAAkK5gAAAAAAAAQBAAAAAAAAAEEAAAAAAAAAAAAAAAAACQroA
         <image name="viewBackground" width="750" height="1334"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5g6-Mc-Y7S"/>
-        <segue reference="OsO-rF-pVP"/>
+        <segue reference="2lJ-3Q-ByR"/>
         <segue reference="S6H-yd-Wsm"/>
-        <segue reference="mtR-h7-MIu"/>
-        <segue reference="UDe-f4-U09"/>
-        <segue reference="aWr-Ag-8vy"/>
+        <segue reference="OsO-rF-pVP"/>
+        <segue reference="P4t-VA-e4r"/>
+        <segue reference="UEU-ZX-sbh"/>
+        <segue reference="XKU-VZ-TRY"/>
         <segue reference="GJk-oN-oIb"/>
         <segue reference="vAA-4b-6Md"/>
         <segue reference="HJd-ab-yQD"/>

@@ -106,19 +106,30 @@ class MyProfileViewController: MainViewController,UIImagePickerControllerDelegat
             return
         }
         
-        APIClient.getDataFromUrl(url) { (data, response, error)  in
-            dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                guard let data = data where error == nil else {
-                    return
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            // do some task
+            var imgData = NSData()
+            APIClient.getDataFromUrl(url) { (data, response, error)  in
+                dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                    guard let data = data where error == nil else {
+                        return
+                    }
+                    //                print(response?.suggestedFilename ?? "")
+                    //                print("Download Finished")
+                    imgData = data
+                    imageView.image = UIImage(data: data)
+                    NSUserDefaults.standardUserDefaults().setObject(data, forKey: url.URLString)
+                    NSUserDefaults.standardUserDefaults().synchronize()
                 }
-                //                print(response?.suggestedFilename ?? "")
-                //                print("Download Finished")
-                imageView.image = UIImage(data: data)
-                NSUserDefaults.standardUserDefaults().setObject(data, forKey: url.URLString)
-                NSUserDefaults.standardUserDefaults().synchronize()
+            }
+
+            dispatch_async(dispatch_get_main_queue()) {
+                // update some UI
+                imageView.image = UIImage(data: imgData)
             }
         }
-    }
+           }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)

@@ -40,16 +40,16 @@ class ChatViewController: JSQMessagesViewController,UIGestureRecognizerDelegate 
         
         
         // Do any additional setup after loading the view, typically from a nib.
-                //        matchedLbl = UILabel.init(frame: CGRectMake(20, 220, self.view.frame.width * 0.8, 20))
+        //        matchedLbl = UILabel.init(frame: CGRectMake(20, 220, self.view.frame.width * 0.8, 20))
         //        matchedLbl.font = UIFont.init(name: "Source Sans Pro", size: 17)
         //        matchedLbl.text = "Prijate"
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-    
+        
         userThumb.image = userImg
-
-//        print(userID)
+        
+        //        print(userID)
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -57,7 +57,7 @@ class ChatViewController: JSQMessagesViewController,UIGestureRecognizerDelegate 
         self.setupTitle()
         self.setupBackBttn()
         
-//        APIClient.load_image(userThumbURL, imageView: userThumb)
+        //        APIClient.load_image(userThumbURL, imageView: userThumb)
         self.messages .removeAll()
         self.collectionView?.reloadData()
         
@@ -71,7 +71,14 @@ class ChatViewController: JSQMessagesViewController,UIGestureRecognizerDelegate 
         
         self.messages.removeAll()
         
-        APIClient.sendPOST(APIPath.ListUserMessages, params: ["userID":userID])
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            // do some task
+        APIClient.sendPOST(APIPath.ListUserMessages, params: ["userID":self.userID])
+            dispatch_async(dispatch_get_main_queue()) {
+                // update some UI
+            }
+        }
+        
         
         timer = NSTimer.scheduledTimerWithTimeInterval(5 , target: self, selector: #selector(ChatViewController.loadMessages), userInfo: nil, repeats: true)
     }
@@ -121,13 +128,20 @@ class ChatViewController: JSQMessagesViewController,UIGestureRecognizerDelegate 
     }
     @IBAction func goBack(sender:AnyObject){
         self.navigationController?.popViewControllerAnimated(true)
-        self.navigationController?.dismissViewControllerAnimated(true, completion: { 
+        self.navigationController?.dismissViewControllerAnimated(true, completion: {
             
         })
     }
     //MARK - API delegates
     func loadMessages(){
-        APIClient.sendPOST(APIPath.ListUserMessages, params: ["userID":userID])
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            // do some task
+            APIClient.sendPOST(APIPath.ListUserMessages, params: ["userID":self.userID])
+            dispatch_async(dispatch_get_main_queue()) {
+                // update some UI
+            }
+        }
+        
     }
     
     func loadedMessagesSuccess(n:NSNotification){
@@ -161,21 +175,16 @@ class ChatViewController: JSQMessagesViewController,UIGestureRecognizerDelegate 
                     }
                 }
                 let sender = m["senderID"] as? String
-//            }
-//        }
-//               print()
-//                
+                
                 if let base64Decoded = NSData(base64EncodedString: messageContent, options:   NSDataBase64DecodingOptions(rawValue: 0))
                     .map({ NSString(data: $0, encoding: NSUTF8StringEncoding) })
                 {
                     // Convert back to a string
                     if let decoded  = base64Decoded as? String  {
                         messageContent = decoded
-                        print("old decode \(decoded)")
-                    
+                        
                     }else{
                         messageContent = m["message"] as! String
-                        print("old decode \(messageContent)")
                     }
                 }
                 
@@ -201,11 +210,11 @@ extension String
                 
             }
         }else{
-            print(self)
+//            print(self)
         }
         return self
     }
-
+    
 }
 
 //MARK - Setup
@@ -233,7 +242,7 @@ extension ChatViewController {
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, messageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageData! {
         let data = self.messages[indexPath.row]
-            return data
+        return data
         
     }
     
@@ -281,7 +290,7 @@ extension ChatViewController {
                 userThumb.userInteractionEnabled = true
                 let tap = UITapGestureRecognizer(target: self, action:#selector(ChatViewController.openUserProfile))
                 if userThumb.image == nil{
-                   userThumb.image = UIImage.init(named: "defaultImg")
+                    userThumb.image = UIImage.init(named: "defaultImg")
                 }
                 tap.delegate = self
                 userThumb.addGestureRecognizer(tap)
@@ -332,7 +341,15 @@ extension ChatViewController {
         self.finishSendingMessage()
         
         
-        APIClient.sendPOST(APIPath.NewMessage, params: ["userID":self.userID, "message":messageText])
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            // do some task
+            APIClient.sendPOST(APIPath.NewMessage, params: ["userID":self.userID, "message":messageText])
+            dispatch_async(dispatch_get_main_queue()) {
+                // update some UI
+            }
+        }
+        
+        
     }
     
     override func didPressAccessoryButton(sender: UIButton!) {

@@ -54,24 +54,46 @@ class PendingActivationViewController: UIViewController {
             }
         })
         if let myImgURL = NSUserDefaults.standardUserDefaults().objectForKey("myProfileImg") as? String {
-            APIClient.load_image(myImgURL, imageView: self.facebookprofileImgView)
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                // do some task
+             APIClient.load_image(myImgURL, imageView: self.facebookprofileImgView)
+                dispatch_async(dispatch_get_main_queue()) {
+                    // update some UI
+                }
+            }
             facebookIcon.hidden = true
         }else{
-            APIClient.sendPOST(APIPath.UserGallery, params: [:])
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                // do some task
+             APIClient.sendPOST(APIPath.UserGallery, params: [:])
+                dispatch_async(dispatch_get_main_queue()) {
+                    // update some UI
+                }
+            }
             self.facebookprofileImgView.image = userImg
         }
-        APIClient.sendGET(APIPath.CheckUserStatus)
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            // do some task
+            APIClient.sendGET(APIPath.CheckUserStatus)
+            dispatch_async(dispatch_get_main_queue()) {
+                // update some UI
+            }
+        }
     }
     
     func downloadFbImage(url: NSURL, imageView:UIImageView){
         print("Download Started")
         print("lastPathComponent: " + (url.lastPathComponent ?? ""))
-        APIClient.getDataFromUrl(url) { (data, response, error)  in
-            dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                guard let data = data where error == nil else { return }
-                print(response?.suggestedFilename ?? "")
-                print("Download Finished")
-                imageView.image = UIImage(data: data)
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            // do some task
+            APIClient.getDataFromUrl(url) { (data, response, error)  in
+                dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                    guard let data = data where error == nil else { return }
+                    print(response?.suggestedFilename ?? "")
+                    print("Download Finished")
+                    imageView.image = UIImage(data: data)
+                }
             }
         }
     }

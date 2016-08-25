@@ -253,10 +253,19 @@ public class APIClient {
     {
         if let urlStr = urlString as? String{
             if let url = NSURL(string: urlStr) {
-                if let data = NSData(contentsOfURL: url) {
-                    imageView.image = UIImage(data: data)
-                    imageView.contentMode = UIViewContentMode.ScaleAspectFill
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                    // do some task
+                    if let data = NSData(contentsOfURL: url) {
+                        dispatch_async(dispatch_get_main_queue()) {
+                            // update some UI
+                            imageView.image = UIImage(data: data)
+                            imageView.contentMode = UIViewContentMode.ScaleAspectFill
+                        }
+                        
+                    }
+                    
                 }
+                
             }
         }
         

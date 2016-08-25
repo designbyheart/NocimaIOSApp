@@ -25,6 +25,7 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
     @IBOutlet weak var noUsersLbl: UILabel!
     private var usersList = [AnyObject]()
     var progressView = RPCircularProgress()
+    private var currentYear:Int = 0
     
     @IBOutlet weak var dislikeBttn: UIButton!
     var matchedUserID = String()
@@ -61,6 +62,11 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
         collectionView!.scrollEnabled = false
         setCardSize(CGSizeMake(collectionView!.bounds.width - 60, 2 * collectionView!.bounds.height/3))
         
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Year], fromDate: NSDate())
+        
+        currentYear = components.year
+        
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -87,10 +93,10 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
         }
         self.progressView = RPCircularProgress.init()
         progressView.enableIndeterminate(true)
-
+        
         progressView.center = CGPointMake(self.view.center.x, self.collectionView.center.y)
         APIClient.sendPOST(APIPath.UsersForMatch, params: ["latitude":latitude, "longitude":longitude])
-    
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -104,6 +110,7 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
         if(collectionView.visibleCells().count > 0){
             progressView.removeFromSuperview()
         }
+    
     }
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
@@ -148,10 +155,19 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
             }else{
                 cell.locationLbl.text = ""
             }
+            
+            //            cell.age
             if let userName = user["firstName"] as? String{
                 cell.nameLbl.text = userName
                 if let imageURL = user["imageURL"]{
                     APIClient.load_image(imageURL, imageView: cell.userImg)
+                }
+                if let bYear = user["birthYear"]!.integerValue{
+                    
+                    if bYear > 0{
+                        let age = currentYear - bYear
+                        cell.nameLbl.text = "\(userName), \(age)"
+                    }
                 }
             }
         }
@@ -195,10 +211,17 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
         
         if let user = usersList[layout.index] as? Dictionary<String, AnyObject>{
             if let userID = user["userID"] as? String{
-                APIClient.sendPOST(APIPath.MatchUser, params: [
-                    "status":1,
-                    "userID":userID
-                    ])
+                let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+                dispatch_async(dispatch_get_global_queue(priority, 0)) {
+                    // do some task
+                    APIClient.sendPOST(APIPath.MatchUser, params: [
+                        "status":1,
+                        "userID":userID
+                        ])
+                    dispatch_async(dispatch_get_main_queue()) {
+                        // update some UI
+                    }
+                }
             }
             likedUsers.append(user)
         }
@@ -208,15 +231,22 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
     }
     @IBAction func dislikeUser(sender: AnyObject) {
         if usersList.count > layout.index {
-        if let user = usersList[layout.index] as? Dictionary<String, AnyObject>{
-            if let userID = user["userID"] as? String{
-                APIClient.sendPOST(APIPath.MatchUser, params: [
-                    "status":2,
-                    "userID":userID
-                    ])
-            }
-            
-            likedUsers.append(user)
+            if let user = usersList[layout.index] as? Dictionary<String, AnyObject>{
+                if let userID = user["userID"] as? String{
+                    let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+                    dispatch_async(dispatch_get_global_queue(priority, 0)) {
+                        // do some task
+                        APIClient.sendPOST(APIPath.MatchUser, params: [
+                            "status":2,
+                            "userID":userID
+                            ])
+                        dispatch_async(dispatch_get_main_queue()) {
+                            // update some UI
+                        }
+                    }
+                }
+                
+                likedUsers.append(user)
             }
         }
         if self.layout.index < usersList.count{
@@ -294,13 +324,13 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
             }
         }
     }
-        //MARK: - prepare view
+    //MARK: - prepare view
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
-            if segue.identifier! == "showMatchView" {
-                let matchView = segue.destinationViewController as? MatchViewController
-                matchView!.matchedUserID = self.matchedUserID
-                matchView!.matchedUserName = self.matchedUserName
-                matchView!.matchedUserImgURL = self.matchedUserImgURL
-            }
+        if segue.identifier! == "showMatchView" {
+            let matchView = segue.destinationViewController as? MatchViewController
+            matchView!.matchedUserID = self.matchedUserID
+            matchView!.matchedUserName = self.matchedUserName
+            matchView!.matchedUserImgURL = self.matchedUserImgURL
         }
+    }
 }

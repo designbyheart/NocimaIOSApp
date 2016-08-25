@@ -72,10 +72,16 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
         self.checkUserStatus()
         if NSUserDefaults.standardUserDefaults().objectForKey("userToken") != nil{
             if(coord.latitude != 0 && coord.longitude != 0){
-                APIClient.sendPOST(APIPath.UpdateLocation, params: [
-                    "latitude":coord.latitude,
-                    "longitude":coord.longitude
-                    ])
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                    // do some task
+                    APIClient.sendPOST(APIPath.UpdateLocation, params: [
+                        "latitude":self.coord.latitude,
+                        "longitude":self.coord.longitude
+                        ])
+                    dispatch_async(dispatch_get_main_queue()) {
+                        // update some UI
+                    }
+                }
             }
         }
         //        self.openWelcomeScreen()
@@ -141,7 +147,13 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
             print("deviceID \(UIDevice.currentDevice().identifierForVendor?.UUIDString)")
             super.performSegueWithIdentifier("openLocationView", sender: self)
             if let pushToken = NSUserDefaults.standardUserDefaults().objectForKey("pushNotificationToken"){
-                APIClient.sendPOST(APIPath.UploadPushToken, params: ["token":pushToken, "deviceID":(UIDevice.currentDevice().identifierForVendor?.UUIDString)!])
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                    // do some task
+                    APIClient.sendPOST(APIPath.UploadPushToken, params: ["token":pushToken, "deviceID":(UIDevice.currentDevice().identifierForVendor?.UUIDString)!])
+                    dispatch_async(dispatch_get_main_queue()) {
+                        // update some UI
+                    }
+                }
             }
             
             
@@ -172,12 +184,25 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
             //check user status
             if let userStatus = NSUserDefaults.standardUserDefaults().objectForKey("userStatus") as? Int {
                 if userStatus == 0 {
-                    APIClient.sendGET(APIPath.CheckUserStatus)
+                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                        // do some task
+                        APIClient.sendGET(APIPath.CheckUserStatus)
+                        dispatch_async(dispatch_get_main_queue()) {
+                            // update some UI
+                        }
+                    }
                 }else{
                     self.openLocation()
                 }
             }else{
-                APIClient.sendGET(APIPath.CheckUserStatus)
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                    // do some task
+                    APIClient.sendGET(APIPath.CheckUserStatus)
+                    dispatch_async(dispatch_get_main_queue()) {
+                        // update some UI
+                    }
+                }
+                
             }
         }else{
             //            if NSUserDefaults.standardUserDefaults().objectForKey("batteryWarning") == nil{
@@ -221,6 +246,10 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                     userDetails["displayName"] = result.valueForKey("name") as! String
                     userDetails["facebookID"] = result.valueForKey("id") as! String
                     userDetails["status"] = 0
+                    
+                    let deviceIdiom = UIScreen.mainScreen().traitCollection.userInterfaceIdiom
+                    print(deviceIdiom)
+                    userDetails["deviceType"] = "iphone"
                     if let birthday = result.valueForKey("birthday") as? String{
                         userDetails["birthday"] = birthday
                     }
@@ -235,7 +264,15 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                     NSUserDefaults.standardUserDefaults().setObject(userDetails, forKey: "userDetails")
                     NSUserDefaults.standardUserDefaults().synchronize()
                     
-                    APIClient.sendPOST(APIPath.UpdateUserData, params:userDetails);
+                    
+                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                        // do some task
+                        APIClient.sendPOST(APIPath.UpdateUserData, params:userDetails);
+                        dispatch_async(dispatch_get_main_queue()) {
+                            // update some UI
+                        }
+                    }
+                    
                     self.loadUserDataIndex += 1
                     
                 }else{
@@ -251,7 +288,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
     }
     func loginSuccess(result:FBSDKAccessToken){
         NSUserDefaults.standardUserDefaults().setObject(result.tokenString, forKey: "facebookToken")
-
+        
         self.loadUserData()
         
     }
@@ -277,10 +314,16 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                             NSUserDefaults.standardUserDefaults().synchronize()
                             
                             if(coord.latitude == 0 && coord.longitude == 0){
-                                APIClient.sendPOST(APIPath.UpdateLocation, params: [
-                                    "latitude":coord.latitude,
-                                    "longitude":coord.longitude
-                                    ])
+                                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                                    // do some task
+                                    APIClient.sendPOST(APIPath.UpdateLocation, params: [
+                                        "latitude":self.coord.latitude,
+                                        "longitude":self.coord.longitude
+                                        ])
+                                    dispatch_async(dispatch_get_main_queue()) {
+                                        // update some UI
+                                    }
+                                }
                             }
                         }
                         if let userStatus = response["status"] as? Int {
@@ -288,10 +331,10 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                             NSUserDefaults.standardUserDefaults().synchronize()
                             
                             if (userStatus == 0) {
-//                                if response["registered"] != nil {
-//                                    self.openWelcomeScreen()
-//                                    return
-//                                }
+                                //                                if response["registered"] != nil {
+                                //                                    self.openWelcomeScreen()
+                                //                                    return
+                                //                                }
                                 self.performSegueWithIdentifier("showPendingActivationView", sender: self)
                             }else{
                                 self.openLocation()
@@ -303,11 +346,13 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                                     self.openLocation()
                                     return
                                 }else{
-                                    self.openWelcomeScreen()
+                                    //                                    self.openWelcomeScreen()
+                                    self.performSegueWithIdentifier("showPendingActivationView", sender: self)
                                     return
                                 }
                             }
-                            self.openWelcomeScreen()
+                            self.performSegueWithIdentifier("showPendingActivationView", sender: self)
+                            //                            self.openWelcomeScreen()
                             return
                         }
                     }else{
@@ -363,10 +408,16 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                             }
                         }
                         if(coord.latitude != 0 && coord.longitude != 0){
-                            APIClient.sendPOST(APIPath.UpdateLocation, params: [
-                                "latitude":coord.latitude,
-                                "longitude":coord.longitude
-                                ])
+                            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                                // do some task
+                                APIClient.sendPOST(APIPath.UpdateLocation, params: [
+                                    "latitude":self.coord.latitude,
+                                    "longitude":self.coord.longitude
+                                    ])
+                                dispatch_async(dispatch_get_main_queue()) {
+                                    // update some UI
+                                }
+                            }
                         }
                         if let error = response!["error"] as? String {
                             let alert = UIAlertView.init(title: "Login", message: "\(error)", delegate: self, cancelButtonTitle: "OK")
@@ -537,11 +588,31 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
         }
         
         if(sender.tag == SubmitType.Login.rawValue){
-            APIClient.sendPOST(APIPath.Login, params: params)
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                // do some task
+                APIClient.sendPOST(APIPath.Login, params: params)
+                dispatch_async(dispatch_get_main_queue()) {
+                    // update some UI
+                }
+            }
+            
         }else if(sender.tag == SubmitType.Register.rawValue){
-            APIClient.sendPOST(APIPath.Register, params:params)
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                // do some task
+                APIClient.sendPOST(APIPath.Register, params:params)
+                dispatch_async(dispatch_get_main_queue()) {
+                    // update some UI
+                }
+            }
         }else if(sender.tag == SubmitType.Reset.rawValue){
-            APIClient.sendPOST(APIPath.ResetPass, params:params)
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                // do some task
+                APIClient.sendPOST(APIPath.ResetPass, params:params)
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    // update some UI
+                }
+            }
         }else{
             
         }

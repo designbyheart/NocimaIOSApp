@@ -48,7 +48,15 @@ class MessagesViewController: MainViewController {
         self.view .addSubview(progressView)
         progressView.center = CGPointMake(self.view.center.x, self.view.center.y)
         
-        APIClient.sendPOST(APIPath.ChatHistory, params: [:])
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            // do some task
+            APIClient.sendPOST(APIPath.ChatHistory, params: [:])
+//            dispatch_async(dispatch_get_main_queue()) {
+//                // update some UI
+//            }
+        }
+
         
     }
     override func viewWillDisappear(animated: Bool) {
