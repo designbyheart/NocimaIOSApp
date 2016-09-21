@@ -9,7 +9,7 @@ target 'NocimaApp' do
     
     pod 'SwiftyJSON'
 	pod 'Crashlytics', '~> 3.4'
-	pod 'Fabric'
+	pod 'Fabric', '~>4.1'
 	pod 'Alamofire', '~> 3.1'
 	pod 'SwiftLoader'
 	#pod 'AngleGradientLayer', '~> 1.0'

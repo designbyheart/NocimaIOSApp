@@ -16,22 +16,28 @@ public protocol LikeViewControllerDelegate  {
 }
 
 class LikeViewController: MainViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIGestureRecognizerDelegate {
+    @IBOutlet weak var loaderMap: UIImageView!
     @IBOutlet weak var commandView: UIView!
     @IBOutlet weak var heatMapBttn: UIButton!
     @IBOutlet weak var likeBttn: UIButton!
+    @IBOutlet weak var loadMoreBttn: UIButton!
     
     @IBOutlet weak var collectionView:UICollectionView!
     private let reuseIdentifier = "LikeCell"
     @IBOutlet weak var noUsersLbl: UILabel!
     private var usersList = [AnyObject]()
+    private var selectedUser = [String : AnyObject]()
     var progressView = RPCircularProgress()
     private var currentYear:Int = 0
+    private var shouldUpdate = true
     
     @IBOutlet weak var dislikeBttn: UIButton!
     var matchedUserID = String()
     var matchedUserName = String()
     var matchedUserImgURL = String()
     var likedUsers = [AnyObject]()
+    var timerCounter = 0
+    var timer:NSTimer = NSTimer()
     
     /* The speed of animation. */
     private let animationSpeedDefault: Float = 0.9
@@ -48,9 +54,14 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
         super.viewDidLoad()
         self.usersList = [AnyObject]()
         
+        loadMoreBttn.layer.cornerRadius = 5
+        loaderMap.hidden = true
+        loadMoreBttn.hidden = true
+        
         collectionView .setCollectionViewLayout(layout, animated: true)
         
         self.heatMapBttn.layer.cornerRadius = self.heatMapBttn.frame.size.width / 2
+        self.heatMapBttn.backgroundColor = UIColor.init(red: 255.0/17.0, green: 255.0/143.0, blue: 1, alpha: 1)
         collectionView.delegate = self
         collectionView.dataSource = self
         //        self.commandView.hidden = true
@@ -60,7 +71,7 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
         setAnimationSpeed(animationSpeedDefault)
         layout.gesturesEnabled = true
         collectionView!.scrollEnabled = false
-        setCardSize(CGSizeMake(collectionView!.bounds.width - 60, 2 * collectionView!.bounds.height/3))
+        setCardSize(CGSizeMake(self.view!.frame.size.width - 60, 2 * self.view!.frame.size.height/3))
         
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components([.Year], fromDate: NSDate())
@@ -95,8 +106,9 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
         progressView.enableIndeterminate(true)
         
         progressView.center = CGPointMake(self.view.center.x, self.collectionView.center.y)
-        APIClient.sendPOST(APIPath.UsersForMatch, params: ["latitude":latitude, "longitude":longitude])
-        
+        if(shouldUpdate){
+            APIClient.sendPOST(APIPath.UsersForMatch, params: ["latitude":latitude, "longitude":longitude])
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -110,7 +122,6 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
         if(collectionView.visibleCells().count > 0){
             progressView.removeFromSuperview()
         }
-    
     }
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
@@ -151,7 +162,11 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
                 cell.userID = userID
             }
             if let city = user["city"] as? String{
-                cell.locationLbl.text = city
+                if(city != "0"){
+                    cell.locationLbl.text = city
+                }else{
+                    cell.locationLbl.text = ""
+                }
             }else{
                 cell.locationLbl.text = ""
             }
@@ -172,6 +187,11 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
             }
         }
         return cell
+    }
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        if let user = self.usersList[indexPath.row] as? [String:AnyObject]{
+            self.performSegueWithIdentifier("openUserProfile", sender: user)
+        }
     }
     //method to change animation speed
     func setAnimationSpeed(speed: Float) {
@@ -225,7 +245,14 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
             }
             likedUsers.append(user)
         }
-        if self.layout.index < usersList.count{
+        if self.layout.index == usersList.count - 1{
+            //            self.noUsersLbl.hidden = false
+            self.loaderMap.hidden = false
+            self.loadMoreBttn.hidden = false
+            self.likeBttn.hidden = true
+            self.dislikeBttn.hidden =  true
+            layout.index += 1
+        }else if (self.layout.index < usersList.count){
             layout.index += 1
         }
     }
@@ -251,11 +278,15 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
         }
         if self.layout.index < usersList.count{
             if self.layout.index == usersList.count - 1{
-                self.noUsersLbl.hidden = false
+                //                self.noUsersLbl.hidden = false
+                self.loaderMap.hidden = false
+                self.loadMoreBttn.hidden = false
                 self.likeBttn.hidden = true
                 self.dislikeBttn.hidden =  true
+                layout.index += 1
+            }else if (self.layout.index < usersList.count) {
+                layout.index += 1
             }
-            layout.index += 1
         }
     }
     
@@ -284,17 +315,19 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
         }
         if let response = n.object!["response"]{
             self.progressView.removeFromSuperview()
+            self.layout.index = 0
             if let userList = response!["users"] as? [AnyObject]{
                 self.usersList = userList
                 self.noUsersLbl.hidden = usersList.count > 0 ? true : false
                 self.likeBttn.hidden = self.usersList.count > 0 ? false : true
                 self.dislikeBttn.hidden = self.usersList.count > 0 ? false : true
+                self.loaderMap.hidden = true
+                self.loadMoreBttn.hidden = true
                 
                 self.likedUsers.removeAll()
+                self.collectionView.reloadData()
             }
         }
-        
-        self.collectionView.reloadData()
     }
     func userMatchFail(n:NSNotification){
         
@@ -326,11 +359,88 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
     }
     //MARK: - prepare view
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
-        if segue.identifier! == "showMatchView" {
+        if(segue.identifier! == "openUserProfile"){
+            self.shouldUpdate = false
+            if let userP = segue.destinationViewController as? UserProfileController {
+                if let userDict = sender as? [String:AnyObject]{
+                    userP.userName = userDict["firstName"] as! String
+                    userP.userID = userDict["userID"] as! String
+                    if let bYear = userDict["birthYear"]!.integerValue{
+                        if bYear > 0{
+                            let age = currentYear - bYear
+                            userP.userName = "\(sender!["firstName"] as! String), \(age)"
+                        }
+                    }
+                }
+            }
+            return
+            
+        }else if segue.identifier! == "showMatchView" {
             let matchView = segue.destinationViewController as? MatchViewController
             matchView!.matchedUserID = self.matchedUserID
             matchView!.matchedUserName = self.matchedUserName
             matchView!.matchedUserImgURL = self.matchedUserImgURL
         }
     }
+    @IBAction func loadMoreusers(sender: AnyObject) {
+        startTimer()
+        self.loadMoreBttn.hidden = true
+        
+    }
+    func startTimer(){
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: #selector(LikeViewController.startAnimation), userInfo: nil, repeats: true)
+        
+    }
+    func startAnimation(){
+        
+        if(timerCounter == 10){
+            timer.invalidate()
+            
+            usersList.removeAll()
+            
+            var latitude:Float = 0
+            var longitude:Float = 0
+            
+            if let lat = NSUserDefaults.standardUserDefaults().objectForKey("latitude") as? Float{
+                latitude = lat
+            }
+            if let long = NSUserDefaults.standardUserDefaults().objectForKey("longitude") as? Float{
+                longitude = long
+            }
+            self.progressView = RPCircularProgress.init()
+            progressView.enableIndeterminate(true)
+            
+            progressView.center = CGPointMake(self.view.center.x, self.collectionView.center.y)
+            self.view.addSubview(progressView)
+            
+            APIClient.sendPOST(APIPath.UsersForMatch, params: ["latitude":latitude, "longitude":longitude])
+            
+            UIView.animateWithDuration(1.5, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
+                
+                self.loadMoreBttn.alpha = 0
+                self.loaderMap.alpha = 0
+                
+                }, completion:{ (finished: Bool) -> Void in
+                    
+                    self.loadMoreBttn.hidden = true
+                    self.loaderMap.hidden = true
+                    self.loadMoreBttn.alpha = 1
+                    self.loaderMap.alpha = 1
+                    
+                    
+            })
+            return
+            
+        }
+        timerCounter += 1
+        let opacity:CGFloat = loaderMap.alpha == 1 ? 0.2 : 1;
+        UIView.animateWithDuration(0.7, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
+            
+            self.loaderMap.alpha = opacity
+            
+            }, completion:{ (finished: Bool) -> Void in
+                
+        })
+    }
+    
 }

@@ -8,15 +8,18 @@
 
 import UIKit
 
-class UserProfileController:MainViewController{
+class UserProfileController:MainViewController, UIScrollViewDelegate , UIGestureRecognizerDelegate{
 
     @IBOutlet weak var userLbl: UILabel!
     
+    @IBOutlet weak var scrollView: UIScrollView!
     var userID = String()
     var userName = String()
+    var userBirthYear = Int()
     var progressView = RPCircularProgress()
     var menuBttn = UIButton()
 //    var imageView = UIImageView()
+    @IBOutlet weak var scrollImageView: UIImageView!
     
     @IBOutlet weak var femaleLbl: UIButton!
     @IBOutlet weak var maleLbl: UIButton!
@@ -38,6 +41,12 @@ class UserProfileController:MainViewController{
         
         displayName.textColor = UIColor.whiteColor()
         
+        let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(UserProfileController.hideScroll))
+        tapGesture.delegate = self
+        scrollImageView.addGestureRecognizer(tapGesture)
+        
+        
+        
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -55,6 +64,7 @@ class UserProfileController:MainViewController{
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         APIClient.sendPOST(APIPath.LoadImagesForUser, params: ["userID":self.userID])
+        
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
@@ -168,5 +178,34 @@ class UserProfileController:MainViewController{
     }
     func statusFail(n:NSNotification){
         self.progressView.removeFromSuperview()
+    }
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return self.scrollImageView
+    }
+    
+    @IBAction func handleTapWithSender(sender:AnyObject) {
+        switch(sender.tag){
+        case 1:
+            self.scrollImageView.image = self.mainImageView.image
+            break;
+        case 2:
+            self.scrollImageView.image = self.secondImageView.image
+            break;
+        case 3:
+            self.scrollImageView.image = self.thirdImageView.image
+            break;
+        case 4:
+            self.scrollImageView.image = self.fourthImageView.image
+            break;
+        default:
+            
+            break;
+        }
+        scrollImageView.contentMode = UIViewContentMode.ScaleAspectFit
+        scrollView.hidden = false
+    
+    }
+    func hideScroll(){
+        self.scrollView.hidden = true
     }
 }

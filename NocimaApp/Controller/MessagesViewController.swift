@@ -13,7 +13,7 @@ class MessagesViewController: MainViewController {
     @IBOutlet weak var noChatLbl: UILabel!
     var progressView = RPCircularProgress()
     
-    var userChats = []
+    var userChats = [AnyObject]()
     var selectedUserImg:UIImage = UIImage()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +45,7 @@ class MessagesViewController: MainViewController {
         
         self.progressView = RPCircularProgress.init()
         progressView.enableIndeterminate(true)
+        self.progressView.removeFromSuperview()
         self.view .addSubview(progressView)
         progressView.center = CGPointMake(self.view.center.x, self.view.center.y)
         
@@ -52,16 +53,17 @@ class MessagesViewController: MainViewController {
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
             // do some task
             APIClient.sendPOST(APIPath.ChatHistory, params: [:])
-//            dispatch_async(dispatch_get_main_queue()) {
-//                // update some UI
-//            }
+            //            dispatch_async(dispatch_get_main_queue()) {
+            //                // update some UI
+            //            }
         }
-
+        
         
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         NSNotificationCenter.defaultCenter().removeObserver(self)
+        self.progressView.removeFromSuperview()
     }
     //MARK: - TableView delegates
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -123,7 +125,7 @@ class MessagesViewController: MainViewController {
                         chatVC!.userThumbURL = imageURL
                     }
                     chatVC!.userImg = selectedUserImg
-                
+                    
                     if let userName = user["name"] as? String{
                         chatVC!.userName = userName
                         print(userName)
@@ -137,7 +139,14 @@ class MessagesViewController: MainViewController {
         if let response = n.object {
             if let method = response["method"] as? String {
                 if(method == APIPath.BlockUser.rawValue){
-                    APIClient.sendPOST(APIPath.ChatHistory, params: [:])
+                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                        // do some task
+                        APIClient.sendPOST(APIPath.ChatHistory, params: [:])
+                        dispatch_async(dispatch_get_main_queue()) {
+                            // update some UI
+                        }
+                    }
+                    
                     return;
                 }
                 if (method != APIPath.ChatHistory.rawValue) {
@@ -169,17 +178,19 @@ class MessagesViewController: MainViewController {
             
             if action.style == .Default{
                 if let user = self.userChats[sender.tag] as? [String:AnyObject]{
-                    if let loggedUser = NSUserDefaults.standardUserDefaults().objectForKey("userID") as? String{
-                        if var userID = user["receiverID"] as? String{
-                            if loggedUser == userID{
-                                if let senderID = user["senderID"] as? String{
-                                    userID = senderID
-                                }
-                            }
-                            APIClient.sendPOST(APIPath.BlockUser, params:["userID":userID])
+                    
+                        if let userID = user["userID"] as? String{
+                            self.userChats.removeAtIndex(sender.tag)
+                            self.tableView.reloadData()
+                            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                                // do some task
+                                APIClient.sendPOST(APIPath.BlockUser, params:["userID":userID])
+                                dispatch_async(dispatch_get_main_queue()) {
+                                    // update some UI
                         }
                     }
-                }}
-        }))
+                }
+            }
+            }}))
     }
 }

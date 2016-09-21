@@ -227,7 +227,7 @@ public class RPCircularProgress: UIView {
             // Basic animations have their value reset to the original once the animation is finished
             // since only the presentation layer is animating
             var currentProgress: CGFloat = 0
-            if let presentationLayer = progressLayer.presentationLayer() as? ProgressLayer {
+            if let presentationLayer = progressLayer.presentationLayer() {
                 currentProgress = presentationLayer.progress
             }
             progressLayer.progress = currentProgress
@@ -279,7 +279,7 @@ private extension RPCircularProgress {
         animation.removedOnCompletion = false
         animation.toValue = pinnedProgress
         animation.beginTime = CACurrentMediaTime() + initialDelay
-        animation.delegate = self
+//        animation.delegate = self
         if let completion = completion {
             let completionObject = CompletionBlockObject(action: completion)
             animation.setValue(completionObject, forKey: AnimationKeys.completionBlock)
@@ -447,7 +447,7 @@ private extension RPCircularProgress {
 
 extension RPCircularProgress {
     
-    public override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
+    public func animationDidStop(anim: CAAnimation, finished flag: Bool) {
         let completedValue = anim.valueForKey(AnimationKeys.toValue)
         if let completedValue = completedValue as? CGFloat {
             progressLayer.progress = completedValue

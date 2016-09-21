@@ -43,6 +43,7 @@ public class APIClient {
     
     static func apiRoot(path:String!)->String{
         let server =
+//        "2a03:b0c0:3:d0::1978:f001"
             //"46.101.197.182/api"
         "nocima.rs/api"
 //        "datingapp.io/api"
@@ -394,7 +395,7 @@ public class APIClient {
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return newImage
+        return newImage!
     }
 }
 extension Double {

@@ -56,6 +56,11 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
         
         loginBttn.layer.cornerRadius = 5
         
+        if NSUserDefaults.standardUserDefaults().objectForKey("userToken") == nil{
+            let loginManager = FBSDKLoginManager()
+            loginManager.logOut()
+        }
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -83,6 +88,10 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                     }
                 }
             }
+        }else{
+            
+            //            [FBSDKAccessToken setCurrentAccessToken:nil];
+            //            [FBSDKProfile setCurrentProfile:nil];
         }
         //        self.openWelcomeScreen()
         self.splashScreen.hidden = true
@@ -145,7 +154,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
     func openLocation(){
         if(openedTimes == 0){
             print("deviceID \(UIDevice.currentDevice().identifierForVendor?.UUIDString)")
-            super.performSegueWithIdentifier("openLocationView", sender: self)
+            super.performSegueWithIdentifier("openLike", sender: self)
             if let pushToken = NSUserDefaults.standardUserDefaults().objectForKey("pushNotificationToken"){
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
                     // do some task
@@ -259,6 +268,14 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                     }
                     if let identifierForVendor =  UIDevice.currentDevice().identifierForVendor{
                         userDetails["deviceID"] = identifierForVendor.UUIDString
+                    }
+                    
+                    //First get the nsObject by defining as an optional anyObject
+                    let nsObject: AnyObject? = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"]
+                    
+                    //Then just cast the object as a String, but be careful, you may want to double check for nil
+                    if let version = nsObject as? String {
+                        userDetails["appVersion"] = version
                     }
                     
                     NSUserDefaults.standardUserDefaults().setObject(userDetails, forKey: "userDetails")
@@ -377,6 +394,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
     }
     //MARK: - Location Delegate
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print(error)
         
     }
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
