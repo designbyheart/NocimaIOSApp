@@ -82,12 +82,13 @@ class MessagesViewController: MainViewController {
         if let userName = chatItem["name"] as? String{
             cell.userNameLbl.text = userName
         }
-        cell.userImg.image = UIImage.init(named: "defaultImg")
+    
+//        cell.userImg.image = UIImage.init(named: "defaultImg")
+//        cell.userImg.layer.cornerRadius = cell.userImg.frame.size.width/2
         
         if let userImg = chatItem["imageURL"] as? String {
             if userImg.characters.count > 0 {
-                cell.userImg.contentMode = UIViewContentMode.ScaleAspectFill
-                APIClient.load_image(userImg, imageView: cell.userImg)
+                    APIClient.loadImgFromURL(userImg,imageView:cell.userImg)
             }
         }
         if let totalNew = chatItem["totalNew"] as? Int{

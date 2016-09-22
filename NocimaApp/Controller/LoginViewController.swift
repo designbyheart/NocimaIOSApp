@@ -239,7 +239,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
     func loadUserData()
     {
         if((FBSDKAccessToken.currentAccessToken()) != nil && loadUserDataIndex == 0){
-            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, email, gender,birthday"]).startWithCompletionHandler({ (connection, result, error) -> Void in
+            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, email, gender, birthday"]).startWithCompletionHandler({ (connection, result, error) -> Void in
                 if (error == nil){
                     
                     //                    print(result)

@@ -17,6 +17,7 @@ target 'NocimaApp' do
 	pod 'Mapbox-iOS-SDK', '~> 3.2'
 	pod 'AlamofireImage', '~> 2.0'
     pod 'Rollout.io', '~> 1.2.0'
+    pod 'Facebook-iOS-SDK', '~> 4.1'
 #    pod 'Digits'
 #    pod 'JSQSystemSoundPlayer', '~> 4.4'
 end

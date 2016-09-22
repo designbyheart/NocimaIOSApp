@@ -17,13 +17,12 @@ class UserChatListCell: UITableViewCell {
     
     override func awakeFromNib() {
         
-        self.userImg.layer.cornerRadius = self.userImg.frame.size.width / 2
-        self.userImg.layer.masksToBounds = true
         self.notificationIcon.layer.cornerRadius = 10
         self.notificationIcon.layer.masksToBounds = true
         self.notificationIcon.layer.borderColor = UIColor.init(white: 0, alpha: 0.9).CGColor
         self.notificationIcon.layer.borderWidth = 4
         
+        layoutIfNeeded()
     }
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -38,6 +37,14 @@ class UserChatListCell: UITableViewCell {
         }else{
             self.userNameLbl .textColor = UIColor.whiteColor()
         }
+        
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.userImg.layer.cornerRadius = self.userImg.frame.size.width / 2
+        self.userImg.clipsToBounds = true
+        
         
     }
 

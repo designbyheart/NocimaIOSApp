@@ -254,7 +254,7 @@ public class APIClient {
     {
         if let urlStr = urlString as? String{
             if let url = NSURL(string: urlStr) {
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
                     // do some task
                     if let data = NSData(contentsOfURL: url) {
                         dispatch_async(dispatch_get_main_queue()) {
@@ -396,6 +396,19 @@ public class APIClient {
         UIGraphicsEndImageContext()
         
         return newImage!
+    }
+    static func loadImgFromURL(imageURL:String, imageView:UIImageView)->Void{
+        let url = NSURL(string: imageURL)
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            let data = NSData(contentsOfURL: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check
+            dispatch_async(dispatch_get_main_queue(), {
+                imageView.image = UIImage(data: data!)
+                imageView.hidden = false
+                imageView.contentMode = UIViewContentMode.ScaleAspectFill
+                
+            });
+        }
     }
 }
 extension Double {
