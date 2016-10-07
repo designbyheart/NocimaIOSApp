@@ -10,14 +10,16 @@ import Foundation
 import Mapbox
 import CoreLocation
 
-class LocationViewController: MainViewController, MGLMapViewDelegate, CLLocationManagerDelegate {
+class LocationViewController: MainViewController, MGLMapViewDelegate, CLLocationManagerDelegate, UIWebViewDelegate {
     
     @IBOutlet var mapView:MGLMapView!
     let locationManager = CLLocationManager()
     var currentLocation = CLLocationCoordinate2D()
     let styleURL = NSURL(string: "mapbox://styles/dbyh/cip0hdumy0003dlnq2eqkvo9i")
     var clubs = [AnyObject]()
-    
+    var webView = UIWebView()
+    var progressView = RPCircularProgress()
+    var instHeader = UIView()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,17 +32,17 @@ class LocationViewController: MainViewController, MGLMapViewDelegate, CLLocation
         //        overlay.canReplaceMapContent = YES;
         //        [self.mapView addOverlay:overlay level:MKOverlayLevelAboveLabels];
         
-       
+        
     }
     func locationManager(manager: CLLocationManager,
                          didUpdateLocations locations: [CLLocation]){
         if let loc = manager.location {
             if let locValue:CLLocationCoordinate2D = loc.coordinate{
                 currentLocation = locValue
-//                if let map = self.mapView!{
-                    self.mapView.setCenterCoordinate(CLLocationCoordinate2D(latitude: locValue.latitude,
+                //                if let map = self.mapView!{
+                self.mapView.setCenterCoordinate(CLLocationCoordinate2D(latitude: locValue.latitude,
                     longitude:locValue.longitude),zoomLevel: 14, animated: true)
-//                }
+                //                }
                 
                 manager.stopUpdatingLocation()
             }
@@ -66,18 +68,18 @@ class LocationViewController: MainViewController, MGLMapViewDelegate, CLLocation
             locationManager.startUpdatingLocation()
             self.locationManager.startUpdatingLocation()
         }
-       
         
         
-//        self.mapView.showsUserLocation = true
+        
+        //        self.mapView.showsUserLocation = true
         self.mapView = MGLMapView.init(frame:view.bounds, styleURL:styleURL)
         self.mapView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         
         self.mapView.showsUserLocation = true
         // set the map's center coordinate
         self.view.insertSubview(mapView, atIndex: 0)
-//        self.view.
-//        addSubview(mapView)
+        //        self.view.
+        //        addSubview(mapView)
         
         mapView.delegate = self
         
@@ -110,9 +112,70 @@ class LocationViewController: MainViewController, MGLMapViewDelegate, CLLocation
         super.viewDidDisappear(animated)
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
-    
+    //MARK: - User action on tapping one of the clubs
     func mapView(mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
+        if let clubName = annotation.title {
+            let club = self.filterClubsByName(clubName!)
+            if let instagramURL = club["instagramURL"] as? String{
+                if(instagramURL.characters.count > 0){
+                    self.openInstagramProfile(instagramURL)
+                    return false
+                }
+            }
+        }
         return true
+    }
+    func openInstagramProfile(url: String){
+        webView = UIWebView.init(frame: self.view.frame)
+        webView.delegate = self
+        webView.backgroundColor = UIColor.blackColor()
+        webView.opaque = false
+        //init(patternImage: UIImage.init(named:"viewBackground")!)
+        self.view.addSubview(webView)
+        let request = NSURLRequest.init(URL: NSURL.init(string: url)!)
+        webView.loadRequest(request)
+        
+        self.progressView = ViewHelper.prepareProgressIndicator(self)
+    }
+    func webViewDidFinishLoad(webView: UIWebView) {
+        self.progressView.removeFromSuperview()
+        self.addInstagramHeader()
+    }
+    func addInstagramHeader(){
+        self.instHeader.removeFromSuperview()
+        
+        let hWidth = self.view.frame.size.width/2
+        self.instHeader = UIView.init(frame: CGRectMake(hWidth, 0, hWidth, 40))
+        self.instHeader.backgroundColor = UIColor.whiteColor()
+        self.webView.addSubview(instHeader)
+        
+        let closeBttn = UIButton.init(frame: CGRectMake(hWidth/2, 0, hWidth/2, 40))
+        closeBttn.setTitle("Zatvori", forState: UIControlState.Normal)
+        closeBttn.setTitleColor(UIColor(red:0.24,green:0.60,blue:0.93,alpha:1.00), forState: UIControlState.Normal)
+        closeBttn.addTarget(self, action: #selector(LocationViewController.closeInstagram), forControlEvents: UIControlEvents.TouchUpInside)
+        instHeader.addSubview(closeBttn)
+    }
+    func closeInstagram(){
+        self.webView.removeFromSuperview()
+        self.instHeader.removeFromSuperview()
+    }
+    //MARK: - Methods for displayong one details from Instagram
+    func filterClubsByName(name:String)->[String: AnyObject]{
+        var club = [String:AnyObject]()
+        
+        if(self.clubs.count > 0){
+            for c in self.clubs {
+                if let clubItem = c as? [String:AnyObject]{
+                    if let clubName = clubItem["name"] as? String{
+                        if(clubName == name){
+                            club = clubItem
+                            break
+                        }
+                    }
+                }
+            }
+        }
+        return club
     }
     //MARK: - Clubs
     func displayClubs(){

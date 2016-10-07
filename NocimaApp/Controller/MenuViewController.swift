@@ -18,6 +18,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     let menuData = [
         ["img":"doYouLikeIcon", "title":"Da li mi se sviđa?"],
         ["img":"heatmapIcon", "title":"Gde izaći?"],
+        ["img":"flashIcon", "title":"Slučajno?"],
         ["img":"myProfileIcon", "title":"Moj profil"],
         ["img":"settingsIcon", "title":"Podešavanja"],
         ];
@@ -47,9 +48,6 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         //Auto-set the UITableViewCells height (requires iOS8+)
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 70
-     
-        
-        
         
     }
     override func viewDidAppear(animated: Bool) {
@@ -71,7 +69,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return menuData.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -96,10 +94,14 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             NSNotificationCenter.defaultCenter().postNotificationName("OpenLocationView", object: nil)
             break
         case 2:
-            NSNotificationCenter.defaultCenter().postNotificationName("OpenMyProfileView", object: nil)
+            //slucajno
+            NSNotificationCenter.defaultCenter().postNotificationName("OpenWereCloseView", object: nil)
             break
             
         case 3:
+            NSNotificationCenter.defaultCenter().postNotificationName("OpenMyProfileView", object: nil)
+            break;
+        case 4:
             NSNotificationCenter.defaultCenter().postNotificationName("OpenSettingsView", object: nil)
             break
             

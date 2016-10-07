@@ -36,6 +36,7 @@ enum APIPath:String {
     case UploadPushToken            = "storeDeviceNotificationToken"
     case LoadImagesForUser          = "loadImagesForUser"
     case BlockUser                  = "blockUser"
+    case WereClose                  = "youWereClose"
 }
 
 
@@ -113,9 +114,9 @@ public class APIClient {
      - Returns: void (Will be triggered NSNotification with Success / Fail AVWAPINotification type)
      */
     static func sendPOST(methodName:APIPath, params:Dictionary<String, AnyObject>){
-                print("method: \(methodName) \n params: \(params)")
+//                print("method: \(methodName) \n params: \(params)")
         let isAuthenticated:Bool! = NSUserDefaults.standardUserDefaults().objectForKey("userToken") != nil
-        print(self.defaultHeader(isAuthenticated, method:methodName, params:params))
+//        print(self.defaultHeader(isAuthenticated, method:methodName, params:params))
         Alamofire.request(
             .POST,
             self.path(methodName),
@@ -137,7 +138,7 @@ public class APIClient {
                 var responseObject:AnyObject = []
                 
                 if let JSON = response.result.value {
-                    print("JSON: \(JSON)")
+//                    print("JSON: \(JSON)")
                     let error = response.result.value!["errorFields"]!
                     
                     if(error != nil){
@@ -145,7 +146,7 @@ public class APIClient {
                         responseObject = errorMessage!;
                     }else if(JSON["errorMessage"]! != nil){
                         responseObject = JSON["errorMessage"] as! String
-                        print("here \(responseObject)")
+//                        print("here \(responseObject)")
                     }else{
                         if let resultValue = response.result.value {
                             responseObject = resultValue

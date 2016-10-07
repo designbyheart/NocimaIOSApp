@@ -33,11 +33,14 @@
 		076D40111CEE62FF00F63275 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076D40101CEE62FF00F63275 /* UIKit.framework */; };
 		0772DC441D5BB7C8005D174D /* TermsConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0772DC431D5BB7C8005D174D /* TermsConditionsViewController.swift */; };
 		0776C9DA1D2402A800F76BA0 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0776C9D91D2402A800F76BA0 /* WelcomeViewController.swift */; };
+		07801AF81DA7143300BD8FA8 /* WereCloseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07801AF71DA7143300BD8FA8 /* WereCloseTableViewCell.swift */; };
+		078A09F61D974A5A00D5A3FC /* ViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078A09F51D974A5A00D5A3FC /* ViewHelper.swift */; };
 		079FECC01CF766BC00293141 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079FECBF1CF766BC00293141 /* LocationViewController.swift */; };
 		079FECC21CF768A400293141 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079FECC11CF768A400293141 /* MapKit.framework */; };
 		07A014201D2B2F9700DC62B6 /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A0141F1D2B2F9700DC62B6 /* DataHelper.swift */; };
 		07AB57AA1D27CAB30022586C /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AB57A91D27CAB30022586C /* DateHelper.swift */; };
 		07B4E8B21D11BC13007A5981 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B4E8B11D11BC13007A5981 /* ChatViewController.swift */; };
+		07B4ED5F1DA69EC4009F0B9E /* WereCloseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B4ED5E1DA69EC4009F0B9E /* WereCloseViewController.swift */; };
 		07B8BEF81CFA55D300BF2E58 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B8BEF71CFA55D300BF2E58 /* NavigationView.swift */; };
 		07B8BEFA1CFA780600BF2E58 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B8BEF91CFA780600BF2E58 /* MainViewController.swift */; };
 		07B8BEFC1CFA85F100BF2E58 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B8BEFB1CFA85F100BF2E58 /* MenuCell.swift */; };
@@ -109,11 +112,14 @@
 		076D40101CEE62FF00F63275 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0772DC431D5BB7C8005D174D /* TermsConditionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TermsConditionsViewController.swift; path = Controller/TermsConditionsViewController.swift; sourceTree = "<group>"; };
 		0776C9D91D2402A800F76BA0 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WelcomeViewController.swift; path = Controller/WelcomeViewController.swift; sourceTree = "<group>"; };
+		07801AF71DA7143300BD8FA8 /* WereCloseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WereCloseTableViewCell.swift; path = Components/cells/WereCloseTableViewCell.swift; sourceTree = "<group>"; };
+		078A09F51D974A5A00D5A3FC /* ViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewHelper.swift; path = Helpers/ViewHelper.swift; sourceTree = "<group>"; };
 		079FECBF1CF766BC00293141 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationViewController.swift; path = Controller/LocationViewController.swift; sourceTree = "<group>"; };
 		079FECC11CF768A400293141 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		07A0141F1D2B2F9700DC62B6 /* DataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataHelper.swift; path = Helpers/DataHelper.swift; sourceTree = "<group>"; };
 		07AB57A91D27CAB30022586C /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateHelper.swift; path = Helpers/DateHelper.swift; sourceTree = "<group>"; };
 		07B4E8B11D11BC13007A5981 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = Controller/ChatViewController.swift; sourceTree = "<group>"; };
+		07B4ED5E1DA69EC4009F0B9E /* WereCloseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WereCloseViewController.swift; path = Controller/WereCloseViewController.swift; sourceTree = "<group>"; };
 		07B8BEF71CFA55D300BF2E58 /* NavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationView.swift; path = Components/NavigationView.swift; sourceTree = "<group>"; };
 		07B8BEF91CFA780600BF2E58 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = Controller/MainViewController.swift; sourceTree = "<group>"; };
 		07B8BEFB1CFA85F100BF2E58 /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuCell.swift; path = Components/cells/MenuCell.swift; sourceTree = "<group>"; };
@@ -253,6 +259,7 @@
 				071353631D2D7F2300455C4E /* UserProfileController.swift */,
 				07FB54E91D375C4B009165D9 /* LocationUpdateController.swift */,
 				0772DC431D5BB7C8005D174D /* TermsConditionsViewController.swift */,
+				07B4ED5E1DA69EC4009F0B9E /* WereCloseViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -295,6 +302,7 @@
 				07F7115F1D04D0FB0099D342 /* LikeDislikeCollectionViewCell.swift */,
 				07B8BEFB1CFA85F100BF2E58 /* MenuCell.swift */,
 				0736DE061D273F6C004FDE7B /* UserChatListCell.swift */,
+				07801AF71DA7143300BD8FA8 /* WereCloseTableViewCell.swift */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -306,6 +314,7 @@
 				07AB57A91D27CAB30022586C /* DateHelper.swift */,
 				071555D11D2832AB003039CF /* UserEntity.swift */,
 				07A0141F1D2B2F9700DC62B6 /* DataHelper.swift */,
+				078A09F51D974A5A00D5A3FC /* ViewHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -606,6 +615,7 @@
 				076D400F1CEE62BB00F63275 /* LoginViewController.swift in Sources */,
 				07003AF91D02B99A0083AC5F /* MessagesViewController.swift in Sources */,
 				07B8BEFF1CFAF48300BF2E58 /* SettingsViewController.swift in Sources */,
+				078A09F61D974A5A00D5A3FC /* ViewHelper.swift in Sources */,
 				07FB54EA1D375C4B009165D9 /* LocationUpdateController.swift in Sources */,
 				07B8BEF81CFA55D300BF2E58 /* NavigationView.swift in Sources */,
 				0776C9DA1D2402A800F76BA0 /* WelcomeViewController.swift in Sources */,
@@ -629,8 +639,10 @@
 				07F711601D04D0FB0099D342 /* LikeDislikeCollectionViewCell.swift in Sources */,
 				071555D21D2832AB003039CF /* UserEntity.swift in Sources */,
 				075EE16E1D1F39CC006E853F /* MatchViewController.swift in Sources */,
+				07801AF81DA7143300BD8FA8 /* WereCloseTableViewCell.swift in Sources */,
 				07B4E8B21D11BC13007A5981 /* ChatViewController.swift in Sources */,
 				070300BD1D1C6CDA000B2B57 /* PendingActivationViewController.swift in Sources */,
+				07B4ED5F1DA69EC4009F0B9E /* WereCloseViewController.swift in Sources */,
 				07F3F20E1D06B958005F1BDE /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -37,7 +37,7 @@ class MyProfileViewController: MainViewController,UIImagePickerControllerDelegat
         self.thirdImageView.layer.cornerRadius = 3
         self.fourthImageView.layer.cornerRadius = 3
         self.mainImageView.layer.cornerRadius = 3
-        
+        ViewHelper.addBackgroundImg(self)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -133,12 +133,19 @@ class MyProfileViewController: MainViewController,UIImagePickerControllerDelegat
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        APIClient.sendPOST(APIPath.UserGallery, params:[:]);
-        
-        if let images = NSUserDefaults.standardUserDefaults().objectForKey("gallery")  as? Array<AnyObject>{
-            self.loadImages(images)
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            // do some task
+            APIClient.sendPOST(APIPath.UserGallery, params:[:]);
+            
+            if let images = NSUserDefaults.standardUserDefaults().objectForKey("gallery")  as? Array<AnyObject>{
+                self.loadImages(images)
+            }
+            dispatch_async(dispatch_get_main_queue()) {
+                // update some UI
+            }
         }
+        
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewDidDisappear(animated)

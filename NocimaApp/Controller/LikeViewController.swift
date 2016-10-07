@@ -61,9 +61,11 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
         collectionView .setCollectionViewLayout(layout, animated: true)
         
         self.heatMapBttn.layer.cornerRadius = self.heatMapBttn.frame.size.width / 2
-        self.heatMapBttn.backgroundColor = UIColor.init(red: 255.0/17.0, green: 255.0/143.0, blue: 1, alpha: 1)
+        self.heatMapBttn.backgroundColor = UIColor.init(red: 17.0/255.0, green: 143.0/255.0, blue: 1, alpha: 1)
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.backgroundView?.backgroundColor = UIColor.clearColor()
+        collectionView.backgroundColor = UIColor.clearColor()
         //        self.commandView.hidden = true
         noUsersLbl.text = "Trenutno nema aktivnih korisnika."
         self.noUsersLbl.hidden = true
@@ -71,12 +73,15 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
         setAnimationSpeed(animationSpeedDefault)
         layout.gesturesEnabled = true
         collectionView!.scrollEnabled = false
-        setCardSize(CGSizeMake(self.view!.frame.size.width - 60, 2 * self.view!.frame.size.height/3))
+        setCardSize(CGSizeMake(self.view!.frame.size.width - 60, 2 * self.view!.frame.size.height/3 - 70))
         
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components([.Year], fromDate: NSDate())
         
         currentYear = components.year
+        
+        
+        ViewHelper.addBackgroundImg(self)
         
     }
     override func viewWillAppear(animated: Bool) {
@@ -123,6 +128,7 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
             progressView.removeFromSuperview()
         }
     }
+
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         NSNotificationCenter.defaultCenter().removeObserver(self)
@@ -407,12 +413,8 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
             if let long = NSUserDefaults.standardUserDefaults().objectForKey("longitude") as? Float{
                 longitude = long
             }
-            self.progressView = RPCircularProgress.init()
-            progressView.enableIndeterminate(true)
-            
-            progressView.center = CGPointMake(self.view.center.x, self.collectionView.center.y)
-            self.view.addSubview(progressView)
-            
+            self.progressView = ViewHelper.prepareProgressIndicator(self)
+
             APIClient.sendPOST(APIPath.UsersForMatch, params: ["latitude":latitude, "longitude":longitude])
             
             UIView.animateWithDuration(1.5, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: {

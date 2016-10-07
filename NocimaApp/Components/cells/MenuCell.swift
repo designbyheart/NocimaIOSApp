@@ -25,7 +25,7 @@ class MenuCell: UITableViewCell {
         self.selectionStyle = UITableViewCellSelectionStyle.None
         
         if selected {
-            self.titleLbl.textColor = UIColor.init(red: 46, green: 146, blue: 251, alpha: 1)
+            self.titleLbl.textColor = UIColor.init(red: 46/255, green: 146/255, blue: 251/255, alpha: 1)
         }else{
             self.titleLbl .textColor = UIColor.whiteColor()
         }

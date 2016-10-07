@@ -26,7 +26,7 @@ class SettingsViewController: MainViewController {
         deleteAccountBttn.layer.cornerRadius = 3
         deleteAccountBttn.addTarget(self, action: #selector(SettingsViewController.deleteAccountConfirmation(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         self.saveBttn.layer.cornerRadius = 3
-        
+        ViewHelper.addBackgroundImg(self)
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)

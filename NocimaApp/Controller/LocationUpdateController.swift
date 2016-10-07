@@ -21,7 +21,7 @@ class LocationUpdateController: NSObject, CLLocationManagerDelegate {
         manager.delegate = self
         manager.requestWhenInUseAuthorization()
         manager.startMonitoringSignificantLocationChanges()
-//        manager.allowsBackgroundLocationUpdates = true
+        //        manager.allowsBackgroundLocationUpdates = true
         
         return manager
     }()
@@ -32,23 +32,16 @@ class LocationUpdateController: NSObject, CLLocationManagerDelegate {
         return locationUpdateManager
     }
     func stopUpdating(){
-        if #available(iOS 9.0, *) {
-            if self.locationManager != nil{
-                self.locationManager.stopMonitoringSignificantLocationChanges()
-            }
-        } else {
-            // Fallback on earlier versions
+        if self.locationManager != nil{
+            self.locationManager.stopMonitoringSignificantLocationChanges()
         }
     }
     func updateLocation(locationManager:LocationUpdateController){
-        if #available(iOS 9.0, *) {
-            if CLLocationManager.locationServicesEnabled(){
-                locationManager.locationManager.startMonitoringSignificantLocationChanges()
-            }
-            //startUpdatingLocation()
-        } else {
-            // Fallback on earlier versions
+        
+        if CLLocationManager.locationServicesEnabled(){
+            locationManager.locationManager.startMonitoringSignificantLocationChanges()
         }
+        //startUpdatingLocation()
     }
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         //    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
@@ -78,16 +71,12 @@ class LocationUpdateController: NSObject, CLLocationManagerDelegate {
         }
     }
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        NSLog("Location manager failed with error: %@", error)
+//        NSLog("Location manager fai/led with error: %@", error)
         if error.domain == kCLErrorDomain && CLError(rawValue: error.code) == CLError.Denied {
             //user denied location services so stop updating manager
-            if #available(iOS 9.0, *) {
-                self.locationManager.stopUpdatingLocation()
-            } else {
-                // Fallback on earlier versions
-            }
+            self.locationManager.stopUpdatingLocation()
             //respect user privacy and remove stored location
-
+            
         }
     }
     func validateUpdateLocation()-> Bool{

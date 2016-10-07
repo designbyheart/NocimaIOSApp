@@ -9,8 +9,10 @@
 import UIKit
 
 class MessagesViewController: MainViewController {
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noChatLbl: UILabel!
+    
     var progressView = RPCircularProgress()
     
     var userChats = [AnyObject]()
@@ -68,6 +70,9 @@ class MessagesViewController: MainViewController {
     //MARK: - TableView delegates
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
+    }
+    func loginUser(username: String, pass: String){
+        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -15,7 +15,9 @@ class LikeDislikeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var userImg: UIImageView!
     var userID:String!
     
-    
+    override func awakeFromNib() {
+        self.backgroundColor = UIColor.clearColor()
+    }
     override internal func applyLayoutAttributes(layoutAttributes: UICollectionViewLayoutAttributes) {
         let center = layoutAttributes.center
         let animation = CABasicAnimation(keyPath: "position.y")

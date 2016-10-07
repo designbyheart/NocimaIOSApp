@@ -9,7 +9,7 @@
 import UIKit
 
 class UserProfileController:MainViewController, UIScrollViewDelegate , UIGestureRecognizerDelegate{
-
+    
     @IBOutlet weak var userLbl: UILabel!
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -18,7 +18,7 @@ class UserProfileController:MainViewController, UIScrollViewDelegate , UIGesture
     var userBirthYear = Int()
     var progressView = RPCircularProgress()
     var menuBttn = UIButton()
-//    var imageView = UIImageView()
+    //    var imageView = UIImageView()
     @IBOutlet weak var scrollImageView: UIImageView!
     
     @IBOutlet weak var femaleLbl: UIButton!
@@ -32,6 +32,8 @@ class UserProfileController:MainViewController, UIScrollViewDelegate , UIGesture
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationMenu = NavigationView(controller: self)
+        self.navigationMenu.titleView.text = "Profil"
         
         self.setupBackBttn()
         mainImageView.layer.cornerRadius = 8
@@ -45,7 +47,14 @@ class UserProfileController:MainViewController, UIScrollViewDelegate , UIGesture
         tapGesture.delegate = self
         scrollImageView.addGestureRecognizer(tapGesture)
         
+        ViewHelper.addBackgroundImg(self)
         
+        let info = UILabel.init(frame: CGRectMake(20, self.view.frame.size.height - 40, self.view.frame.size.width - 40, 20))
+        info.text = "Tapni na sliku da zumiras"
+        info.font = UIFont.init(name: "Source Sans Pro", size: 13)
+        info.textColor = UIColor.init(white: 0.55, alpha: 0.8)
+        info.textAlignment = NSTextAlignment.Center
+        self.view.insertSubview(info, belowSubview: scrollView)
         
     }
     override func viewWillAppear(animated: Bool) {
@@ -68,7 +77,7 @@ class UserProfileController:MainViewController, UIScrollViewDelegate , UIGesture
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-
+        
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     //MARK: - gallery delegates
@@ -104,45 +113,45 @@ class UserProfileController:MainViewController, UIScrollViewDelegate , UIGesture
         for img in images {
             if let imgPosition = img["position"] as? Int{
                 if let imgURL  = img["imageURL"] as? String{
-                switch(imgPosition){
-                case 1:
-                    APIClient.load_image(imgURL, imageView: self.mainImageView)
-                break;
-                case 2:
-                    APIClient.load_image(imgURL, imageView: self.secondImageView)
-                break;
-                case 3:
-                    APIClient.load_image(imgURL, imageView: self.thirdImageView)
-                break;
-                case 4:
-                    APIClient.load_image(imgURL, imageView: self.fourthImageView)
-                break;
-                default:
+                    switch(imgPosition){
+                    case 1:
+                        APIClient.load_image(imgURL, imageView: self.mainImageView)
+                        break;
+                    case 2:
+                        APIClient.load_image(imgURL, imageView: self.secondImageView)
+                        break;
+                    case 3:
+                        APIClient.load_image(imgURL, imageView: self.thirdImageView)
+                        break;
+                    case 4:
+                        APIClient.load_image(imgURL, imageView: self.fourthImageView)
+                        break;
+                    default:
+                        
+                        break;
+                    }
                     
-                break;
-                }
-                
                 }
             }
         }
-//        var xPos:CGFloat = 0
-//        for imageData in images{
-//            if let imageURL = imageData["imageURL"] as? String{
-            
-//                let imageView = UIImageView.init(frame: CGRectMake(xPos, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height))
-//                xPos = xPos + self.scrollView.frame.size.width
-//                imageView.backgroundColor = UIColor.blackColor()
-//                self.scrollView.addSubview(imageView)
-//                imageView.contentMode = UIViewContentMode.ScaleAspectFit
-//                APIClient.load_image(imageURL, imageView: imageView)
-                
-//                if xPos == 0{
-//                    self.imageView = imageView
-//                }
-                
-//            }
-//        }
-//        self.scrollView.contentSize = CGSizeMake(xPos, self.scrollView.frame.size.height)
+        //        var xPos:CGFloat = 0
+        //        for imageData in images{
+        //            if let imageURL = imageData["imageURL"] as? String{
+        
+        //                let imageView = UIImageView.init(frame: CGRectMake(xPos, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height))
+        //                xPos = xPos + self.scrollView.frame.size.width
+        //                imageView.backgroundColor = UIColor.blackColor()
+        //                self.scrollView.addSubview(imageView)
+        //                imageView.contentMode = UIViewContentMode.ScaleAspectFit
+        //                APIClient.load_image(imageURL, imageView: imageView)
+        
+        //                if xPos == 0{
+        //                    self.imageView = imageView
+        //                }
+        
+        //            }
+        //        }
+        //        self.scrollView.contentSize = CGSizeMake(xPos, self.scrollView.frame.size.height)
     }
     func setupBackBttn(){
         self.menuBttn = UIButton(frame:CGRectMake(5, 30, 60, 40))
@@ -202,8 +211,9 @@ class UserProfileController:MainViewController, UIScrollViewDelegate , UIGesture
             break;
         }
         scrollImageView.contentMode = UIViewContentMode.ScaleAspectFit
+        scrollView.zoomScale = 2
         scrollView.hidden = false
-    
+        
     }
     func hideScroll(){
         self.scrollView.hidden = true
