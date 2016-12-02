@@ -18,6 +18,8 @@ class LocationViewController: MainViewController, MGLMapViewDelegate, CLLocation
     let styleURL = NSURL(string: "mapbox://styles/dbyh/cip0hdumy0003dlnq2eqkvo9i")
     var clubs = [AnyObject]()
     var webView = UIWebView()
+    var subViewCount:Int = 0
+    var previousLinks = [NSURLRequest]()
     var progressView = RPCircularProgress()
     var instHeader = UIView()
     override func viewDidLoad() {
@@ -31,7 +33,6 @@ class LocationViewController: MainViewController, MGLMapViewDelegate, CLLocation
         //This is the important bit, it tells your map to replace ALL the content, not just overlay the tiles.
         //        overlay.canReplaceMapContent = YES;
         //        [self.mapView addOverlay:overlay level:MKOverlayLevelAboveLabels];
-        
         
     }
     func locationManager(manager: CLLocationManager,
@@ -126,13 +127,17 @@ class LocationViewController: MainViewController, MGLMapViewDelegate, CLLocation
         return true
     }
     func openInstagramProfile(url: String){
-        webView = UIWebView.init(frame: self.view.frame)
+        webView = UIWebView.init(frame: CGRectMake(20, 65, self.view.frame.width - 40, self.view.frame.height - 85))
         webView.delegate = self
-        webView.backgroundColor = UIColor.blackColor()
+        webView.backgroundColor = UIColor.init(white: 0, alpha: 0.9)
+        webView.layer.cornerRadius = 5
+        webView.clipsToBounds = true
+        
         webView.opaque = false
         //init(patternImage: UIImage.init(named:"viewBackground")!)
         self.view.addSubview(webView)
         let request = NSURLRequest.init(URL: NSURL.init(string: url)!)
+        self.previousLinks.append(request)
         webView.loadRequest(request)
         
         self.progressView = ViewHelper.prepareProgressIndicator(self)
@@ -141,15 +146,42 @@ class LocationViewController: MainViewController, MGLMapViewDelegate, CLLocation
         self.progressView.removeFromSuperview()
         self.addInstagramHeader()
     }
+    
+    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        print(request.URL?.absoluteString)
+        if (navigationType == UIWebViewNavigationType.LinkClicked){
+            self.previousLinks.append(request)
+        }
+        print("total requests \(self.previousLinks.count)")
+        if(self.previousLinks.count == 2 && self.subViewCount == 0){
+            subViewCount = 1
+            let backBttn = UIButton.init(frame: CGRectMake(0, 0, 60, 40))
+            backBttn.setTitle("<", forState: UIControlState.Normal)
+            backBttn.titleLabel?.font = UIFont.systemFontOfSize(25)
+            backBttn.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
+            backBttn.tag == 77
+            backBttn.addTarget(self, action: #selector(LocationViewController.openPreviousLink(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+            self.instHeader.addSubview(backBttn)
+        }
+        return true
+    }
     func addInstagramHeader(){
+        if(self.previousLinks.count > 1){
+            return
+        }
         self.instHeader.removeFromSuperview()
         
-        let hWidth = self.view.frame.size.width/2
-        self.instHeader = UIView.init(frame: CGRectMake(hWidth, 0, hWidth, 40))
+        let hWidth = self.webView.frame.size.width
+        
+        self.instHeader = UIView.init(frame: CGRectMake(0, 0, hWidth, 40))
         self.instHeader.backgroundColor = UIColor.whiteColor()
+        
+        let viewBack = UIView.init(frame: CGRectMake(0, 0, hWidth, 40))
+        viewBack.backgroundColor = UIColor.whiteColor()
+        self.webView.scrollView.addSubview(viewBack)
         self.webView.addSubview(instHeader)
         
-        let closeBttn = UIButton.init(frame: CGRectMake(hWidth/2, 0, hWidth/2, 40))
+        let closeBttn = UIButton.init(frame: CGRectMake(hWidth - 80, 0, 70, 40))
         closeBttn.setTitle("Zatvori", forState: UIControlState.Normal)
         closeBttn.setTitleColor(UIColor(red:0.24,green:0.60,blue:0.93,alpha:1.00), forState: UIControlState.Normal)
         closeBttn.addTarget(self, action: #selector(LocationViewController.closeInstagram), forControlEvents: UIControlEvents.TouchUpInside)
@@ -158,6 +190,26 @@ class LocationViewController: MainViewController, MGLMapViewDelegate, CLLocation
     func closeInstagram(){
         self.webView.removeFromSuperview()
         self.instHeader.removeFromSuperview()
+        self.previousLinks.removeAll()
+        self.subViewCount = 0
+    }
+    func openPreviousLink(sender:AnyObject){
+        if(previousLinks.count > 0){
+            self.previousLinks.removeLast()
+        }else{
+            return
+        }
+        if(self.previousLinks.count > 1){
+            if let request:NSURLRequest = self.previousLinks.last {
+                self.webView.loadRequest(request)
+            }
+        }else{
+            for view in self.instHeader.subviews{
+                if view.tag == 777 {
+                    view.removeFromSuperview()
+                }
+            }
+        }
     }
     //MARK: - Methods for displayong one details from Instagram
     func filterClubsByName(name:String)->[String: AnyObject]{
@@ -224,4 +276,5 @@ class LocationViewController: MainViewController, MGLMapViewDelegate, CLLocation
             }
         }
     }
+    
 }

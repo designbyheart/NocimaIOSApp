@@ -18,6 +18,7 @@ class WereCloseTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        layoutIfNeeded()
     }
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -29,8 +30,10 @@ class WereCloseTableViewCell: UITableViewCell {
         
         if selected {
             self.userNameLbl.textColor = blueColor
+            self.distanceLbl.textColor = blueColor
         }else{
             self.userNameLbl .textColor = UIColor.whiteColor()
+            self.distanceLbl.textColor = UIColor.whiteColor()
         }
         
     }

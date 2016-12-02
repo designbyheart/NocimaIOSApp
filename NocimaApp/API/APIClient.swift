@@ -37,6 +37,7 @@ enum APIPath:String {
     case LoadImagesForUser          = "loadImagesForUser"
     case BlockUser                  = "blockUser"
     case WereClose                  = "youWereClose"
+    case ChatHistoryV2              = "chatHistory.v2"
 }
 
 
@@ -359,9 +360,9 @@ public class APIClient {
 //                let progress = Double((totalBytesWritten * 100) / totalBytesExpectedToWrite).roundToPlaces(3)
 //                print("\(progress)")
             }
-            .responseJSON { (response) in
-                
-                                print(response)
+            .responseJSON {
+                (response) in
+                print(response)
                 if let value = response.result.value{
                     if let imageURL = value["imageURL"] as? String{
                         print(imageURL)

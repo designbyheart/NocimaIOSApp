@@ -18,7 +18,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     let menuData = [
         ["img":"doYouLikeIcon", "title":"Da li mi se sviđa?"],
         ["img":"heatmapIcon", "title":"Gde izaći?"],
-        ["img":"flashIcon", "title":"Slučajno?"],
+        ["img":"flashIcon", "title":"Slučajno"],
         ["img":"myProfileIcon", "title":"Moj profil"],
         ["img":"settingsIcon", "title":"Podešavanja"],
         ];

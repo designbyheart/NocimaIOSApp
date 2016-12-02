@@ -30,6 +30,8 @@ class MainViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.openWereCloseView(_:)), name: "OpenWereCloseView", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.openLikeView(_:)),
                                                          name: "OpenLikeView", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.openMenu(_:)), name: "openMenu", object: nil)
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -52,6 +54,7 @@ class MainViewController: UIViewController {
 //    }
     
     func openMenu(sender: AnyObject){
+        NSNotificationCenter.defaultCenter().postNotificationName(WereCloseLikeViewController.dismissCommandName, object: nil)
         UIView.animateWithDuration(0.3, delay: 0, options: .CurveEaseOut, animations: {
             self.menu.view.center = self.view.center
             }, completion: { finished in
@@ -132,6 +135,7 @@ class MainViewController: UIViewController {
         closeMenu()
     }
     func openMyProfileView(n:AnyObject) {
+        
         if let viewControllers = self.navigationController?.viewControllers{
             if let activeController = viewControllers.last {
                 if !activeController.isKindOfClass(MyProfileViewController){

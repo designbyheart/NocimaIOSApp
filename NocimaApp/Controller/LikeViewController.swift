@@ -82,7 +82,7 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
         
         
         ViewHelper.addBackgroundImg(self)
-        
+
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)

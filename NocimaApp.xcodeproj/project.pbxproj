@@ -35,6 +35,10 @@
 		0776C9DA1D2402A800F76BA0 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0776C9D91D2402A800F76BA0 /* WelcomeViewController.swift */; };
 		07801AF81DA7143300BD8FA8 /* WereCloseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07801AF71DA7143300BD8FA8 /* WereCloseTableViewCell.swift */; };
 		078A09F61D974A5A00D5A3FC /* ViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078A09F51D974A5A00D5A3FC /* ViewHelper.swift */; };
+		078FA5141DB2B59900E2575C /* MatchedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078FA5131DB2B59900E2575C /* MatchedCollectionViewCell.swift */; };
+		079FA18F1DAE0CCD00E1194B /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079FA18E1DAE0CCD00E1194B /* UserNotificationsUI.framework */; };
+		079FA1911DAE0CDC00E1194B /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079FA1901DAE0CDC00E1194B /* UserNotifications.framework */; };
+		079FA1931DAE14BB00E1194B /* WereCloseLikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079FA1921DAE14BB00E1194B /* WereCloseLikeViewController.swift */; };
 		079FECC01CF766BC00293141 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079FECBF1CF766BC00293141 /* LocationViewController.swift */; };
 		079FECC21CF768A400293141 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079FECC11CF768A400293141 /* MapKit.framework */; };
 		07A014201D2B2F9700DC62B6 /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A0141F1D2B2F9700DC62B6 /* DataHelper.swift */; };
@@ -114,6 +118,10 @@
 		0776C9D91D2402A800F76BA0 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WelcomeViewController.swift; path = Controller/WelcomeViewController.swift; sourceTree = "<group>"; };
 		07801AF71DA7143300BD8FA8 /* WereCloseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WereCloseTableViewCell.swift; path = Components/cells/WereCloseTableViewCell.swift; sourceTree = "<group>"; };
 		078A09F51D974A5A00D5A3FC /* ViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewHelper.swift; path = Helpers/ViewHelper.swift; sourceTree = "<group>"; };
+		078FA5131DB2B59900E2575C /* MatchedCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatchedCollectionViewCell.swift; path = Components/cells/MatchedCollectionViewCell.swift; sourceTree = "<group>"; };
+		079FA18E1DAE0CCD00E1194B /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
+		079FA1901DAE0CDC00E1194B /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		079FA1921DAE14BB00E1194B /* WereCloseLikeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WereCloseLikeViewController.swift; path = Controller/WereCloseLikeViewController.swift; sourceTree = "<group>"; };
 		079FECBF1CF766BC00293141 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationViewController.swift; path = Controller/LocationViewController.swift; sourceTree = "<group>"; };
 		079FECC11CF768A400293141 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		07A0141F1D2B2F9700DC62B6 /* DataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataHelper.swift; path = Helpers/DataHelper.swift; sourceTree = "<group>"; };
@@ -126,6 +134,7 @@
 		07B8BEFE1CFAF48300BF2E58 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Controller/SettingsViewController.swift; sourceTree = "<group>"; };
 		07B8BF001CFAF4BE00BF2E58 /* MyProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyProfileViewController.swift; path = Controller/MyProfileViewController.swift; sourceTree = "<group>"; };
 		07BBCCB31D09AB6700E1D7B4 /* NotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationHelper.swift; path = Helpers/NotificationHelper.swift; sourceTree = "<group>"; };
+		07D1F1061DADA12300F09AD1 /* NocimaApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NocimaApp.entitlements; sourceTree = "<group>"; };
 		07E05C9D1CF27AA900B4AF28 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = Frameworks/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		07E05C9E1CF27AA900B4AF28 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = Frameworks/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		07E05C9F1CF27AA900B4AF28 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = Frameworks/FBSDKShareKit.framework; sourceTree = "<group>"; };
@@ -147,6 +156,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				079FA1911DAE0CDC00E1194B /* UserNotifications.framework in Frameworks */,
+				079FA18F1DAE0CCD00E1194B /* UserNotificationsUI.framework in Frameworks */,
 				070511201D192F2C0051E684 /* CoreLocation.framework in Frameworks */,
 				079FECC21CF768A400293141 /* MapKit.framework in Frameworks */,
 				076D40111CEE62FF00F63275 /* UIKit.framework in Frameworks */,
@@ -208,6 +219,7 @@
 		076638811CED0F0E001A8AE1 /* NocimaApp */ = {
 			isa = PBXGroup;
 			children = (
+				07D1F1061DADA12300F09AD1 /* NocimaApp.entitlements */,
 				07BBCCB21D09AB4500E1D7B4 /* Helpers */,
 				07F3F20C1D06B940005F1BDE /* API */,
 				07B8BEF61CFA55B000BF2E58 /* Components */,
@@ -260,6 +272,7 @@
 				07FB54E91D375C4B009165D9 /* LocationUpdateController.swift */,
 				0772DC431D5BB7C8005D174D /* TermsConditionsViewController.swift */,
 				07B4ED5E1DA69EC4009F0B9E /* WereCloseViewController.swift */,
+				079FA1921DAE14BB00E1194B /* WereCloseLikeViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -303,6 +316,7 @@
 				07B8BEFB1CFA85F100BF2E58 /* MenuCell.swift */,
 				0736DE061D273F6C004FDE7B /* UserChatListCell.swift */,
 				07801AF71DA7143300BD8FA8 /* WereCloseTableViewCell.swift */,
+				078FA5131DB2B59900E2575C /* MatchedCollectionViewCell.swift */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -340,6 +354,8 @@
 		4DA1DA2C7ACE07FEB3EE6E42 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				079FA1901DAE0CDC00E1194B /* UserNotifications.framework */,
+				079FA18E1DAE0CCD00E1194B /* UserNotificationsUI.framework */,
 				072EB3731D2CE689001FE2EE /* Fabric.framework */,
 				0705111F1D192F2C0051E684 /* CoreLocation.framework */,
 				079FECC11CF768A400293141 /* MapKit.framework */,
@@ -617,10 +633,12 @@
 				07B8BEFF1CFAF48300BF2E58 /* SettingsViewController.swift in Sources */,
 				078A09F61D974A5A00D5A3FC /* ViewHelper.swift in Sources */,
 				07FB54EA1D375C4B009165D9 /* LocationUpdateController.swift in Sources */,
+				078FA5141DB2B59900E2575C /* MatchedCollectionViewCell.swift in Sources */,
 				07B8BEF81CFA55D300BF2E58 /* NavigationView.swift in Sources */,
 				0776C9DA1D2402A800F76BA0 /* WelcomeViewController.swift in Sources */,
 				071353641D2D7F2300455C4E /* UserProfileController.swift in Sources */,
 				076638831CED0F0E001A8AE1 /* AppDelegate.swift in Sources */,
+				079FA1931DAE14BB00E1194B /* WereCloseLikeViewController.swift in Sources */,
 				0772DC441D5BB7C8005D174D /* TermsConditionsViewController.swift in Sources */,
 				07F7115E1D04D0500099D342 /* TisprCardStackViewController.swift in Sources */,
 				07FE8F171CF9CDD70029DE52 /* MenuViewController.swift in Sources */,
@@ -735,7 +753,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -774,7 +792,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -789,7 +807,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = NocimaApp/NocimaApp.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Predrag Jevtic (T2SVJB826P)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 3ZF6URM4HS;
@@ -854,6 +873,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = NocimaApp/NocimaApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 3ZF6URM4HS;

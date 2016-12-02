@@ -14,7 +14,6 @@ class UserChatListCell: UITableViewCell {
     @IBOutlet weak var blockBttn: UIButton!
     @IBOutlet weak var notificationIcon: UIView!
     
-    
     override func awakeFromNib() {
         
         self.notificationIcon.layer.cornerRadius = 10
@@ -37,16 +36,11 @@ class UserChatListCell: UITableViewCell {
         }else{
             self.userNameLbl .textColor = UIColor.whiteColor()
         }
-        
     }
     override func layoutSubviews() {
         super.layoutSubviews()
         
         self.userImg.layer.cornerRadius = self.userImg.frame.size.width / 2
         self.userImg.clipsToBounds = true
-        
-        
     }
-
-    
 }

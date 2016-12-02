@@ -61,6 +61,18 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
             loginManager.logOut()
         }
         
+        if let pushToken = NSUserDefaults.standardUserDefaults().objectForKey("pushNotificationToken"){
+            if (NSUserDefaults.standardUserDefaults().objectForKey("userToken") as? String) != nil {
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                    // do some task
+                    APIClient.sendPOST(APIPath.UploadPushToken, params: ["token":pushToken, "deviceID":(UIDevice.currentDevice().identifierForVendor?.UUIDString)!])
+                    dispatch_async(dispatch_get_main_queue()) {
+                        // update some UI
+                    }
+                }
+            }
+            
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -112,16 +124,17 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
         
     }
     func startPlayingVideo(){
-        if(self.player != nil){
-            self.player = nil
-        }
-        self.player = AVPlayer(URL: NSURL(fileURLWithPath: self.path!))
-        let playerLayer = AVPlayerLayer(player: player)
-        playerLayer.frame = self.view.frame
-        playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
-        self.view.layer.insertSublayer(playerLayer, atIndex: 1)
-        self.player!.seekToTime(kCMTimeZero)
-        self.player!.play()
+        return
+//        if(self.player != nil){
+//            self.player = nil
+//        }
+//        self.player = AVPlayer(URL: NSURL(fileURLWithPath: self.path!))
+//        let playerLayer = AVPlayerLayer(player: player)
+//        playerLayer.frame = self.view.frame
+//        playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+//        self.view.layer.insertSublayer(playerLayer, atIndex: 1)
+//        self.player!.seekToTime(kCMTimeZero)
+//        self.player!.play()
         
     }
     func playerItemDidReachEnd() {
@@ -141,8 +154,10 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
         loginManager.logInWithReadPermissions(self.facebookReadPermissions, fromViewController: self.parentViewController, handler: { (result, error) -> Void in
             if error != nil {
                 //                print(error)
-                let alert = UIAlertView.init(title: "Failed Fb login", message: "\(error)", delegate: self, cancelButtonTitle: "OK")
-                alert.show()
+                
+                let alert = UIAlertController(title: "Failed Fb login", message: "\(error)", preferredStyle: .Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .Default) { _ in })
+                self.presentViewController(alert, animated: true){}
                 //                self.loginSuccess(result.token)
             } else if result.isCancelled {
                 //                print("Cancelled")
@@ -155,17 +170,6 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
         if(openedTimes == 0){
             print("deviceID \(UIDevice.currentDevice().identifierForVendor?.UUIDString)")
             super.performSegueWithIdentifier("openLike", sender: self)
-            if let pushToken = NSUserDefaults.standardUserDefaults().objectForKey("pushNotificationToken"){
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-                    // do some task
-                    APIClient.sendPOST(APIPath.UploadPushToken, params: ["token":pushToken, "deviceID":(UIDevice.currentDevice().identifierForVendor?.UUIDString)!])
-                    dispatch_async(dispatch_get_main_queue()) {
-                        // update some UI
-                    }
-                }
-            }
-            
-            
             openedTimes += 1
         }
     }

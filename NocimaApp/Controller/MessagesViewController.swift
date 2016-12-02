@@ -8,12 +8,16 @@
 
 import UIKit
 
-class MessagesViewController: MainViewController {
+class MessagesViewController: MainViewController, UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noChatLbl: UILabel!
-    
+    @IBOutlet weak var matchesLbl: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
+    var matchedUsers = [AnyObject]()
+    @IBOutlet weak var scrollView: UIScrollView!
     var progressView = RPCircularProgress()
+    var scrollViewHeightConst = NSLayoutConstraint()
     
     var userChats = [AnyObject]()
     var selectedUserImg:UIImage = UIImage()
@@ -34,10 +38,22 @@ class MessagesViewController: MainViewController {
         noChatLbl.hidden = true
         
         self.tableView.tableFooterView = UIView()
+        ViewHelper.addBackgroundImg(self)
         
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        for c in self.scrollView.constraints {
+            if (c.identifier == "scrollViewHeight"){
+                self.scrollViewHeightConst = c
+            }
+        }
+        if(self.matchedUsers.count < 1){
+            scrollViewHeightConst.constant = 0
+        }
+        self.view.layoutIfNeeded()
+        
     }
     override func viewDidAppear(animated:Bool){
         super.viewDidAppear(animated)
@@ -45,16 +61,18 @@ class MessagesViewController: MainViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(MessagesViewController.loadMessagesSuccess(_:)), name: APINotification.Success.rawValue, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MessagesViewController.loadMessagesFail(_:)), name: APINotification.Fail.rawValue, object: nil)
         
-        self.progressView = RPCircularProgress.init()
-        progressView.enableIndeterminate(true)
-        self.progressView.removeFromSuperview()
-        self.view .addSubview(progressView)
-        progressView.center = CGPointMake(self.view.center.x, self.view.center.y)
+        if(self.userChats.count < 1){
+            self.progressView = RPCircularProgress.init()
+            progressView.enableIndeterminate(true)
+            self.progressView.removeFromSuperview()
+            self.view .addSubview(progressView)
+            progressView.center = CGPointMake(self.view.center.x, self.view.center.y)
+        }
         
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
             // do some task
-            APIClient.sendPOST(APIPath.ChatHistory, params: [:])
+            APIClient.sendPOST(APIPath.ChatHistoryV2, params: [:])
             //            dispatch_async(dispatch_get_main_queue()) {
             //                // update some UI
             //            }
@@ -87,13 +105,13 @@ class MessagesViewController: MainViewController {
         if let userName = chatItem["name"] as? String{
             cell.userNameLbl.text = userName
         }
-    
-//        cell.userImg.image = UIImage.init(named: "defaultImg")
-//        cell.userImg.layer.cornerRadius = cell.userImg.frame.size.width/2
+        
+        //        cell.userImg.image = UIImage.init(named: "defaultImg")
+        //        cell.userImg.layer.cornerRadius = cell.userImg.frame.size.width/2
         
         if let userImg = chatItem["imageURL"] as? String {
             if userImg.characters.count > 0 {
-                    APIClient.loadImgFromURL(userImg,imageView:cell.userImg)
+                APIClient.loadImgFromURL(userImg,imageView:cell.userImg)
             }
         }
         if let totalNew = chatItem["totalNew"] as? Int{
@@ -134,7 +152,6 @@ class MessagesViewController: MainViewController {
                     
                     if let userName = user["name"] as? String{
                         chatVC!.userName = userName
-                        print(userName)
                     }
                 }
             }
@@ -147,7 +164,7 @@ class MessagesViewController: MainViewController {
                 if(method == APIPath.BlockUser.rawValue){
                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
                         // do some task
-                        APIClient.sendPOST(APIPath.ChatHistory, params: [:])
+                        APIClient.sendPOST(APIPath.ChatHistoryV2, params: [:])
                         dispatch_async(dispatch_get_main_queue()) {
                             // update some UI
                         }
@@ -155,12 +172,12 @@ class MessagesViewController: MainViewController {
                     
                     return;
                 }
-                if (method != APIPath.ChatHistory.rawValue) {
+                if (method != APIPath.ChatHistoryV2.rawValue) {
                     return;
                 }
                 self.progressView.removeFromSuperview()
                 if let res = response["response"]{
-                    if let chatHistory = res!["chats"] as? [AnyObject]{
+                    if let chatHistory = res!["coresponders"] as? [AnyObject]{
                         if chatHistory.count > 0{
                             userChats = chatHistory
                             self.tableView.reloadData()
@@ -168,6 +185,10 @@ class MessagesViewController: MainViewController {
                         }else{
                             self.noChatLbl.hidden = false
                         }
+                    }
+                    if let matches = res!["matches"] as? [AnyObject]{
+                        self.matchedUsers = matches
+                        self.reloadMatches()
                     }
                 }
             }
@@ -185,18 +206,71 @@ class MessagesViewController: MainViewController {
             if action.style == .Default{
                 if let user = self.userChats[sender.tag] as? [String:AnyObject]{
                     
-                        if let userID = user["userID"] as? String{
-                            self.userChats.removeAtIndex(sender.tag)
-                            self.tableView.reloadData()
-                            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-                                // do some task
-                                APIClient.sendPOST(APIPath.BlockUser, params:["userID":userID])
-                                dispatch_async(dispatch_get_main_queue()) {
-                                    // update some UI
+                    if let userID = user["userID"] as? String{
+                        self.userChats.removeAtIndex(sender.tag)
+                        self.tableView.reloadData()
+                        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                            // do some task
+                            APIClient.sendPOST(APIPath.BlockUser, params:["userID":userID])
+                            dispatch_async(dispatch_get_main_queue()) {
+                                // update some UI
+                            }
                         }
                     }
                 }
-            }
             }}))
+    }
+    func reloadMatches(){
+        self.scrollViewHeightConst.constant = 100;
+        self.matchesLbl.hidden = false
+        self.collectionView.reloadData()
+        
+        //TODO update scroll view and restore matches 
+//        var leftPadding:CGFloat = 10
+//        for user in self.matchedUsers {
+//            let uButton = UIButton.init(frame:CGRectMake(leftPadding, 10, 60, 60))
+//            if let userImg = user["imageURL"] as? String {
+//                if userImg.characters.count > 0 {
+//                    APIClient.loadImgFromURL(userImg,imageView:uButton.imageView)
+//                }
+//            }
+//            uButton.setImage(UIIMage, forState: <#T##UIControlState#>)
+//            if let uName = user["name"] as? String{
+////                let nameLbl = UILabel.
+//            }
+//        }
+    }
+    //MARK: - Collection view delegates
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.matchedUsers.count
+    }
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+     let cell = collectionView.dequeueReusableCellWithReuseIdentifier("matchUserCell", forIndexPath: indexPath) as! MatchedCollectionViewCell
+        
+        if let user = self.matchedUsers[indexPath.row] as? [String: AnyObject]{
+            if let imgURL = user["imageURL"] as? String{
+                APIClient.load_image(imgURL, imageView: cell.userImage)
+            }
+            cell.userNameLbl.text = user["name"] as? String
+        }
+        return cell
+    }
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    
+        if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? MatchedCollectionViewCell {
+            if let img = cell.userImage.image{
+                self.selectedUserImg = img
+            }
+        }
+        
+        self.performSegueWithIdentifier("openChatView", sender: self.matchedUsers[indexPath.row])
+
+    }
+    override func sizeForChildContentContainer(container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
+        return CGSizeMake(100, 100)
     }
 }
