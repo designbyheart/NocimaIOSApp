@@ -1,0 +1,4 @@
+language: swift
+xcode_project: NocimaApp.xcodeproj
+xcode_scheme: NocimaApp
+podfile: Podfile

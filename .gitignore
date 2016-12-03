@@ -3,3 +3,4 @@ Podfile.lock
 .idea/
 /NocimaApp.xcworkspace/xcuserdata/pedja.xcuserdatad/UserInterfaceState.xcuserstate
 NocimaApp.xcworkspace/xcuserdata/
+.DS_Store
