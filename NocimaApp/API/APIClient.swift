@@ -368,8 +368,16 @@ public class APIClient {
                         print(imageURL)
                     }
                     if (value["images"]! != nil){
-                        let alert = UIAlertView.init(title: "Upload slike završen", message: "Slika je uspešno uploadovana", delegate: self, cancelButtonTitle: "OK")
-                        alert.show()
+//                        let alert = UIAlertView.init(title: "Upload slike završen", message: "Slika je uspešno uploadovana", delegate: self, cancelButtonTitle: "OK")
+//                        alert.show()
+                        
+                        let appDelegate  = UIApplication.sharedApplication().delegate as! AppDelegate
+                        if let mainViewController = appDelegate.window!.rootViewController{
+                            let alert  = UIAlertController.init(title: "Upload slike završen", message: "Slika je uspešno uploadovana", preferredStyle: UIAlertControllerStyle.Alert)
+                            alert.addAction(UIAlertAction.init(title: "Ok", style:UIAlertActionStyle.Default, handler: nil))
+                            mainViewController.presentViewController(alert, animated: true, completion: {})
+                        }
+                        
                     }
                 }
         }
@@ -401,14 +409,14 @@ public class APIClient {
     }
     static func loadImgFromURL(imageURL:String, imageView:UIImageView)->Void{
         let url = NSURL(string: imageURL)
-        
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             let data = NSData(contentsOfURL: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check
             dispatch_async(dispatch_get_main_queue(), {
-                imageView.image = UIImage(data: data!)
-                imageView.hidden = false
-                imageView.contentMode = UIViewContentMode.ScaleAspectFill
-                
+                if let imgData = data as NSData!{
+                    imageView.image = UIImage(data: imgData)
+                    imageView.hidden = false
+                    imageView.contentMode = UIViewContentMode.ScaleAspectFill
+                }
             });
         }
     }

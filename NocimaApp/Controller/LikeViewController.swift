@@ -161,7 +161,7 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! LikeDislikeCollectionViewCell
-        
+
         // Configure the cell
         if let user = self.usersList[indexPath.row] as? [String:AnyObject]{
             if let userID = user["userID"] as? String{
@@ -182,6 +182,8 @@ class LikeViewController: MainViewController, UICollectionViewDelegate, UICollec
                 cell.nameLbl.text = userName
                 if let imageURL = user["imageURL"]{
                     APIClient.load_image(imageURL, imageView: cell.userImg)
+                }else{
+                    cell.userImg.image = nil
                 }
                 if let bYear = user["birthYear"]!.integerValue{
                     

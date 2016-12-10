@@ -20,7 +20,7 @@ class UserChatListCell: UITableViewCell {
         self.notificationIcon.layer.masksToBounds = true
         self.notificationIcon.layer.borderColor = UIColor.init(white: 0, alpha: 0.9).CGColor
         self.notificationIcon.layer.borderWidth = 4
-        
+        self.userImg.backgroundColor = UIColor.blackColor()
         layoutIfNeeded()
     }
     override func setSelected(selected: Bool, animated: Bool) {

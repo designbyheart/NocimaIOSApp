@@ -17,7 +17,6 @@
 		072F6D081D2DDF76000550D5 /* ChatHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072F6D071D2DDF76000550D5 /* ChatHeaderView.swift */; };
 		0736DE071D273F6C004FDE7B /* UserChatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0736DE061D273F6C004FDE7B /* UserChatListCell.swift */; };
 		075EE16E1D1F39CC006E853F /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075EE16D1D1F39CC006E853F /* MatchViewController.swift */; };
-		076073B71D3EB5BB00DA4B3B /* splashVideo.mov in Resources */ = {isa = PBXBuildFile; fileRef = 076073B61D3EB5BB00DA4B3B /* splashVideo.mov */; };
 		076638831CED0F0E001A8AE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076638821CED0F0E001A8AE1 /* AppDelegate.swift */; };
 		076638881CED0F0E001A8AE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 076638861CED0F0E001A8AE1 /* Main.storyboard */; };
 		0766388B1CED0F0E001A8AE1 /* NocimaApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 076638891CED0F0E001A8AE1 /* NocimaApp.xcdatamodeld */; };
@@ -94,7 +93,6 @@
 		072F6D071D2DDF76000550D5 /* ChatHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatHeaderView.swift; path = Components/ChatHeaderView.swift; sourceTree = "<group>"; };
 		0736DE061D273F6C004FDE7B /* UserChatListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserChatListCell.swift; path = Components/cells/UserChatListCell.swift; sourceTree = "<group>"; };
 		075EE16D1D1F39CC006E853F /* MatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatchViewController.swift; path = Controller/MatchViewController.swift; sourceTree = "<group>"; };
-		076073B61D3EB5BB00DA4B3B /* splashVideo.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = splashVideo.mov; path = ../../../splashVideo.mov; sourceTree = "<group>"; };
 		0766387F1CED0F0E001A8AE1 /* NocimaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NocimaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		076638821CED0F0E001A8AE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		076638871CED0F0E001A8AE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -280,7 +278,6 @@
 		076D40041CEE622100F63275 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				076073B61D3EB5BB00DA4B3B /* splashVideo.mov */,
 				072EB3751D2D5DC6001FE2EE /* Progress */,
 				07F711581D04D01E0099D342 /* CardController */,
 				076D40051CEE624C00F63275 /* Fonts */,
@@ -503,7 +500,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				076638901CED0F0E001A8AE1 /* LaunchScreen.storyboard in Resources */,
-				076073B71D3EB5BB00DA4B3B /* splashVideo.mov in Resources */,
 				0766388D1CED0F0E001A8AE1 /* Assets.xcassets in Resources */,
 				076D400D1CEE626000F63275 /* SourceSansPro-Semibold.ttf in Resources */,
 				076638881CED0F0E001A8AE1 /* Main.storyboard in Resources */,

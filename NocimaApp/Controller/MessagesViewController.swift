@@ -94,31 +94,33 @@ class MessagesViewController: MainViewController, UIScrollViewDelegate, UICollec
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userChats.count
+        return self.userChats.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cell = tableView.dequeueReusableCellWithIdentifier("userChatCell", forIndexPath: indexPath) as! UserChatListCell
-        let chatItem = self.userChats[indexPath.row]
-        //
-        if let userName = chatItem["name"] as? String{
-            cell.userNameLbl.text = userName
-        }
         
-        //        cell.userImg.image = UIImage.init(named: "defaultImg")
-        //        cell.userImg.layer.cornerRadius = cell.userImg.frame.size.width/2
-        
-        if let userImg = chatItem["imageURL"] as? String {
-            if userImg.characters.count > 0 {
-                APIClient.loadImgFromURL(userImg,imageView:cell.userImg)
+        if let chatItem = self.userChats[indexPath.row] as? [String:AnyObject]{
+            print(chatItem)
+            if let userName = chatItem["name"] as? String{
+                cell.userNameLbl.text = userName
             }
-        }
-        if let totalNew = chatItem["totalNew"] as? Int{
-            cell.notificationIcon.hidden = totalNew == 0 ? true : false
-        }
-        if let blockBttn = cell.blockBttn{
-            blockBttn.tag = indexPath.row
+            
+            //        cell.userImg.image = UIImage.init(named: "defaultImg")
+            //        cell.userImg.layer.cornerRadius = cell.userImg.frame.size.width/2
+            
+            if let userImg = chatItem["imageURL"] as? String {
+                if userImg.characters.count > 0 {
+                    APIClient.loadImgFromURL(userImg,imageView:cell.userImg)
+                }
+            }
+            if let totalNew = chatItem["totalNew"] as? Int{
+                cell.notificationIcon.hidden = totalNew == 0 ? true : false
+            }
+            if let blockBttn = cell.blockBttn{
+                blockBttn.tag = indexPath.row
+            }
         }
         //        cell.blockBttn.tag = indexPath.row
         return cell
@@ -225,20 +227,20 @@ class MessagesViewController: MainViewController, UIScrollViewDelegate, UICollec
         self.matchesLbl.hidden = false
         self.collectionView.reloadData()
         
-        //TODO update scroll view and restore matches 
-//        var leftPadding:CGFloat = 10
-//        for user in self.matchedUsers {
-//            let uButton = UIButton.init(frame:CGRectMake(leftPadding, 10, 60, 60))
-//            if let userImg = user["imageURL"] as? String {
-//                if userImg.characters.count > 0 {
-//                    APIClient.loadImgFromURL(userImg,imageView:uButton.imageView)
-//                }
-//            }
-//            uButton.setImage(UIIMage, forState: <#T##UIControlState#>)
-//            if let uName = user["name"] as? String{
-////                let nameLbl = UILabel.
-//            }
-//        }
+        //TODO update scroll view and restore matches
+        //        var leftPadding:CGFloat = 10
+        //        for user in self.matchedUsers {
+        //            let uButton = UIButton.init(frame:CGRectMake(leftPadding, 10, 60, 60))
+        //            if let userImg = user["imageURL"] as? String {
+        //                if userImg.characters.count > 0 {
+        //                    APIClient.loadImgFromURL(userImg,imageView:uButton.imageView)
+        //                }
+        //            }
+        //            uButton.setImage(UIIMage, forState: <#T##UIControlState#>)
+        //            if let uName = user["name"] as? String{
+        ////                let nameLbl = UILabel.
+        //            }
+        //        }
     }
     //MARK: - Collection view delegates
     
@@ -249,18 +251,20 @@ class MessagesViewController: MainViewController, UIScrollViewDelegate, UICollec
         return 1
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-     let cell = collectionView.dequeueReusableCellWithReuseIdentifier("matchUserCell", forIndexPath: indexPath) as! MatchedCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("matchUserCell", forIndexPath: indexPath) as! MatchedCollectionViewCell
         
         if let user = self.matchedUsers[indexPath.row] as? [String: AnyObject]{
             if let imgURL = user["imageURL"] as? String{
                 APIClient.load_image(imgURL, imageView: cell.userImage)
             }
-            cell.userNameLbl.text = user["name"] as? String
+            if let userName = user["name"] as? String{
+                cell.userNameLbl.text = userName
+            }
         }
         return cell
     }
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-    
+        
         if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? MatchedCollectionViewCell {
             if let img = cell.userImage.image{
                 self.selectedUserImg = img
@@ -268,7 +272,7 @@ class MessagesViewController: MainViewController, UIScrollViewDelegate, UICollec
         }
         
         self.performSegueWithIdentifier("openChatView", sender: self.matchedUsers[indexPath.row])
-
+        
     }
     override func sizeForChildContentContainer(container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
         return CGSizeMake(100, 100)

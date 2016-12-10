@@ -118,8 +118,12 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     //MARK: - update profile
     @IBAction func updateProfile(sender:AnyObject){
         if(self.profileImg.image == nil){
-            let alert = UIAlertView.init(title: "Podsetnik", message: "Izaberite sliku za profil", delegate: self, cancelButtonTitle: "OK")
-            alert.show()
+            let alert  = UIAlertController.init(title: "Podsetnik", message: "Izaberite sliku za profil", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction.init(title: "Ok", style:UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: {})
+            
+//            let alert = UIAlertView.init(title: "Podsetnik", message: "Izaberite sliku za profil", delegate: self, cancelButtonTitle: "OK")
+//            alert.show()
             return
         }
         self.progressView = RPCircularProgress.init()
@@ -149,8 +153,13 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UIImagePicke
                     NSUserDefaults.standardUserDefaults().synchronize()
                     APIClient.load_image(imgURL, imageView: self.profileImgView)
                 }
-                let alert = UIAlertView.init(title: "Success", message: "Korisnik je ažuriran", delegate: self, cancelButtonTitle: "OK")
-                alert.show()
+                let alert  = UIAlertController.init(title: "Success", message: "Korisnik je ažuriran", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction.init(title: "Ok", style:UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: {})
+            
+                
+//                let alert = UIAlertView.init(title: "Success", message: "Korisnik je ažuriran", delegate: self, cancelButtonTitle: "OK")
+//                alert.show()
                 self.performSegueWithIdentifier("openPendingView", sender: self)
         }
     }
@@ -163,13 +172,21 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UIImagePicke
             }
             if let resp = response["response"]{
                 if let success = resp!["success"] as? String{
-                    let alert = UIAlertView.init(title: "Success", message: "\(success)", delegate: self, cancelButtonTitle: "OK")
-                    alert.show()
+                    let alert  = UIAlertController.init(title: "Success", message: "\(success)", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction.init(title: "Ok", style:UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: {})
+                    
+
+//                    let alert = UIAlertView.init(title: "Success", message: "\(success)", delegate: self, cancelButtonTitle: "OK")
+//                    alert.show()
                     self.performSegueWithIdentifier("openPendingView", sender: self)
                 }else{
+                    let alert  = UIAlertController.init(title: "Error", message: "\(resp!["error"])", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction.init(title: "Ok", style:UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: {})
                     
-                    let alert = UIAlertView.init(title: "Error", message: "\(resp!["error"])", delegate: self, cancelButtonTitle: "OK")
-                    alert.show()
+//                    let alert = UIAlertView.init(title: "Error", message: "\(resp!["error"])", delegate: self, cancelButtonTitle: "OK")
+//                    alert.show()
                 }
                 
             }
@@ -183,8 +200,12 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UIImagePicke
                 }
             }
         }
-        let alert = UIAlertView.init(title: "Fail", message: "\(n.object)", delegate: self, cancelButtonTitle: "OK")
-        alert.show()
+        let alert  = UIAlertController.init(title: "Fail", message: "\(n.object)", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction.init(title: "Ok", style:UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: {})
+        
+//        let alert = UIAlertView.init(title: "Fail", message: "\(n.object)", delegate: self, cancelButtonTitle: "OK")
+//        alert.show()
     }
     //MARK: - PickerView Delegate
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {

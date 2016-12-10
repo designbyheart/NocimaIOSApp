@@ -34,7 +34,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
     @IBOutlet weak var gbIcon: UIImageView!
     var userNameTxt = UITextField()
     var passwordTxt = UITextField()
-    let path = NSBundle.mainBundle().pathForResource("splashVideo", ofType: "mov")
+//    let path = NSBundle.mainBundle().pathForResource("splashVideo", ofType: "mov")
     var player: AVPlayer?
     var loadUserDataIndex = 0
     var isWelcomeLoaded:Int = 0
@@ -299,8 +299,16 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                 }else{
                     print("Error: \(error)")
                     
-                    let alert = UIAlertView.init(title: "Facebook login failed", message: "FB error: \(error)", delegate: self, cancelButtonTitle: "OK")
-                    alert.show()
+                    /*
+                     let alert = UIAlertController(title: "Login error!", message:messageError, preferredStyle: .alert)
+                     alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in })
+                     self.present(alert, animated: true){}
+                     */
+                    let alert  = UIAlertController.init(title: "Facebook login failed", message: "FB error: \(error)", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction.init(title: "Ok", style:UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: {})
+//                    let alert = UIAlertView.init(title: "Facebook login failed", message: "FB error: \(error)", delegate: self, cancelButtonTitle: "OK")
+//                    alert.show()
                 }
                 
             })
@@ -378,8 +386,12 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                         }
                     }else{
                         if method == APIPath.CheckUserStatus.rawValue {
-                            let alert = UIAlertView.init(title: "Authentication Failed", message: "Error in server response", delegate: self, cancelButtonTitle: "OK")
-                            alert.show()
+                            let alert  = UIAlertController.init(title: "Authentication Failed", message: "Error in server response", preferredStyle: UIAlertControllerStyle.Alert)
+                            alert.addAction(UIAlertAction.init(title: "Ok", style:UIAlertActionStyle.Default, handler: nil))
+                            self.presentViewController(alert, animated: true, completion: {})
+                            
+//                            let alert = UIAlertView.init(title: "Authentication Failed", message: "Error in server response", delegate: self, cancelButtonTitle: "OK")
+//                            alert.show()
                         }
                     }
                 }
@@ -390,8 +402,14 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
         if let response = n.object as? [String:AnyObject]{
             if let method = response["method"] as? String{
                 if method == APIPath.UpdateUserData.rawValue{
-                    let alert = UIAlertView.init(title: "Update user failed", message: nil, delegate: self, cancelButtonTitle: "OK")
-                    alert.show()
+                    let alert  = UIAlertController.init(title: "Update user failed", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction.init(title: "Ok", style:UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: {})
+                    
+
+                    
+//                    let alert = UIAlertView.init(title: "Update user failed", message: nil, delegate: self, cancelButtonTitle: "OK")
+//                    alert.show()
                 }
             }
         }
@@ -442,8 +460,12 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate, UITextFi
                             }
                         }
                         if let error = response!["error"] as? String {
-                            let alert = UIAlertView.init(title: "Login", message: "\(error)", delegate: self, cancelButtonTitle: "OK")
-                            alert.show()
+                            let alert  = UIAlertController.init(title: "Login", message: "\(error)", preferredStyle: UIAlertControllerStyle.Alert)
+                            alert.addAction(UIAlertAction.init(title: "Ok", style:UIAlertActionStyle.Default, handler: nil))
+                            self.presentViewController(alert, animated: true, completion: {})
+                            
+//                            let alert = UIAlertView.init(title: "Login", message: "\(error)", delegate: self, cancelButtonTitle: "OK")
+//                            alert.show()
                             return;
                         }else{
                             self.updateSuccess(n)
